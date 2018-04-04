@@ -10,6 +10,12 @@ session_start();
 		$header = "user_header.php";
 	}
 
+/*-----------------------FETCHER LES ARTICLES------------------------------*/
+$query="SELECT article.id, article.titre_FR, images.url FROM article
+LEFT JOIN images ON images.article_id=article.id;";
+$result = $pdo->prepare($query);
+$result->execute();
+$articles = $result->fetchAll();
 include '_head.php';
 $page="decouvrir";
 ?>
@@ -19,6 +25,21 @@ $page="decouvrir";
 	<?php include($header); ?>
 
 <section>
+	<h1>Découvrir</h1>
+<?php
+	foreach ($articles as $key => $value) {
+?>	<a href="article.php?id=<?php echo $articles[$key]['id']; ?>">
+		<div class="club_item" style="background-image: url('images/articles/<?php echo $articles[$key]['url'];?>');">
+				<div>
+					<h3><?php echo $articles[$key]['titre_FR']; ?></h3>
+				</div>
+			</div>
+	</a>
+
+<?php
+	}
+
+?>
 </section>
 
 	<?php 

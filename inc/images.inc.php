@@ -137,6 +137,30 @@ Class event extends Image {
 			
 }}
 
+Class article extends Image {
+
+	public $path = "../../images/articles/";
+
+		public function delete($id, $pdo) {
+
+		$query_check = 'SELECT url FROM images WHERE id='.$id.';';
+		$result = $pdo->prepare($query_check);
+		$result->execute();
+		$url = $result->fetch();
+
+		$query_check = 'DELETE FROM images WHERE id='.$id.';';
+		$result = $pdo->prepare($query_check);
+		$result->execute();
+		$count = $result->rowCount();
+
+		if($count > 0 ) { 
+				unlink("../../images/articles/".$url[0]); 
+				return true;
+			} else { 
+				return false; }
+			
+}}
+
 
 
 ?>

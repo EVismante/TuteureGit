@@ -296,7 +296,11 @@ input[type="button"] {
 	max-width: 200px;
 	@include gradient(map-get($colors, darkblue), map-get($colors, lightblue));
 	color: white;
+	padding: 0.6em;
+	font-size: 0.9em;
+	&:hover { }
 }
+
 
 .btn:active,
 input[type="button"]:active,

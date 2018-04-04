@@ -1,4 +1,3 @@
-
 <?php
 // pour rendre le menu navigation invisible en page Index
 	if($page == "index") {
@@ -28,7 +27,6 @@
 
 <?php
 						if ($_SESSION["type"] == "normal") {
-
 							}
 						if ($_SESSION["type"] == "admin") {
 ?>
@@ -47,16 +45,18 @@
 </div>
 <?php
 					} else {
-
 						?>
 <a id="connexion" <?php if($page=='login'){echo 'class="active"';}?> href="login.php">Connexion</a>
 
 						<?php
 					};
-
 ?>
 </div>
-		<div id="mobile_menu">MENU</div>		 
+		<div id="mobile_menu">	
+			<span></span>	
+			<span></span>
+			<span></span> 
+		</div>
 		<div>		
 			<ul>
 				<li <?php if($page=='evenements'){echo 'class="active"';}?>><a href="evenements.php">Evènements</a></li>
@@ -65,4 +65,3 @@
 			</ul>
 		</div>
 </div>
-

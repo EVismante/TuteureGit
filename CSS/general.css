@@ -344,7 +344,9 @@ input[type="button"] {
   /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$color1', endColorstr='$color2',GradientType=1 );
   /* IE6-9 */
-  color: white; }
+  color: white;
+  padding: 0.6em;
+  font-size: 0.9em; }
 
 .btn:active, .map_btn:active,
 input[type="button"]:active,
@@ -434,3 +436,5 @@ div[id^='repondre_'] {
 
 .hidden {
   display: none; }
+
+/*# sourceMappingURL=general.css.map */

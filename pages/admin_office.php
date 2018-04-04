@@ -37,6 +37,11 @@ include ('_head_office.php');
 			Commentaires
 		</div>
 	</a>
+	<a href="admin_articles.php">
+		<div class="menu_square">
+			Articles
+		</div>
+	</a>
 </section>
 </body>
 </html>

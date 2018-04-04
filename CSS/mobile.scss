@@ -1,16 +1,53 @@
 @import "_valeursGlobales.scss";
 
+.nav {
+	width: 100vw;
+	height: 80px;
+	@include gradient(map-get($colors, darkblue), map-get($colors, lightblue));
+	color: white;
+	position: -webkit-sticky;
+  	position: sticky;
+  	top: -1px;
+  	z-index: 3;
+  	#user_icon {display: none;}
+}
+
+
+
+
 #logo {font: map-get($fonts, logo);
 			text-decoration: none;
-			color: map-get($colors, lightblue);
-			background-color: white;
+			color: white;
 			display: block;
-			width: 100vw;
-			text-align: center;
+			float: left;
+			margin-left: 0.5em;
 
 	}
 
+#mobile_menu {
+	position: absolute;
+	top: 20px;
+	right: 10%;
+	cursor: pointer;
+
+	&+div {display: none;}
+	span {
+		display: block;
+	    width: 40px;
+	    height: 5px;
+	    margin-bottom: 5px;
+	    background-color: white;
+	    border-radius: 3px;
+	    position: relative;
+	    -webkit-transition: 0.7s;
+	    transition: 0.7s;
+	    -moz-transition: 0.7s;
+	    z-index: 1;
+		}	
+}
+
 /*--------------- PAGE INDEX -----------------------*/
+/*
 .nav {
 	width: 100vw;
 	height: 80px;
@@ -112,8 +149,9 @@
 		}
 
 	}
-
+*/
 /*------------------------------*/
+/*
 header {
 	h1 {
 		padding-top: 20vh;
@@ -140,7 +178,9 @@ header {
 		}
 	}
 }
+*/
 /*--------------------- CLUB ------------------------------*/
+/*
 section {
 	margin:  1em;
 }
@@ -188,9 +228,9 @@ section {
 	float: left;
 	width: 60vw;
 }
-
+*/
 /*---------------------------------------------------*/
-
+/*
 footer {
 	width: 100vw;
 	height: 50vh;
@@ -199,3 +239,4 @@ footer {
 	@include gradient(map-get($colors, darkblue), map-get($colors, lightblue));
 	z-index: 3;
 }
+*/

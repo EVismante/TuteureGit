@@ -29,6 +29,7 @@
 				<li <?php if($page=='clubs'){echo 'class="active"';}?>><a href="admin_clubs.php">Clubs</a></li>
 				<li <?php if($page=='utilisateurs'){echo 'class="active"';}?>><a href="admin_utilisateurs.php">Utilisateurs</a></li>
 				<li <?php if($page=='commentaires'){echo 'class="active"';}?>><a href="admin_comments.php">Commentaires</a></li>
+				<li <?php if($page=='articles'){echo 'class="active"';}?>><a href="admin_articles.php">Articles</a></li>
 			</ul>
 		</div>
 </div>
