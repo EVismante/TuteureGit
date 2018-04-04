@@ -1,3 +1,5 @@
 vendor/
 thumbs.db
 _config.php
+map/map.xml
+map.xml
