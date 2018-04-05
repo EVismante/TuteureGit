@@ -2,6 +2,7 @@
 session_start();
 require_once('_config.php');
 include '_head.php';
+include 'inc/articles.inc.php';
 $page = "index";
 
 $query="SELECT club.id, club.name, images.url FROM club
@@ -13,7 +14,6 @@ LIMIT 6
 $result = $pdo->prepare($query);
 $result->execute();
 $clubs = $result->fetchAll();
-
 
 ?>
 <script>
@@ -80,10 +80,14 @@ $clubs = $result->fetchAll();
 
 	<section class="colored">
 		<h2>Découvrir</h2>
-		<img src="http://via.placeholder.com/550x400">
+<?php
+	$article = new article($pdo);
+	$data = $article->get_data($pdo);
+?>
+		<img src="images/articles/<?php echo $article->image; ?>">
 		<div>
-			<h4>Randonée</h4>
-			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar sic tempor. Sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam fermentum, nulla luctus pharet</p>
+			<h4><?php echo $article->titre; ?></h4>
+			<p><?php echo $article->article; ?></p>
 			<div>fleche</div>
 		</div>
 	</section>

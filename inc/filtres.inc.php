@@ -12,6 +12,8 @@ class liste {
 		$this->name = $xml->marker[$i]->attributes()->name;
 		$this->addresse = $xml->marker[$i]->attributes()->address;
 		$this->image = self::getImage($pdo);
+		$this->longt = $xml->marker[$i]->attributes()->longt;
+		$this->lat = $xml->marker[$i]->attributes()->lat;
 	}
 
 

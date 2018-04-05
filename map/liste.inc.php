@@ -8,34 +8,34 @@ $result_count = $elem->count();
 
 if ($result_count == 0) { echo "<div>Pas de résultats</div>";}
 
+
 for ($i=0; $i < $result_count; $i++)  { 
-  $liste = new liste($i, $pdo);
+        $liste = new liste($i, $pdo);
 
-/*----------------favoris----------*/
-if (isset($_SESSION["id"])) {
+      /*----------------favoris----------*/
+      if (isset($_SESSION["id"])) {
 
-$favquery = 'SELECT * FROM favoris
-WHERE user_id= '.$_SESSION["id"].'
-AND page_id= '.$liste->id.'
-AND page_type="'.$liste->type.'"
-;';
+      $favquery = 'SELECT * FROM favoris
+      WHERE user_id= '.$_SESSION["id"].'
+      AND page_id= '.$liste->id.'
+      AND page_type="'.$liste->type.'"
+      ;';
 
-$result1 = $pdo->prepare($favquery);
-$result1->execute();
-$result1->fetchAll();
-$fav = $result1->rowCount();
+      $result1 = $pdo->prepare($favquery);
+      $result1->execute();
+      $result1->fetchAll();
+      $fav = $result1->rowCount();
 
-}
+    }
 /*----------------------------------------*/
 
 
   if ($liste->type == "club") { ?>
 
-      <div>
+    <div id="club_<?php echo $i; ?>">
         <img class="club_icon" src="images/clubs/<?php echo $liste->image; ?>" alt="icon">
         <h3><?php echo $liste->name; ?></h3>
-        <span><?php echo $liste->addresse; ?></span>
-        <div>evaluation</div>
+        <span class="address"><?php echo $liste->addresse; ?></span>
         <div>
 <?php
 if (isset($_SESSION["id"])) { ?>
@@ -61,7 +61,6 @@ if (isset($_SESSION["id"])) { ?>
       <div>
         <h3><?php echo $liste->name; ?></h3>
         <span><?php echo $liste->addresse; ?></span>
-        <div>evaluation</div>
         <div>
 <?php
 if (isset($_SESSION["id"])) { ?>
