@@ -2,20 +2,22 @@
 
 //Couleurs de base
 /*----------------------------------------*/
-$colors: (
-	lightblue: #08a0b3,
-	darkblue: #33bcb7,
-	lightgrey: #f2f2f2,
-	background: #F4F4F2,
-	text: #f0573c
-);
-//#08a0b3,#0D5C63
-$colors-BO: (
-	lightorange: #FFAF44,
-	darkorange: #f0573c,
-	lightgrey: #e6e6e6
 
+
+$colors: (
+	color1: #FFAF44, //lightorange 
+	color2: #AA2E00,  //darkorange
+	color3: #0C5574, //darkblue
+	lightgrey: #f2f2f2,
+	background: #fff7ed,
+	background2: #e2d4c0,
+	text: #323232
 );
+
+
+@function lighten-color($color) { 
+ 	@return lighten( $color, 10% ); 
+}
 /*----------------------------------------*/
 
 //Polices

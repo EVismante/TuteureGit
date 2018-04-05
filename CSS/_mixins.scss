@@ -32,46 +32,39 @@
      background-attachment: fixed;
 }
 
-@mixin sliding_btn {
-		width: 1em;
-		height:2em;
-		background-color: white;
-		padding-top: 1em;
-		padding-left: 0.3em;
-		box-shadow: 3px 3px 2px grey;
-		div {
-			width: 0.7em;
-			height: 0.7em;
-			border-left: 2px solid black;
-			border-bottom: 2px solid black;
-			border-radius: 2px;
-			transform: rotate(45deg);
-		}
-}
 
-@mixin button {
+@mixin button($color) {
 	display: block;
-	//height: 25px;
-	border-radius: 15px;
+	border-radius: 20px;
 	text-transform: uppercase;
 	text-align: center;
 	padding-top: 7px;
 	margin-bottom: 1em;
 	margin-top: 1em;
 	text-decoration: none;
+	font-family: map-get($fonts, general);
+	cursor: pointer;
+	font-size: 1.1em;
+	background-color: $color;
+	&:hover {
+		background-color: lighten( $color, 10% );
+		color: white;
+		@include transition(background-color, 200ms);
+	}
+
 }
 
 @mixin square($dimensions) {/*pour les menus*/
     font-size: 1.25em;
     height: $dimensions;
     width: $dimensions;
-    background-color: map-get($colors, darkblue);
+    background-color: map-get($colors, color2);
     text-align: center;
     cursor: pointer; 
     display: table-cell; /* comportement visuel de cellule */
  	vertical-align: middle;
  	&:hover {
- 		background-color: map-get($colors, lightblue);
+ 		background-color: map-get($colors, color1);
 		@include transition(background-color, 200ms);
  	}
 }
@@ -95,8 +88,6 @@
 		height: 50px;
 		border-radius: 25px;
 		background-color: white;
-		border: 1px solid black;
-		float: left;
 		margin: 0.5em;
 }
 
@@ -111,15 +102,25 @@
 @mixin arrow($type, $px, $color) {
 	@if ($type == down) { 
 	  	border-top: $px solid $color;
+	  	border-left: $px solid transparent;
+		border-right: $px solid transparent;
 	}
 	@if ($type == up) {  
 	  	border-bottom: $px solid $color;
+	  	border-left: $px solid transparent;
+		border-right: $px solid transparent;
 	}
-	border-left: $px solid transparent;
-	border-right: $px solid transparent;
+	@if ($type == left) {  
+	  	border-bottom: $px solid transparent;
+	  	border-top: $px solid $color;
+		border-left: $px solid transparent;
+		border-right: $px solid transparent;
+		transform: rotate(90deg);
+	}
 	width: 0; 
 	height: 0;
 }
+
 
 @mixin comment() {
 	border-radius: 10px;

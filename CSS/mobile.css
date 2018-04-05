@@ -6,13 +6,13 @@
 .nav {
   width: 100vw;
   height: 80px;
-  background: #33bcb7;
+  background: #FFAF44;
   /* Old browsers */
-  background: -moz-linear-gradient(left, #33bcb7 0%, #08a0b3 100%);
+  background: -moz-linear-gradient(left, #FFAF44 0%, #AA2E00 100%);
   /* FF3.6-15 */
-  background: -webkit-linear-gradient(left, #33bcb7 0%, #08a0b3 100%);
+  background: -webkit-linear-gradient(left, #FFAF44 0%, #AA2E00 100%);
   /* Chrome10-25,Safari5.1-6 */
-  background: linear-gradient(to right, #33bcb7 0%, #08a0b3 100%);
+  background: linear-gradient(to right, #FFAF44 0%, #AA2E00 100%);
   /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$color1', endColorstr='$color2',GradientType=1 );
   /* IE6-9 */
@@ -21,8 +21,6 @@
   position: sticky;
   top: -1px;
   z-index: 3; }
-  .nav #user_icon {
-    display: none; }
 
 #logo {
   font: 3em Caveat, sans-serif;
@@ -38,7 +36,34 @@
   right: 10%;
   cursor: pointer; }
   #mobile_menu + div {
-    display: none; }
+    display: none;
+    width: 100vw;
+    height: 100vh;
+    background: #119DA4;
+    /* Old browsers */
+    background: -moz-linear-gradient(left, #119DA4 0%, #0D5C63 100%);
+    /* FF3.6-15 */
+    background: -webkit-linear-gradient(left, #119DA4 0%, #0D5C63 100%);
+    /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to right, #119DA4 0%, #0D5C63 100%);
+    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$color1', endColorstr='$color2',GradientType=1 );
+    /* IE6-9 */
+    position: absolute;
+    top: 80px; }
+    #mobile_menu + div .menu * {
+      display: block;
+      text-align: center;
+      padding: 0.5em;
+      color: white;
+      font-size: 1.2em;
+      text-decoration: none; }
+      #mobile_menu + div .menu * #user_icon {
+        margin: auto;
+        border-radius: 35px; }
+    #mobile_menu + div #lang {
+      position: relative;
+      top: 80vh; }
   #mobile_menu span {
     display: block;
     width: 40px;
@@ -53,138 +78,28 @@
     z-index: 1; }
 
 /*--------------- PAGE INDEX -----------------------*/
-/*
-.nav {
-	width: 100vw;
-	height: 80px;
-	@include gradient(map-get($colors, darkblue), map-get($colors, lightblue));
-	color: white;
-	position: -webkit-sticky;
-  	position: sticky;
-  	top: -1px;
-  	z-index: 3;
+header h1 {
+  padding-top: 20vh;
+  color: white; }
+header input[type=text] {
+  width: 80vw;
+  display: block;
+  margin: auto; }
 
-	li { //navigation
-		display: inline;
-		float: right;
-		margin-right: 1em;
-		a {text-decoration: none;
-			text-transform: uppercase;}
-	}
-	#connexion { text-decoration: none;
-			color: white;
-			text-transform: uppercase; 
-			position: absolute;
-			right: 10%;
-			top: 30px;
-		};
-
-	.active {border-bottom: 1px solid white;
-		padding-bottom: 0.3em;}
-	#user_icon {
-			width: 50px;
-			height: 50px;
-			border-radius: 25px;
-			background-color: white;
-			cursor: pointer;
-			float: right;
-			margin-right: 10%;
-			margin-top: 13px;
-					}
-
-	#lang {
-		//background-color: (map-get($colors, darkblue));
-		height: 100%;
-		position: relative;
-		width: 50px;
-		float: left;
-		div:first-child {border-bottom: 1px solid white; }
-		div {
-			padding: 0.7em;
-			text-align: center;
-			cursor: pointer;
-			@include transition(background-color, 100ms);
-		}
-		div:active {background-color: map-get($colors, darkblue);}
-	}
-}
-
-#mobile_menu {
-	position: absolute;
-	right: 50%;
-	top: 30px;
-	cursor: pointer;
-	&+div {
-	position: absolute;
-	top: 80px;
-	background-color: white;
-	height:85vh;
-	display: none;
-	z-index: 5;
-	.active {border: 1px solid map-get($colors, darkblue);	
-	}
-	li {display: block;
-			width: 99vw;
-			text-transform: uppercase;
-			text-decoration: none;
-			text-align: center;
-			padding-top: 1em;
-			padding-bottom: 1em;
-			a {color: map-get($colors, darkblue);}
-	}
-}
-}
-
-	.user_menu {
-		display: none;
-		position: absolute;
-		top: 80px;
-		width: 100vw;
-		height:85vh;
-		background-color: white;
-		z-index: 5;
-
-		a {display: block;
-			width: 93vw;
-			text-transform: uppercase;
-			text-decoration: none;
-			color: map-get($colors, darkblue);
-			text-align: center;
-			padding-top: 1em;
-			padding-bottom: 1em;
-		}
-
-	}
-*/
 /*------------------------------*/
-/*
-header {
-	h1 {
-		padding-top: 20vh;
-	}
-	input[type=text] {
-		width: 80vw;
-		display: block;
-		margin: auto;	
-	}
-}
+.row {
+  margin-top: 10vh; }
+  .row .col-3 {
+    width: 100vw;
+    text-align: center;
+    margin-top: 3em; }
+    .row .col-3 img {
+      width: 50vw; }
+    .row .col-3 span {
+      display: block;
+      padding: 1em;
+      font-size: 1.1em; }
 
-.three_icons {
-	height: 70vh;
-	margin-top: 10vh;
-	div { float: left;
-		width: 100vw;
-		text-align: center;
-		margin-top: 3em;
-		span {
-			display: block;
-			padding: 1em;
-			font-size: 1.1em;
-
-		}
-	}
-}
-*/
 /*--------------------- CLUB ------------------------------*/
 /*
 section {

@@ -35,12 +35,14 @@ $clubs = $result->fetchAll();
 	<?php include("header.php"); ?> <!-- not in the header because of scroll issues-->
 
 	<header>
-		<div id="filter"><h1>Trouvez votre aventure</h1></div>
+		<div id="filter">
+			<h1>Trouvez votre aventure</h1>
 		
 		<form action="map/map.php" method="GET">
 			<input type="text" id="club" name="club" placeholder="Club, préstation, véterinaire...">
 			<input type="submit" value="Cherchez">
 		</form>
+		</div>
 	</header>
 
 
@@ -59,7 +61,7 @@ $clubs = $result->fetchAll();
 		</div>
 	</section>
 
-<section >
+<section id="clearfix">
 	<h2>Top clubs</h2>
 <?php
 	foreach ($clubs as $key => $value) {
@@ -75,7 +77,8 @@ $clubs = $result->fetchAll();
 
 ?>
 </section>
-	<section>
+
+	<section class="colored">
 		<h2>Découvrir</h2>
 		<img src="http://via.placeholder.com/550x400">
 		<div>
@@ -84,6 +87,7 @@ $clubs = $result->fetchAll();
 			<div>fleche</div>
 		</div>
 	</section>
+
 	<section>
 		<h2>Sortir</h2>
 		<img src="http://via.placeholder.com/350x250">
@@ -93,14 +97,9 @@ $clubs = $result->fetchAll();
 
 			<button>Plus</button>
 	</section>
-	<section>
-		<div id="map"></div>
-
-
-	</section>
 
 <?php include("pages/footer.php"); ?>
-
+<div id="map"></div>
 
 </body>
 </html>

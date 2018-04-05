@@ -15,7 +15,7 @@ body {
 h1 {
 	font: map-get($fonts, h1);
 	font-weight: 900;
-	color: map-get($colors, text);
+	color: map-get($colors, color2);
 	margin-top: 0.5em;
 }
 
@@ -95,14 +95,12 @@ div {position: relative;
 
 header {
 	height: 100vh;
-@include bcg_image;
-	h1 {
-		text-align: center;
-		width: 100vw;
-		margin-bottom: 1em; 
-		font-weight: bold;
-
-		}}
+	width: 100%;
+	background-color: map-get($colors, color3);
+	background-image: url("../images/website/bcg0.jpg");
+	background-repeat: no-repeat;
+    background-size:cover;
+	}
 
 #filter {
 	z-index: 0;
@@ -111,10 +109,17 @@ header {
     width:100%;
     top:0;
     left:0;
-    background: linear-gradient(to bottom, rgba(67,181,178,1) 0%,rgba(255,0,0,0) 100%);
+    background: rgba(12, 12, 12, 0.6);
+
+    h1 {
+    	text-align: center;
+		margin-bottom: 1em; 
+		font-weight: bold;
+		}
+	input { float: left;}
 }
 
-.star {width: 30px;}
+.star {width: 20px;}
 /*---------FORMS------------------------*/
 
  input[type="text"], input[type="password"] {
@@ -183,6 +188,7 @@ label[for=file3],
    height: 0; 
    clear: both;
 }
+
 .input_images {
 	position: relative;
 	float: left;
@@ -218,7 +224,7 @@ label[for=file3],
 .edit_club {
 
 	margin-top: 3em;
-	background-color: map-get($colors-BO, lightgrey);
+	background-color: map-get($colors, color1);
 	border-radius: 20px;
 	padding: 3em;
 
@@ -267,66 +273,40 @@ input[name="files[]"] + label {
 	cursor: pointer; 
 }
 
-input[type="submit"], {
-		@include button;
-		max-width: 200px;
-		@include gradient(map-get($colors, darkblue), map-get($colors, lightblue));
-		color: white;
-		margin: 1em;
-		padding:0.5em;
-		border: 1px solid transparent;
-		width: 100px;
-		}
 
-input[type="button"] {
-		@include button;
-		max-width: 200px;
-		background-color: map-get($colors-BO, darkorange);
-		margin: 1em;
-		padding:0.5em;
-		border: 0px solid map-get($colors, darkblue);
-		width: 100px;
-		color: white;
-		}
 
 /*------------------------------------------------------------------*/
+
 .btn {
-	@include button;
-	width: auto;
-	max-width: 200px;
-	@include gradient(map-get($colors, darkblue), map-get($colors, lightblue));
+	@include button(map-get($colors, color2));
 	color: white;
 	padding: 0.6em;
-	font-size: 0.9em;
-	&:hover { }
+	width: 8em;
 }
 
+input[type="button"],
+input[type="submit"] {
+	@extend .btn;
+	border: 0;
+	margin-top: 0.2em;
+	margin-left: 1em;
 
-.btn:active,
-input[type="button"]:active,
-input[type="submit"]:active
- {
-	@include gradient(map-get($colors-BO, lightorange), map-get($colors-BO, lightorange));
-	color: white;
-	@include transition ("background-color", 200ms);
-	border: 1px solid transparent;
 }
 
 .btn-empty {
-	@include button;
-	border: 1px solid map-get($colors, darkblue);
-	color: map-get($colors, darkblue);
+	//@include button;
+	border: 1px solid map-get($colors, color1);
+	color: map-get($colors, color1);
 	max-width: 150px;
 }
 
-.map_btn {
-	@extend .btn;
-	width: 100px;
-	margin: auto;
-	margin-top: 1em;
+.btn_blue {
+	@include button(map-get($colors, color3));
+	color: white;
+	padding: 0.6em;
+	width: 8em;
 }
 
-  
 
 #msg {
 	width: 300px;
@@ -347,14 +327,26 @@ input[type="submit"]:active
     }
 }
 
+input[type=checkbox] {
+  margin: 0.5em;
+}
+
+.colored {
+	width: 100vw;
+	background-color: (map-get($colors, color1));
+	padding: 2em;
+	input {
+
+	}
+}
 /*--------------------------error handling------------------------------*/
 
 .error {
-	border: 3px solid map-get($colors-BO, darkorange) !important;
+	border: 3px solid map-get($colors, color1) !important;
 }
 
 #error_msg {display: none;
-			color: map-get($colors-BO, darkorange);
+			color: map-get($colors, color1);
 			text-align: center;
 			font-size: 1.6em;
 			margin-bottom: 1em;

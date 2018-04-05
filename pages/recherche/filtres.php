@@ -23,7 +23,6 @@ function filtre($pdo, $x)
 
 		
 			<input type="text" name="club" placeholder="Club, préstation, véterinaire..." id="searchbox">
-			<input type="button" value="Cherchez" id="search_btn1">
 		<div>
 
 			<input type="checkbox" name="clubs_choix" id="prestations" checked>
@@ -46,11 +45,13 @@ function filtre($pdo, $x)
 				<?php filtre($pdo, 3); ?>
 			</div>
 		</div>
+		<div class="colored">
+			<input type="button" value="Cherchez" id="search_btn1">
+		</div>
 		<h3>RESULTATS</h3>
 		<div id="liste"></div>
+
 </div>
-
-
 
 
 

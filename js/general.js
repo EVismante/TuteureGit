@@ -340,15 +340,15 @@ function checkname(name)
 $("#make_smaller").click(function() {
     if($(this).hasClass("clicked")){
         $(this).removeClass("clicked");
-        $(".result_paneau").animate({left: "-400px"}, { duration: 200, queue: false });
-        $(this).animate({left: "1px"}, { duration: 200, queue: false });
-        $("#make_smaller div").css("transform", "rotate(-135deg)");
+        $(".result_paneau").animate({left: "-380px"}, { duration: 200, queue: false });
+        $(this).animate({left: "10px"}, { duration: 200, queue: false });
+        $("#make_smaller div").css("transform", "rotate(-90deg)");
 
     }else{
         $(this).addClass("clicked");
         $(".result_paneau").animate({left: "0px"}, { duration: 200, queue: false });
-        $(this).animate({left: "375px"}, { duration: 200, queue: false });
-        $("#make_smaller div").css("transform", "rotate(45deg)");
+        $(this).animate({left: "385px"}, { duration: 200, queue: false });
+        $("#make_smaller div").css("transform", "rotate(90deg)");
     }
 });
 

@@ -18,7 +18,7 @@ header {
 /*---------------NAVIGATION TOP -----------------------*/
 #logo {font: map-get($fonts, logo);
 			text-decoration: none;
-			color: map-get($colors, lightblue);
+			color: map-get($colors, color2);
 			position: fixed;
 			padding-top: 0.1em;
 			padding-left: 1em;
@@ -34,42 +34,48 @@ header {
 	background-color: white;
 	color: map-get($colors, lightblue);
 	box-shadow: 3px 3px 5px rgba(150, 150, 150, 0.1);
+	font-size: 1.2em;
+	& > div { float: right;
+		margin-top: 30px;
+		margin-left: 30px;
+		margin-right: 20px;
+			div { float: right;
+				margin-right: 1em;
+				margin-left: 1em;
+	}}
 	li { //navigation
 		display: inline;
 		float: right;
 		margin-right: 30px;
 		a {text-decoration: none;
-			color: map-get($colors, lightblue);
+			color: map-get($colors, color2);
 			text-transform: uppercase;}
 	}
 	#connexion { text-decoration: none;
 			color: map-get($colors, lightblue);
 			text-transform: uppercase; };
 
-	.active {border-bottom: 1px solid map-get($colors, lightblue);
+	.active {border-bottom: 1px solid map-get($colors, color2);
 		padding-bottom: 0.3em;}
 
-	& > div { float: right;
-		margin-top: 30px;
-		margin-left: 30px;
-		margin-right: 20px;
-	}
+	
 	#user_icon {
 			position: relative;
 			top: -20px;
 					}
 /*----------user menu---------------*/
 	.user_menu {
-		background-color: (map-get($colors-BO, lightgrey));
+		background-color: (map-get($colors, background2));
 		color: black;
 		height: auto;
 		width: 10em;
 		position: absolute;
 		padding:1em;
-		top: 3.15em;
-		right: -5em;
+		top: 2.6em;
+		right: -6em;
 		display: none;
 		box-shadow: 3px 3px 5px rgba(150, 150, 150, 0.1);
+		border-radius: 5px;
 
 		a {
 			display: block;
@@ -77,10 +83,10 @@ header {
 			padding-top: 1em;
 		}
 		.menu_deco {
-		@include arrow(up, 15px, map-get($colors-BO, lightgrey));
+		@include arrow(up, 17px, map-get($colors, background2));
 	  	position: absolute;
 	  	top: -0.9em;
-	  	left: 4.6em;
+	  	left: 3.9em;
 		}
 
 		#username { 
@@ -88,40 +94,27 @@ header {
 			padding: 1em;
 		}
 
-
-
 	}
 	#lang {
-		//background-color: (map-get($colors, darkblue));
-		height: 100%;
-		position: relative;
-		top: -30px;
-		right: -20px;
-		width: 50px;
 		div:first-child {border-bottom: 1px solid white; }
-		div {
-			padding: 0.7em;
-			text-align: center;
-			cursor: pointer;
-			@include transition(background-color, 100ms);
-		}
-		div:active {background-color: map-get($colors, darkblue);}
+		div:active {background-color: map-get($colors, color3);}
 	}
 }
 
 
 .nav-scroll {
 	background-color: transparent!important;
-	color: white!important;
 	@include transition(background-color, 200ms);
 	box-shadow: none;
-	* {color: white!important;}
+	* {color:white!important;
+		background-color: transparent!important;
+	}
+	.menu>div>div {border: 1px solid white;}
+	
 }
 
-
-section {margin-left: 2em;}
 body section:first-of-type {
-	padding-top: 95px;
+	padding-top: 80px;
 }
 
 
@@ -166,7 +159,6 @@ footer {
 
 #recherche {
 	height: 100vh;
-	background-color: red;
 }
 
 .footer3 {
@@ -191,7 +183,7 @@ footer {
 	position: absolute;
 	z-index: 1;
 	background-color: white;
-	width: 370px;
+	width: 380px;
 	height: 90vh;
 	overflow-x: hidden;
 	box-shadow: 3px 3px 2px grey;
@@ -206,17 +198,17 @@ footer {
 		}
 		span {/*sections des filtres*/
 			display: block;
-			background-color: map-get($colors, lightblue);
-			color: white;
+			background-color: map-get($colors, color1);
+			color: map-get($colors, text);
 			width: 105%;
-			padding: 0.5em;
+			padding: 1em;
 			position: relative;
 			cursor: pointer;
 		}
 	}
 	#liste {
 			&>div {
-				border-bottom: 1px solid map-get($colors, lightgrey);;
+				border-bottom: 1px solid map-get($colors, lightgrey);
 				padding-left: 1em;
 			}
 			&>div:hover {
@@ -225,6 +217,13 @@ footer {
 			h3 { margin: 0;}
 			.club_icon {
 				@include icon;
+				float: left;
+			}
+			.heart_icon {
+				position: absolute;
+				padding: 1em;
+				right: 0;
+				top: 0;
 			}
 	}
 }
@@ -232,10 +231,27 @@ footer {
 #make_smaller {/*button pour reduire le paneau des filtres*/
 		position: absolute;
 		z-index: 3;
-		left: 375px;
+		left: 385px;
 		top: 140px;
-		@include sliding_btn;
+		width: 1em;
+		height:2.2em;
+		background-color: white;
+		padding-top: 0.8em;
+		padding-left: 0.3em;
+		box-shadow: 3px 3px 2px grey;
+		div {
+			@include arrow (left, 12px, map-get($colors, color2));
+			margin-left: -0.9em;
+		}
 	}
+
+#searchbox {
+	margin: 1em;
+	margin-bottom: 2em;
+	width: 320px;
+}
+/*--------------- LISTE DES CLUBS -----------------------*/
+
 
 /*--------------- PAGE CLUB -----------------------*/
 

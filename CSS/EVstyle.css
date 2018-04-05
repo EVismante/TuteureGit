@@ -19,7 +19,7 @@ header form {
 #logo {
   font: 3em Caveat, sans-serif;
   text-decoration: none;
-  color: #08a0b3;
+  color: #AA2E00;
   position: fixed;
   padding-top: 0.1em;
   padding-left: 1em;
@@ -32,91 +32,81 @@ header form {
   height: 80px;
   z-index: 5;
   background-color: white;
-  color: #08a0b3;
   box-shadow: 3px 3px 5px rgba(150, 150, 150, 0.1);
+  font-size: 1.2em;
   /*----------user menu---------------*/ }
+  .nav > div {
+    float: right;
+    margin-top: 30px;
+    margin-left: 30px;
+    margin-right: 20px; }
+    .nav > div div {
+      float: right;
+      margin-right: 1em;
+      margin-left: 1em; }
   .nav li {
     display: inline;
     float: right;
     margin-right: 30px; }
     .nav li a {
       text-decoration: none;
-      color: #08a0b3;
+      color: #AA2E00;
       text-transform: uppercase; }
   .nav #connexion {
     text-decoration: none;
-    color: #08a0b3;
     text-transform: uppercase; }
   .nav .active {
-    border-bottom: 1px solid #08a0b3;
+    border-bottom: 1px solid #AA2E00;
     padding-bottom: 0.3em; }
-  .nav > div {
-    float: right;
-    margin-top: 30px;
-    margin-left: 30px;
-    margin-right: 20px; }
   .nav #user_icon {
     position: relative;
     top: -20px; }
   .nav .user_menu {
-    background-color: #e6e6e6;
+    background-color: #e2d4c0;
     color: black;
     height: auto;
     width: 10em;
     position: absolute;
     padding: 1em;
-    top: 3.15em;
-    right: -5em;
+    top: 2.6em;
+    right: -6em;
     display: none;
-    box-shadow: 3px 3px 5px rgba(150, 150, 150, 0.1); }
+    box-shadow: 3px 3px 5px rgba(150, 150, 150, 0.1);
+    border-radius: 5px; }
     .nav .user_menu a {
       display: block;
       text-decoration: none;
       padding-top: 1em; }
     .nav .user_menu .menu_deco {
-      border-bottom: 15px solid #e6e6e6;
-      border-left: 15px solid transparent;
-      border-right: 15px solid transparent;
+      border-bottom: 17px solid #e2d4c0;
+      border-left: 17px solid transparent;
+      border-right: 17px solid transparent;
       width: 0;
       height: 0;
       position: absolute;
       top: -0.9em;
-      left: 4.6em; }
+      left: 3.9em; }
     .nav .user_menu #username {
       padding: 1em; }
-  .nav #lang {
-    height: 100%;
-    position: relative;
-    top: -30px;
-    right: -20px;
-    width: 50px; }
-    .nav #lang div:first-child {
-      border-bottom: 1px solid white; }
-    .nav #lang div {
-      padding: 0.7em;
-      text-align: center;
-      cursor: pointer;
-      -webkit-transition: background-color 100ms linear;
-      -ms-transition: background-color 100ms linear;
-      transition: background-color 100ms linear; }
-    .nav #lang div:active {
-      background-color: #33bcb7; }
+  .nav #lang div:first-child {
+    border-bottom: 1px solid white; }
+  .nav #lang div:active {
+    background-color: #0C5574; }
 
 .nav-scroll {
   background-color: transparent !important;
-  color: white !important;
   -webkit-transition: background-color 200ms linear;
   -ms-transition: background-color 200ms linear;
   transition: background-color 200ms linear;
   box-shadow: none; }
   .nav-scroll * {
-    color: white !important; }
-
-section {
-  margin-left: 2em; }
+    color: white !important;
+    background-color: transparent !important; }
+  .nav-scroll .menu > div > div {
+    border: 1px solid white; }
 
 body section:first-of-type {
-  padding-top: 95px; }
+  padding-top: 80px; }
 
 .row {
   padding-left: 5%;
@@ -133,7 +123,7 @@ body section:first-of-type {
   .row span {
     display: block;
     font: 1.3em Montserrat, sans-serif;
-    color: #f0573c;
+    color: #323232;
     text-align: center;
     padding: 3em; }
 
@@ -150,8 +140,7 @@ footer {
   display: none; }
 
 #recherche {
-  height: 100vh;
-  background-color: red; }
+  height: 100vh; }
 
 .footer3 {
   width: 30vw;
@@ -172,7 +161,7 @@ footer {
   position: absolute;
   z-index: 1;
   background-color: white;
-  width: 370px;
+  width: 380px;
   height: 90vh;
   overflow-x: hidden;
   box-shadow: 3px 3px 2px grey; }
@@ -184,10 +173,10 @@ footer {
   .result_paneau #filtres span {
     /*sections des filtres*/
     display: block;
-    background-color: #08a0b3;
-    color: white;
+    background-color: #FFAF44;
+    color: #323232;
     width: 105%;
-    padding: 0.5em;
+    padding: 1em;
     position: relative;
     cursor: pointer; }
   .result_paneau #liste > div {
@@ -202,30 +191,42 @@ footer {
     height: 50px;
     border-radius: 25px;
     background-color: white;
-    border: 1px solid black;
-    float: left;
-    margin: 0.5em; }
+    margin: 0.5em;
+    float: left; }
+  .result_paneau #liste .heart_icon {
+    position: absolute;
+    padding: 1em;
+    right: 0;
+    top: 0; }
 
 #make_smaller {
   /*button pour reduire le paneau des filtres*/
   position: absolute;
   z-index: 3;
-  left: 375px;
+  left: 385px;
   top: 140px;
   width: 1em;
-  height: 2em;
+  height: 2.2em;
   background-color: white;
-  padding-top: 1em;
+  padding-top: 0.8em;
   padding-left: 0.3em;
   box-shadow: 3px 3px 2px grey; }
   #make_smaller div {
-    width: 0.7em;
-    height: 0.7em;
-    border-left: 2px solid black;
-    border-bottom: 2px solid black;
-    border-radius: 2px;
-    transform: rotate(45deg); }
+    border-bottom: 12px solid transparent;
+    border-top: 12px solid #AA2E00;
+    border-left: 12px solid transparent;
+    border-right: 12px solid transparent;
+    transform: rotate(90deg);
+    width: 0;
+    height: 0;
+    margin-left: -0.9em; }
 
+#searchbox {
+  margin: 1em;
+  margin-bottom: 2em;
+  width: 320px; }
+
+/*--------------- LISTE DES CLUBS -----------------------*/
 /*--------------- PAGE CLUB -----------------------*/
 .top1 {
   width: 100%;
@@ -352,5 +353,3 @@ section {
     padding-top: 1em; }
     .club_item div h4 {
       margin-left: 1em; }
-
-/*# sourceMappingURL=EVstyle.css.map */

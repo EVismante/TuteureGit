@@ -3,16 +3,13 @@
 .nav {
 	width: 100vw;
 	height: 80px;
-	@include gradient(map-get($colors, darkblue), map-get($colors, lightblue));
+	@include gradient(map-get($colors, color1), map-get($colors, color2));
 	color: white;
 	position: -webkit-sticky;
   	position: sticky;
   	top: -1px;
   	z-index: 3;
-  	#user_icon {display: none;}
 }
-
-
 
 
 #logo {font: map-get($fonts, logo);
@@ -21,17 +18,36 @@
 			display: block;
 			float: left;
 			margin-left: 0.5em;
-
 	}
+
 
 #mobile_menu {
 	position: absolute;
 	top: 20px;
 	right: 10%;
 	cursor: pointer;
-
-	&+div {display: none;}
-	span {
+		//le pop up menu
+	&+div {display: none;
+	width: 100vw;
+	height: 100vh;
+	@include gradient(map-get($colors, darkblue), map-get($colors, lightblue));
+	position: absolute;
+	top: 80px;
+	 .menu * { // les sous menus
+			display: block;
+			text-align: center;
+			padding: 0.5em;
+			color: white;
+			font-size: 1.2em;
+			text-decoration: none;
+			#user_icon { margin: auto;
+					border-radius: 35px;
+					}
+	}	
+	#lang { position: relative;
+		top: 80vh;}
+	}
+	span { // le burger menu
 		display: block;
 	    width: 40px;
 	    height: 5px;
@@ -46,115 +62,12 @@
 		}	
 }
 
+
 /*--------------- PAGE INDEX -----------------------*/
-/*
-.nav {
-	width: 100vw;
-	height: 80px;
-	@include gradient(map-get($colors, darkblue), map-get($colors, lightblue));
-	color: white;
-	position: -webkit-sticky;
-  	position: sticky;
-  	top: -1px;
-  	z-index: 3;
-
-	li { //navigation
-		display: inline;
-		float: right;
-		margin-right: 1em;
-		a {text-decoration: none;
-			text-transform: uppercase;}
-	}
-	#connexion { text-decoration: none;
-			color: white;
-			text-transform: uppercase; 
-			position: absolute;
-			right: 10%;
-			top: 30px;
-		};
-
-	.active {border-bottom: 1px solid white;
-		padding-bottom: 0.3em;}
-	#user_icon {
-			width: 50px;
-			height: 50px;
-			border-radius: 25px;
-			background-color: white;
-			cursor: pointer;
-			float: right;
-			margin-right: 10%;
-			margin-top: 13px;
-					}
-
-	#lang {
-		//background-color: (map-get($colors, darkblue));
-		height: 100%;
-		position: relative;
-		width: 50px;
-		float: left;
-		div:first-child {border-bottom: 1px solid white; }
-		div {
-			padding: 0.7em;
-			text-align: center;
-			cursor: pointer;
-			@include transition(background-color, 100ms);
-		}
-		div:active {background-color: map-get($colors, darkblue);}
-	}
-}
-
-#mobile_menu {
-	position: absolute;
-	right: 50%;
-	top: 30px;
-	cursor: pointer;
-	&+div {
-	position: absolute;
-	top: 80px;
-	background-color: white;
-	height:85vh;
-	display: none;
-	z-index: 5;
-	.active {border: 1px solid map-get($colors, darkblue);	
-	}
-	li {display: block;
-			width: 99vw;
-			text-transform: uppercase;
-			text-decoration: none;
-			text-align: center;
-			padding-top: 1em;
-			padding-bottom: 1em;
-			a {color: map-get($colors, darkblue);}
-	}
-}
-}
-
-	.user_menu {
-		display: none;
-		position: absolute;
-		top: 80px;
-		width: 100vw;
-		height:85vh;
-		background-color: white;
-		z-index: 5;
-
-		a {display: block;
-			width: 93vw;
-			text-transform: uppercase;
-			text-decoration: none;
-			color: map-get($colors, darkblue);
-			text-align: center;
-			padding-top: 1em;
-			padding-bottom: 1em;
-		}
-
-	}
-*/
-/*------------------------------*/
-/*
 header {
 	h1 {
 		padding-top: 20vh;
+		color: white;
 	}
 	input[type=text] {
 		width: 80vw;
@@ -162,14 +75,15 @@ header {
 		margin: auto;	
 	}
 }
+/*------------------------------*/
 
-.three_icons {
-	height: 70vh;
+.row {
 	margin-top: 10vh;
-	div { float: left;
+	.col-3 { 
 		width: 100vw;
 		text-align: center;
 		margin-top: 3em;
+		img { width: 50vw;}
 		span {
 			display: block;
 			padding: 1em;
@@ -178,7 +92,7 @@ header {
 		}
 	}
 }
-*/
+
 /*--------------------- CLUB ------------------------------*/
 /*
 section {

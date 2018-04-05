@@ -59,7 +59,6 @@ if (isset($_SESSION["id"])) { ?>
     if ($liste->type == "event") { ?>
 
       <div>
-        <img class="club_icon" src="images/events/<?php echo $liste->image; ?>" alt="icon">
         <h3><?php echo $liste->name; ?></h3>
         <span><?php echo $liste->addresse; ?></span>
         <div>evaluation</div>
@@ -77,7 +76,7 @@ if (isset($_SESSION["id"])) { ?>
         </label>
 <?php } ?>
         </div>
-        <a class="btn" href="event.php?id=<?php echo $liste->id; ?>">Consulter</a>
+        <a class="btn_blue" href="event.php?id=<?php echo $liste->id; ?>">Consulter</a>
       </div>
 
 
