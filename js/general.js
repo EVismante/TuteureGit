@@ -155,42 +155,23 @@ $("#msg").click(function() {
 /*------------Forme d'inscription: validation des données---------------------*/
 
 $("#submit_inscription").on("click", function() {
-  var result = true; //decide si on peut soumettre le formulaire
 
-  if (!validate_length("#mdp", 6)) { //verifie le longueur de mot de passe
-    $("#msg_mdp").css("display", "block");
-    result = false;
-  } else { 
-    $("#msg_mdp").css("display", "none");
-  }
+      var bool1 = validate_length("#username", 4);
+      showMessage(bool1, "#msg_nom");
 
-  if (!validate_length("#username", 4)) { //verifie le longueur de username
-    $("#msg_nom").css("display", "block");
-    result = false;
-  } else { 
-    $("#msg_nom").css("display", "none");
-  }
+      var bool2 = validate_length("#mdp", 6);
+      showMessage(bool2, "#msg_mdp");
 
-  if (!validate_match("#mdp", "#mdp1")) { ////verifie si les deux mdp sont idéntiques
-    $("#msg_mdp1").css("display", "block");
-    result = false;
-  } else { 
-    $("#msg_mdp1").css("display", "none");
-  }
+      var bool3 = validate_match("#mdp", "#mdp1");
+      showMessage(bool3, "#msg_mdp1");
 
-  if (!validate_mail("#mail")) { //verifie si le mail est valide
-    $("#msg_mail").css("display", "block");
-    result = false;
-  } else { 
-    $("#msg_mail").css("display", "none");
-  }
+      var bool4 = validate_mail("#mail");
+      showMessage(bool4, "#msg_mail");
 
-  if (!validate_match("#mail", "#mail1")) { //verifie si les deux mails sont idéntiques
-    $("#msg_mail1").css("display", "block");
-    result = false;
-  } else { 
-    $("#msg_mail1").css("display", "none");
-  }
+      var bool5 = validate_match("#mail", "#mail1");
+      showMessage(bool5, "#msg_mail1");
+
+      var bool6 = false;
 
   $.post("pages/check_username.php", //verifie si l'username existe déjà
     {
@@ -200,53 +181,68 @@ $("#submit_inscription").on("click", function() {
         $(".result").html(data);
         if (data.length > 1) {
           $("#username").addClass( "error" );
-          result = false;
-        } else { $("#username").removeClass( "error" ); }
+        } else { $("#username").removeClass( "error" );
+          bool6 = true;
+         }
     });
 
-
-return result; 
+  if (!bool1 || !bool2 || !bool3 || !bool4 || !bool5 || !bool6 ) { return false; }
 })
 
-$("#submit_mdp").on("click", function() { //valider les mdp
-  var result = true;
 
-  if (!validate_length("#mdp", 6)) { //verifie le longueur de mot de passe
-    $("#msg_mdp").css("display", "block");
-    result = false;
-  } else { 
-    $("#msg_mdp").css("display", "none");
-  }
 
-  if (!validate_match("#mdp", "#mdp1")) { ////verifie si les deux mdp sont idéntiques
-    $("#msg_mdp1").css("display", "block");
-    result = false;
-  } else { 
-    $("#msg_mdp1").css("display", "none");
-  }
-  return result;
+/*-------verification de mot de passe -----*/
+$("#submit_mdp").on("click", function() { //valider les nouveaux mdp
+
+      var bool1 = validate_length("#mdp", 6);
+      showMessage(bool1, "#msg_mdp");
+
+      var bool2 = validate_match("#mdp", "#mdp1");
+      showMessage(bool2, "#msg_mdp1");
+
+  if (!bool1 || !bool2 ) { return false; }
 
 });
 
-$("#submit_mail").on("click", function() { //valider les mdp
-  var result = true;
 
-  if (!validate_length("#mail", 6)) { //verifie le longueur de mot de passe
-    $("#msg_mail").css("display", "block");
-    result = false;
-  } else { 
-    $("#msg_mail").css("display", "none");
-  }
+/*-------verification du mail -----*/
+$("#submit_mail").on("click", function() { //valider les mail
 
-  if (!validate_match("#mail", "#mail1")) { ////verifie si les deux mdp sont idéntiques
-    $("#msg_mail1").css("display", "block");
-    result = false;
+      var bool1 = validate_length("#mail",6 );
+      showMessage(bool1, ".msg_mail");
+
+      var bool2 = validate_match("#mail", "#mail1");
+      showMessage(bool2, ".msg_mail1");
+
+    if (!bool1 || !bool2 ) { return false; }
+});
+
+/*-------verification du login -----*/
+$("#submit_login").on("click", function() { 
+
+  var bool1 = validate_length("#name", 1);
+  showMessage(bool1, ".msg1");
+
+  var bool2 = validate_length("#mdp", 1);
+   showMessage(bool2, ".msg1");
+
+  if (!bool1 || !bool2 ) { return false; }
+});
+
+
+/*-------------------------------------------------*/
+/*-------------------------------------------------*/
+
+function showMessage(bool, message) {
+    if ( bool ) {
+      $(message).css("display", "none");
+      var result = true;
   } else { 
-    $("#msg_mail1").css("display", "none");
+    $(message).css("display", "block");
+      var result = false;
   }
   return result;
-
-});
+}
 
 
 /*voir si les deux champs sont identiques*/
@@ -288,7 +284,7 @@ function validate_mail(mail) {
 };
 }
 
-
+/*-------------------------------------------------*/
 /*-------------------------------------------------*/
 
 /*verification des informations et champs */

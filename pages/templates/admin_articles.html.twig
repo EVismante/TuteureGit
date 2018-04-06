@@ -1,0 +1,38 @@
+{% extends "template.html.twig" %}
+
+{% block section %}
+<section class="office">
+		<h1>Gestion des Articles</h1>
+		<br><br>
+		<a class = "btn" href="admin_new_article.php">Nouveau article</a>
+		<input type="text" id="myInput" onkeyup="search()" placeholder="Cherchez..">
+		<table id="myTable">
+			<tr>
+				<th>Titre en français</th>
+				<th>Titre en anglais</th>
+				<th>Date</th>
+			</tr>
+			{% for article in articles %}
+			<tr>
+				<td><a href="../article.php?id={{article.id}}">{{article.titre_FR}}</a></td>
+				<td>{{article.titre_EN}}</td>
+				<td>{{article.date}}</td>
+				<td>
+				<form action="admin_edit_article.php" method="POST">
+					<input type="hidden" name="id" value="{{article.id}}">
+					<input type="submit" value="Changer">
+				</form>
+				<td>
+					<form action="BackOffice/delete_article.php" method="POST">
+						<input type="hidden" name="id" value="{{article.id}}">
+						<input type="submit" class="delete" value="Supprimer">
+					</form>
+				</td>
+			</tr>
+{% endfor %}
+		</table>
+	<div id='msg'>
+			{{msg}}
+		</div>
+	</section>
+{% endblock %}

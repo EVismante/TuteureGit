@@ -1,15 +1,15 @@
 <?php
 require "init_twig.php";
-require_once('_config.php');
+require_once('../_config.php');
 session_start();
 
 	$avatar = NULL;
-	$session_active = true;
+	$session_active = false;
 	$session_type = NULL;
 	$username = NULL;
 	$page = "hello";
 
-	if ( isset($_SESSION["name"])) {
+	if ( isset($_SESSION["id"])) {
 		$session_active = true;
 		$username = $_SESSION['name'];
 		$avatar = "images/avatars/".$_SESSION["avatar"];

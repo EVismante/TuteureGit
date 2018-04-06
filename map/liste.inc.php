@@ -51,7 +51,7 @@ if (isset($_SESSION["id"])) { ?>
 
 <?php } ?>
         </div>
-        <a class="btn" href="club.php?id=<?php echo $liste->id; ?>">Consulter</a>
+        <a href="club.php?id=<?php echo $liste->id; ?>">Consulter</a>
       </div>
 
 

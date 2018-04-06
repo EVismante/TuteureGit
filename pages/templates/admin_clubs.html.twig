@@ -1,0 +1,39 @@
+{% extends "template.html.twig" %}
+
+{% block section %}
+	<section class="office">
+		<h1>Gestion des Clubs</h1>
+		<br><br>
+		<a class = "btn" href="admin_new_club.php">Nouveau club</a>
+		<input type="text" id="myInput" onkeyup="search()" placeholder="Cherchez..">
+		<table id="myTable">
+			<tr>
+				<th>Club</th>
+				<th>Evaluation</th>
+				<th>Crée par</th>
+			</tr>
+{% for club in clubs %}
+			<tr>
+				<td><a href="../club.php?id={{club.id}}">{{club.0}}</a></td>
+				<td>{{club.evaluation}}</td>
+				<td>{{club.name}}</td>
+				<td>
+					<form action="admin_edit_club.php" method="POST">
+						<input type="hidden" name="id" value="{{club.id}}">
+						<input type="submit" value="Changer">
+					</form>
+				</td>
+				<td>
+					<form action="BackOffice/delete_club.php" method="POST">
+						<input type="hidden" name="id" value="{{club.id}}">
+						<input type="submit" class="delete" value="Supprimer">
+					</form>
+				</td>
+			</tr>
+{% endfor %}
+		</table>
+	<div id='msg'>
+			{{msg}}
+		</div>
+	</section>
+{% endblock %}

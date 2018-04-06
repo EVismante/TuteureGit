@@ -103,7 +103,6 @@ $clubs = $result->fetchAll();
 	</section>
 
 <?php include("pages/footer.php"); ?>
-<div id="map"></div>
 
 </body>
 </html>

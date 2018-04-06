@@ -68,7 +68,7 @@
 					<ul>
 						<li tabindex="0"<?php if($page=='evenements'){echo 'class="active"';}?>><a href="evenements.php">Evènements</a></li>
 						<li tabindex="0"<?php if($page=='decouvrir'){echo 'class="active"';}?>><a href="decouvrir.php">Découvrir</a></li>
-						<li tabindex="0"<?php if($page=='recherche'){echo 'class="active"';}?>><a href="recherche.php">Recherche</a></li>
+						<li tabindex="0" <?php if($page=='recherche'){echo 'class="active"';}?>><a href="recherche.php">Recherche</a></li>
 					</ul>
 			</div>
 

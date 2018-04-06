@@ -1,12 +1,31 @@
 <?php
+require "init_twig.php";
 require_once('../_config.php');
 session_start();
-$page = "commentaires";
 
+
+	$avatar = NULL;
+	$session_active = false;
+	$session_type = NULL;
+	$username = NULL;
+	$page = "commentaires";
+
+
+/*voir si l'utilisateur est connecté. Au cas échéant il est rédirigé vers l'accueil*/
 if (isset($_SESSION["type"])) {
+	$session_active = true;
+	$username = $_SESSION['name'];
+	$avatar = "../images/avatars/".$_SESSION["avatar"];
+
 	if ($_SESSION["type"] == "normal" OR $_SESSION["type"] == "pro") { header('Location: BackOffice/_nopermission.php');}}
 if (!isset($_SESSION["name"])) { header('Location: BackOffice/_nopermission.php');}
 
+/*feedback message*/
+	if (isset($_GET["msg"])) {
+		$msg =  $_GET["msg"];
+	} else {
+		$msg = "";
+	}
 
 /*-------------------------------*/
 
@@ -21,15 +40,22 @@ $result->execute();
 $comments = $result->fetchAll();
 
 
+echo $twig->render('admin_comments.html.twig', array(
 
-/* start of HTML _________*/
-include ('_head_office.php');
+		'session_active' => $session_active, 
+    	'session_type' => $session_type,
+    	'avatar' => $avatar,
+    	'username' => $username,
+    	'page' => $page,
+    	'comments' => $comments,
+    	'msg' => $msg
+    	
+
+    ));
+
+
 ?>
 
-</head>
-<body>
-
-<?php include("_header_office.php"); 
 ?><section class="comments"><?php
 	/*_________-----------affichage des commentaires----------------__________*/
 
@@ -74,6 +100,3 @@ if ($comments[$key]['rating_id'] !== NULL) {
 			<button class="submit">Envoyer</button>
 		</form>
 	</div>
-</section>
-</body>
-</html>

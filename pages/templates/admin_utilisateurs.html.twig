@@ -1,0 +1,39 @@
+{% extends "template.html.twig" %}
+
+{% block section %}
+
+	<section class="office">
+		<h1>Gestion des Utilisateurs</h1>
+		<br><br>
+		<input type="text" id="myInput" onkeyup="search()" placeholder="Cherchez..">
+		<table id="myTable">
+			<tr>
+				<th>Utilisateur</th>
+				<th>Mail</th>
+				<th>Type</th>
+			</tr>
+			{% for user in users %}
+			<tr>
+				<td>{{user.name}}</td>
+				<td>{{user.mail}}</td>
+				<td>{{user.type}}</td>
+				<td>
+					<form action="admin_edit_user.php" method="POST">
+						<input type="hidden" name="id" value="{{user.id}}">
+						<input type="submit" value="Changer">
+					</form>
+				</td>
+				<td>
+					<form action="BackOffice/delete_user.php" method="POST">
+						<input type="hidden" name="id" value="{{user.id}}">
+						<input type="submit" value="Supprimer">
+					</form>
+				</td>
+			</tr>
+{% endfor %}
+		</table>
+		<div id='msg'>
+			{{msg}}
+		</div>
+	</section>
+{% endblock %}

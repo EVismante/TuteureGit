@@ -1,0 +1,42 @@
+{% extends "template.html.twig" %}
+
+{% block section %}
+	<section class="office">
+		<h1>Gestion des Commentaires</h1>
+		<br><br>
+		<table id="myTable">
+			<tr>
+				<th>Utilisateur</th>
+				<th>Commentaire</th>
+				<th>Evaluation</th>
+				<th>Date</th>
+			</tr>
+{% for comment in comments %}
+			<tr>
+				<td>{{comment.name}}</td>
+				<td>{{comment.message}}</td>
+				<td>{{comment.rating_id}}</td>
+				<td>{{comment.date}}</td>
+				<td>
+					<form action="admin_edit_club.php" method="POST">
+						<input type="hidden" name="id" value="{{club.id}}">
+						<input type="submit" value="Changer">
+					</form>
+				</td>
+				<td>
+					<a class="btn-empty" href="">discussion</a>
+				</td>
+				<td>
+					<form action="BackOffice/delete_club.php" method="POST">
+						<input type="hidden" name="id" value="{{club.id}}">
+						<input type="submit" class="delete" value="Supprimer">
+					</form>
+				</td>
+			</tr>
+{% endfor %}
+		</table>
+	<div id='msg'>
+			{{msg}}
+		</div>
+	</section>
+{% endblock %}

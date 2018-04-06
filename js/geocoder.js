@@ -267,18 +267,18 @@
               marker.addListener('click', function() {
                 infoWindow.setContent(infowincontent);
                 infoWindow.open(map, marker);
-                window.alert(marker.id);
               });
 
 
 
             });
-
+/*
           var mapDiv = document.querySelector("*[id^='club_']");
             google.maps.event.addDomListener(mapDiv, 'click', function() {
                 var marker = $(this).attr("id");
                 // window.alert(marker);
             });
+*/
           });
         }
 

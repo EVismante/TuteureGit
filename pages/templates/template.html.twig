@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8"> 
+	<title>Equo Vadis</title>
+
+	<link rel="stylesheet" type="text/css" href="../CSS/general.css">
+	<link rel="stylesheet" media="screen and (min-width: 1024px)" type="text/css" href="../CSS/EVstyle.css">
+	<link rel="stylesheet" media="screen and (max-width: 650px)" href="../CSS/mobile.css" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<script src="../js/general.js"></script>
+	<script src="../js/geocoder.js"></script>
+	<script src="../js/verify.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+
+	<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDd9slKoG41gF1xM8xr_LoEGCxnWrZejoY&callback=initMap">
+	 </script>
+</head>
+<body>
+	<div class="nav">
+	<a href="index.php" id="logo">Equo Vadis</a>
+
+		<div id="mobile_menu" tabindex="0">	
+			<span></span>	
+			<span></span>
+			<span></span> 
+		</div>
+			<!-- le contenu du mobile menu -->
+		<div>
+			<div id="lang">
+				<span tabindex="0">FR</span>
+				<span>|</span>
+				<span tabindex="0">EN</span>
+			</div>
+			<div class="menu">
+				<!-- USER MENU DEBUT-->
+				<div>
+		{% if session_active %}
+					<img src="{{avatar}}" alt="avatar" id='user_icon'>
+					<div class="user_menu">
+						<div id='username'>{{username}}</div>
+						<a href="../index.php">Retour au site</a>
+						<a href="../user_compte.php">MON COMPTE</a>
+						<a href="logout.php">Déconnecter</a>
+		  			</div>
+		
+	
+		{% else %}
+					<a id="connexion" 
+				{% if page == 'login' %} class="active" {% endif %} href="login.php">Connexion</a>
+		{% endif %}
+
+				</div>
+			</div>
+<!-- USER MENU FIN -->
+		</div>
+			<div class="menu">
+			<ul>
+				<li{% if page == 'utilisateurs' %} class="active" {% endif %}><a href="admin_utilisateurs.php">Utilisateurs</a></li>
+				<li{% if page == 'clubs' %} class="active" {% endif %}><a href="admin_clubs.php">Clubs</a></li>
+				<li{% if page == 'evenements' %} class="active" {% endif %}><a href="admin_events.php">Evènements</a></li>
+				<li{% if page == 'commentaires' %} class="active" {% endif %}><a href="admin_comments.php">Commentaires</a></li>
+				<li{% if page == 'articles' %} class="active" {% endif %}><a href="admin_articles.php">Articles</a></li>
+			</ul>
+		</div>
+	</div>
+
+<!--     END HEADER    -->
+
+{% block section %}
+	{% endblock %}
+<!--     DEBUT FOOTER    -->
+</body>
+</html>

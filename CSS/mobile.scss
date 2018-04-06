@@ -3,7 +3,6 @@
 .nav {
 	width: 100vw;
 	height: 80px;
-	@include gradient(map-get($colors, color1), map-get($colors, color2));
 	color: white;
 	position: -webkit-sticky;
   	position: sticky;
@@ -30,7 +29,6 @@
 	&+div {display: none;
 	width: 100vw;
 	height: 100vh;
-	@include gradient(map-get($colors, darkblue), map-get($colors, lightblue));
 	position: absolute;
 	top: 80px;
 	 .menu * { // les sous menus

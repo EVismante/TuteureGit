@@ -22,13 +22,15 @@ body {
 #mobile_menu {
   display: none; }
 
-header h1 {
-  padding-top: 40vh;
-  color: white; }
-header form {
-  position: absolute;
-  top: 54vh;
-  left: 40%; }
+header {
+  width: 100%; }
+  header h1 {
+    padding-top: 40vh;
+    color: white; }
+  header form {
+    position: absolute;
+    top: 54vh;
+    left: 40%; }
 
 /*---------------NAVIGATION TOP -----------------------*/
 #logo {
@@ -43,7 +45,7 @@ header form {
 
 .nav {
   position: fixed;
-  width: 99vw;
+  width: 100vw;
   height: 80px;
   z-index: 5;
   background-color: white;
@@ -151,10 +153,9 @@ footer {
   right: 0;
   bottom: 0;
   left: 0;
-  height: auto;
+  height: 30vh;
   max-height: 30vh;
   position: absolute;
-  z-index: 3;
   background-color: white; }
 
 #contact_form {
@@ -209,11 +210,6 @@ footer {
     background-color: white;
     margin: 0.5em;
     float: left; }
-  .result_paneau #liste .heart_icon {
-    position: absolute;
-    padding: 1em;
-    right: 0;
-    top: 0; }
 
 #make_smaller {
   /*button pour reduire le paneau des filtres*/
@@ -331,6 +327,50 @@ div:nth-child(5) {
   text-transform: uppercase;
   font-size: 1.5em;
   margin-bottom: 2em; }
+
+/*------------------------ FORMES ET FORMULAIRES -----------------------*/
+.forme {
+  width: 70vw;
+  min-width: 700px;
+  margin: auto; }
+  .forme h1 {
+    text-align: center;
+    margin-top: 1em; }
+
+.edit_club {
+  background-color: #fff7ed;
+  border-radius: 20px;
+  padding: 3em; }
+  .edit_club > div {
+    background-color: white;
+    vertical-align: middle;
+    padding: 2em;
+    border-radius: 15px;
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.1);
+    position: relative;
+    margin: auto;
+    width: 50%;
+    min-width: 500px;
+    margin-bottom: 2em; }
+    .edit_club > div input[name="name"],
+    .edit_club > div input[type="text"],
+    .edit_club > div input[type="password"] {
+      width: 22em;
+      min-width: 20em;
+      margin-top: 1.5em; }
+    .edit_club > div > div {
+      width: 22em;
+      margin: auto; }
+  .edit_club input[type="submit"], .edit_club input[type="button"] {
+    margin: auto;
+    margin-top: 1em; }
+
+.in_middle {
+  margin: auto;
+  width: 100px;
+  display: flex;
+  margin-top: 2em;
+  margin-bottom: -1em; }
 
 /*---------------BO: tables -----------------------*/
 table {

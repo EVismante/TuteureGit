@@ -6,16 +6,6 @@
 .nav {
   width: 100vw;
   height: 80px;
-  background: #FFAF44;
-  /* Old browsers */
-  background: -moz-linear-gradient(left, #FFAF44 0%, #AA2E00 100%);
-  /* FF3.6-15 */
-  background: -webkit-linear-gradient(left, #FFAF44 0%, #AA2E00 100%);
-  /* Chrome10-25,Safari5.1-6 */
-  background: linear-gradient(to right, #FFAF44 0%, #AA2E00 100%);
-  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$color1', endColorstr='$color2',GradientType=1 );
-  /* IE6-9 */
   color: white;
   position: -webkit-sticky;
   position: sticky;
@@ -39,16 +29,6 @@
     display: none;
     width: 100vw;
     height: 100vh;
-    background: #119DA4;
-    /* Old browsers */
-    background: -moz-linear-gradient(left, #119DA4 0%, #0D5C63 100%);
-    /* FF3.6-15 */
-    background: -webkit-linear-gradient(left, #119DA4 0%, #0D5C63 100%);
-    /* Chrome10-25,Safari5.1-6 */
-    background: linear-gradient(to right, #119DA4 0%, #0D5C63 100%);
-    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$color1', endColorstr='$color2',GradientType=1 );
-    /* IE6-9 */
     position: absolute;
     top: 80px; }
     #mobile_menu + div .menu * {
