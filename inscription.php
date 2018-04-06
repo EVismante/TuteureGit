@@ -7,8 +7,8 @@ $page = "inscription";
 </head>
 <body>
     <?php include("header.php"); ?>
-<section>
-    <h2>Inscription</h2>
+<section class="forme">
+    <h1>Inscription</h1>
 
 <?php
         if (isset($_GET["msg"])) {
@@ -20,8 +20,8 @@ $page = "inscription";
         }
 ?>
 
-    <form action="pages/inscription_action.php" method="POST">
-
+    <form class="edit_club" action="pages/inscription_action.php" method="POST">
+        <div>
             <input type="text" id="username" name="username">
             <label for="name">Nom</label>
             <p id="msg_nom">Le nom doit avoir au moins 4 charactéres</p>
@@ -52,6 +52,7 @@ $page = "inscription";
             <input type="submit" value="Inscription" id="submit_inscription">
             <input type="button" value="ANNULER">
             </div>
+        </div>
         </form>
 
 </section>

@@ -4,6 +4,21 @@
 /*----------------------------------------*/
 /*----------------------------------------*/
 /*--------------- PAGE INDEX -----------------------*/
+html {
+  height: 100%;
+  box-sizing: border-box; }
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit; }
+
+body {
+  position: relative;
+  margin: 0;
+  min-height: 100%;
+  padding-bottom: 30.5vh; }
+
 #mobile_menu {
   display: none; }
 
@@ -111,8 +126,9 @@ body section:first-of-type {
 .row {
   padding-left: 5%;
   display: flex;
-  height: 50vh;
-  margin-top: 10vh; }
+  height: 60vh;
+  margin-top: 10vh;
+  margin-bottom: 10vh; }
   .row .col-3 {
     width: 30vw; }
     .row .col-3 img {
@@ -128,11 +144,16 @@ body section:first-of-type {
     padding: 3em; }
 
 /*---------------------------------------------------*/
+.content {
+  margin-left: 2em; }
+
 footer {
-  width: 99vw;
-  height: 20vh;
-  display: flex;
+  right: 0;
   bottom: 0;
+  left: 0;
+  height: auto;
+  max-height: 30vh;
+  position: absolute;
   z-index: 3;
   background-color: white; }
 
@@ -141,11 +162,6 @@ footer {
 
 #recherche {
   height: 100vh; }
-
-.footer3 {
-  width: 30vw;
-  padding: 2em;
-  float: left; }
 
 /*-------------------------------------------------------*/
 /*MAP*/

@@ -40,6 +40,10 @@ h4 {
 	margin-bottom: 1em;
 }
 
+a {
+	color: map-get($colors, color3);
+	line-height: 1.5em;
+}
 
 /*---------------------decoration---------------------*/
 hr {
@@ -100,12 +104,13 @@ header {
 	background-image: url("../images/website/bcg0.jpg");
 	background-repeat: no-repeat;
     background-size:cover;
+    background-attachment: fixed;
 	}
 
 #filter {
 	z-index: 0;
     position: absolute;
-    height:100%;
+    height:100vh;
     width:100%;
     top:0;
     left:0;
@@ -224,7 +229,7 @@ label[for=file3],
 .edit_club {
 
 	margin-top: 3em;
-	background-color: map-get($colors, color1);
+	background-color: map-get($colors, background);
 	border-radius: 20px;
 	padding: 3em;
 
@@ -277,6 +282,7 @@ input[name="files[]"] + label {
 
 /*------------------------------------------------------------------*/
 
+
 .btn {
 	@include button(map-get($colors, color2));
 	color: white;
@@ -294,10 +300,14 @@ input[type="submit"] {
 }
 
 .btn-empty {
-	//@include button;
-	border: 1px solid map-get($colors, color1);
-	color: map-get($colors, color1);
-	max-width: 150px;
+	@include button(transparent);
+	border: 1px solid map-get($colors, color2);
+	color: map-get($colors, color2);
+	max-width: 200px;
+	padding: 0.5em;
+	&:hover {
+		color: map-get($colors, color2)!important;
+	}
 }
 
 .btn_blue {
@@ -337,6 +347,19 @@ input[type=checkbox] {
 	padding: 2em;
 	input {
 
+	}
+}
+
+.row1 {width: 100vw;
+	text-align: center;
+
+}
+
+.row3 {
+	display: flex;
+	width: 100vw;
+	div {width: 30%;
+		padding: 2em;
 	}
 }
 /*--------------------------error handling------------------------------*/

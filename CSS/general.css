@@ -36,6 +36,10 @@ h4 {
   color: #323232;
   margin-bottom: 1em; }
 
+a {
+  color: #0C5574;
+  line-height: 1.5em; }
+
 /*---------------------decoration---------------------*/
 hr {
   background-color: lightgrey;
@@ -101,12 +105,13 @@ header {
   background-color: #0C5574;
   background-image: url("../images/website/bcg0.jpg");
   background-repeat: no-repeat;
-  background-size: cover; }
+  background-size: cover;
+  background-attachment: fixed; }
 
 #filter {
   z-index: 0;
   position: absolute;
-  height: 100%;
+  height: 100vh;
   width: 100%;
   top: 0;
   left: 0;
@@ -236,7 +241,7 @@ label[for=file3] {
 
 .edit_club {
   margin-top: 3em;
-  background-color: #FFAF44;
+  background-color: #fff7ed;
   border-radius: 20px;
   padding: 3em; }
   .edit_club > div {
@@ -309,9 +314,30 @@ input[type="submit"] {
   margin-left: 1em; }
 
 .btn-empty {
-  border: 1px solid #FFAF44;
-  color: #FFAF44;
-  max-width: 150px; }
+  display: block;
+  border-radius: 20px;
+  text-transform: uppercase;
+  text-align: center;
+  padding-top: 7px;
+  margin-bottom: 1em;
+  margin-top: 1em;
+  text-decoration: none;
+  font-family: Montserrat, sans-serif;
+  cursor: pointer;
+  font-size: 1.1em;
+  background-color: transparent;
+  border: 1px solid #AA2E00;
+  color: #AA2E00;
+  max-width: 200px;
+  padding: 0.5em; }
+  .btn-empty:hover {
+    background-color: rgba(26, 26, 26, 0);
+    color: white;
+    -webkit-transition: background-color 200ms linear;
+    -ms-transition: background-color 200ms linear;
+    transition: background-color 200ms linear; }
+  .btn-empty:hover {
+    color: #AA2E00 !important; }
 
 .btn_blue {
   display: block;
@@ -374,6 +400,17 @@ input[type=checkbox] {
   width: 100vw;
   background-color: #FFAF44;
   padding: 2em; }
+
+.row1 {
+  width: 100vw;
+  text-align: center; }
+
+.row3 {
+  display: flex;
+  width: 100vw; }
+  .row3 div {
+    width: 30%;
+    padding: 2em; }
 
 /*--------------------------error handling------------------------------*/
 .error {

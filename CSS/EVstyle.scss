@@ -1,8 +1,23 @@
 @import "_valeursGlobales.scss";
 /*--------------- PAGE INDEX -----------------------*/
+html {
+  height: 100%;
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+ body {
+ 	 position: relative;
+ 	 margin: 0;
+ 	 min-height: 100%;
+ 	 padding-bottom:30.5vh;
+ }
 
 #mobile_menu {display: none;}
-
 header {
 	h1 {
 		padding-top: 40vh;
@@ -123,8 +138,9 @@ body section:first-of-type {
 .row {
 	padding-left: 5%;
 	display: flex;
-	height: 50vh;
+	height: 60vh;
 	margin-top: 10vh;
+	margin-bottom: 10vh;
 	.col-3 {width: 30vw;
 		img {
 			width: 15vw;
@@ -143,13 +159,16 @@ body section:first-of-type {
 }
 
 /*---------------------------------------------------*/
-
+.content { //pour les sections du contenu, sauf pour les maps !!!
+	margin-left: 2em;
+}
 footer {
-	width: 99vw;
-	height: 20vh;
-	display: flex;
-	bottom: 0;
-	//@include gradient(map-get($colors, darkblue), map-get($colors, lightblue));
+	right: 0;
+  	bottom: 0;
+  	left: 0;
+	height: auto;
+	max-height: 30vh;
+	position: absolute;
 	z-index: 3;
 	background-color: white;
 
@@ -161,11 +180,6 @@ footer {
 	height: 100vh;
 }
 
-.footer3 {
-	width: 30vw;
-	padding: 2em;
-	float: left;
-}
 
 /*-------------------------------------------------------*/
 /*MAP*/
