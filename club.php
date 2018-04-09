@@ -61,7 +61,7 @@ $fav = $result1->rowCount();
 </head>
 <body>
 <?php include("header.php"); ?>
-	<section class="top1">
+	<section class="content">
 	
 		<a class="revenir" href="recherche.php">Revenir à la recherche</a>
 			<h1><?php echo $clubInfo[0]['name']; ?></h1>
@@ -73,8 +73,7 @@ $fav = $result1->rowCount();
 			}
 ?>
 			</h4>
-	</section>
-	<section class="left">
+		<div class="left">
 			<hr/>
 			<span>
 <?php include "inc/evaluation.inc.php"; /*évaluation de préstataire*/?>
@@ -98,38 +97,41 @@ $fav = $result1->rowCount();
 		<div>
 			<p><?php echo $clubInfo[0]['description_FR']; ?></p>
 		</div>
-
-		<div class="bordered">
-			<h3>Activités</h3>
-			<ul><?php
-			foreach ($tagInfo as $key => $value) {
-				echo '<li>'; 
-				echo $tagInfo[$key]['name_FR'];
-				echo '</li>';
-			}
-			?>
-			</ul>
+		<hr>
+			<div class="bordered">
+				<h3>Activités</h3>
+				<ul><?php
+				foreach ($tagInfo as $key => $value) {
+					echo '<li>'; 
+					echo $tagInfo[$key]['name_FR'];
+					echo '</li>';
+				}
+				?>
+				</ul>
+			</div>
+			<hr>
+			<div>
+				<div><?php echo $clubInfo[0]['address']; ?></div>
+				<div><?php echo $clubInfo[0]['telephone']; ?></div>
+				<div><?php echo $clubInfo[0]['mail']; ?></div>
+			</div>
+			<hr>
+			<div class="comments">
+				<?php include("pages/comments/comment_club.php"); ?>
+			</div>
 		</div>
-		<div>
-			<div><?php echo $clubInfo[0]['address']; ?></div>
-			<div><?php echo $clubInfo[0]['telephone']; ?></div>
-			<div><?php echo $clubInfo[0]['mail']; ?></div>
+
+		<div class="right">
+
+	<?php
+	foreach ($img as $key => $value) {
+	?>
+			<img src="images/clubs/<?php echo $value["url"]; ?>" alt="<?php echo $clubInfo[0]['name']; ?>">
+	<?php
+	}
+
+	?>		
 		</div>
-		<section class="comments">
-			<?php include("pages/comments/comment_club.php"); ?>
-		</section>
-	</section>
-
-	<section class="right">
-
-<?php
-foreach ($img as $key => $value) {
-?>
-		<img src="images/clubs/<?php echo $value["url"]; ?>" alt="<?php echo $clubInfo[0]['name']; ?>">
-<?php
-}
-
-?>		
 	</section>
 	<?php include("pages/footer.php"); ?>
 </body>

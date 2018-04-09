@@ -34,6 +34,7 @@
 				<div class="user_menu">
 				<div class="menu_deco"></div> <!-- petite fleche déco-->
 				<div id='username'><?php echo $_SESSION['name']; ?></div>
+				<a href="user_events.php">+Evenement</a>
 
 				<?php
 										if ($_SESSION["type"] == "normal") {

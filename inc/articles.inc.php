@@ -5,9 +5,10 @@ Class article {
 
 	public function __construct($pdo) {
 		$this->data = self::get_data($pdo);
-		$this->image = self::get_image(self::get_data($pdo));
-		$this->titre = self::get_titre(self::get_data($pdo));
-		$this->article = self::get_article(self::get_data($pdo));
+		$this->image = self::get_image($this->data);
+		$this->path = self::get_image($this->data);
+		$this->titre = self::get_titre($this->data);
+		$this->article = self::get_article($this->data);
 	}
 
 	public function get_data($pdo) {

@@ -41,33 +41,47 @@ $fav = $result1->rowCount();
 </head>
 <body>
 <?php include("header.php"); ?>
-	<section class="left">
-		<div class="arrow"></div><a class="revenir" href="recherche.php">Revenir à la recherche</a>
+	<section class="content">
+		
+		<a class="revenir" href="recherche.php">Revenir à la recherche</a>
 		<div>
 			<h1><?php echo $clubInfo[0]['name']; ?></h1>
 			<h4><?php echo $clubInfo[0]['date']; ?></h4>
-			<h4><?php echo $clubInfo[0]['address']; ?></h4>
+			<div class="left">
 			<hr/>
 <?php 
 /*--------FAVORI CHECKBOX-------------*/
 	if (isset($_SESSION["id"])) { ?>
 			<span>
-				<input type="checkbox" name="favori" value="favori" id="favori_event<?php echo $id; ?>" 
-<?php if($fav > 0) {echo "checked";} ?>
-	onclick="addFavori(<?php echo $id; ?>, 'event', false)"
-	>
-
+				<input type="checkbox" name="favori" value="favori" id="favori_club<?php echo $id; ?>" <?php if($fav > 0) {echo "checked";} ?> onclick="addFavori(<?php echo $id; ?>, 'club', false)">
+				<label for="favori_club<?php echo $id; ?>">
+					<?php if($fav > 0) { ?>
+				<img src="images/website/icons/heart-pleine.svg" class="heart_icon" alt="supprimer le favori">
+<?php					} else { ?>
+						<img src="images/website/icons/heart-vide.svg" class="heart_icon" alt="ajouter aux favoris">
+<?php }?>
+				</label>
 			</span>
 <?php
 } /*----------FIN DE CHECKBOX-------------*/			
 ?>
-		</div>
+
 		<div>
 			<p><?php echo $clubInfo[0]['description_FR']; ?></p>
 		</div>
+		<hr/>
+		<div>
+			<div><?php echo $clubInfo[0]['address']; ?></div>
+			<div><?php echo $clubInfo[0]['mail']; ?></div>
+			<div><?php echo $clubInfo[0]['website']; ?></div>
+		</div>
+		<hr>
+		<div class="comments">
+<?php include("pages/comments/comment_event.php"); ?>
+		</div>
+	</div>
 
-	</section>
-	<section class="right">
+	<div class="right">
 
 <?php
 foreach ($img as $key => $value) {
@@ -76,15 +90,8 @@ foreach ($img as $key => $value) {
 <?php
 }
 
-?>
-	<div>
-		<p><?php echo $clubInfo[0]['website']; ?></p>
-		<p><?php echo $clubInfo[0]['mail']; ?></p>
+?>	
 	</div>
-		
-	</section>
-	<section class="comments">
-<?php include("pages/comments/comment_event.php"); ?>
 	</section>
 	<?php include("pages/footer.php"); ?>
 </body>

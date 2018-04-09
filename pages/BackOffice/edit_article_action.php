@@ -11,7 +11,7 @@ $id = $_POST["id"];
 
 $query = "UPDATE article SET 
 titre_FR = '$titre_FR', 
-$titre_EN = '$titre_FR',
+titre_EN = '$titre_FR',
 article_FR = '$article_FR',
 article_EN = '$article_EN',
 tag = '$tag[0]'
@@ -19,14 +19,13 @@ WHERE id = ".$id.";";
 
 $result = $pdo->prepare($query);
 $result->execute();
-
-
 /*-------------------UPLOAD DES IMAGES-------------------------------- */
 ini_set ('gd.jpeg_ignore_warning', 1);
 
 if (isset($_FILES["files"])) {
     $image = new article;
     $path = $image->path;
+
        foreach($_FILES["files"]["tmp_name"] as $key=>$tmp_name){
         $temp = $_FILES["files"]["tmp_name"][$key];
         $name = $_FILES["files"]["name"][$key];
@@ -48,6 +47,7 @@ if (isset($_FILES["files"])) {
 
 
 /*supprimer les images*/
+
 if (isset($_POST["delete_img"])) {
     $delete_image = $_POST["delete_img"];
     foreach ($delete_image as $key => $id) {

@@ -12,7 +12,7 @@ $mail = $_POST["mail"];
 $date = $_POST["date"];
 $address = $_POST["address"];
 $user_id = $_POST["user_id"];
-
+$retour = $_POST["retour"];
 /*-------------------Function geocode-------------------------------- */
 include '../../inc/geocode.inc.php';
 $geo_data = geocode($address);
@@ -76,8 +76,12 @@ if (isset($_FILES["files"])) {
 
 
 /*-------------------REDIRECTION-------------------------------- */
+if ($retour == "user") {
+    header('Location: ../../user_events.php?msg=success');
+} else {
+    header('Location: ../admin_events.php?msg=success');
+}
 
-header('Location: ../admin_events.php?msg=success');
     //if ($_SESSION["type"] == "pro") { header('Location: ../index.php?msg=Le+club+a+ete+ajoute+avec+success');}
     //if ($_SESSION["type"] == "admin") { header('Location: ../admin_clubs.php?msg=success'); }
 

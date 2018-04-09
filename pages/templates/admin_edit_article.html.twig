@@ -1,0 +1,68 @@
+{% extends "template.html.twig" %}
+
+{% block section %}
+<section class="forme">
+		<h1>Éditer {{titre_fr}}</h1>
+			<form class="edit_club" action="BackOffice/edit_article_action.php" method="POST" enctype="multipart/form-data">
+				<div>
+					<input type="text" name="titre_FR" id="titre_FR" value="{{titre_fr}}">
+					<br>
+					<label for="titre_FR">* Titre en français</label>
+					<br>
+					<input type="text" name="titre_EN" id="titre_EN" value="{{titre_en}}">
+					<br>
+					<label for="titre_EN">* English title</label>
+				</div>
+				<span class="arrow"></span>
+				<div>
+					<textarea rows="4" cols="50" id="article_FR" name="article_FR" >{{fr}}</textarea>
+					<br>
+					<label for="article_FR">* Article en français</label>
+					<br><br><br>
+					<textarea name="article_EN" id="article_EN">{{en}}</textarea>
+					<br>
+					<label for="article_EN" id="EN">Article in English</label>
+					<br><br>
+				</div>
+				<span class="arrow"></span>
+
+
+					<div>
+						<h4>ACTIVITE</h4>
+				{% for activite in activites %}
+						<input type="radio" name="tag[]" value="{{activite.id}}" 
+				{% if activite.id == article_tag %} checked {% endif %} >
+						<label for="tag[]">{{activite.name_FR}}</label>
+						<br/>
+				{% endfor %}
+			</div>
+
+				<span class="arrow"></span>
+				<div id="clearfix">
+					<h4>Images</h4>
+					<input type="hidden" name="MAX_FILE_SIZE" value="300000000" /> 
+{% if count_img > 0 %}			
+					<div class="input_images">
+						<input name="files[]" id="file1" type="file" accept="image/*"/> 
+						<input class = "image_checkbox" type="checkbox" name="delete_img[]" value="{{img_id}}">
+	           			<label for="file1" class="on_delete"  style="background-image: url('../images/articles/{{img_url}}'); ">
+	           			 	<span></span>
+	           			</label>
+           			</div>	
+{% else %}
+						<input name="files[]" id="file1" type="file" accept="image/*" />
+						<label for="file1"><span class="arrow_up"></span></label>
+{% endif %}
+
+				</div>
+				<span class="arrow"></span>
+				<div id="edit_btn">
+					<!--message d'erreur-->
+					<p id="error_msg">Veuillez bien remplir le formulaire</p>
+					<input type="hidden" name="id" value="{{article_id}}">
+					<input type="submit" name="submit" id="submit_new_article" value="Envoyer">
+					<input type="button" name="Annuler" value="Annuler">
+				</div>
+			</form>
+	</section>
+{% endblock %}

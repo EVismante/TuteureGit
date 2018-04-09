@@ -17,10 +17,16 @@
 
 	<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDd9slKoG41gF1xM8xr_LoEGCxnWrZejoY&callback=initMap">
 	 </script>
+
+	 <!-- pour l'adresse -->
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDd9slKoG41gF1xM8xr_LoEGCxnWrZejoY&libraries=places&callback=initAutocomplete"
+        async defer></script>
+ <script src="BackOffice/autocomplete.js"></script>
+
 </head>
 <body>
 	<div class="nav">
-	<a href="index.php" id="logo">Equo Vadis</a>
+	<a href="../index.php" id="logo">Equo Vadis</a>
 
 		<div id="mobile_menu" tabindex="0">	
 			<span></span>	
@@ -56,7 +62,7 @@
 			</div>
 <!-- USER MENU FIN -->
 		</div>
-			<div class="menu">
+			<div class="menu_BO">
 			<ul>
 				<li{% if page == 'utilisateurs' %} class="active" {% endif %}><a href="admin_utilisateurs.php">Utilisateurs</a></li>
 				<li{% if page == 'clubs' %} class="active" {% endif %}><a href="admin_clubs.php">Clubs</a></li>

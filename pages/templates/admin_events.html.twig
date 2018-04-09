@@ -1,0 +1,38 @@
+{% extends "template.html.twig" %}
+
+{% block section %}
+<section class="office">
+		<h1>Gestion des Evènements</h1>
+		<br><br>
+		<a class = "btn" href="admin_new_event.php">Nouveau</a>
+		<input type="text" id="myInput" onkeyup="search()" placeholder="Cherchez..">
+		<table id="myTable">
+			<tr>
+				<th>Evènement</th>
+				<th>Date</th>
+				<th>Crée par</th>
+			</tr>
+		{% for event in events %}
+			<tr>
+				<td><a href="../event.php?id={{event.id}}">{{event.0}}</a></td>
+				<td>{{event.date}}</td>
+				<td>{{event.name}}</td>
+				<td>
+				<form action="admin_edit_event.php" method="POST">
+					<input type="hidden" name="id" value="{{event.id}}">
+					<input type="submit" value="Changer">
+				</form>
+				<td>
+					<form action="Events/delete_event.php" method="POST">
+						<input type="hidden" name="id" value="{{event.id}}">
+						<input type="submit" value="Supprimer">
+					</form>
+				</td>
+			</tr>
+{% endfor %}
+		</table>
+	<div id='msg'>
+			{{msg}}
+		</div>
+	</section>
+{% endblock %}

@@ -1,0 +1,107 @@
+{% extends "template.html.twig" %}
+
+{% block section %}
+<section class="forme">
+		<h1>Éditer {{club_name}}</h1>
+			<form class="edit_club" action="BackOffice/edit_club_action.php" method="POST" enctype="multipart/form-data">
+				<div>
+					<input type="text" name="name" id="name" value="{{club_name}}">
+					<br>
+					<label for="name">* Nom</label>
+				</div>
+				<span class="arrow"></span>
+				<div>
+					<textarea rows="4" cols="50" id="description_FR" name="description_FR" >{{fr}}</textarea>
+					<br>
+					<label for="description_FR">* Description en français</label>
+					<br><br><br>
+					<textarea name="description_EN" id="description_EN">{{en}}</textarea>
+					<br>
+					<label for="description_EN" id="EN">Description in English</label>
+					<br><br>
+				</div>
+				<span class="arrow"></span>
+
+
+					<div>
+						<h4>ACTIVITE</h4>
+				{% for activite in activites %}
+						<input type="checkbox" name="filtre[]" value="{{activite.id}}" 
+				{% if activite.id in checked_array %} checked {% endif %} >
+						<label for="filtre[]">{{activite.name_FR}}</label>
+						<br/>
+				{% endfor %}
+					</div>
+					<span class="arrow"></span>
+					<div>
+						<h4>TYPE</h4>
+						{% for type in types %}
+						<input type="checkbox" name="filtre[]" value="{{type.id}}" 
+				{% if type.id in checked_array %} checked {% endif %} >
+						<label for="filtre[]">{{type.name_FR}}</label>
+						<br/>
+				{% endfor %}
+					</div>
+					<span class="arrow"></span>
+					<div>
+						<h4>AUTRE</h4>
+						{% for autre in autres %}
+						<input type="checkbox" name="filtre[]" value="{{autre.id}}" {% if autre.id in checked_array %} checked {% endif %} >
+						<label for="filtre[]">{{autre.name_FR}}</label>
+						<br/>
+				{% endfor %}
+					</div>
+					<span class="arrow"></span>
+
+				<div id="edit_contacts">
+					<input type="text" name="site_web" id="site_web" value="{{website}}">
+					<br>
+					<label for="site_web">Site web</label>
+					<br><br>
+					<input type="text" name="mail" id="mail" value="{{mail}}">
+					<br>
+					<label for="mail">Mail</label>
+					<br><br>
+					<input type="text" name="telephone" id="telephone" value="{{telephone}}">
+					<br>
+					<label for="telephone">Téléphone</label>
+					<br><br>
+					<input type="text" name="address" id="autocomplete" value="{{address}}">
+					<br>
+					<label for="autocomplete">* Adresse</label>
+
+					<input type="hidden" name="user_id" value="{{user_id}}">
+					<input type="hidden" name="id" value="{{club_id}}">
+				</div>
+				<span class="arrow"></span>
+				<div id="clearfix">
+					<h4>Images</h4>
+					<input type="hidden" name="MAX_FILE_SIZE" value="300000000" /> 
+{% for img in imgs %}			
+					<div class="input_images">
+						<input name="files[]" id="file{{loop.index}}" type="file" accept="image/*"/> 
+						<input class = "image_checkbox" type="checkbox" name="delete_img[]" value="{{img.id}}">
+	           			<label for="file{{loop.index}}" class="on_delete"  style="background-image: url('../images/clubs/{{img.url}}'); ">
+	           			 	<span>
+	           			 	</span>
+	           			</label>
+           			</div>	
+{% endfor %}
+{% set x = count_img %} <!-- pour afficher les id des images -->
+{% for i in '-1' .. 'count_freespace' %}
+{% set x = x + 1 %}
+						<input name="files[]" id="file{{x}}" type="file" accept="image/*" />
+						<label for="file{{x}}"><span class="arrow_up"></span></label>
+{% endfor %}
+
+				</div>
+				<span class="arrow"></span>
+				<div id="edit_btn">
+					<!--message d'erreur-->
+					<p id="error_msg">Veuillez bien remplir le formulaire</p>
+					<input type="submit" name="submit" id="submit_new_club" value="Envoyer">
+					<input type="button" name="Annuler" value="Annuler">
+				</div>
+			</form>
+	</section>
+{% endblock %}

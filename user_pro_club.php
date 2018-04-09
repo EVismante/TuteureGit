@@ -1,67 +1,53 @@
 <?php
 require_once('_config.php');
-require "init_twig.php";
-
 session_start();
-if ( !isset($_SESSION["type"]) ) {
+$page = "favoris";
+	//VERIFIER SI UTILISATEUR EST CONNECTE//
+	if ( !isset($_SESSION["type"]) ) {
 		header("Location: login.php");
 	};
+/**************************************************************/
 
-	$page="monclub";
-	$avatar = NULL;
-	$session_active = false;
-	$session_type = NULL;
-	$username = NULL;
+include '_head.php';?>
+<body>
+<?php include("header.php"); ?>
+/*-------------------------------*/
+<?php
 
-	if ( isset($_SESSION["id"])) {
-		$session_active = true;
-		$username = $_SESSION['name'];
-		$avatar = "images/avatars/".$_SESSION["avatar"];
+$query = 'SELECT club.id, club.name, images.url FROM club
+LEFT JOIN images ON club.id=images.club_id
+WHERE club.user_id='.$_SESSION["id"].'
+GROUP BY club.id;';
 
-		if ($_SESSION["type"] == "normal") { $session_type = "normal"; }
-		if ($_SESSION["type"] == "admin") { $session_type = "admin"; }
-		if ($_SESSION["type"] == "pro") { $session_type = "pro"; }
-
-	} 
-
-
-//VERIFIER SI UTILISATEUR EST CONNECTE//
-
-	$query = "SELECT * FROM club WHERE user_id=".$_SESSION['id'].";";
-	$result = $pdo->prepare($query);
-	$result->execute();
-	$monclub = $result->fetchAll();
-	$count = $result->rowCount();
-	
-
-
-
-
-echo $twig->render('user_pro_club.html.twig', array(
-
-		'session_active' => $session_active, 
-    	'session_type' => $session_type,
-    	'avatar' => $avatar,
-    	'username' => $username,
-    	'page' => $page,
-    	'club' => $monclub,
-    	'count' => $count
-    	
-
-    ));
+$result = $pdo->prepare($query);
+$result->execute();
+$club = $result->fetchAll();
+$count = $result->rowCount();
 
 ?>
 
-	<section>
-		<h1>Votre club</h1>
+	<section class="office">
+		<h1>Votre préstation</h1>
+		<br><br>
 
-		{% if count == 0 %}
-		Vous n'avez pas de club défini. <br>
-		<a href=""> Créez votre préstation</a>
-			<br>
-		Un club vous appartient? <br>
-		Contactez nous.
-		{% else %}
-		Votre club
-		{% endif %}
+<?php
+if ($count == 0) {
+		echo "<p> Vous n'avez pas encore défini votre préstation !</p>";
+		echo '<a class = "btn" href="user_new_club.php">Créer</a>';
+		echo 'Si votre préstation existe déjà dans <a href="recherche.php">la liste</a>, écrivez nous un message.';
+} else {
+?>
+		<div class="club_item" style="background-image: url('images/clubs/<?php echo $club['url'];?>');">
+			<a href="club.php?id=<?php echo $club[0]['id']; ?>">
+			<div>
+				<h3><?php echo $club[0]['name']; ?></h3>
+			</div>
+		</a>
+		</div>
+
+<?php } ?>
+
 	</section>
+<?php include("pages/footer.php"); ?>
+</body>
+</html>

@@ -8,16 +8,11 @@ html {
   height: 100%;
   box-sizing: border-box; }
 
-*,
-*:before,
-*:after {
-  box-sizing: inherit; }
-
 body {
   position: relative;
   margin: 0;
   min-height: 100%;
-  padding-bottom: 30.5vh; }
+  padding-bottom: 300px; }
 
 #mobile_menu {
   display: none; }
@@ -31,6 +26,9 @@ header {
     position: absolute;
     top: 54vh;
     left: 40%; }
+
+.menu_BO {
+  left: 70px; }
 
 /*---------------NAVIGATION TOP -----------------------*/
 #logo {
@@ -123,7 +121,7 @@ header {
     border: 1px solid white; }
 
 body section:first-of-type {
-  padding-top: 80px; }
+  padding-top: 100px; }
 
 .row {
   padding-left: 5%;
@@ -145,16 +143,22 @@ body section:first-of-type {
     text-align: center;
     padding: 3em; }
 
-/*---------------------------------------------------*/
-.content {
-  margin-left: 2em; }
+/**/
+.colored img {
+  float: left;
+  width: 40vw; }
+.colored div {
+  width: 30vw;
+  margin-left: 2em;
+  float: left; }
 
+/*---------------------------------------------------*/
 footer {
   right: 0;
   bottom: 0;
   left: 0;
-  height: 30vh;
-  max-height: 30vh;
+  height: 35vh;
+  min-height: 250px;
   position: absolute;
   background-color: white; }
 
@@ -238,49 +242,53 @@ footer {
   margin-bottom: 2em;
   width: 320px; }
 
+.content {
+  width: 90vw;
+  margin: auto;
+  height: auto; }
+
+.head_img {
+  width: 100vw;
+  height: 60vh;
+  background-size: 100vw;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center; }
+
 /*--------------- LISTE DES CLUBS -----------------------*/
 /*--------------- PAGE CLUB -----------------------*/
-.top1 {
-  width: 100%;
-  padding-top: 2em; }
+.revenir {
+  margin-top: 3em; }
 
 .left {
   width: 47vw;
-  float: left;
-  padding-left: 1em;
-  padding-top: 2em; }
-  .left > div > p {
-    margin-top: 3em;
-    margin-bottom: 3em;
-    line-height: 1.5; }
-  .left hr {
-    margin-top: 0; }
-
-div:nth-child(5) {
-  line-height: 1.6; }
+  display: table-cell;
+  vertical-align: top; }
 
 .right {
-  float: right;
-  width: 45vw;
-  height: 100vh;
-  position: sticky;
-  top: 80px;
-  z-index: 1; }
-  .right img {
-    position: absolute;
-    width: 45vw;
-    padding-top: 2em; }
-  .right div {
-    position: absolute;
-    top: 70vh;
-    z-index: 5;
-    background-color: white;
-    width: 50vw;
-    padding: 1em; }
+  width: 46vw;
+  display: table-cell;
+  padding-left: 2vw; }
+  .right img:first-of-type {
+    max-width: 47vw;
+    position: sticky;
+    top: 100px;
+    cursor: pointer; }
+  .right img:nth-of-type(2), .right img:nth-of-type(3),
+  .right img:nth-of-type(4), .right img:nth-of-type(5) {
+    display: none; }
 
+.bordered {
+  padding: 1em;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  margin: 0.5em;
+  width: 30%; }
+
+/*commentaires*/
 .comments {
   height: auto;
-  width: 40vw;
   float: left; }
   .comments .user_icon {
     float: left;
@@ -309,16 +317,6 @@ div:nth-child(5) {
 .enfant {
   margin-left: 4em !important;
   width: 35.5vw !important; }
-
-.bordered {
-  border-radius: 10px;
-  border: 1px solid lightgrey;
-  padding: 1em;
-  margin-top: 1em;
-  margin-bottom: 1em;
-  margin: 0.5em;
-  float: left;
-  width: 30%; }
 
 /*---------------BACK OFFICE -----------------------*/
 /*--------------------------------------------*/
@@ -387,9 +385,6 @@ table {
 .office {
   width: 80vw;
   margin: auto; }
-
-section {
-  width: 100vw; }
 
 .club_item {
   width: 25vw;

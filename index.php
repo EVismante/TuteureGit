@@ -15,6 +15,16 @@ $result = $pdo->prepare($query);
 $result->execute();
 $clubs = $result->fetchAll();
 
+$query1="SELECT event.id, event.name, images.url FROM event
+LEFT JOIN images ON images.event_id=event.id
+GROUP BY event.id
+LIMIT 3
+;";
+$result = $pdo->prepare($query1);
+$result->execute();
+$events = $result->fetchAll();
+
+
 ?>
 <script>
 	/* header scroll */
@@ -32,7 +42,7 @@ $clubs = $result->fetchAll();
 </head>
 <body>
 
-	<?php include("header.php"); ?> <!-- not in the header because of scroll issues-->
+	<?php include("header.php"); ?> <!-- pas dans le header à cause d'un bug de scroll-->
 
 	<header>
 		<div id="filter">
@@ -61,7 +71,7 @@ $clubs = $result->fetchAll();
 		</div>
 	</section>
 
-<section id="clearfix">
+<section class="content clearfix">
 	<h2>Top clubs</h2>
 <?php
 	foreach ($clubs as $key => $value) {
@@ -74,11 +84,11 @@ $clubs = $result->fetchAll();
 		</a>
 <?php
 	}
-
 ?>
+<a href="clubs.php">Voir tous les clubs</a>
 </section>
 
-	<section class="colored">
+	<section class="colored clearfix">
 		<h2>Découvrir</h2>
 <?php
 	$article = new article($pdo);
@@ -86,20 +96,27 @@ $clubs = $result->fetchAll();
 ?>
 		<img src="images/articles/<?php echo $article->image; ?>">
 		<div>
-			<h4><?php echo $article->titre; ?></h4>
-			<p><?php echo $article->article; ?></p>
+			<h3><?php echo $article->titre; ?></h3>
+				<p><?php echo $article->article; ?></p>
 			<div>fleche</div>
 		</div>
 	</section>
 
-	<section>
+	<section class="content clearfix">
 		<h2>Sortir</h2>
-		<img src="http://via.placeholder.com/350x250">
-		<div></div>
-			<h4>Titre</h4>
-			<span>Sous-titre</span>
-
-			<button>Plus</button>
+<?php
+	foreach ($events as $key => $value) {
+?>	<a href="event.php?id=<?php echo $events[$key]['id']; ?>">
+		<div class="club_item" style="background-image: url('images/events/<?php echo $events[$key]['url'];?>');">
+			<div>
+				<h4><?php echo $events[$key]['name']; ?></h4>
+			</div>
+		</div>
+		</a>
+<?php
+	}
+?>
+<a href="evenements.php">Voir tous les évènements</a>
 	</section>
 
 <?php include("pages/footer.php"); ?>

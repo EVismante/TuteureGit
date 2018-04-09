@@ -61,6 +61,7 @@ include '_head.php';
 
 ?>
 </section>
+<br>
 <section>
 	<h1>Evenements</h1>
 <?php

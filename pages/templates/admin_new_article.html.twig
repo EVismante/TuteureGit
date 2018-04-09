@@ -1,0 +1,53 @@
+{% extends "template.html.twig" %}
+
+{% block section %}
+
+<section class="forme">
+		<h1 id="changejs">Nouveau article</h1>
+			<form class="edit_club" action="BackOffice/new_article_action.php" method="POST" enctype="multipart/form-data">
+				<div>
+					<input type="text" name="titre_FR" id="titre_FR">
+					<br>
+					<label for="titre_FR">Titre en français * </label>
+					<br>
+					<input type="text" name="titre_EN" id="titre_EN">
+					<br>
+					<label for="titre_EN">Title in English * </label>
+				</div>
+				<span class="arrow"></span>
+				<div>
+					<textarea rows="4" cols="50" id="article_FR" name="article_FR"></textarea>
+					<br>
+					<label for="article_FR">* Article en français</label>
+					<br><br><br>
+					<textarea name="article_EN" id="article_EN"></textarea>
+					<br>
+					<label for="article_EN" id="EN">Article in English</label>
+					<br><br>
+				</div>
+				<span class="arrow"></span>
+				
+					<div>
+						<h4>ACTIVITE</h4>
+				{% for activite in tag %}
+						<input type="radio" name="tag" value="{{activite.id}}">
+						<label for="tag">{{activite.name_FR}}</label>
+						<br/>
+				{% endfor %}
+					</div>
+					<span class="arrow"></span>
+
+				<div id="input_images">
+					<h4>Image</h4>
+					<input type="hidden" name="MAX_FILE_SIZE" value="300000000" /> 
+           			 <input name="files[]" id="file1" type="file" accept="image/*"/> 
+           			 <label for="file1"><span class="arrow_up"></span></label>
+				</div>
+
+				<!--message d'erreur-->
+					<p id="error_msg">Veuillez bien remplir le formulaire</p>
+					<input type="submit" name="submit" id="submit_new_club" value="Envoyer">
+					<input type="button" name="Annuler" value="Annuler">
+			</form>
+	</section>
+{% endblock %}

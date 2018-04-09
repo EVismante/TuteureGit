@@ -9,7 +9,8 @@ body {
   font-size: 100%;
   font-family: Montserrat, sans-serif;
   background-color: #fff7ed;
-  overflow-x: hidden; }
+  overflow-x: hidden;
+  line-height: 1.5em; }
 
 /*---------------------------------------------------*/
 h1 {
@@ -167,8 +168,8 @@ label[for=file2],
 label[for=file3] {
   /*pour les menus*/
   font-size: 1.25em;
-  height: 4em;
-  width: 4em;
+  height: 8em;
+  width: 8em;
   background-color: #AA2E00;
   text-align: center;
   cursor: pointer;
@@ -177,7 +178,7 @@ label[for=file3] {
   vertical-align: middle;
   color: white;
   display: inline-block;
-  padding: 2em;
+  padding: 1em;
   margin: 0.3em; }
   label[for=file0]:hover,
   label[for=file1]:hover,
@@ -190,7 +191,7 @@ label[for=file3] {
 
 .on_delete {
   /*utilise pour les upload des images*/
-  background-size: 160px;
+  background-size: 200px;
   position: relative; }
   .on_delete:hover {
     background-image: none !important;
@@ -203,6 +204,12 @@ label[for=file3] {
       margin-top: 10px; }
 
 #clearfix::after {
+  content: " ";
+  display: block;
+  height: 0;
+  clear: both; }
+
+.clearfix::after {
   content: " ";
   display: block;
   height: 0;
