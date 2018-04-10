@@ -33,26 +33,25 @@
 					<img src="<?php echo $avatar; ?>" alt="avatar" id='user_icon' tabindex="0">					
 				<div class="user_menu">
 				<div class="menu_deco"></div> <!-- petite fleche déco-->
-				<div id='username'><?php echo $_SESSION['name']; ?></div>
-				<a href="user_events.php">+Evenement</a>
+				<span id='username'><?php echo $_SESSION['name']; ?></span>
+
 
 				<?php
-										if ($_SESSION["type"] == "normal") {
-											}
-										if ($_SESSION["type"] == "admin") {
-				?>
-					<a href="pages/admin_office.php">BACK OFFICE</a>
-				<?php
-											}
 										if ($_SESSION["type"] == "pro") {
 				?>
-					<a href="user_pro_club.php">MON CLUB</a>
+					<a class="m_hover" href="user_pro_club.php">MON CLUB</a>
 				<?php
 											}
+				?>	<a class="m_hover" href="user_events.php">+Evenement</a>
+					<a class="m_hover" href="user_favoris.php">FAVORIS</a>
+					<a class="m_hover" href="user_compte.php">MON COMPTE</a>
+				<?php
+										if ($_SESSION["type"] == "admin") {
 				?>
-					<a href="user_favoris.php">FAVORIS</a>
-					<a href="user_compte.php">MON COMPTE</a>
-					<a href="pages/logout.php">Déconnecter</a>
+					<a class="m_hover" href="pages/admin_office.php">BACK OFFICE</a>
+				<?php
+											} ?>
+					<a class="m_hover" href="pages/logout.php">Déconnecter</a>
 				</div>
 				<?php
 									} else {
@@ -67,9 +66,15 @@
 			</div>
 			<div class="menu">		
 					<ul>
-						<li tabindex="0"<?php if($page=='evenements'){echo 'class="active"';}?>><a href="evenements.php">Evènements</a></li>
-						<li tabindex="0"<?php if($page=='decouvrir'){echo 'class="active"';}?>><a href="decouvrir.php">Découvrir</a></li>
-						<li tabindex="0" <?php if($page=='recherche'){echo 'class="active"';}?>><a href="recherche.php">Recherche</a></li>
+						<li tabindex="0">
+							<a <?php if($page=='evenements'){echo 'class="active"';}?> href="evenements.php">Evènements</a>
+						</li>
+						<li tabindex="0">
+							<a <?php if($page=='decouvrir'){echo 'class="active"';}?> href="decouvrir.php">Découvrir</a>
+						</li>
+						<li tabindex="0">
+							<a <?php if($page=='recherche'){echo 'class="active"';}?> href="recherche.php">Recherche</a>
+						</li>
 					</ul>
 			</div>
 

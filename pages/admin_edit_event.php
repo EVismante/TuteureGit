@@ -1,27 +1,9 @@
 <?php
+include 'template.php';
 require "init_twig.php";
 require_once('../_config.php');
-session_start();
-$page ="clubs";
-$id = $_POST["id"]; //club id
 
-/*voir si l'utilisateur est connecté. Au cas échéant il est rédirigé vers l'accueil*/
-if (isset($_SESSION["type"])) {
-	$session_active = true;
-	$username = $_SESSION['name'];
-	$avatar = "../images/avatars/".$_SESSION["avatar"];
-
-	if ($_SESSION["type"] == "normal" OR $_SESSION["type"] == "pro") { header('Location: BackOffice/_nopermission.php');}}
-if (!isset($_SESSION["name"])) { header('Location: BackOffice/_nopermission.php');}
-
-/*feedback message*/
-	if (isset($_GET["msg"])) {
-		$msg =  $_GET["msg"];
-	} else {
-		$msg = "";
-	}
-
-/*-------------------------------*/
+$page ="evenements";
 $id = $_POST["id"];
 
 
@@ -40,8 +22,6 @@ $imgs = $r->fetchAll();
 $count = $r->rowCount();
 $count_freespace = 3 - $count;
 
-echo $count;
-echo $count_freespace;
 echo $twig->render('admin_edit_event.html.twig', array(
 
 		'session_active' => $session_active, 
@@ -50,7 +30,8 @@ echo $twig->render('admin_edit_event.html.twig', array(
     	'user_id' => $_SESSION['id'],
     	'club_id' => $id,
     	'page' => $page,
-    	'event_name' => $event[0]["name"],
+    	'event_name' => $event[0]["titre_FR"],
+        'event_name_EN' => $event[0]["titre_EN"],
     	'msg' => $msg,
     	'fr' => $event[0]["description_FR"],
     	'en' => $event[0]['description_EN'],

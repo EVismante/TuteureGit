@@ -10,6 +10,12 @@ body {
 	line-height: 1.5em;
 }
 
+*::selection { color: white;
+				background-color: map-get($colors, text);
+				 }
+*::-moz-selection { color: white; 
+					background-color: map-get($colors, text);
+}
 /*---------------------------------------------------*/
 
 
@@ -165,25 +171,27 @@ label[for=file1],
 label[for=file2], 
 label[for=file3],
   {
-	@include square(8em);
+	@include square(4em);
 	color: white;
 	display: inline-block;
-	padding: 1em;
+	padding: 3em;
 	margin: 0.3em;
+
 }	
 
 .on_delete { /*utilise pour les upload des images*/
 	background-size: 200px;
-	position: relative;		
+	position: relative;
+	background-position: center;		
 	&:hover {
 		background-image: none!important;
 		transition: background-image, 1s;
 		span::after {
-			content: '\002715';
+			content: '\002716';
 			font-size: 5em;
 			color: white;
 			display: block;
-			margin-top: 10px;
+			margin-top: 0.3em;
 		}
 	}
 }
@@ -255,8 +263,36 @@ input[name="files[]"] + label {
 .btn {
 	@include button(map-get($colors, color2));
 	color: white;
-	padding: 0.6em;
+	padding: 0.5em;
 	width: 8em;
+
+}
+
+.btn-empty {
+	@include button(transparent);
+	border: 1px solid map-get($colors, color2);
+	color: map-get($colors, color2);
+	max-width: 200px;
+	padding: 0.4em;
+	&:hover {
+		border: 1px solid map-get($colors, color1);
+		color: map-get($colors, color1);
+		@include transition(color, 200ms);
+	}
+}
+
+.btn_blue {
+	@include button(map-get($colors, color3));
+	color: white;
+	padding: 0.5em;
+	width: 8em;
+}
+
+.btn_forme {
+	@extend .btn-empty;
+	margin:auto;
+	margin-top: 2em;
+	width: 120px;
 }
 
 input[type="button"],
@@ -268,24 +304,6 @@ input[type="submit"] {
 
 }
 
-.btn-empty {
-	@include button(transparent);
-	border: 1px solid map-get($colors, color2);
-	color: map-get($colors, color2);
-	max-width: 200px;
-	padding: 0.5em;
-	&:hover {
-		color: map-get($colors, color2)!important;
-	}
-}
-
-.btn_blue {
-	@include button(map-get($colors, color3));
-	color: white;
-	padding: 0.6em;
-	width: 8em;
-}
-
 
 #msg {
 	color: red;
@@ -294,13 +312,18 @@ input[type="submit"] {
 	left: 40%;
 }
 
-.menu_square {
-    @include square(10em);
-    a {text-decoration: none;
+#menu_square_top {
+	margin-top: 5em;
+	a {text-decoration: none;
     	color: white;
-    	text-transform: uppercase;
-    }
+    	}
+    .menu_square {
+    	@include square(10em);
+    	margin: 1em;
 }
+}
+
+
 
 input[type=checkbox] {
   margin: 0.5em;
@@ -324,6 +347,10 @@ input[type=checkbox] {
 		padding: 2em;
 	}
 }
+
+ #changeh4 {text-align: center;
+ 			opacity: 0;
+ }
 /*--------------------------error handling------------------------------*/
 
 .error {

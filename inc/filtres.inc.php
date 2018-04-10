@@ -80,7 +80,7 @@ Class recherche {
 
 			   $club->setAttribute('id', $row['id']);
 			   $club->setAttribute('type', 'event');
-			   $club->setAttribute('name', $row['name']);
+			   $club->setAttribute('name', $row['titre_FR']);
 			   $club->setAttribute('address', $row['address']);
 			   $club->setAttribute('longt', $row['longt']);
 			   $club->setAttribute('lat', $row['lat']);

@@ -67,19 +67,22 @@ header {
       text-decoration: none;
       color: #AA2E00;
       text-transform: uppercase; }
+    .nav li a:hover {
+      border-bottom: 1px solid #FFAF44; }
   .nav #connexion {
     text-decoration: none;
+    color: #AA2E00;
     text-transform: uppercase; }
+    .nav #connexion:hover {
+      border-bottom: 1px solid #FFAF44; }
   .nav .active {
-    border-bottom: 1px solid #AA2E00;
-    padding-bottom: 0.3em; }
+    border-bottom: 1px solid #AA2E00; }
   .nav #user_icon {
     position: relative;
     top: -20px; }
   .nav .user_menu {
     background-color: #e2d4c0;
     color: black;
-    height: auto;
     width: 10em;
     position: absolute;
     padding: 1em;
@@ -91,7 +94,12 @@ header {
     .nav .user_menu a {
       display: block;
       text-decoration: none;
-      padding-top: 1em; }
+      padding-top: 0.5em;
+      padding-bottom: 0.5em;
+      width: 12em;
+      text-align: center;
+      position: relative;
+      right: 1em; }
     .nav .user_menu .menu_deco {
       border-bottom: 17px solid #e2d4c0;
       border-left: 17px solid transparent;
@@ -102,7 +110,18 @@ header {
       top: -0.9em;
       left: 3.9em; }
     .nav .user_menu #username {
-      padding: 1em; }
+      width: 10em;
+      height: 1em;
+      display: block;
+      padding: 0.5em;
+      padding-left: 1em;
+      padding-right: 1em;
+      position: relative;
+      border-bottom: 1px solid #fff7ed;
+      left: -1em;
+      top: -1em;
+      text-align: center;
+      z-index: 2; }
   .nav #lang div:first-child {
     border-bottom: 1px solid white; }
   .nav #lang div:active {
@@ -119,10 +138,28 @@ header {
     background-color: transparent !important; }
   .nav-scroll .menu > div > div {
     border: 1px solid white; }
+  .nav-scroll .menu_deco {
+    border-bottom: 17px solid #f2f2f2 !important;
+    border-left: 17px solid transparent;
+    border-right: 17px solid transparent;
+    width: 0;
+    height: 0; }
+  .nav-scroll #username {
+    background-color: #f2f2f2 !important;
+    color: black !important; }
 
 body section:first-of-type {
-  padding-top: 100px; }
+  padding-top: 80px; }
 
+/*effet hover sur le menu */
+.m_hover:hover {
+  background-color: #f2f2f2 !important;
+  -webkit-transition: background-color 200ms linear;
+  -ms-transition: background-color 200ms linear;
+  transition: background-color 200ms linear;
+  color: black !important; }
+
+/*-----------------------------------------------*/
 .row {
   padding-left: 5%;
   display: flex;
@@ -132,14 +169,14 @@ body section:first-of-type {
   .row .col-3 {
     width: 30vw; }
     .row .col-3 img {
-      width: 15vw;
+      width: 10vw;
       display: block;
       margin-left: auto;
       margin-right: auto; }
   .row span {
     display: block;
-    font: 1.3em Montserrat, sans-serif;
-    color: #323232;
+    font: 2em Montserrat, sans-serif;
+    color: #0C5574;
     text-align: center;
     padding: 3em; }
 
@@ -256,7 +293,68 @@ footer {
   background-attachment: fixed;
   background-position: center; }
 
-/*--------------- LISTE DES CLUBS -----------------------*/
+/*--------------- Diaporama en fenetre modal -----------------------*/
+#diaporama {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(2, 0, 0, 0.9);
+  z-index: 5;
+  position: fixed;
+  top: 0;
+  display: none; }
+  #diaporama div {
+    width: 60vw;
+    margin: auto; }
+  #diaporama img {
+    max-width: 60vw;
+    max-height: 80vh;
+    display: none;
+    margin: auto; }
+  #diaporama .arrows {
+    width: 99vw;
+    height: 10vh;
+    position: relative;
+    padding: 2em;
+    top: 0; }
+    #diaporama .arrows .arrow_left {
+      border-bottom: 30px solid transparent;
+      border-top: 30px solid white;
+      border-left: 30px solid transparent;
+      border-right: 30px solid transparent;
+      transform: rotate(90deg);
+      width: 0;
+      height: 0;
+      position: absolute;
+      left: 45vw;
+      z-index: 5; }
+    #diaporama .arrows .arrow_right {
+      border-bottom: 30px solid transparent;
+      border-top: 30px solid white;
+      border-left: 30px solid transparent;
+      border-right: 30px solid transparent;
+      transform: rotate(270deg);
+      width: 0;
+      height: 0;
+      position: absolute;
+      left: 55vw;
+      z-index: 5; }
+
+#fermer {
+  cursor: pointer;
+  position: absolute;
+  padding: 1em;
+  font-size: 3em;
+  color: white;
+  position: absolute;
+  right: 0;
+  top: 0;
+  margin-right: 1em;
+  z-index: 5; }
+
+.slideshowactive {
+  z-index: 9;
+  display: block !important; }
+
 /*--------------- PAGE CLUB -----------------------*/
 .revenir {
   margin-top: 3em; }
@@ -395,7 +493,8 @@ table {
   float: left;
   box-shadow: 3px 3px 5px rgba(150, 150, 150, 0.1);
   position: relative;
-  background-size: 25vw; }
+  background-size: 26vw;
+  background-position: center; }
   .club_item div {
     background-color: white;
     position: absolute;
@@ -404,3 +503,13 @@ table {
     padding-top: 1em; }
     .club_item div h4 {
       margin-left: 1em; }
+    .club_item div .btn_blue, .club_item div .btn-empty {
+      float: left;
+      margin-left: 2em;
+      width: 150px; }
+
+.club_item:hover {
+  background-size: 25.5vw;
+  -webkit-transition: background-size 500ms linear;
+  -ms-transition: background-size 500ms linear;
+  transition: background-size 500ms linear; }

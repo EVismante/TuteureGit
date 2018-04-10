@@ -7,6 +7,25 @@ include '_head.php';
 $page = "club";
 $id = $_GET["id"]; /*id de la page*/
 
+/*---fil d'Ariane--*/
+if (isset($_GET["p"])) {
+
+	if ($_GET["p"] == "clubs") {
+		$retour = "clubs.php";
+		$retour_text = "Revenir aux préstataires";
+	}
+	else if($_GET["p"] == "recherche") {
+		$retour = "recherche.php";
+		$retour_text = "Revenir à la recherche";
+	} else {
+		$retour = "index.php";
+		$retour_text = "Revenir à la page d'accueil";
+	}
+} else {
+	$retour = "index.php";
+	$retour_text = "Revenir à la page d'accueil";
+}
+/*-----*/
 $clubQuery = 'SELECT * FROM club WHERE id = '.$id.';';
 $result = $pdo->prepare($clubQuery);
 $result->execute();
@@ -62,8 +81,11 @@ $fav = $result1->rowCount();
 <body>
 <?php include("header.php"); ?>
 	<section class="content">
-	
-		<a class="revenir" href="recherche.php">Revenir à la recherche</a>
+	<!-- fil d'ariane -->
+		<a class="revenir" href="<?php echo $retour; ?>">
+		<?php echo $retour_text; ?>
+		</a>
+	<!-- fil d'ariane -->
 			<h1><?php echo $clubInfo[0]['name']; ?></h1>
 			<h4>
 <?php
@@ -122,17 +144,31 @@ $fav = $result1->rowCount();
 		</div>
 
 		<div class="right">
-
-	<?php
-	foreach ($img as $key => $value) {
-	?>
-			<img src="images/clubs/<?php echo $value["url"]; ?>" alt="<?php echo $clubInfo[0]['name']; ?>">
-	<?php
-	}
-
-	?>		
+			<img id="diapo" src="images/clubs/<?php echo $img[0]["url"]; ?>" alt="<?php echo $clubInfo[0]['name']; ?>">	
 		</div>
 	</section>
+	<div id="diaporama">
+		<span tabindex="0" id="fermer">&#x2716;</span>
+		<div class="arrows">
+<?php /*---fleches de la galerie ---*/
+	if (count($img) > 1) { ?>
+			<div tabindex="0" class="arrow_left"></div>	
+			<div tabindex="0" class="arrow_right"></div>	
+<?php	
+	}
+?>		</div>
+		<div> <!-- galerie -->
+			<?php
+	foreach ($img as $key => $value) {
+		if ($key == 0) {
+			echo '<img class="slideshowactive" src="images/clubs/'.$value["url"].'" alt="'.$clubInfo[0]['name'].'">';
+			echo "\n";
+		} else {
+			echo '<img src="images/clubs/'.$value["url"].'" alt="'.$clubInfo[0]['name'].'">';
+			echo "\n";
+		}}?>
+		</div>
+	</div>
 	<?php include("pages/footer.php"); ?>
 </body>
 </html>

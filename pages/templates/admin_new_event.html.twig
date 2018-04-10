@@ -4,11 +4,15 @@
 
 <section class="forme">
 		<h1 id="changejs">Nouveau évènement</h1>
-			<form class="edit_club" action="BackOffice/new_club_action.php" method="POST" enctype="multipart/form-data">
+			<form class="edit_club" action="Events/new_event_action.php" method="POST" enctype="multipart/form-data">
 				<div>
-					<input type="text" name="name" id="name">
+					<input type="text" name="name_FR" id="name_FR">
 					<br>
-					<label for="name">Nom * </label>
+					<label for="name_FR">Nom en français * </label>
+					<br>
+					<input type="text" name="name_EN" id="name_EN">
+					<br>
+					<label for="name_EN">Nom en anglais* </label>
 				</div>
 				<span class="arrow"></span>
 				<div>

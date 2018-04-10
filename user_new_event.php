@@ -1,7 +1,7 @@
 <?php
 require_once('_config.php');
 session_start();
-$page = "favoris";
+$page = "evenements";
 	//VERIFIER SI UTILISATEUR EST CONNECTE//
 	if ( !isset($_SESSION["type"]) ) {
 		header("Location: login.php");
@@ -21,13 +21,19 @@ include '_head.php';
 
 
 <section class="forme">
+	<a href="user_events.php">Retour à vos évènements</a>
 		<h1 id="changejs">Nouveau évènement</h1>
+		<h4 id="changeh4">Nouveau évènement</h4>
 			<form class="edit_club" action="pages/Events/new_event_action.php" method="POST" enctype="multipart/form-data">
 
 				<div>
-					<input type="text" name="name" id="name">
+					<input type="text" name="name_FR" id="name_FR">
 					<br>
-					<label for="name">* Nom </label>
+					<label for="name_FR">* Nom en français</label>
+					<br>
+					<input type="text" name="name_EN" id="name_EN">
+					<br>
+					<label for="name_EN">* Nom en anglais</label>
 				</div>
 				<span class="arrow"></span>
 				<div>
@@ -78,7 +84,7 @@ include '_head.php';
 				<div id="edit_btn">
 					<p id="error_msg">Veuillez bien remplir le formulaire</p>
 					<input type="submit" name="submit" id="submit_new_event" value="Envoyer">
-					<input type="button" name="Annuler" value="Annuler">
+					<a class ="btn_forme" href="user_events.php">Annuler</a>
 				</div>
 			</form>
 	</section>

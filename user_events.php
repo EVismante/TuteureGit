@@ -14,7 +14,7 @@ include '_head.php';?>
 /*-------------------------------*/
 <?php
 
-$query = 'SELECT event.id, event.name, images.url, event.date FROM event
+$query = 'SELECT event.id, event.titre_FR, images.url, event.date FROM event
 LEFT JOIN images ON event.id=images.event_id
 WHERE event.user_id='.$_SESSION["id"].'
 GROUP BY event.id;';
@@ -26,9 +26,8 @@ $count = $result->rowCount();
 
 ?>
 
-</head>
-<body>
-	<section class="office">
+
+	<section class="office clearfix">
 		<h1>Vos évènements</h1>
 		<br><br>
 		<a class = "btn" href="user_new_event.php">Nouveau évènement</a>
@@ -41,10 +40,21 @@ if ($count == 0) {
 	foreach ($events as $key => $value) {
 ?>
 	<div class="club_item" style="background-image: url('images/events/<?php echo $events[$key]['url'];?>');">
-		<a href="event.php?id=<?php echo $events[$key]['id']; ?>">
+		<a href="event.php?id=<?php echo $events[$key]['id']; ?>&p=userevents">
 		<div>
-			<h3><?php echo $events[$key]['name']; ?></h3>
+			<h3><?php echo $events[$key]['titre_FR']; ?></h3>
 			<h4><?php echo $events[$key]['date']; ?></h4>
+
+		<form action="user_edit_event.php" method="POST">
+			<input type="hidden" name="id" value="<?php echo $events[$key]['id']; ?>">
+			<input type="submit" value="Changer">
+		</form>
+
+		<form action="pages/Events/delete_event.php" method="POST">
+			<input type="hidden" name="id" value="<?php echo $events[$key]['id']; ?>">
+			<input type="hidden" name="page" value="user_events.php">
+			<input type="submit" class="delete" value="Supprimer">
+		</form>
 		</div>
 	</a>
 	</div>

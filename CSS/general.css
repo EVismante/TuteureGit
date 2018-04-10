@@ -12,6 +12,14 @@ body {
   overflow-x: hidden;
   line-height: 1.5em; }
 
+*::selection {
+  color: white;
+  background-color: #323232; }
+
+*::-moz-selection {
+  color: white;
+  background-color: #323232; }
+
 /*---------------------------------------------------*/
 h1 {
   font: 3em Montserrat, sans-serif;
@@ -130,7 +138,7 @@ header {
 /*---------FORMS------------------------*/
 input[type="text"], input[type="password"] {
   border-radius: 15px;
-  border: 1px solid;
+  border: 1px solid #323232;
   resize: vertical;
   font-family: Montserrat, sans-serif;
   height: 2em;
@@ -147,7 +155,7 @@ input[type="text"], input[type="password"] {
 
 textarea {
   border-radius: 15px;
-  border: 1px solid;
+  border: 1px solid #323232;
   resize: vertical;
   font-family: Montserrat, sans-serif;
   font-size: 1em;
@@ -167,10 +175,11 @@ label[for=file1],
 label[for=file2],
 label[for=file3] {
   /*pour les menus*/
-  font-size: 1.25em;
-  height: 8em;
-  width: 8em;
-  background-color: #AA2E00;
+  font-size: 1.5em;
+  height: 4em;
+  width: 4em;
+  background-color: #0C5574;
+  color: white;
   text-align: center;
   cursor: pointer;
   display: table-cell;
@@ -178,13 +187,13 @@ label[for=file3] {
   vertical-align: middle;
   color: white;
   display: inline-block;
-  padding: 1em;
+  padding: 3em;
   margin: 0.3em; }
   label[for=file0]:hover,
   label[for=file1]:hover,
   label[for=file2]:hover,
   label[for=file3]:hover {
-    background-color: #FFAF44;
+    background-color: #1177a2;
     -webkit-transition: background-color 200ms linear;
     -ms-transition: background-color 200ms linear;
     transition: background-color 200ms linear; }
@@ -192,16 +201,17 @@ label[for=file3] {
 .on_delete {
   /*utilise pour les upload des images*/
   background-size: 200px;
-  position: relative; }
+  position: relative;
+  background-position: center; }
   .on_delete:hover {
     background-image: none !important;
     transition: background-image, 1s; }
     .on_delete:hover span::after {
-      content: '\002715';
+      content: '\002716';
       font-size: 5em;
       color: white;
       display: block;
-      margin-top: 10px; }
+      margin-top: 0.3em; }
 
 #clearfix::after {
   content: " ";
@@ -260,7 +270,7 @@ input[type="submit"] {
   border-radius: 20px;
   text-transform: uppercase;
   text-align: center;
-  padding-top: 7px;
+  padding-top: 5px;
   margin-bottom: 1em;
   margin-top: 1em;
   text-decoration: none;
@@ -269,7 +279,7 @@ input[type="submit"] {
   font-size: 1.1em;
   background-color: #AA2E00;
   color: white;
-  padding: 0.6em;
+  padding: 0.5em;
   width: 8em; }
   .btn:hover, input[type="button"]:hover,
   input[type="submit"]:hover {
@@ -279,18 +289,12 @@ input[type="submit"] {
     -ms-transition: background-color 200ms linear;
     transition: background-color 200ms linear; }
 
-input[type="button"],
-input[type="submit"] {
-  border: 0;
-  margin-top: 0.2em;
-  margin-left: 1em; }
-
-.btn-empty {
+.btn-empty, .btn_forme {
   display: block;
   border-radius: 20px;
   text-transform: uppercase;
   text-align: center;
-  padding-top: 7px;
+  padding-top: 5px;
   margin-bottom: 1em;
   margin-top: 1em;
   text-decoration: none;
@@ -301,22 +305,26 @@ input[type="submit"] {
   border: 1px solid #AA2E00;
   color: #AA2E00;
   max-width: 200px;
-  padding: 0.5em; }
-  .btn-empty:hover {
+  padding: 0.4em; }
+  .btn-empty:hover, .btn_forme:hover {
     background-color: rgba(26, 26, 26, 0);
     color: white;
     -webkit-transition: background-color 200ms linear;
     -ms-transition: background-color 200ms linear;
     transition: background-color 200ms linear; }
-  .btn-empty:hover {
-    color: #AA2E00 !important; }
+  .btn-empty:hover, .btn_forme:hover {
+    border: 1px solid #FFAF44;
+    color: #FFAF44;
+    -webkit-transition: color 200ms linear;
+    -ms-transition: color 200ms linear;
+    transition: color 200ms linear; }
 
 .btn_blue {
   display: block;
   border-radius: 20px;
   text-transform: uppercase;
   text-align: center;
-  padding-top: 7px;
+  padding-top: 5px;
   margin-bottom: 1em;
   margin-top: 1em;
   text-decoration: none;
@@ -325,7 +333,7 @@ input[type="submit"] {
   font-size: 1.1em;
   background-color: #0C5574;
   color: white;
-  padding: 0.6em;
+  padding: 0.5em;
   width: 8em; }
   .btn_blue:hover {
     background-color: #1177a2;
@@ -334,32 +342,46 @@ input[type="submit"] {
     -ms-transition: background-color 200ms linear;
     transition: background-color 200ms linear; }
 
+.btn_forme {
+  margin: auto;
+  margin-top: 2em;
+  width: 120px; }
+
+input[type="button"],
+input[type="submit"] {
+  border: 0;
+  margin-top: 0.2em;
+  margin-left: 1em; }
+
 #msg {
   color: red;
   position: fixed;
   top: 80px;
   left: 40%; }
 
-.menu_square {
-  /*pour les menus*/
-  font-size: 1.25em;
-  height: 10em;
-  width: 10em;
-  background-color: #AA2E00;
-  text-align: center;
-  cursor: pointer;
-  display: table-cell;
-  /* comportement visuel de cellule */
-  vertical-align: middle; }
-  .menu_square:hover {
-    background-color: #FFAF44;
-    -webkit-transition: background-color 200ms linear;
-    -ms-transition: background-color 200ms linear;
-    transition: background-color 200ms linear; }
-  .menu_square a {
+#menu_square_top {
+  margin-top: 5em; }
+  #menu_square_top a {
     text-decoration: none;
+    color: white; }
+  #menu_square_top .menu_square {
+    /*pour les menus*/
+    font-size: 1.5em;
+    height: 10em;
+    width: 10em;
+    background-color: #0C5574;
     color: white;
-    text-transform: uppercase; }
+    text-align: center;
+    cursor: pointer;
+    display: table-cell;
+    /* comportement visuel de cellule */
+    vertical-align: middle;
+    margin: 1em; }
+    #menu_square_top .menu_square:hover {
+      background-color: #1177a2;
+      -webkit-transition: background-color 200ms linear;
+      -ms-transition: background-color 200ms linear;
+      transition: background-color 200ms linear; }
 
 input[type=checkbox] {
   margin: 0.5em; }
@@ -379,6 +401,10 @@ input[type=checkbox] {
   .row3 div {
     width: 30%;
     padding: 2em; }
+
+#changeh4 {
+  text-align: center;
+  opacity: 0; }
 
 /*--------------------------error handling------------------------------*/
 .error {

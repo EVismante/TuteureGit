@@ -244,11 +244,11 @@
               var type = markerElem.getAttribute('type');
                 if (type =="club") {
                    button.classList.add("btn");
-                  button.setAttribute("href", 'club.php?id='+idclub);
+                  button.setAttribute("href", 'club.php?id='+idclub+'&p=recherche');
                 }
                 if (type =="event") {
                    button.classList.add("btn_blue");
-                  button.setAttribute("href", 'event.php?id='+idclub);
+                  button.setAttribute("href", 'event.php?id='+idclub+'&p=recherche');
                 }
 
               button.textContent = "Consulter";

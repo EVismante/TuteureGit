@@ -1,7 +1,8 @@
 <?php
 require_once('../../_config.php');
 
-$name = $_POST["name"];
+$name_EN = $_POST["name_EN"];
+$name_FR = $_POST["name_FR"];
 
 $fr = $_POST["description_FR"];
 $en = $_POST["description_EN"];
@@ -12,6 +13,7 @@ $date = $_POST["date"];
 $address = $_POST["address"];
 $user_id = $_POST["user_id"];
 $id = $_POST["id"];
+$retour = $_POST["retour"];
 
 /*-------------------Function geocode-------------------------------- */
 include '../../inc/geocode.inc.php';
@@ -21,7 +23,8 @@ $lat = $geo_data['lat'];
 
 
 $queryEvent = "UPDATE event SET 
-name = '$name', 
+titre_FR = '$name_FR', 
+titre_EN = '$name_EN',
 address = '$address',
 website = '$website',
 date = '$date',
@@ -33,7 +36,6 @@ description_EN = '$en',
 user_id = '$user_id'
 WHERE id = ".$id.";";
 
-echo $queryEvent;
 
 $result = $pdo->prepare($queryEvent);
 $result->execute();
@@ -74,11 +76,11 @@ if (isset($_POST["delete_img"])) {
 };
 
 /*-------------------REDIRECTION-------------------------------- */
-
-header('Location: ../admin_events.php?msg=success');
-    //if ($_SESSION["type"] == "pro") { header('Location: ../index.php?msg=Le+club+a+ete+ajoute+avec+success');}
-    //if ($_SESSION["type"] == "admin") { header('Location: ../admin_clubs.php?msg=success'); }
-
+if ($retour == "user") {
+    header('Location: ../../user_events.php?msg=success');
+} else {
+    header('Location: ../admin_events.php?msg=success');
+}
 
 
 ?>

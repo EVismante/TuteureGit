@@ -2,6 +2,7 @@
 window.onload = function() {
 
 
+
 $(".delete").on("click", function() {
   var msg = confirm("Voulez vous supprimer cet élèment?");
   if(msg) {
@@ -9,6 +10,52 @@ $(".delete").on("click", function() {
   } else { return false;}
 })
 
+/*fenetre modal d'une diaporama*/
+/*----------------------------------------------------*/
+$("#diapo").on("click", function() {
+ $("#diaporama").css("display", "block");
+})
+
+$("#fermer").on("click", function() {
+ $("#diaporama").css("display", "none");
+})
+
+$(".arrow_right").on("click", function() {
+ suivante("next");
+})
+
+$(".arrow_left").on("click", function() {
+ suivante("prev");
+})
+
+  function suivante($sens) {
+    var active = $("#diaporama .slideshowactive");
+    var end = $('#diaporama img').last();
+    var start = $('#diaporama img').first();
+    var next;
+    if($sens == "next") {
+        if (active.is(end)) {
+          next = start;
+        } else {
+          next = active.next();
+        }
+    } else {
+      if (active.is(start)) {
+          next = end;
+        } else {
+          next = active.prev();
+        };
+    }
+    
+    next.css('z-index', 2);
+active.fadeOut(0, function() {
+    active.css('z-index', 1).show().removeClass("slideshowactive");
+    next.css('z-index', 3).addClass("slideshowactive");
+
+});
+
+  }
+/*-------------------------------------------*/
 /*animation de changement de H1 sur les pages des insertion de données*/
 var initialvalue = $("#changejs").html(); //valeur initiale de H1
 $("#name").on("input", function() {
@@ -16,8 +63,10 @@ $("#name").on("input", function() {
   var text = $("#name").val();
   if (text.length > 0) {
     $("#changejs").html(text);
+    $("#changeh4").css("opacity", "1");
   } else {
     $("#changejs").html(initialvalue);
+    $("#changeh4").css("opacity", "0");
   }
 
 })
@@ -136,12 +185,13 @@ $("#msg").click(function() {
 });
 
     $("#submit_new_event").bind("click", function() {
-  var t1 = validate_length('input[name="name"]', 1);
-  var t2 = validate_length('input[name="address"]', 1);
+  var t1 = validate_length('input[name="name_FR"]', 2);
+  var t2 = validate_length('input[name="address"]', 2);
   var t3 = validate_length('input[name="date"]', 1);
+  var t4 = validate_length('input[name="name_EN"]', 1);
 
 
-  if(t1 && t2 && t3) {
+  if(t1 && t2 && t3 && t4) {
     return true;
   } else { 
     $("#error_msg").css("display", "block");
@@ -149,7 +199,16 @@ $("#msg").click(function() {
 });
 
 
+  $("#submit_new_article").bind("click", function() {
+  var t1 = validate_length('input[name="titre_FR"]', 1);
+  var t2 = validate_length('input[name="article_FR"]', 1);
 
+  if(t1 && t2) {
+    return true;
+  } else { 
+    $("#error_msg").css("display", "block");
+    return false; }
+});
 
 
 /*------------Forme d'inscription: validation des données---------------------*/
@@ -357,7 +416,7 @@ $("#filtres span").click(function() {
   $("+div", this).slideToggle();
 })
 
-}
+}  /*ICI LA FIN DE ONLOAD JE SUPPOSE*/
 
 /*----------filtrer les résultats de la recherche------------------*/
 
@@ -381,14 +440,6 @@ function search() {
     }
   }
 }
-/*----------Gestion des clubs et evenements------------------*/
-
-  $( function() {
-    $( "#datepicker" ).datepicker({
-    dateFormat: "yy-mm-dd"
-});
-  } );
-
 
 /*---------------------FAVORIS----------------------------*/
 
@@ -420,6 +471,14 @@ function addFavori(page_id, page_type, poof) { // poof supprime l'element sur la
         });
 
 }
+
+/*----------Gestion des clubs et evenements------------------*/
+
+  $( function() {
+    $( "#datepicker" ).datepicker({
+    dateFormat: "yy-mm-dd"
+});
+  } );
 
 
 

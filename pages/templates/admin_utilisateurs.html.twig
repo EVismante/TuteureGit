@@ -8,12 +8,14 @@
 		<input type="text" id="myInput" onkeyup="search()" placeholder="Cherchez..">
 		<table id="myTable">
 			<tr>
+				<th>ID</th>
 				<th>Utilisateur</th>
 				<th>Mail</th>
 				<th>Type</th>
 			</tr>
 			{% for user in users %}
 			<tr>
+				<td>{{user.id}}</td>
 				<td>{{user.name}}</td>
 				<td>{{user.mail}}</td>
 				<td>{{user.type}}</td>

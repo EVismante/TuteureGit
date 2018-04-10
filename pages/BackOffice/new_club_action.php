@@ -4,11 +4,11 @@ require_once ('../../inc/images.inc.php');
 
 $name = $_POST["name"];
 
-$fr = $_POST["description_FR"];
-$en = $_POST["description_EN"];
+$fr = addslashes($_POST["description_FR"]);
+$en = addslashes($_POST["description_EN"]);
 
-$website = $_POST["site_web"];
-$mail = $_POST["mail"];
+$website = addslashes($_POST["site_web"]);
+$mail = addslashes($_POST["mail"]);
 $phone = $_POST["telephone"];
 $address = $_POST["address"];
 $user_id = $_POST["user_id"];
@@ -39,7 +39,6 @@ VALUES ('$name',
 $result = $pdo->prepare($queryClub);
 $result->execute();
 
-
 /*-------------------INSERTION DES TAGS-------------------------------- */
 
 /*trouve le dernier ID du club */
@@ -50,6 +49,15 @@ $maxId = $r->fetch();
 
 $maxId=$maxId["MAX(id)"];
 
+/*-------club belongs table -----*/
+$queryBelongs = "
+INSERT INTO club_belongs (user_id, club_id)
+VALUES ('$user_id', '$maxId');
+";
+$result1 = $pdo->prepare($queryBelongs);
+$result1->execute();
+var_dump($queryBelongs);
+/*----*/
 
 /*une fonction qui construit la réquete des tags du club*/
 

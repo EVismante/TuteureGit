@@ -2,13 +2,14 @@
 require_once('../../_config.php');
 require_once ('../../inc/images.inc.php');
 
-$name = $_POST["name"];
+$name_FR = addslashes($_POST["name_FR"]);
+$name_EN = addslashes($_POST["name_EN"]);
 
-$fr = $_POST["description_FR"];
-$en = $_POST["description_EN"];
+$fr = addslashes($_POST["description_FR"]);
+$en = addslashes($_POST["description_EN"]);
 
-$website = $_POST["site_web"];
-$mail = $_POST["mail"];
+$website = addslashes($_POST["site_web"]);
+$mail = addslashes($_POST["mail"]);
 $date = $_POST["date"];
 $address = $_POST["address"];
 $user_id = $_POST["user_id"];
@@ -22,8 +23,9 @@ $lat = $geo_data["lat"];
 
 
 $queryEvent = "
-INSERT INTO event (name, address, website, date, mail, longt, lat, description_FR, description_EN, user_id)
-VALUES ('$name',
+INSERT INTO event (titre_FR, titre_EN, address, website, date, mail, longt, lat, description_FR, description_EN, user_id)
+VALUES ('$name_FR',
+        '$name_EN',
         '$address',
         '$website',
         '$date',
@@ -35,7 +37,7 @@ VALUES ('$name',
         '$user_id'
 );";
 
-
+var_dump($queryEvent);
 $result = $pdo->prepare($queryEvent);
 $result->execute();
 
@@ -81,10 +83,6 @@ if ($retour == "user") {
 } else {
     header('Location: ../admin_events.php?msg=success');
 }
-
-    //if ($_SESSION["type"] == "pro") { header('Location: ../index.php?msg=Le+club+a+ete+ajoute+avec+success');}
-    //if ($_SESSION["type"] == "admin") { header('Location: ../admin_clubs.php?msg=success'); }
-
 
 
 ?>

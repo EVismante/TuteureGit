@@ -35,9 +35,9 @@ $makeXML = new recherche;
 
 /*-----------------------------------------------------------------------------*/
 $query_event = "
-SELECT id, name, address, longt, lat  FROM event
+SELECT id, titre_FR, address, longt, lat  FROM event
 WHERE 
-( name LIKE :recherche
+( titre_FR LIKE :recherche
 OR
 address LIKE :recherche
 OR

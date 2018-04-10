@@ -40,6 +40,7 @@ left: 70px;
 	}
 
 .nav {
+
 	position: fixed;
 	width: 100vw;
 	height: 80px;
@@ -62,14 +63,20 @@ left: 70px;
 		margin-right: 30px;
 		a {text-decoration: none;
 			color: map-get($colors, color2);
-			text-transform: uppercase;}
+			text-transform: uppercase;
+		}
+		a:hover {border-bottom: 1px solid map-get($colors, color1);
+		}
 	}
 	#connexion { text-decoration: none;
-			color: map-get($colors, lightblue);
-			text-transform: uppercase; };
+		color: map-get($colors, color2);
+			text-transform: uppercase; 
+			&:hover {border-bottom: 1px solid map-get($colors, color1);
+			}
+		};
 
 	.active {border-bottom: 1px solid map-get($colors, color2);
-		padding-bottom: 0.3em;}
+		}
 
 	
 	#user_icon {
@@ -80,20 +87,23 @@ left: 70px;
 	.user_menu {
 		background-color: (map-get($colors, background2));
 		color: black;
-		height: auto;
 		width: 10em;
 		position: absolute;
-		padding:1em;
+		padding: 1em;
 		top: 2.6em;
 		right: -6em;
 		display: none;
 		box-shadow: 3px 3px 5px rgba(150, 150, 150, 0.1);
 		border-radius: 5px;
-
 		a {
 			display: block;
 			text-decoration: none;
-			padding-top: 1em;
+			padding-top: 0.5em;
+			padding-bottom: 0.5em;
+			width: 12em;
+			text-align: center;
+			position: relative;
+			right: 1em;
 		}
 		.menu_deco {
 		@include arrow(up, 17px, map-get($colors, background2));
@@ -101,12 +111,22 @@ left: 70px;
 	  	top: -0.9em;
 	  	left: 3.9em;
 		}
-
 		#username { 
-			
-			padding: 1em;
-		}
+			width: 10em;
+			height: 1em;
+			display: block;
+			padding: 0.5em;
+			padding-left: 1em;
+			padding-right: 1em;
+			position: relative;
+			border-bottom: 1px solid map-get($colors, background);
+			left: -1em;
+			top: -1em;
+			text-align: center;
+			z-index: 2;
 
+
+		}
 	}
 	#lang {
 		div:first-child {border-bottom: 1px solid white; }
@@ -123,16 +143,26 @@ left: 70px;
 		background-color: transparent!important;
 	}
 	.menu>div>div {border: 1px solid white;}
-	
+	.menu_deco { 
+		@include arrow(up, 17px, map-get($colors, lightgrey)!important);
+	  }
+	  #username {
+	  	background-color: map-get($colors, lightgrey)!important;
+	  	color: black!important;
+	  }
 }
 
 body section:first-of-type {
-	padding-top: 100px;
+	padding-top: 80px;
 }
 
-
-
-
+/*effet hover sur le menu */
+.m_hover:hover {
+	background-color: map-get($colors, lightgrey)!important;
+	@include transition(background-color, 200ms);
+	color: black!important;
+}
+/*-----------------------------------------------*/
 .row {
 	padding-left: 5%;
 	display: flex;
@@ -141,7 +171,7 @@ body section:first-of-type {
 	margin-bottom: 10vh;
 	.col-3 {width: 30vw;
 		img {
-			width: 15vw;
+			width: 10vw;
 			display: block;
 		    margin-left: auto;
 		    margin-right: auto;
@@ -149,8 +179,8 @@ body section:first-of-type {
 	}
 	span {
 		display: block;
-		font: map-get($fonts, h3);
-		color: map-get($colors, text);
+		font: map-get($fonts, h2);
+		color: map-get($colors, color3);
 		text-align: center;
 		padding: 3em;
 	}
@@ -271,6 +301,7 @@ footer {
 	width: 90vw;
 	margin: auto;
 	height: auto;
+
 }
 
 .head_img {width: 100vw;
@@ -282,8 +313,62 @@ footer {
     	background-position: center; 
 }
 
-/*--------------- LISTE DES CLUBS -----------------------*/
+/*--------------- Diaporama en fenetre modal -----------------------*/
+#diaporama {
+	width: 100vw;
+	height: 100vh;
+	background-color: rgba(2, 0, 0, 0.9);
+	z-index: 5;
+	position: fixed;
+	top:0;
+	display: none;
+	div {
+		width: 60vw;
+		margin: auto;
+	}
+	img {max-width: 60vw;
+		max-height: 80vh;
+		display: none;
+		margin: auto;
+	}
+	.arrows {
+		width: 99vw;
+		height: 10vh;
+		position: relative;
+		padding: 2em;
+		top:0;
+		.arrow_left {
+			@include arrow(left, 30px, white);
+			position: absolute;
+			left: 45vw;
+			z-index:5;
+			}
+		.arrow_right {
+			@include arrow(right, 30px, white);
+			position: absolute;
+			left: 55vw;
+			z-index:5;
+			}
+	}
+}
 
+		#fermer {
+			cursor: pointer;
+			position: absolute;
+			padding: 1em;
+			font-size: 3em;
+			color: white;
+			position: absolute;
+			right: 0;
+			top: 0;
+			margin-right: 1em;
+			z-index:5;
+		}
+
+.slideshowactive {
+	z-index: 9;
+	display: block!important;
+}
 
 /*--------------- PAGE CLUB -----------------------*/
 .revenir {margin-top: 3em;}
@@ -303,7 +388,8 @@ footer {
 	}
 	img:nth-of-type(2), img:nth-of-type(3), 
 	img:nth-of-type(4), img:nth-of-type(5) 
-	 { display: none; }
+	 { display: none; 
+	 }
 
 }
 
@@ -441,7 +527,8 @@ margin: auto;}
 	float: left;
 	box-shadow: 3px 3px 5px rgba(150, 150, 150, 0.1);
 	position: relative;
-	background-size: 25vw;
+	background-size: 26vw;
+	background-position: center;
 	div {
 		background-color: white;
 		position: absolute;
@@ -449,8 +536,15 @@ margin: auto;}
 		width: 100%;
 		padding-top: 1em;
 		h4 {margin-left: 1em;}
-		
+		.btn_blue, .btn-empty {float: left;
+				margin-left: 2em;
+				width: 150px;
+
+		}
 	}
 }
 
+.club_item:hover {background-size: 25.5vw;
+	@include transition(background-size, 500ms);
+}
 

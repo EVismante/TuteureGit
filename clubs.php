@@ -41,7 +41,7 @@ $page="clubs";
 	foreach ($articles as $key => $value) {
 	$id = $articles[$key]['id'];
 
-?>	<a href="club.php?id=<?php echo $articles[$key]['id']; ?>">
+?>	<a href="club.php?id=<?php echo $articles[$key]['id']; ?>&p=clubs">
 		<div class="club_item" style="background-image: url('images/clubs/<?php echo $articles[$key]['url'];?>');">
 				<div>
 					<h3><?php echo $articles[$key]['name']; ?></h3>

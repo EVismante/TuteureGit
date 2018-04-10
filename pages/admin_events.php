@@ -29,7 +29,7 @@ if (!isset($_SESSION["name"])) { header('Location: BackOffice/_nopermission.php'
 
 /*-------------------------------*/
 
-$query = 'SELECT event.name, event.date, users.name, event.id  FROM event LEFT JOIN users ON event.user_id=users.id;';
+$query = 'SELECT event.titre_FR, event.date, users.name, event.id  FROM event LEFT JOIN users ON event.user_id=users.id;';
 $result = $pdo->prepare($query);
 $result->execute();
 $events = $result->fetchAll();

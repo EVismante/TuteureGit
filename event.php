@@ -7,6 +7,26 @@ include '_head.php';
 $page = "event";
 $id = $_GET["id"];
 
+/*---fil d'Ariane--*/
+if (isset($_GET["p"])) {
+
+	if ($_GET["p"] == "events") {
+		$retour = "evenements.php";
+		$retour_text = "Revenir aux évènements";
+	}
+	else if($_GET["p"] == "recherche") {
+		$retour = "recherche.php";
+		$retour_text = "Revenir à la recherche";
+	} else if($_GET["p"] == "userevents") {
+		$retour = "user_events.php";
+		$retour_text = "Revenir à vos évènements";
+	}
+} else {
+	$retour = "index.php";
+	$retour_text = "Revenir à la page d'accueil";
+}
+/*-----*/
+
 $clubQuery = 'SELECT * FROM event WHERE id = '.$id.';';
 $result = $pdo->prepare($clubQuery);
 $result->execute();
@@ -43,9 +63,13 @@ $fav = $result1->rowCount();
 <?php include("header.php"); ?>
 	<section class="content">
 		
-		<a class="revenir" href="recherche.php">Revenir à la recherche</a>
+	<!-- fil d'ariane -->
+		<a class="revenir" href="<?php echo $retour; ?>">
+		<?php echo $retour_text; ?>
+		</a>
+	<!-- fil d'ariane -->
 		<div>
-			<h1><?php echo $clubInfo[0]['name']; ?></h1>
+			<h1><?php echo $clubInfo[0]['titre_FR']; ?></h1>
 			<h4><?php echo $clubInfo[0]['date']; ?></h4>
 			<div class="left">
 			<hr/>

@@ -3,11 +3,15 @@
 {% block section %}
 <section class="forme">
 		<h1>Éditer {{event_name}}</h1>
-			<form class="edit_club" action="BackOffice/edit_club_action.php" method="POST" enctype="multipart/form-data">
+			<form class="edit_club" action="Events/edit_event_action.php" method="POST" enctype="multipart/form-data">
 				<div>
-					<input type="text" name="name" id="name" value="{{event_name}}">
+					<input type="text" name="name_FR" id="name_FR" value="{{event_name}}">
 					<br>
-					<label for="name">* Nom</label>
+					<label for="name_FR">* Nom en français</label>
+					<br>
+					<input type="text" name="name_EN" id="name_EN" value="{{event_name_EN}}">
+					<br>
+					<label for="name_EN">* Nom en anglais</label>
 				</div>
 				<span class="arrow"></span>
 				<div>
@@ -23,18 +27,18 @@
 				<span class="arrow"></span>
 
 				<div id="edit_contacts">
+					<input type="text" name="date" id="datepicker" value="{{date}}">
+					<br>
+					<label for="datepicker">* Date du début</label>
+					<br>
 					<input type="text" name="site_web" id="site_web" value="{{website}}">
 					<br>
 					<label for="site_web">Site web</label>
-					<br><br>
+					<br>
 					<input type="text" name="mail" id="mail" value="{{mail}}">
 					<br>
 					<label for="mail">Mail</label>
-					<br><br>
-					<input type="text" name="telephone" id="telephone" value="{{telephone}}">
 					<br>
-					<label for="telephone">Téléphone</label>
-					<br><br>
 					<input type="text" name="address" id="autocomplete" value="{{address}}">
 					<br>
 					<label for="autocomplete">* Adresse</label>
@@ -50,7 +54,7 @@
 					<div class="input_images">
 						<input name="files[]" id="file{{loop.index}}" type="file" accept="image/*"/> 
 						<input class = "image_checkbox" type="checkbox" name="delete_img[]" value="{{img.id}}">
-	           			<label for="file{{loop.index}}" class="on_delete"  style="background-image: url('../images/clubs/{{img.url}}'); ">
+	           			<label for="file{{loop.index}}" class="on_delete"  style="background-image: url('../images/events/{{img.url}}'); ">
 	           			 	<span>
 	           			 	</span>
 	           			</label>

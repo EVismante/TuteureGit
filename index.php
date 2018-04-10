@@ -15,7 +15,7 @@ $result = $pdo->prepare($query);
 $result->execute();
 $clubs = $result->fetchAll();
 
-$query1="SELECT event.id, event.name, images.url FROM event
+$query1="SELECT event.id, event.titre_FR, images.url FROM event
 LEFT JOIN images ON images.event_id=event.id
 GROUP BY event.id
 LIMIT 3
@@ -109,7 +109,7 @@ $events = $result->fetchAll();
 ?>	<a href="event.php?id=<?php echo $events[$key]['id']; ?>">
 		<div class="club_item" style="background-image: url('images/events/<?php echo $events[$key]['url'];?>');">
 			<div>
-				<h4><?php echo $events[$key]['name']; ?></h4>
+				<h4><?php echo $events[$key]['titre_FR']; ?></h4>
 			</div>
 		</div>
 		</a>
