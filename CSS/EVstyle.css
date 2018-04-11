@@ -185,20 +185,13 @@ body section:first-of-type {
     text-align: center;
     padding: 3em; }
 
-#clubs, #events, #inscrire {
+/*--------------------------recherche liste ----------------------*/
+#clubs, #events0, #inscrire {
   padding-top: 100px; }
 
-#events, #clubs {
+#events0, #clubs {
   margin-bottom: 10vh; }
-  #events > div > a, #clubs > div > a {
-    display: block;
-    float: left;
-    background-color: white;
-    padding: 1em;
-    box-shadow: 3px 3px 5px rgba(150, 150, 150, 0.1);
-    margin-left: 1em; }
 
-/**/
 .colored {
   height: auto; }
   .colored img {
@@ -212,12 +205,57 @@ body section:first-of-type {
 
 .etiquette {
   display: block;
-  float: left;
   background-color: white;
   padding: 1em;
   box-shadow: 3px 3px 5px rgba(150, 150, 150, 0.1);
-  margin-left: 1em;
-  width: 200px; }
+  margin: auto;
+  width: 200px;
+  float: left; }
+
+.choix {
+  width: 100%;
+  display: table;
+  margin: -1em;
+  margin-bottom: 1em; }
+
+#liste1, #liste2 {
+  background-color: #e2d4c0;
+  width: 50%;
+  display: table-cell;
+  padding: 0.5em;
+  cursor: pointer; }
+
+#liste1 {
+  background-color: lightblue; }
+
+.liste_clubs h3 {
+  width: 100%; }
+
+.liste_events {
+  display: none; }
+
+#liste > div {
+  border-bottom: 1px solid grey;
+  padding-left: 1em;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em; }
+#liste div:last-of-type {
+  margin-left: 3.5em; }
+#liste span {
+  font-size: 0.9em; }
+#liste > div:hover {
+  background-color: #f2f2f2; }
+#liste h3 {
+  margin: 0; }
+#liste .club_icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 25px;
+  background-color: white;
+  margin: 0.5em;
+  float: left; }
+#liste .heart_icon {
+  z-index: 9; }
 
 /*---------------------------------------------------*/
 footer {
@@ -265,7 +303,7 @@ footer {
   /*paneau d'affichage des filtres */
   position: absolute;
   z-index: 1;
-  background-color: white;
+  background-color: #fff7ed;
   width: 380px;
   height: 90vh;
   overflow-x: hidden;
@@ -275,29 +313,29 @@ footer {
   .result_paneau #filtres div {
     margin-top: 1em;
     margin-bottom: 1em; }
-  .result_paneau #filtres span {
+  .result_paneau #filtres > span {
     /*sections des filtres*/
     display: block;
-    background-color: #FFAF44;
+    background-color: #e2d4c0;
     color: #323232;
-    width: 105%;
-    padding: 1em;
+    width: 100%;
+    padding: 0.5em;
     position: relative;
-    cursor: pointer; }
-  .result_paneau #liste > div {
-    border-bottom: 1px solid #f2f2f2;
-    padding-left: 1em; }
-  .result_paneau #liste > div:hover {
-    background-color: #f2f2f2; }
-  .result_paneau #liste h3 {
-    margin: 0; }
-  .result_paneau #liste .club_icon {
-    width: 50px;
-    height: 50px;
-    border-radius: 25px;
-    background-color: white;
-    margin: 0.5em;
-    float: left; }
+    cursor: pointer;
+    border-bottom: 1px solid grey; }
+  .result_paneau #filtres .arrow_show {
+    border-top: 10px solid #323232;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    width: 0;
+    height: 0;
+    float: right;
+    margin-right: 2em;
+    margin-top: 0.5em; }
+  .result_paneau #search_btn1 {
+    margin: auto;
+    margin-top: 1em;
+    margin-bottom: 1em; }
 
 #make_smaller {
   /*button pour reduire le paneau des filtres*/
@@ -325,11 +363,6 @@ footer {
   margin: 1em;
   margin-bottom: 2em;
   width: 320px; }
-
-.content {
-  width: 90vw;
-  margin: auto;
-  height: auto; }
 
 .head_img {
   width: 100vw;
@@ -550,18 +583,19 @@ table {
   height: 35vh;
   min-height: 15em;
   background-color: white;
-  margin: 1em;
+  margin: 1.5em;
   float: left;
   box-shadow: 3px 3px 5px rgba(150, 150, 150, 0.1);
   position: relative;
-  background-size: 26vw;
-  background-position: center; }
+  background-size: 27vw; }
   .club_item div {
     background-color: white;
     position: absolute;
     bottom: 0;
-    width: 100%;
-    padding-top: 1em; }
+    width: 95%;
+    padding-top: 1em;
+    padding-left: 5%;
+    padding-bottom: 1em; }
     .club_item div h4 {
       margin-left: 1em; }
     .club_item div .btn_blue, .club_item div .btn-empty {
@@ -570,7 +604,13 @@ table {
       width: 150px; }
 
 .club_item:hover {
-  background-size: 25.5vw;
+  background-size: 27.5vw;
   -webkit-transition: background-size 500ms linear;
   -ms-transition: background-size 500ms linear;
   transition: background-size 500ms linear; }
+
+.content {
+  width: 84vw;
+  margin: auto;
+  height: auto;
+  margin-bottom: 5em; }

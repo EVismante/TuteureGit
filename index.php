@@ -64,7 +64,7 @@ $events = $result->fetchAll();
 			</a>
 		</div>
 		<div class="col-3">
-			<a href="index.php#events">
+			<a href="index.php#events0">
 				<img src="images/website/1.svg">
 				<span>Participez aux évènements de la région</span>
 			</a>
@@ -91,10 +91,11 @@ $events = $result->fetchAll();
 <?php
 	}
 ?>
-<div><a href="clubs.php">Voir tous les clubs</a></div>
-
-
+	<div class="etiquette">
+		<a href="clubs.php">Voir tous les clubs</a>
+	</div>
 </section>
+
 
 	<section class="colored clearfix">
 <?php
@@ -109,7 +110,7 @@ $events = $result->fetchAll();
 		</div>
 	</section>
 
-	<section class="content clearfix" id="events">
+	<section class="content clearfix" id="events0">
 		<h2>Sortir</h2>
 <?php
 	foreach ($events as $key => $value) {
@@ -123,7 +124,7 @@ $events = $result->fetchAll();
 <?php
 	}
 ?>
-		<div><a href="events.php">Voir tous les évènements</a></div>
+		<div class="etiquette"><a href="events.php">Voir tous les évènements</a></div>
 	</section>
 
 	<section class="colored" id="inscrire">

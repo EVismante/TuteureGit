@@ -20,7 +20,7 @@ $stmt = $pdo->prepare($query);
 </head>
 <body>
 	<?php include("header.php"); ?>
-<section>
+<section class="content">
 	<h1>Evenements</h1>
 <?php
 	foreach ($events as $key => $value) {

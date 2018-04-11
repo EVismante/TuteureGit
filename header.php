@@ -70,6 +70,9 @@
 							<a <?php if($page=='evenements'){echo 'class="active"';}?> href="evenements.php">Evènements</a>
 						</li>
 						<li tabindex="0">
+							<a <?php if($page=='clubs'){echo 'class="active"';}?> href="clubs.php">Préstataires</a>
+						</li>
+						<li tabindex="0">
 							<a <?php if($page=='decouvrir'){echo 'class="active"';}?> href="decouvrir.php">Découvrir</a>
 						</li>
 						<li tabindex="0">

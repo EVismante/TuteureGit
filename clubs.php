@@ -1,7 +1,7 @@
 <?php
 
 require_once('_config.php');
-
+$page = "clubs";
 session_start();
 	//VERIFIER SI UTILISATEUR EST CONNECTE//
 	if ( !isset($_SESSION["user"]) ) {
@@ -35,7 +35,7 @@ $page="clubs";
 <body>
 	<?php include($header); ?>
 
-<section class="content">
+<section class="content clearfix">
 	<h1>Derniers préstataires</h1>
 <?php
 	foreach ($articles as $key => $value) {
@@ -48,7 +48,8 @@ $page="clubs";
 					<span>
 <?php include "inc/evaluation.inc.php"; /*évaluation de préstataire*/?>
 					</span>
-					<span>Commentaires(<?php echo $articles[$key]['comments']; ?>)</span>
+					<br>
+					<span>Commentaires (<?php echo $articles[$key]['comments']; ?>)</span>
 				</div>
 			</div>
 	</a>

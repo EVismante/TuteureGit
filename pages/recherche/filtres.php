@@ -23,32 +23,35 @@ function filtre($pdo, $x)
 
 		
 			<input type="text" name="club" placeholder="Club, préstation, véterinaire..." id="searchbox">
-		<div>
-
 			<input type="checkbox" name="clubs_choix" id="prestations" checked>
 			<label for="prestations">Préstataires</label>
 			<input type="checkbox" name="events" id="events" checked>
 			<label for="events">Evènements</label>
-			
-		</div>
+
 		<div id="filtres">
-			<span>ACTIVITE</span>
+			<span>Activité
+				<span class="arrow_show"></span>
+			</span>
 			<div>
 				<?php filtre($pdo, 1); ?>
 			</div>
-			<span>TYPE</span>
+			<span>Type
+				<span class="arrow_show"></span>
+			</span>
 			<div>
 				<?php filtre($pdo, 2); ?>
 			</div>
-			<span>AUTRE</span>
+			<span>Autres filtres
+				<span class="arrow_show"></span>
+			</span>
 			<div>
 				<?php filtre($pdo, 3); ?>
 			</div>
 		</div>
-		<div class="colored">
+		<div>
 			<input type="button" value="Cherchez" id="search_btn1">
 		</div>
-		<h3>RESULTATS</h3>
+			<hr/>
 		<div id="liste"></div>
 
 </div>

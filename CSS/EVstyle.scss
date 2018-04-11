@@ -191,18 +191,11 @@ body section:first-of-type {
 		padding: 3em;
 	}
 }
-
-#clubs, #events, #inscrire {padding-top:100px;}
-#events, #clubs {margin-bottom: 10vh;
-		&>div>a {display: block;
-			float: left;
-			background-color: white;
-			padding: 1em;
-			box-shadow: 3px 3px 5px rgba(150, 150, 150, 0.1);
-			margin-left: 1em;
-		}
+/*--------------------------recherche liste ----------------------*/
+#clubs, #events0, #inscrire {padding-top:100px;}
+#events0, #clubs {margin-bottom: 10vh;
 }
-/**/
+
 
 .colored {
 	height: auto;
@@ -217,13 +210,58 @@ body section:first-of-type {
 }
 
 .etiquette {display: block;
-			float: left;
 			background-color: white;
 			padding: 1em;
 			box-shadow: 3px 3px 5px rgba(150, 150, 150, 0.1);
-			margin-left: 1em;
+			margin:auto;
 			width: 200px;
+			float:left;
 		}
+
+.choix {width: 100%;
+	display: table;
+	margin:-1em;
+	margin-bottom: 1em;
+}
+#liste1, #liste2 {
+	background-color: map-get($colors, background2);
+	width: 50%;
+	display: table-cell;
+	padding: 0.5em;
+	cursor: pointer;
+}
+#liste1 { background-color: lightblue; }
+.liste_clubs {
+	h3 {width: 100%;}
+}
+.liste_events {display: none;}
+
+	#liste {
+			&>div {
+				border-bottom: 1px solid grey;
+				padding-left: 1em;
+				padding-top: 0.5em;
+				padding-bottom: 0.5em;
+			}
+			div:last-of-type {
+				margin-left: 3.5em;
+			}
+			span {
+				font-size: 0.9em;
+			}
+			&>div:hover {
+				background-color: map-get($colors, lightgrey);
+			}
+			h3 { margin: 0;}
+			.club_icon {
+				@include icon;
+				float: left;
+			}
+			.heart_icon {
+				z-index: 9;
+			}
+	}
+
 /*---------------------------------------------------*/
 
 footer {
@@ -278,46 +316,38 @@ footer {
 .result_paneau { /*paneau d'affichage des filtres */
 	position: absolute;
 	z-index: 1;
-	background-color: white;
+	background-color: map-get($colors, background);
 	width: 380px;
 	height: 90vh;
 	overflow-x: hidden;
 	box-shadow: 3px 3px 2px grey;
-	form {
-		margin: 1em;
-	}
+	form {margin: 1em;}
 
 	#filtres {
-		
 		div {margin-top: 1em;
 			margin-bottom: 1em;
 		}
-		span {/*sections des filtres*/
+		&>span {/*sections des filtres*/
 			display: block;
-			background-color: map-get($colors, color1);
+			background-color: map-get($colors, background2);
 			color: map-get($colors, text);
-			width: 105%;
-			padding: 1em;
+			width: 100%;
+			padding: 0.5em;
 			position: relative;
 			cursor: pointer;
+			border-bottom: 1px solid grey;
+		}
+		.arrow_show {
+			@include arrow(down, 10px, map-get($colors, text));
+			float: right;
+			margin-right: 2em;
+			margin-top: 0.5em;
+			
 		}
 	}
-	#liste {
-			&>div {
-				border-bottom: 1px solid map-get($colors, lightgrey);
-				padding-left: 1em;
-			}
-			&>div:hover {
-				background-color: map-get($colors, lightgrey);
-			}
-			h3 { margin: 0;}
-			.club_icon {
-				@include icon;
-				float: left;
-			}
-			.heart_icon {
-				
-			}
+	#search_btn1 { margin: auto;
+					margin-top: 1em;
+					margin-bottom: 1em;
 	}
 }
 
@@ -344,12 +374,6 @@ footer {
 	width: 320px;
 }
 
-.content { //pour les sections du contenu, sauf pour les maps !!!
-	width: 90vw;
-	margin: auto;
-	height: auto;
-
-}
 
 .head_img {width: 100vw;
 		height: 60vh;
@@ -591,18 +615,19 @@ margin: auto;}
 	height: 35vh;
 	min-height: 15em;
 	background-color: white;
-	margin: 1em;
+	margin: 1.5em;
 	float: left;
 	box-shadow: 3px 3px 5px rgba(150, 150, 150, 0.1);
 	position: relative;
-	background-size: 26vw;
-	background-position: center;
+	background-size: 27vw;
 	div {
 		background-color: white;
 		position: absolute;
 		bottom: 0;
-		width: 100%;
+		width: 95%;
 		padding-top: 1em;
+		padding-left: 5%;
+		padding-bottom: 1em;
 		h4 {margin-left: 1em;}
 		.btn_blue, .btn-empty {float: left;
 				margin-left: 2em;
@@ -612,7 +637,16 @@ margin: auto;}
 	}
 }
 
-.club_item:hover {background-size: 25.5vw;
+
+.club_item:hover {background-size: 27.5vw;
 	@include transition(background-size, 500ms);
+}
+
+.content { //pour les sections du contenu, sauf pour les maps !!!
+	width: 84vw;
+	margin: auto;
+	height: auto;
+	margin-bottom: 5em;
+
 }
 

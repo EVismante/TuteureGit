@@ -14,7 +14,7 @@
 			</tr>
 			{% for article in articles %}
 			<tr>
-				<td><a href="../article.php?id={{article.id}}">{{article.titre_FR}}</a></td>
+				<td><a href="../article.php?id={{article.id}}&tag={{article.tag}}">{{article.titre_FR}}</a></td>
 				<td>{{article.titre_EN}}</td>
 				<td>{{article.date}}</td>
 				<td>

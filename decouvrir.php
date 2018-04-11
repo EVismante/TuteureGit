@@ -24,7 +24,7 @@ $page="decouvrir";
 <body>
 	<?php include($header); ?>
 
-<section>
+<section class="content">
 	<h1>Découvrir</h1>
 <?php
 	foreach ($articles as $key => $value) {

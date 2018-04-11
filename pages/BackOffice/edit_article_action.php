@@ -11,7 +11,7 @@ $id = $_POST["id"];
 
 $query = "UPDATE article SET 
 titre_FR = '$titre_FR', 
-titre_EN = '$titre_FR',
+titre_EN = '$titre_EN',
 article_FR = '$article_FR',
 article_EN = '$article_EN',
 tag = '$tag[0]'

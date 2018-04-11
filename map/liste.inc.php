@@ -7,6 +7,19 @@ $elem = new recherche;
 $result_count = $elem->count();
 
 if ($result_count == 0) { echo "<div>Pas de résultats</div>";}
+else {
+  ?>
+  <div class="choix">
+    <div id="liste1">
+      Préstataires
+    </div>
+    <div id="liste2">
+      Evènements
+    </div>
+  </div>
+
+<?php
+
 
 
 for ($i=0; $i < $result_count; $i++)  { 
@@ -32,33 +45,41 @@ for ($i=0; $i < $result_count; $i++)  {
 
   if ($liste->type == "club") { ?>
 
-    <div id="club_<?php echo $i; ?>">
+    <div id="club_<?php echo $i; ?>" class="liste_clubs">
         <img class="club_icon" src="images/clubs/<?php echo $liste->image; ?>" alt="icon">
-        <h3><?php echo $liste->name; ?></h3>
-        <span class="address"><?php echo $liste->addresse; ?></span>
         <div>
-<?php
+<?php /*debut de checkbox favoris */
 if (isset($_SESSION["id"])) { ?>
-          <input type="checkbox" name="favori" value="favori" id="favori_club<?php echo $liste->id; ?>" <?php if($fav > 0) {echo "checked";} ?> onclick="addFavori(<?php echo $liste->id; ?>, 'club', false)">
-          <label for="favori_club<?php echo $liste->id; ?>">
+              <input type="checkbox" name="favori" value="favori" id="favori_club<?php echo $liste->id; ?>" <?php if($fav > 0) {echo "checked";} ?> onclick="addFavori(<?php echo $liste->id; ?>, 'club', false)">
+              <label for="favori_club<?php echo $liste->id; ?>">
           <?php if($fav > 0) { ?>
-            <img src="images/website/icons/heart-pleine.svg" class="heart_icon" alt="supprimer le favori">
+              <img src="images/website/icons/heart-pleine.svg" class="heart_icon" alt="supprimer le favori">
 <?php         } else { ?>
-            <img src="images/website/icons/heart-vide.svg" class="heart_icon" alt="ajouter aux favoris">
+              <img src="images/website/icons/heart-vide.svg" class="heart_icon" alt="ajouter aux favoris">
 <?php           }?>
           
-        </label>
+           </label>
 
-<?php } ?>
+<?php } else { ?>
+          <a class="heart_icon" href="login.php"><img src="images/website/icons/heart-vide.svg"></a>
+<?php
+  } /*fin de checkbox favoris*/
+ ?>
+          </div>
+        <div>
+          <h3><?php echo $liste->name; ?></h3>
+          <span class="address"><?php echo $liste->addresse; ?></span>
+          <br>
+          <a href="club.php?id=<?php echo $liste->id; ?>&p=recherche">Consulter</a>
         </div>
-        <a href="club.php?id=<?php echo $liste->id; ?>&p=recherche">Consulter</a>
       </div>
 
 
-<?php }
+<?php } 
+
     if ($liste->type == "event") { ?>
 
-      <div>
+      <div class="liste_events">
         <h3><?php echo $liste->name; ?></h3>
         <span><?php echo $liste->addresse; ?></span>
         <div>
@@ -73,11 +94,14 @@ if (isset($_SESSION["id"])) { ?>
 <?php           }?>
           
         </label>
-<?php } ?>
+<?php } else { ?>
+    <a class="heart_icon" href="login.php"><img src="images/website/icons/heart-vide.svg"></a>
+<?php
+  }
+ ?>
         </div>
         <a class="btn_blue" href="event.php?id=<?php echo $liste->id; ?>&p=recherche">Consulter</a>
       </div>
 
-
 <?php }
-    }
+    }}

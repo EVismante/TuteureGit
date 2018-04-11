@@ -174,6 +174,20 @@ $("#msg").click(function() {
   $(this).css("display", "none");
 })
 
+$("#liste1").click(function() {
+  $(this).css("background-color", "lightblue");
+  $("#liste2").css("background-color", "beige");
+  $(".liste_clubs").css("display", "block");
+  $(".liste_events").css("display", "none");
+})
+
+$("#liste2").click(function() {
+  $(this).css("background-color", "lightblue");
+  $("#liste1").css("background-color", "beige");
+  $(".liste_events").css("display", "block");
+  $(".liste_clubs").css("display", "none");
+})
+
 /*Toogle le menu User on click -------------------*/
 	$( "#user_icon" ).click(function() {
   		$(".user_menu").toggle();
