@@ -10,6 +10,15 @@ $(".delete").on("click", function() {
   } else { return false;}
 })
 
+$("#contactez_nous").on("click", function() {
+ $("#contact_form").css("display", "block");
+ $("#contact_form").children().css("display", "block");
+})
+
+$("#annuler").on("click", function() {
+ $("#contact_form").css("display", "none");
+})
+
 /*fenetre modal d'une diaporama*/
 /*----------------------------------------------------*/
 $("#diapo").on("click", function() {
@@ -55,6 +64,17 @@ active.fadeOut(0, function() {
 });
 
   }
+
+  /*_-------------------- evaluation: les etoiles ----------------*/
+
+  $("input[name='rating']").on("click", function() {
+    var label = $(this).next().children();
+  label.attr("src", "images/website/icons/pleine.svg");
+  label.parent().prevAll().children().attr("src", "images/website/icons/pleine.svg");
+  label.parent().nextAll().children().attr("src", "images/website/icons/vide.svg");
+})
+
+
 /*-------------------------------------------*/
 /*animation de changement de H1 sur les pages des insertion de données*/
 var initialvalue = $("#changejs").html(); //valeur initiale de H1

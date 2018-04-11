@@ -132,19 +132,25 @@ $fav = $result1->rowCount();
 				</ul>
 			</div>
 			<hr>
-			<div>
-				<div><?php echo $clubInfo[0]['address']; ?></div>
-				<div><?php echo $clubInfo[0]['telephone']; ?></div>
-				<div><?php echo $clubInfo[0]['mail']; ?></div>
+			<div class="bordered">
+				<h4>Contacter</h4>
+				<span>Adresse: <?php echo $clubInfo[0]['address']; ?></span><br/>
+				<span>Site web: <a href="<?php echo $clubInfo[0]['website']; ?>"><?php echo $clubInfo[0]['name']; ?></a></span><br/>
+				<span>Telephone: <?php echo $clubInfo[0]['telephone']; ?></span><br/>
+				<span>Mail: <?php echo $clubInfo[0]['mail']; ?></span><br/>
 			</div>
 			<hr>
 			<div class="comments">
+				<h4>Commentaires</h4>
 				<?php include("pages/comments/comment_club.php"); ?>
 			</div>
 		</div>
 
-		<div class="right">
-			<img id="diapo" src="images/clubs/<?php echo $img[0]["url"]; ?>" alt="<?php echo $clubInfo[0]['name']; ?>">	
+		<div class="right" id="diapo">
+			<div>
+				<span class="btn_photos">Voir les photos</span>
+				<img src="images/clubs/<?php echo $img[0]["url"]; ?>" alt="<?php echo $clubInfo[0]['name']; ?>">	
+			</div>
 		</div>
 	</section>
 	<div id="diaporama">

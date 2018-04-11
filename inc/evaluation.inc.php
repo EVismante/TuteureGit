@@ -7,12 +7,17 @@ $result_rating = $pdo->prepare($query_rating);
 $result_rating->execute();
 $rating1 = $result_rating->fetchAll();
 $niveau = $rating1[0]['rating'];
+if ($niveau == "") {
+	$niveau = "-";
+}
 
 		for($i = 1; $i <= $niveau; $i++) {
-			echo "<img class='star' alt='' src='images/website/icons/pleine.jpg'/>";
+			echo "<img class='star' alt='' src='images/website/icons/pleine.svg'/>";
 		}
 		for($j = $i; $j <= 5; $j++) {
-			echo "<img class='star' alt='' src='images/website/icons/vide.jpg'/>";
-		}
+			echo "<img class='star' alt='' src='images/website/icons/vide.svg'/>";
+		};
+
+		echo " ".$niveau."/5";
 
 ?>

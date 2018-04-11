@@ -58,20 +58,26 @@ $events = $result->fetchAll();
 
 	<section class="row">
 		<div class="col-3">
-			<img src="images/website/1.svg">
-			<span>Trouvez votre futur club préféré</span>
+			<a href="index.php#clubs">
+				<img src="images/website/1.svg">
+				<span>Trouvez votre futur club préféré</span>
+			</a>
 		</div>
 		<div class="col-3">
-			<img src="images/website/1.svg">
-			<span>Participez aux évènements de la région</span>
+			<a href="index.php#events">
+				<img src="images/website/1.svg">
+				<span>Participez aux évènements de la région</span>
+			</a>
 		</div>
 		<div class="col-3">
-			<img src="images/website/1.svg">
-			<span>Partagez vos expériences</span>
+			<a href="index.php#inscrire">
+				<img src="images/website/1.svg">
+				<span>Affichez votre préstation</span>
+			</a>
 		</div>
 	</section>
 
-<section class="content clearfix">
+<section class="content clearfix" id="clubs">
 	<h2>Top clubs</h2>
 <?php
 	foreach ($clubs as $key => $value) {
@@ -85,24 +91,25 @@ $events = $result->fetchAll();
 <?php
 	}
 ?>
-<a href="clubs.php">Voir tous les clubs</a>
+<div><a href="clubs.php">Voir tous les clubs</a></div>
+
+
 </section>
 
 	<section class="colored clearfix">
-		<h2>Découvrir</h2>
 <?php
 	$article = new article($pdo);
 	$data = $article->get_data($pdo);
 ?>
 		<img src="images/articles/<?php echo $article->image; ?>">
 		<div>
-			<h3><?php echo $article->titre; ?></h3>
-				<p><?php echo $article->article; ?></p>
-			<div>fleche</div>
+			<h2><?php echo $article->titre; ?></h2>
+				<p><?php echo $article->short_article; ?></p>
+				<a href="<?php echo $article->path_article; ?>"> <span class="etiquette">Découvrir plus</span></a>
 		</div>
 	</section>
 
-	<section class="content clearfix">
+	<section class="content clearfix" id="events">
 		<h2>Sortir</h2>
 <?php
 	foreach ($events as $key => $value) {
@@ -116,7 +123,13 @@ $events = $result->fetchAll();
 <?php
 	}
 ?>
-<a href="evenements.php">Voir tous les évènements</a>
+		<div><a href="events.php">Voir tous les évènements</a></div>
+	</section>
+
+	<section class="colored" id="inscrire">
+		<h3>Pourquoi s'incrire?</h3>
+		Pour mettre aux favoris
+		pour 
 	</section>
 
 <?php include("pages/footer.php"); ?>

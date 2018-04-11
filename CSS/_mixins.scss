@@ -16,9 +16,10 @@
 
 
 @mixin textarea() {
-	border-radius: 15px;
+	border-radius: 10px;
 	border: 1px solid map-get($colors, text);
 	resize: vertical;
+	padding: 0.3em;
 }
 
 @mixin bcg_image {

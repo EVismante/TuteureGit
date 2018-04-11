@@ -1,3 +1,20 @@
+			<div class="contact_form" id="contact_form">
+					<form action="post.php" method="POST" id=contact_form>
+						<h4>Contactez nous</h4>
+	    				<input type="text" id="name" name="name"><br>
+	    					<label for="name" id="namelabel">Nom</label>
+	    					<span class='msg'>Nom non renseigné</span>
+	    				<input type="text" id="mail" name="mail"><br>
+	    					<label for="mail" id="maillabel">Adresse mail</label>
+	    					<span class='msg'>Mail non valide</span>
+	    				<textarea id="subject" name="subject" ></textarea><br>
+	    					<label for="subject" id="subjectlabel">Message</label>
+	    					<span class='msg'>Message est vide</span>
+	    					<br/>
+	    				<input type="submit" onclick="return valider();" value="Envoyer">
+	    				<input type="button" value="Annuler" id="annuler">
+					</form>
+			</div>
 <footer>
 	<div class="row3">
 		<div>
@@ -16,22 +33,7 @@
 
 		</div>
 		<div>
-			<input type="button" value="Contactez nous">
-				<div class="contact_form">
-					<form action="post.php" method="POST" id=contact_form>
-	    				<input type="text" id="name" name="name">
-	    					<label for="name" id="namelabel">Nom</label>
-	    					<label for="name" id="nameerror">Nom non renseigné</label>
-	    				<input type="text" id="mail" name="mail">
-	    					<label for="mail" id="maillabel">Adresse mail</label>
-	    					<label for="mail" id="mailerror">Mail non valide</label>
-	    				<textarea id="subject" name="subject" ></textarea>
-	    					<label for="subject" id="subjectlabel">Message</label>
-	    					<label for="subject" id="subjecterror">Message est vide</label>
-	    					<br/>
-	    				<input type="submit" onclick="return valider();" value="Envoyer">
-					</form>
-				</div>
+			<input type="button" value="Contactez nous" id="contactez_nous">
 		</div>
 	</div>
 	<div class="row1">
