@@ -56,7 +56,7 @@ VALUES ('$user_id', '$maxId');
 ";
 $result1 = $pdo->prepare($queryBelongs);
 $result1->execute();
-var_dump($queryBelongs);
+
 /*----*/
 
 /*une fonction qui construit la réquete des tags du club*/

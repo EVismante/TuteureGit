@@ -3,8 +3,8 @@ Class article {
 
 	public $data;
 
-	public function __construct($pdo) {
-		$this->data = self::get_data($pdo);
+	public function __construct($pdo, $lang) {
+		$this->data = self::get_data($pdo, $lang);
 		$this->image = self::get_image($this->data);
 		$this->path = self::get_image($this->data);
 		$this->path_article = self::path_article($this->data);
@@ -15,8 +15,8 @@ Class article {
 
 	}
 
-	public function get_data($pdo) {
-		$query = "SELECT article.id, article.titre_FR, article.article_FR, article.tag, images.url FROM article
+	public function get_data($pdo, $lang) {
+		$query = "SELECT article.id, article.titre_".$lang.", article.article_".$lang.", article.tag, images.url FROM article
 			INNER JOIN images ON article.id=images.article_id
 			ORDER BY RAND()
 			LIMIT 1
@@ -33,15 +33,15 @@ Class article {
 	}
 
 	public function get_titre($array) {
-		return $array[0]["titre_FR"];
+		return $array[0][1];
 	}
 
 	public function get_article($array) {
-		return $array[0]["article_FR"];
+		return $array[0][2];
 	}
 
 	public function get_short_article($array) {
-		$article =  $array[0]["article_FR"];
+		$article =  $array[0][2];
 		$short = substr($article, 0, 300)."...";
 		return $short;
 	}

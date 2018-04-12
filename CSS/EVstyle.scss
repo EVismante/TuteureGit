@@ -582,6 +582,37 @@ h3::after {
 	}
 
 
+.edit_flex {
+	background-color: map-get($colors, background);
+	border-radius: 20px;
+	padding: 3em;
+
+	&>div {
+		@include item;
+		float: left;
+		width: 25%;
+		min-width: 25em;
+		margin-bottom:2em;
+
+		input[name="name"],
+		input[type="text"],
+		input[type="password"]
+		 {
+			width: 22em;
+			min-width: 20em;
+			margin-top: 1.5em;
+		}
+		&>div { 
+			width: 22em;
+			margin: auto;
+		}}
+		input[type="submit"], input[type="button"] {
+			margin: auto;
+			margin-top: 1em;
+		}
+	}
+
+
 .in_middle {
 	margin: auto;	
 	width: 100px;

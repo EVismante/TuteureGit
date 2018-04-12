@@ -205,18 +205,45 @@ label[for=file3] {
 
 .on_delete {
   /*utilise pour les upload des images*/
-  background-size: 300px;
+  background-size: 400px;
   position: relative;
   background-position: center; }
   .on_delete:hover {
     background-image: none !important;
-    transition: background-image, 1s; }
-    .on_delete:hover span::after {
-      content: '\002716';
-      font-size: 5em;
-      color: white;
-      display: block;
-      margin-top: 0.3em; }
+    transition: background-image, 1s;
+    /*
+    span::after {
+    	content: '\002716';
+    	font-size: 5em;
+    	color: white;
+    	display: block;
+    	margin-top: 0.3em;
+    }*/ }
+
+.input_images {
+  position: relative;
+  float: left; }
+  .input_images .image_checkbox {
+    /**/
+    position: absolute;
+    width: 245px;
+    height: 245px;
+    left: 0;
+    top: 0;
+    z-index: 5;
+    opacity: 0; }
+    .input_images .image_checkbox:hover + label {
+      background-image: none !important;
+      background-color: #1177a2;
+      -webkit-transition: background-color 200ms linear;
+      -ms-transition: background-color 200ms linear;
+      transition: background-color 200ms linear; }
+      .input_images .image_checkbox:hover + label span::after {
+        content: '\002716';
+        font-size: 5em;
+        color: white;
+        display: block;
+        margin-top: 0.3em; }
 
 #clearfix::after {
   content: " ";
@@ -229,28 +256,6 @@ label[for=file3] {
   display: block;
   height: 0;
   clear: both; }
-
-.input_images {
-  position: relative;
-  float: left; }
-  .input_images .image_checkbox {
-    /**/
-    position: absolute;
-    width: 160px;
-    height: 160px;
-    left: 0;
-    top: 0;
-    z-index: 5;
-    opacity: 0; }
-    .input_images .image_checkbox:hover + label {
-      background-image: none !important;
-      -webkit-transition: background-color 200ms linear;
-      -ms-transition: background-color 200ms linear;
-      transition: background-color 200ms linear; }
-      .input_images .image_checkbox:hover + label span::after {
-        content: '\002715';
-        font-size: 5em;
-        color: white; }
 
 input[name="files[]"] {
   width: 0px;
@@ -294,6 +299,10 @@ input[type="submit"] {
     -ms-transition: background-color 200ms linear;
     transition: background-color 200ms linear; }
 
+.middle {
+  margin: auto;
+  margin-top: 0.5em; }
+
 .btn-empty, .btn_forme {
   display: block;
   border-radius: 20px;
@@ -309,6 +318,7 @@ input[type="submit"] {
   background-color: transparent;
   border: 1px solid #AA2E00;
   color: #AA2E00;
+  width: 8em;
   max-width: 200px;
   padding: 0.4em; }
   .btn-empty:hover, .btn_forme:hover {

@@ -184,12 +184,38 @@ label[for=file3],
 }	
 
 .on_delete { /*utilise pour les upload des images*/
-	background-size: 300px;
+	background-size: 400px;
 	position: relative;
 	background-position: center;		
 	&:hover {
 		background-image: none!important;
 		transition: background-image, 1s;
+		/*
+		span::after {
+			content: '\002716';
+			font-size: 5em;
+			color: white;
+			display: block;
+			margin-top: 0.3em;
+		}*/
+	}
+}
+
+.input_images {
+	position: relative;
+	float: left;
+	.image_checkbox { /**/
+		position: absolute;
+			width: 245px;
+			height: 245px;
+			left: 0;
+			top: 0;
+			z-index: 5;
+			opacity: 0;
+		&:hover + label {
+		background-image: none!important;
+		background-color: lighten( map-get($colors, color3), 10% );
+		@include transition(background-color, 200ms);
 		span::after {
 			content: '\002716';
 			font-size: 5em;
@@ -197,8 +223,9 @@ label[for=file3],
 			display: block;
 			margin-top: 0.3em;
 		}
-	}
+		}}
 }
+
 
 #clearfix::after { 
    content: " ";
@@ -214,28 +241,6 @@ label[for=file3],
    clear: both;
 }
 
-.input_images {
-	position: relative;
-	float: left;
-	.image_checkbox { /**/
-		position: absolute;
-			width: 160px;
-			height: 160px;
-			left: 0;
-			top: 0;
-			z-index: 5;
-			opacity: 0;
-		&:hover + label {
-		background-image: none!important;
-		background-color: map-get($colors, lightblue);
-		@include transition(background-color, 200ms);
-		span::after {
-			content: '\002715';
-			font-size: 5em;
-			color: white;
-		}
-		}}
-}
 
 	
 input[name="files[]"] { 
@@ -272,10 +277,15 @@ input[name="files[]"] + label {
 
 }
 
+.middle {margin: auto;
+		margin-top: 0.5em;
+}
+
 .btn-empty {
 	@include button(transparent);
 	border: 1px solid map-get($colors, color2);
 	color: map-get($colors, color2);
+	width: 8em;
 	max-width: 200px;
 	padding: 0.4em;
 	&:hover {

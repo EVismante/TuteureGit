@@ -2,6 +2,7 @@
 require_once('../../_config.php');
 
 $name = $_POST["name"];
+$retour = $_POST["retour"];
 
 $fr = preg_quote($_POST["description_FR"]);
 $en = preg_quote($_POST["description_EN"]);
@@ -105,10 +106,11 @@ if (isset($_POST["delete_img"])) {
 
 /*-------------------REDIRECTION-------------------------------- */
 
-header('Location: ../admin_clubs.php?msg=success');
-    //if ($_SESSION["type"] == "pro") { header('Location: ../index.php?msg=Le+club+a+ete+ajoute+avec+success');}
-    //if ($_SESSION["type"] == "admin") { header('Location: ../admin_clubs.php?msg=success'); }
-
+if ($retour == "user") {
+ header('Location: ../../user_pro_club.php?msg=success');
+} else {
+  header('Location: ../admin_clubs.php?msg=success');
+}
 
 
 ?>

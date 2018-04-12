@@ -3,6 +3,7 @@ require_once('../../_config.php');
 session_start();
 
 $id = $_POST["id"];
+$retour = $_POST["retour"];
 
 $images = "SELECT url FROM images WHERE user_id=".$id.";";
 $result = $pdo->prepare($images);
@@ -25,9 +26,13 @@ $del->execute();
 $count = $del->rowCount();
 
 
+	if ($retour =="admin") {
+		header("Location: ../admin_utilisateurs.php?msg=success");
+} else {
 	unset($_SESSION['type']);
 	session_destroy();
 	header('Location: ../../index.php');
+}
 
    
 

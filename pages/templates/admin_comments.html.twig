@@ -18,17 +18,13 @@
 				<td>{{comment.rating_id}}</td>
 				<td>{{comment.date}}</td>
 				<td>
-					<form action="admin_edit_club.php" method="POST">
-						<input type="hidden" name="id" value="{{club.id}}">
+					<form action="" method="POST">
+						<input type="hidden" name="id" value="{{comment.id}}">
 						<input type="submit" value="Changer">
 					</form>
-				</td>
-				<td>
-					<a class="btn-empty" href="">discussion</a>
-				</td>
-				<td>
-					<form action="BackOffice/delete_club.php" method="POST">
-						<input type="hidden" name="id" value="{{club.id}}">
+					<a class="btn-empty" href="../{{comment.page_type}}.php?id={{comment.page_id}}">discussion</a>
+					<form action="BackOffice/delete_comment.php" method="POST">
+						<input type="hidden" name="id" value="{{comment.id}}">
 						<input type="submit" class="delete" value="Supprimer">
 					</form>
 				</td>

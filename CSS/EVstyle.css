@@ -555,6 +555,33 @@ footer {
     margin: auto;
     margin-top: 1em; }
 
+.edit_flex {
+  background-color: #fff7ed;
+  border-radius: 20px;
+  padding: 3em; }
+  .edit_flex > div {
+    background-color: white;
+    vertical-align: middle;
+    padding: 2em;
+    border-radius: 15px;
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.1);
+    float: left;
+    width: 25%;
+    min-width: 25em;
+    margin-bottom: 2em; }
+    .edit_flex > div input[name="name"],
+    .edit_flex > div input[type="text"],
+    .edit_flex > div input[type="password"] {
+      width: 22em;
+      min-width: 20em;
+      margin-top: 1.5em; }
+    .edit_flex > div > div {
+      width: 22em;
+      margin: auto; }
+  .edit_flex input[type="submit"], .edit_flex input[type="button"] {
+    margin: auto;
+    margin-top: 1em; }
+
 .in_middle {
   margin: auto;
   width: 100px;

@@ -8,7 +8,7 @@ session_start();
 	$session_active = false;
 	$session_type = NULL;
 	$username = NULL;
-	$page = "commentaires";
+	$page = "messages";
 
 
 /*voir si l'utilisateur est connecté. Au cas échéant il est rédirigé vers l'accueil*/
@@ -29,27 +29,18 @@ if (!isset($_SESSION["name"])) { header('Location: BackOffice/_nopermission.php'
 
 /*-------------------------------*/
 
-$query = "SELECT comment.id, comment.message, comment.rating_id, comment.date, comment.lang, comment.parent_id, users.name, images.url, comment.page_type, comment.page_id
-FROM comment 
-LEFT JOIN users ON comment.user_id=users.id
-LEFT JOIN images ON users.id=images.user_id
-ORDER BY comment.date DESC
-;";
+$query = 'SELECT contact.id, users.name, contact.name, contact.mail, contact.message, contact.date, contact.read  FROM contact LEFT JOIN users ON contact.user_id=users.id;';
 $result = $pdo->prepare($query);
 $result->execute();
-$comments = $result->fetchAll();
+$messages = $result->fetchAll();
 
-
-echo $twig->render('admin_comments.html.twig', array(
+echo $twig->render('admin_messages.html.twig', array(
 
 		'session_active' => $session_active, 
     	'session_type' => $session_type,
     	'avatar' => $avatar,
     	'username' => $username,
     	'page' => $page,
-    	'comments' => $comments,
-    	'msg' => $msg
-    	
+    	'messages' => $messages
 
     ));
-

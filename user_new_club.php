@@ -80,7 +80,7 @@ include '_head.php';
 					<br>
 					<input type="text" name="telephone" id="telephone">
 					<br>
-					<label for="telephone">* Date du début</label>
+					<label for="telephone">Téléphone</label>
 					<br>
 					<input type="text" name="address" id="autocomplete">
 					<br>

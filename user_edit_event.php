@@ -1,7 +1,7 @@
 <?php
 require_once('_config.php');
 session_start();
-$page = "evenements";
+
 	//VERIFIER SI UTILISATEUR EST CONNECTE//
 	if ( !isset($_SESSION["type"]) ) {
 		header("Location: login.php");

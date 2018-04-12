@@ -3,6 +3,8 @@ require_once('_config.php');
 
 session_start();
 
+include_once 'inc/langue.inc.php';
+
 include '_head.php';
 $page = "decouvrir";
 $id = $_GET["id"]; /*id de la page*/
@@ -32,6 +34,7 @@ LIMIT 4
 $result = $pdo->prepare($clubQuery);
 $result->execute();
 $clubs = $result->fetchAll();
+$count = $result->rowCount();
 ?>
 
 </head>
@@ -40,14 +43,18 @@ $clubs = $result->fetchAll();
 <div class="head_img" style="background-image: url('images/articles/<?php echo $img[0]["url"]; ?>');">
 </div>
 <section class="content">
-	<a class="revenir" href="decouvrir.php">Revenir aux activités</a>
-	<h1><?php echo $article[0]['titre_FR']; ?></h1>
+	<a class="revenir" href="decouvrir.php"><?php echo $content["revenir_activites"]; ?></a>
+	<h1><?php echo $article[0]['titre_'.$lang]; ?></h1>
 			<hr/>
 		<div>
-			<p><?php echo $article[0]['article_FR']; ?></p>
+			<p><?php echo $article[0]['article_'.$lang]; ?></p>
 		</div>
 		<div class="clearfix">
-	<?php
+<?php if ($count > 0) { ?>
+
+		<h3><?php echo $content["pratique"]." ".$article[0]['titre_'.$lang];?> </h3>
+	
+	<?php }
 	foreach ($clubs as $key => $value) {
 ?>		<a href="club.php?id=<?php echo $clubs[$key]['id']; ?>">
 		<div class="club_item" style="background-image: url('images/clubs/<?php echo $clubs[$key]['url'];?>');">

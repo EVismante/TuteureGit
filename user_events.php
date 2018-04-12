@@ -27,15 +27,22 @@ $count = $result->rowCount();
 ?>
 
 
-	<section class="office clearfix">
+	<section class="edit_club">
 		<h1>Vos évènements</h1>
-		<br><br>
-		<a class = "btn" href="user_new_event.php">Nouveau évènement</a>
 
 <?php
-if ($count == 0) {
-	echo "<p> Vous n'avez pas d'évènements. Créez un nouveau !</p>";
-}
+if ($count == 0) { ?>
+		<div>
+			<p> Vous n'avez pas d'évènements. Créez un nouveau !</p>
+			<a class = "btn" href="user_new_event.php">Nouveau évènement</a>
+		</div>
+<?php
+} else { ?>
+		<div>
+			<a class = "btn" href="user_new_event.php">Nouveau évènement</a>
+		</div>
+
+<?php }
 
 	foreach ($events as $key => $value) {
 ?>

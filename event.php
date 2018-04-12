@@ -3,6 +3,8 @@ require_once('_config.php');
 
 session_start();
 
+include_once 'inc/langue.inc.php';
+
 include '_head.php';
 $page = "event";
 $id = $_GET["id"];
@@ -12,18 +14,18 @@ if (isset($_GET["p"])) {
 
 	if ($_GET["p"] == "events") {
 		$retour = "evenements.php";
-		$retour_text = "Revenir aux évènements";
+		$retour_text = $content['revenir_evenements']; 
 	}
 	else if($_GET["p"] == "recherche") {
 		$retour = "recherche.php";
-		$retour_text = "Revenir à la recherche";
+		$retour_text = $content['revenir_recherche'];
 	} else if($_GET["p"] == "userevents") {
 		$retour = "user_events.php";
-		$retour_text = "Revenir à vos évènements";
+		$retour_text = $content['revenir_evenements'];
 	}
 } else {
 	$retour = "index.php";
-	$retour_text = "Revenir à la page d'accueil";
+	$retour_text = $content['revenir_index'];
 }
 /*-----*/
 
@@ -69,7 +71,7 @@ $fav = $result1->rowCount();
 		</a>
 	<!-- fil d'ariane -->
 		<div>
-			<h1><?php echo $clubInfo[0]['titre_FR']; ?></h1>
+			<h1><?php echo $clubInfo[0]['titre_'.$lang]; ?></h1>
 			<h4><?php echo $clubInfo[0]['date']; ?></h4>
 			<div class="left">
 			<hr/>
@@ -91,7 +93,7 @@ $fav = $result1->rowCount();
 ?>
 
 		<div>
-			<p><?php echo $clubInfo[0]['description_FR']; ?></p>
+			<p><?php echo $clubInfo[0]['description_'.$lang]; ?></p>
 		</div>
 		<hr/>
 		<div>

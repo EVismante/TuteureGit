@@ -1,4 +1,5 @@
 <?php
+include_once 'inc/langue.inc.php';
 // pour rendre le menu navigation invisible en page Index
 	if($page == "index") {
 		echo '<div class="nav nav-scroll">';
@@ -17,9 +18,9 @@
 			<!-- le contenu du mobile menu -->
 		<div>
 			<div id="lang">
-				<span tabindex="0">FR</span>
+				<a href="index.php?lang=fr" tabindex="0">FR</a>
 				<span>|</span>
-				<span tabindex="0">EN</span>
+				<a href="index.php?lang=en" tabindex="0">EN</a>
 			</div>
 			<div class="menu">
 				<!-- USER MENU DEBUT-->
@@ -39,24 +40,24 @@
 				<?php
 										if ($_SESSION["type"] == "pro") {
 				?>
-					<a class="m_hover" href="user_pro_club.php">MON CLUB</a>
+					<a class="m_hover" href="user_pro_club.php"><?php echo $content["menu1"]; ?></a>
 				<?php
 											}
-				?>	<a class="m_hover" href="user_events.php">+Evenement</a>
-					<a class="m_hover" href="user_favoris.php">FAVORIS</a>
-					<a class="m_hover" href="user_compte.php">MON COMPTE</a>
+				?>	<a class="m_hover" href="user_events.php"><?php echo $content["menu2"]; ?></a>
+					<a class="m_hover" href="user_favoris.php"><?php echo $content["menu3"]; ?></a>
+					<a class="m_hover" href="user_compte.php"><?php echo $content["menu4"]; ?></a>
 				<?php
 										if ($_SESSION["type"] == "admin") {
 				?>
 					<a class="m_hover" href="pages/admin_office.php">BACK OFFICE</a>
 				<?php
 											} ?>
-					<a class="m_hover" href="pages/logout.php">Déconnecter</a>
+					<a class="m_hover" href="pages/logout.php"><?php echo $content["menu5"]; ?></a>
 				</div>
 				<?php
 									} else {
 										?>
-				<a tabindex="0" id="connexion" <?php if($page=='login'){echo 'class="active"';}?> href="login.php">Connexion</a>
+				<a tabindex="0" id="connexion" <?php if($page=='login'){echo 'class="active"';}?> href="login.php"><?php echo $content["menu6"]; ?></a>
 
 										<?php
 									};
@@ -67,16 +68,16 @@
 			<div class="menu">		
 					<ul>
 						<li tabindex="0">
-							<a <?php if($page=='evenements'){echo 'class="active"';}?> href="evenements.php">Evènements</a>
+							<a <?php if($page=='evenements'){echo 'class="active"';}?> href="evenements.php"><?php echo $content["evenements"]; ?></a>
 						</li>
 						<li tabindex="0">
-							<a <?php if($page=='clubs'){echo 'class="active"';}?> href="clubs.php">Préstataires</a>
+							<a <?php if($page=='clubs'){echo 'class="active"';}?> href="clubs.php"><?php echo $content["agenda"]; ?></a>
 						</li>
 						<li tabindex="0">
-							<a <?php if($page=='decouvrir'){echo 'class="active"';}?> href="decouvrir.php">Découvrir</a>
+							<a <?php if($page=='decouvrir'){echo 'class="active"';}?> href="decouvrir.php"><?php echo $content["decouvrir"]; ?></a>
 						</li>
 						<li tabindex="0">
-							<a <?php if($page=='recherche'){echo 'class="active"';}?> href="recherche.php">Recherche</a>
+							<a <?php if($page=='recherche'){echo 'class="active"';}?> href="recherche.php"><?php echo $content["recherche"]; ?></a>
 						</li>
 					</ul>
 			</div>

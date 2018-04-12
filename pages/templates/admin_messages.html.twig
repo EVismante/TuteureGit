@@ -1,0 +1,35 @@
+{% extends "template.html.twig" %}
+
+{% block section %}
+<section class="office">
+		<h1>Messages</h1>
+		<br><br>
+
+		<input type="text" id="myInput" onkeyup="search()" placeholder="Cherchez..">
+		<table id="myTable">
+			<tr>
+				<th>User</th>
+				<th>Message</th>
+				<th>Date</th>
+				<th>Mail</th>
+			</tr>
+		{% for message in messages %}
+			<tr>
+				<td>{{message.0}}</td>
+				<td>{{message.message}}</td>
+				<td>{{message.date}}</td>
+				<td>{{message.mail}}</td>
+				<td>
+					<form action="BackOffice/delete_message.php" method="POST">
+						<input type="hidden" name="id" value="{{message.id}}">
+						<input type="submit" value="Supprimer">
+					</form>
+				</td>
+			</tr>
+{% endfor %}
+		</table>
+	<div id='msg'>
+			{{msg}}
+		</div>
+	</section>
+{% endblock %}

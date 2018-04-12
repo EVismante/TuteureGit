@@ -16,7 +16,8 @@ foreach ($imgs as $key => $value) {
 
 
 $query1 = ' DELETE FROM images WHERE event_id='.$id.'; 
-			DELETE FROM event WHERE id='.$id.';'
+			DELETE FROM event WHERE id='.$id.';
+			DELETE FROM favoris WHERE page_id='.$id.' AND page_type="event";'
 			;
 
 $del = $pdo->prepare($query1);

@@ -37,7 +37,7 @@ VALUES ('$name_FR',
         '$user_id'
 );";
 
-var_dump($queryEvent);
+
 $result = $pdo->prepare($queryEvent);
 $result->execute();
 

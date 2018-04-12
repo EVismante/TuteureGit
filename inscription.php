@@ -1,6 +1,8 @@
 <?php
+session_start();
 require_once('_config.php');
 include '_head.php';
+include_once 'inc/langue.inc.php';
 $page = "inscription";
 ?>
 <script type="text/javascript" src="../js/inscription.js"></script>
@@ -12,7 +14,7 @@ $page = "inscription";
 
 <?php
         if (isset($_GET["msg"])) {
-            if ($_GET["msg"] == "failed1") { echo "Veuillez verifier votre identifiant.<br>"; }
+            if ($_GET["msg"] == "failed1") { echo $content['msg_identifiant']."<br>"; }
             if ($_GET["msg"] == "failed2") { echo "L'identifiant choisi est déjà utilisé.<br>"; }
             if ($_GET["msg"] == "failed3") { echo "Veuillez verifier votre mail.<br>"; }
             if ($_GET["msg"] == "failed4") { echo "Veuillez verifier votre mot de passe.<br>"; }
@@ -25,38 +27,49 @@ $page = "inscription";
             <div>
                 <input type="text" id="username" name="username">
                 <br/>
-                <label for="name">Nom</label>
+                <label for="name"><?php echo $content['nom']; ?></label>
                 <p id="msg_nom" class='msg'>Le nom doit avoir au moins 4 charactéres</p>
-                <p class="result"></p>
                 <br>
                 <input type="password" id="mdp" name="mdp">
                 <br/>
-                <label for="mdp">Mot de passe</label>
+                <label for="mdp"><?php echo $content['mdp']; ?></label>
                 <p id="msg_mdp" class='msg'>Le mot de passe doit avoir au moins 6 charactéres</p>
                 <br>
                 <input type="password" id="mdp1" name="mdp1">
                 <br/>
-                <label for="mdp1">Répetez votre mot de passe</label>
+                <label for="mdp1"><?php echo $content['mdp_repeat']; ?></label>
                 <p id="msg_mdp1" class='msg'>Les mots de passe ne sont pas identiques</p>
                 <br/>
                 <input type="text" id="mail" name="mail">
                 <br/>
-                <label for="name">Mail</label>
-                <p id="msg_mail" class='msg'>L'addresse mail n'est pas valide</p>
+                <label for="name"><?php echo $content['mail']; ?></label>
+                <p id="msg_mail" class='msg'><?php echo $content['mail_non_valide']; ?></p>
                 <br>
                 <input type="text" id="mail1" name="mail1">
                 <br/>
-                <label for="name">Répetez votre mail</label>
+                <label for="name"><?php echo $content['repetez_mail']; ?></label>
                 <p id="msg_mail1" class='msg'>Les addresses mail ne sont pas identiques</p>
             </div>
             <div>
-                <h4> Mon compte: </h4>
-                <input type="radio" name="type" value="normal" checked>Normal
-                <input type="radio" name="type" value="pro"> Professionnel
+                <p><?php echo $content['type_compte']; ?></p>
+                <input type="radio" name="type" id="normal" value="normal" checked>
+                <label for="normal">
+                    Normal
+                    <img src="images/website/icons/normal.svg">
+                </label>
+                <input type="radio" name="type" value="pro" id="pro">
+                 <label for="pro">
+                    Pro
+                    <img src="images/website/icons/pro.svg">
+                </label>
+                <div class="expand">
+                    Si vous avez une préstation à offrir, optez pour pro.
+                    Si vous voulez trouver un club ou poster un évènement, un compte normal est pour vous.
+                </div>
             </div>
             <div>
                 <input type="submit" value="Inscription" id="submit_inscription">
-                <input type="button" value="ANNULER">
+                <input type="button" value="<?php echo $content['annuler']; ?>">
             </div>
         </div>
         </form>

@@ -5,6 +5,13 @@ $id = trim($_POST['id']);
 $mdp_old = $_POST['mdp_old'];
 $mdp0 = trim($_POST['mdp']);
 $mdp = password_hash($mdp0, PASSWORD_DEFAULT);
+$retour = $_POST['retour'];
+
+if ($retour == "user") {
+	$url="../../user_compte.php";
+} else {
+	$url="../admin_utilisateurs.php";
+}
 
 $mdp_query = "SELECT password FROM users WHERE id=".$id.";";
 $result = $pdo->prepare($mdp_query);
@@ -21,8 +28,9 @@ if ($verify) {
 	WHERE id=".$id."; ";
 	$result = $pdo->prepare($query);
 	$result->execute();
-	header("Location: ../../user_compte.php?msg=success");
+
+	header("Location: ".$url."?msg=success");
 } else {
-	header("Location: ../../user_compte.php?msg=failure");
+	header("Location: ".$url."?msg=failure");
 }
 ?>

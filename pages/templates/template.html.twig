@@ -38,12 +38,8 @@
 		</div>
 			<!-- le contenu du mobile menu -->
 		<div>
-			<div id="lang">
-				<span tabindex="0">FR</span>
-				<span>|</span>
-				<span tabindex="0">EN</span>
-			</div>
 			<div class="menu">
+				<div>Back <br>Office</div>
 				<!-- USER MENU DEBUT-->
 				<div>
 		{% if session_active %}
@@ -72,6 +68,7 @@
 				<li{% if page == 'evenements' %} class="active" {% endif %}><a href="admin_events.php">Evènements</a></li>
 				<li{% if page == 'commentaires' %} class="active" {% endif %}><a href="admin_comments.php">Commentaires</a></li>
 				<li{% if page == 'articles' %} class="active" {% endif %}><a href="admin_articles.php">Articles</a></li>
+				<li{% if page == 'messages' %} class="active" {% endif %}><a href="admin_messages.php">Messages</a></li>
 			</ul>
 		</div>
 	</div>

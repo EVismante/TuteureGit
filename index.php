@@ -3,6 +3,8 @@ session_start();
 require_once('_config.php');
 include '_head.php';
 include 'inc/articles.inc.php';
+include_once 'inc/langue.inc.php';
+
 $page = "index";
 
 $query="SELECT club.id, club.name, images.url FROM club
@@ -15,7 +17,7 @@ $result = $pdo->prepare($query);
 $result->execute();
 $clubs = $result->fetchAll();
 
-$query1="SELECT event.id, event.titre_FR, images.url FROM event
+$query1="SELECT event.id, event.titre_".$lang.", images.url FROM event
 LEFT JOIN images ON images.event_id=event.id
 GROUP BY event.id
 LIMIT 3
@@ -46,11 +48,11 @@ $events = $result->fetchAll();
 
 	<header>
 		<div id="filter">
-			<h1>Trouvez votre aventure</h1>
+			<h1><?php echo $content["indexheader"]; ?></h1>
 		
 		<form action="map/map.php" method="GET">
-			<input type="text" id="club" name="club" placeholder="Club, préstation, véterinaire...">
-			<input type="submit" value="Cherchez">
+			<input type="text" id="club" name="club" placeholder="<?php echo $content["placeholder_search"]; ?>">
+			<input type="submit" value="<?php echo $content["cherchez"]; ?>">
 		</form>
 		</div>
 	</header>
@@ -60,19 +62,19 @@ $events = $result->fetchAll();
 		<div class="col-3">
 			<a href="index.php#clubs">
 				<img src="images/website/1.svg">
-				<span>Trouvez votre futur club préféré</span>
+				<span><?php echo $content["row1"]; ?></span>
 			</a>
 		</div>
 		<div class="col-3">
 			<a href="index.php#events0">
 				<img src="images/website/1.svg">
-				<span>Participez aux évènements de la région</span>
+				<span><?php echo $content["row2"]; ?></span>
 			</a>
 		</div>
 		<div class="col-3">
 			<a href="index.php#inscrire">
 				<img src="images/website/1.svg">
-				<span>Affichez votre préstation</span>
+				<span><?php echo $content["row3"]; ?></span>
 			</a>
 		</div>
 	</section>
@@ -92,39 +94,39 @@ $events = $result->fetchAll();
 	}
 ?>
 	<div class="etiquette">
-		<a href="clubs.php">Voir tous les clubs</a>
+		<a href="clubs.php"><?php echo $content["voir_clubs"]; ?></a>
 	</div>
 </section>
 
 
 	<section class="colored clearfix">
 <?php
-	$article = new article($pdo);
-	$data = $article->get_data($pdo);
+	$article = new article($pdo, $lang);
+	$data = $article->get_data($pdo, $lang);
 ?>
 		<img src="images/articles/<?php echo $article->image; ?>">
 		<div>
 			<h2><?php echo $article->titre; ?></h2>
 				<p><?php echo $article->short_article; ?></p>
-				<a href="<?php echo $article->path_article; ?>"> <span class="etiquette">Découvrir plus</span></a>
+				<a href="<?php echo $article->path_article; ?>"> <span class="etiquette"><?php echo $content['decouvrir_plus']; ?></span></a>
 		</div>
 	</section>
 
 	<section class="content clearfix" id="events0">
-		<h2>Sortir</h2>
+		<h2><?php echo $content['sortir']; ?></h2>
 <?php
 	foreach ($events as $key => $value) {
 ?>	<a href="event.php?id=<?php echo $events[$key]['id']; ?>">
 		<div class="club_item" style="background-image: url('images/events/<?php echo $events[$key]['url'];?>');">
 			<div>
-				<h4><?php echo $events[$key]['titre_FR']; ?></h4>
+				<h4><?php echo $events[$key]['titre_'.$lang]; ?></h4>
 			</div>
 		</div>
 		</a>
 <?php
 	}
 ?>
-		<div class="etiquette"><a href="events.php">Voir tous les évènements</a></div>
+		<div class="etiquette"><a href="events.php"><?php echo $content["voir_evenements"]; ?></a></div>
 	</section>
 
 	<section class="colored" id="inscrire">

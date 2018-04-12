@@ -40,7 +40,7 @@
 				<span class="arrow"></span>
 				<div id="clearfix">
 					<h4>Images</h4>
-					<input type="hidden" name="MAX_FILE_SIZE" value="300000000" /> 
+					<input type="hidden" name="MAX_FILE_SIZE" value="500000000" /> 
 {% if count_img > 0 %}			
 					<div class="input_images">
 						<input name="files[]" id="file1" type="file" accept="image/*"/> 
@@ -61,7 +61,7 @@
 					<p id="error_msg">Veuillez bien remplir le formulaire</p>
 					<input type="hidden" name="id" value="{{article_id}}">
 					<input type="submit" name="submit" id="submit_new_article" value="Envoyer">
-					<input type="button" name="Annuler" value="Annuler">
+					<a class="btn-empty middle" href="admin_articles.php">Annuler</a>
 				</div>
 			</form>
 	</section>

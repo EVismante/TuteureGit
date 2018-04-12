@@ -3,6 +3,8 @@ require_once('_config.php');
 
 session_start();
 
+include_once 'inc/langue.inc.php';
+
 include '_head.php';
 $page = "club";
 $id = $_GET["id"]; /*id de la page*/
@@ -12,18 +14,18 @@ if (isset($_GET["p"])) {
 
 	if ($_GET["p"] == "clubs") {
 		$retour = "clubs.php";
-		$retour_text = "Revenir aux préstataires";
+		$retour_text = $content['revenir_liste'];
 	}
 	else if($_GET["p"] == "recherche") {
 		$retour = "recherche.php";
-		$retour_text = "Revenir à la recherche";
+		$retour_text = $content['revenir_recherche'];
 	} else {
 		$retour = "index.php";
-		$retour_text = "Revenir à la page d'accueil";
+		$retour_text = $content['revenir_index'];
 	}
 } else {
 	$retour = "index.php";
-	$retour_text = "Revenir à la page d'accueil";
+	$retour_text = $content['revenir_index'];
 }
 /*-----*/
 $clubQuery = 'SELECT * FROM club WHERE id = '.$id.';';
@@ -32,7 +34,7 @@ $result->execute();
 $clubInfo = $result->fetchAll();
 
 /*ACTIVITE TAGS*/
-$tagQuery1 = 'SELECT name_FR FROM tag 
+$tagQuery1 = 'SELECT name_'.$lang.' FROM tag 
 LEFT JOIN club_tag ON tag.id=club_tag.tag_id
 WHERE club_tag.club_id='.$id.'
 AND tag.type=1;';
@@ -42,7 +44,7 @@ $result->execute();
 $tagInfo = $result->fetchAll();
 
 /*TYPE TAGS*/
-$tagQuery2 = 'SELECT name_FR FROM tag 
+$tagQuery2 = 'SELECT name_'.$lang.' FROM tag 
 LEFT JOIN club_tag ON tag.id=club_tag.tag_id
 WHERE club_tag.club_id='.$id.'
 AND tag.type=2;';
@@ -91,7 +93,7 @@ $fav = $result1->rowCount();
 <?php
 			foreach ($tag2 as $key => $value) {
 				if ($key > 0) { echo " / ";};
-				echo $tag2[$key]['name_FR'];
+				echo $tag2[$key]['name_'.$lang];
 			}
 ?>
 			</h4>
