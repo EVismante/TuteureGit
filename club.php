@@ -119,23 +119,26 @@ $fav = $result1->rowCount();
 } /*----------FIN DE CHECKBOX-------------*/			
 ?>
 		<div>
-			<p><?php echo $clubInfo[0]['description_FR']; ?></p>
+			<p><?php echo $clubInfo[0]['description_'.$lang]; ?></p>
 		</div>
 		<hr>
 			<div class="bordered">
-				<h3>Activités</h3>
+				<h3><?php echo $content["activites"]; ?></h3>
 				<ul><?php
 				foreach ($tagInfo as $key => $value) {
 					echo '<li>'; 
-					echo $tagInfo[$key]['name_FR'];
+					echo $tagInfo[$key]['name_'.$lang];
 					echo '</li>';
 				}
 				?>
 				</ul>
 			</div>
 			<hr>
+<!--- ACTIVITES-->
 			<div class="bordered">
-				<h4>Contacter</h4>
+
+				<h4><?php echo $content["contacter"]; ?></h4>
+
 				<span>Adresse: <?php echo $clubInfo[0]['address']; ?></span><br/>
 				<span>Site web: <a href="<?php echo $clubInfo[0]['website']; ?>"><?php echo $clubInfo[0]['name']; ?></a></span><br/>
 				<span>Telephone: <?php echo $clubInfo[0]['telephone']; ?></span><br/>
@@ -143,17 +146,18 @@ $fav = $result1->rowCount();
 			</div>
 			<hr>
 			<div class="comments">
-				<h4>Commentaires</h4>
+				<h4><?php echo $content["commentaires"]; ?></h4>
 				<?php include("pages/comments/comment_club.php"); ?>
 			</div>
 		</div>
-
+<!--- DIAPORAMA GALERIE DES IMAGES-->
 		<div class="right" id="diapo">
 			<div>
-				<span class="btn_photos">Voir les photos</span>
+				<span class="btn_photos"><?php echo $content["voir_photos"]; ?></span>
 				<img src="images/clubs/<?php echo $img[0]["url"]; ?>" alt="<?php echo $clubInfo[0]['name']; ?>">	
 			</div>
 		</div>
+
 	</section>
 	<div id="diaporama">
 		<span tabindex="0" id="fermer">&#x2716;</span>

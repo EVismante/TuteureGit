@@ -13,15 +13,21 @@ html {
  }
 
 #mobile_menu {display: none;}
+
+/*search box de la page index*/
 header {width: 100%;
 	h1 {
 		padding-top: 40vh;
 		color: white;
 	}
-	form {
-		position: absolute;
-		top: 54vh;	
-		left: 40%;	
+	form {	
+		margin-left: auto;
+    	margin-right: auto;
+    	width: 32em;
+		input {
+			margin: 0!important;
+			margin-left: 1em!important;
+		}	
 	}
 }
 
@@ -32,8 +38,10 @@ left: 70px;
 
 p {margin-top: 2em;
 	margin-bottom: 2em;
-
 }
+.bigger {font-size:1.3em;
+}
+.lower {padding-top:5%;}
 /*---------------NAVIGATION TOP -----------------------*/
 #logo {font: map-get($fonts, logo);
 			text-decoration: none;
@@ -101,6 +109,7 @@ p {margin-top: 2em;
 		display: none;
 		box-shadow: 3px 3px 5px rgba(150, 150, 150, 0.1);
 		border-radius: 5px;
+		border: 1px solid white;
 		a {
 			display: block;
 			text-decoration: none;
@@ -169,6 +178,8 @@ body section:first-of-type {
 	color: black!important;
 }
 /*-----------------------------------------------*/
+#club { width: 20em;}
+
 .row {
 	padding-left: 5%;
 	display: flex;
@@ -188,16 +199,15 @@ body section:first-of-type {
 		font: map-get($fonts, h3);
 		color: map-get($colors, color3);
 		text-align: center;
-		padding: 3em;
+		padding: 3em; 
 	}
 }
 /*--------------------------recherche liste ----------------------*/
 #clubs, #events0, #inscrire {padding-top:100px;}
-#events0, #clubs {margin-bottom: 10vh;
-}
+#events0, #clubs {padding-bottom: 10vh;}
 
 
-.colored {
+.decouvrir {
 	height: auto;
 	img {float:left;
 		width: 60vw;
@@ -209,19 +219,25 @@ body section:first-of-type {
 	}
 }
 
-.etiquette {display: block;
-			background-color: white;
-			padding: 1em;
-			box-shadow: 3px 3px 5px rgba(150, 150, 150, 0.1);
-			margin:auto;
-			width: 200px;
-			float:left;
-		}
+.coeur {/*section coup de coeur*/
+	margin-top: 10vh;
+	margin-bottom: 10vh;
+	height: auto;
+	#h {width: 50px;}
+	div {
+		width:50vw;
+		height: 50vh;
+		float: right;
+		img {max-height: 45vh;}
+	
+}
+}
 
 .choix {width: 100%;
 	display: table;
 	margin:-1em;
 	margin-bottom: 1em;
+	a {margin: auto;}
 }
 #liste1, #liste2 {
 	background-color: map-get($colors, background2);
@@ -463,14 +479,15 @@ footer {
 .right {width: 46vw;
 	display: table-cell;
 	padding-left: 2vw;
-	position: sticky;
+	position: relative;
 	top: 100px;
 	div {
 		max-width: 47vw;
 		position: sticky;
 		top: 100px;
 		cursor: pointer;
-		img {max-width: 47vw;
+		span {z-index:1;}
+		img {max-width: 46vw;
 
 		}
 	}
@@ -547,8 +564,13 @@ h3::after {
 	margin: auto;
 	h1 {text-align: center;
 		margin-top: 1em;
-	}}
+	}
+}
 
+.center {
+	margin:auto;
+	text-align: center;
+}
 .edit_club {
 
 	background-color: map-get($colors, background);
@@ -674,7 +696,7 @@ margin: auto;}
 }
 
 .content { //pour les sections du contenu, sauf pour les maps !!!
-	width: 84vw;
+	width: 90vw;
 	margin: auto;
 	height: auto;
 	margin-bottom: 5em;

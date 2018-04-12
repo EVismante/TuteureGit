@@ -1,6 +1,8 @@
 <?php
 require_once('_config.php');
 session_start();
+include_once 'inc/langue.inc.php';
+
 $page = "evenements";
 	//VERIFIER SI UTILISATEUR EST CONNECTE//
 	if ( !isset($_SESSION["type"]) ) {
@@ -21,19 +23,19 @@ include '_head.php';
 
 
 <section class="forme">
-	<a href="user_events.php">Retour à vos évènements</a>
-		<h1 id="changejs">Nouveau évènement</h1>
-		<h4 id="changeh4">Nouveau évènement</h4>
+	<a href="user_events.php"><?php echo $content["revenir_evenements"]; ?></a>
+		<h1 id="changejs"><?php echo $content["nouveau_evenement"]; ?></h1>
+		<h4 id="changeh4"><?php echo $content["nouveau_evenement"]; ?></h4>
 			<form class="edit_club" action="pages/Events/new_event_action.php" method="POST" enctype="multipart/form-data">
 
 				<div>
-					<input type="text" name="name_FR" id="name_FR">
+					<input type="text" name="name_FR" id="name_fr">
 					<br>
-					<label for="name_FR">* Nom en français</label>
+					<label for="name_fr">* Nom en français</label>
 					<br>
-					<input type="text" name="name_EN" id="name_EN">
+					<input type="text" name="name_EN" id="name_en">
 					<br>
-					<label for="name_EN">* Nom en anglais</label>
+					<label for="name_en">* Nom en anglais</label>
 				</div>
 				<span class="arrow"></span>
 				<div>

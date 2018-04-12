@@ -1,5 +1,14 @@
 <?php
 include_once 'inc/langue.inc.php';
+
+//controle d'URL pour les pages des evenements et des clubs
+
+ if($page == "club" OR $page == "event" OR $page == "decouvrir") {
+ 	$uri = $_SERVER['REQUEST_URI']."&lang=";
+ } else {
+ 	$uri = $_SERVER['PHP_SELF']."?lang=";
+ }
+
 // pour rendre le menu navigation invisible en page Index
 	if($page == "index") {
 		echo '<div class="nav nav-scroll">';
@@ -18,9 +27,9 @@ include_once 'inc/langue.inc.php';
 			<!-- le contenu du mobile menu -->
 		<div>
 			<div id="lang">
-				<a href="index.php?lang=fr" tabindex="0">FR</a>
+				<a href="<?php echo $uri.'fr'; ?>" tabindex="0">FR</a>
 				<span>|</span>
-				<a href="index.php?lang=en" tabindex="0">EN</a>
+				<a href="<?php echo $uri.'en'; ?>" tabindex="0">EN</a>
 			</div>
 			<div class="menu">
 				<!-- USER MENU DEBUT-->

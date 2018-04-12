@@ -17,15 +17,19 @@ body {
 #mobile_menu {
   display: none; }
 
+/*search box de la page index*/
 header {
   width: 100%; }
   header h1 {
     padding-top: 40vh;
     color: white; }
   header form {
-    position: absolute;
-    top: 54vh;
-    left: 40%; }
+    margin-left: auto;
+    margin-right: auto;
+    width: 32em; }
+    header form input {
+      margin: 0 !important;
+      margin-left: 1em !important; }
 
 .menu_BO {
   left: 70px; }
@@ -33,6 +37,12 @@ header {
 p {
   margin-top: 2em;
   margin-bottom: 2em; }
+
+.bigger {
+  font-size: 1.3em; }
+
+.lower {
+  padding-top: 5%; }
 
 /*---------------NAVIGATION TOP -----------------------*/
 #logo {
@@ -94,7 +104,8 @@ p {
     right: -6em;
     display: none;
     box-shadow: 3px 3px 5px rgba(150, 150, 150, 0.1);
-    border-radius: 5px; }
+    border-radius: 5px;
+    border: 1px solid white; }
     .nav .user_menu a {
       display: block;
       text-decoration: none;
@@ -164,6 +175,9 @@ body section:first-of-type {
   color: black !important; }
 
 /*-----------------------------------------------*/
+#club {
+  width: 20em; }
+
 .row {
   padding-left: 5%;
   display: flex;
@@ -190,33 +204,40 @@ body section:first-of-type {
   padding-top: 100px; }
 
 #events0, #clubs {
-  margin-bottom: 10vh; }
+  padding-bottom: 10vh; }
 
-.colored {
+.decouvrir {
   height: auto; }
-  .colored img {
+  .decouvrir img {
     float: left;
     width: 60vw; }
-  .colored div {
+  .decouvrir div {
     width: 30vw;
     margin-left: 2em;
     margin-top: 2em;
     float: left; }
 
-.etiquette {
-  display: block;
-  background-color: white;
-  padding: 1em;
-  box-shadow: 3px 3px 5px rgba(150, 150, 150, 0.1);
-  margin: auto;
-  width: 200px;
-  float: left; }
+.coeur {
+  /*section coup de coeur*/
+  margin-top: 10vh;
+  margin-bottom: 10vh;
+  height: auto; }
+  .coeur #h {
+    width: 50px; }
+  .coeur div {
+    width: 50vw;
+    height: 50vh;
+    float: right; }
+    .coeur div img {
+      max-height: 45vh; }
 
 .choix {
   width: 100%;
   display: table;
   margin: -1em;
   margin-bottom: 1em; }
+  .choix a {
+    margin: auto; }
 
 #liste1, #liste2 {
   background-color: #e2d4c0;
@@ -455,15 +476,17 @@ footer {
   width: 46vw;
   display: table-cell;
   padding-left: 2vw;
-  position: sticky;
+  position: relative;
   top: 100px; }
   .right div {
     max-width: 47vw;
     position: sticky;
     top: 100px;
     cursor: pointer; }
+    .right div span {
+      z-index: 1; }
     .right div img {
-      max-width: 47vw; }
+      max-width: 46vw; }
   .right img:nth-of-type(2), .right img:nth-of-type(3),
   .right img:nth-of-type(4), .right img:nth-of-type(5) {
     display: none; }
@@ -526,6 +549,10 @@ footer {
   .forme h1 {
     text-align: center;
     margin-top: 1em; }
+
+.center {
+  margin: auto;
+  text-align: center; }
 
 .edit_club {
   background-color: #fff7ed;
@@ -637,7 +664,7 @@ table {
   transition: background-size 500ms linear; }
 
 .content {
-  width: 84vw;
+  width: 90vw;
   margin: auto;
   height: auto;
   margin-bottom: 5em; }

@@ -320,6 +320,7 @@ input[type="submit"] {
   color: #AA2E00;
   width: 8em;
   max-width: 200px;
+  max-height: 3em;
   padding: 0.4em; }
   .btn-empty:hover, .btn_forme:hover {
     background-color: rgba(26, 26, 26, 0);
@@ -328,11 +329,12 @@ input[type="submit"] {
     -ms-transition: background-color 200ms linear;
     transition: background-color 200ms linear; }
   .btn-empty:hover, .btn_forme:hover {
-    border: 1px solid #FFAF44;
-    color: #FFAF44;
+    border: 1px solid #dd3c00;
+    color: #dd3c00;
     -webkit-transition: color 200ms linear;
     -ms-transition: color 200ms linear;
-    transition: color 200ms linear; }
+    transition: color 200ms linear;
+    text-decoration: underline; }
 
 .btn_blue {
   display: block;
@@ -403,7 +405,7 @@ input[type=checkbox] {
 
 .colored {
   width: 100vw;
-  background-color: #FFAF44; }
+  background-color: #e2d4c0; }
 
 .row1 {
   width: 100vw;

@@ -1,6 +1,7 @@
 <?php
 require_once('_config.php');
 session_start();
+include_once 'inc/langue.inc.php';
 $page = "favoris";
 	//VERIFIER SI UTILISATEUR EST CONNECTE//
 	if ( !isset($_SESSION["type"]) ) {
@@ -19,7 +20,7 @@ $result->execute();
 $clubs = $result->fetchAll();
 
 /*--------------------EVENTS---------------------------------*/
-$query="SELECT event.id, event.name, event.date, images.url, favoris.page_id FROM favoris
+$query="SELECT event.id, event.titre_".$lang.", event.date, images.url, favoris.page_id FROM favoris
 LEFT JOIN event ON favoris.page_id=event.id
 LEFT JOIN images ON images.event_id=event.id
 WHERE favoris.user_id=".$_SESSION['id']."
@@ -38,10 +39,9 @@ include '_head.php';
 <body>
 
 		<?php include("header.php"); ?>
-		<!--<div id="filter"><h1>Vos favoris</h1></div>-->
 
-<section>
-	<h1>Clubs</h1>
+<section class="content clearfix">
+	<h1><?php echo $content["menu3"]; ?></h1>
 <?php
 	foreach ($clubs as $key => $value) {
 ?>
@@ -62,15 +62,15 @@ include '_head.php';
 ?>
 </section>
 <br>
-<section>
-	<h1>Evenements</h1>
+<section class="content clearfix">
+	<h2><?php echo $content["evenements"]; ?></h2>
 <?php
 	foreach ($events as $key => $value) {
 ?>
 	<div class="club_item" style="background-image: url('images/events/<?php echo $events[$key]['url'];?>');">
 		<a href="event.php?id=<?php echo $events[$key]['page_id']; ?>">
 		<div>
-			<h3><?php echo $events[$key]['name']; ?></h3>
+			<h3><?php echo $events[$key]['titre_'.$lang]; ?></h3>
 			<h4><?php echo $events[$key]['date']; ?></h4>
 		</div>
 	</a>
@@ -78,6 +78,7 @@ include '_head.php';
 		<label for="favori_event<?php echo $events[$key]['id']; ?>">
            	<img src="images/website/icons/heart-pleine.svg" class="heart_icon" alt="supprimer le favori">          
         </label>
+       <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 	</div>
 	
 <?php

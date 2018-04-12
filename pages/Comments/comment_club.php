@@ -37,13 +37,13 @@ if (($res2->rowCount()) > 0 ) {
  		<form action="pages/comments/comment_post.php" method="POST">
 			<img class="user_icon" alt="" src="images/avatars/<?php echo $_SESSION["avatar"]; ?>">
 			<div>
-				<span>Questions? Déjà visité? Donnez votre avis !</span>
+				<span><?php echo $content["sub_comment"]; ?></span>
 				<textarea rows="4" cols="50" name="comment" class="comment"></textarea>
 <?php
 if ($ratingscount) {
 	?>			
 				<div class="rating">
-					<span>Evaluez <?php echo $clubInfo[0]['name']; ?></span>
+					<span><?php echo $content["evaluez"]." ".$clubInfo[0]['name']; ?></span>
 					<br>
 					<input type="radio" id="1star" name="rating" value="1">
 					<label for="1star"><img class='star' alt='' src='images/website/icons/vide.svg'/></label>
@@ -65,7 +65,7 @@ if ($ratingscount) {
 			<input type="hidden" name="parent_id" value="NULL">
 			<input type="hidden" name="page_type" value="club">
 			<br>
-			<input type="submit" class="submit" value="Envoyer">
+			<input type="submit" class="submit" value="<?php echo $content["envoyer"]; ?>">
 			<span class="error_msg">Votre commentaire est vide</span>
 		</form>
 		</div>
@@ -118,7 +118,7 @@ if ($comments[$key]['rating_id'] !== NULL) {
 			<input type="hidden" name="page_type" value="club">
 			<span class="error_msg">Votre commentaire est vide</span>
 			<br>
-			<button class="submit">Envoyer</button>
+			<input type="submit" class="submit" value="<?php echo $content["envoyer"]; ?>">
 		</form>
 	</div>
 <?php

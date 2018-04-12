@@ -56,4 +56,39 @@ Class article {
 	}
 }
 
+Class random_club {
+
+	public function __construct($pdo, $lang) {
+		$this->data = self::get_data($pdo, $lang);
+		$this->image = self::get_image($this->data);
+		$this->id = self::get_id($this->data);
+		$this->name = self::get_name($this->data);
+	}
+
+	public function get_data($pdo) {
+		$querycoeur="SELECT club.id, club.name, images.url FROM club
+		LEFT JOIN images ON images.club_id=club.id
+		ORDER BY RAND()
+		LIMIT 1
+		;";
+
+		$result_coeur = $pdo->prepare($querycoeur);
+		$result_coeur->execute();
+		$coeur = $result_coeur->fetchAll();
+
+		return $coeur;
+			}
+
+			public function get_image($array) {
+				return $array[0]["url"];
+			}
+
+			public function get_id($array) {
+				return $array[0]["id"];
+			}
+
+			public function get_name($array) {
+				return $array[0]["name"];
+			}
+}
 ?>

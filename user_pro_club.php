@@ -31,10 +31,13 @@ $count = $result->rowCount();
 <?php
 if ($count == 0) { ?>
 		<section class="edit_club">
-			<h1>Votre préstation</h1>
+			<h1><?php echo $content["menu1"]; ?></h1>
 			<div>
-				<p> Vous n'avez pas encore défini votre préstation ! <br> Si votre préstation existe déjà dans <a href="recherche.php">la liste</a>, écrivez nous un message. Sinon, créez une nouvelle page: </p>
-					<a class = "btn" href="user_new_club.php">Créer</a>
+				<p><?php echo $content["text1"]; ?>
+				 </p>
+					<a class = "btn" href="user_new_club.php">
+						<?php echo $content["creer"]; ?>
+					</a>
 			</div>
 <?php
 } else {
@@ -68,27 +71,30 @@ $favoris = $result2->fetchAll();
 		<section class="edit_club">
 			<div>
 				<h2><?php echo $club[0]['name']; ?></h2>
-				<a href="club.php?id=<?php echo $club[0]['id']; ?>">Visiter la page de <?php echo $club[0]['name']; ?></a>
+				<a href="club.php?id=<?php echo $club[0]['id']; ?>">
+					<?php echo $content["visiter"]; ?> 
+					<?php echo $club[0]['name']; ?>			
+				</a>
 				<br>
 <?php include "inc/evaluation.inc.php"; /*évaluation de préstataire*/?>
 				<br>
-				<span>Commentaires (<?php echo $comments[0][0]; ?>)</span>
+				<span><?php echo $content["commentaires"]; ?> (<?php echo $comments[0][0]; ?>)</span>
 				<br>
-				<span>Dans les favoris de <?php echo $favoris[0][0]; ?> personne(s)</span>
+				<span><?php echo $content["text_fav1"]." ".$favoris[0][0]." ".$content["text_fav2"]; ?></span>
 				<form action="user_edit_club.php" method="POST">
 					<input type="hidden" name="id" value="<?php echo $club[0]['id']; ?>">
-					<input type="submit" value="Changer">
+					<input type="submit" value="<?php echo $content["changer"]; ?>">
 				</form>
 			</div>
 			<div>
 				<div>
-					Supprimer la page de <?php echo $club[0]['name']; ?>
+					 <?php echo $content["supprimer_page"]." ".$club[0]['name']; ?>
 				</div>
 				<form action="pages/BackOffice/delete_club.php" method="POST">
 					<input type="hidden" name="id" value="<?php echo $club[0]['id']; ?>">
 					<input type="hidden" name="page" value="user_pro_club.php">
 					<input type="hidden" name="retour" value="user">
-					<input type="submit" class="delete" value="Supprimer">
+					<input type="submit" class="delete" value="<?php echo $content["supprimer"]; ?>">
 				</form>
 			</div>
 

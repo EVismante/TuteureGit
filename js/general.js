@@ -78,9 +78,12 @@ active.fadeOut(0, function() {
 /*-------------------------------------------*/
 /*animation de changement de H1 sur les pages des insertion de données*/
 var initialvalue = $("#changejs").html(); //valeur initiale de H1
-$("#name").on("input", function() {
-  
-  var text = $("#name").val();
+var lang = document.getElementsByTagName('html')[0].getAttribute('lang');
+var name = document.getElementById("name_"+lang);
+
+$(name).on("input", function() {
+
+  var text = $(this).val();
   if (text.length > 0) {
     $("#changejs").html(text);
     $("#changeh4").css("opacity", "1");

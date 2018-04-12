@@ -1,6 +1,6 @@
 
 <!DOCTYPE html>
-<html>
+<html lang="<?php echo $lang; ?>">
 
 <head>
 	<meta charset="UTF-8"> 

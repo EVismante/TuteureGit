@@ -3,6 +3,7 @@
 require_once('_config.php');
 $page = "clubs";
 session_start();
+include_once 'inc/langue.inc.php';
 	//VERIFIER SI UTILISATEUR EST CONNECTE//
 	if ( !isset($_SESSION["user"]) ) {
 		$header = "header.php";
@@ -36,7 +37,7 @@ $page="clubs";
 	<?php include($header); ?>
 
 <section class="content clearfix">
-	<h1>Derniers préstataires</h1>
+	<h1><?php echo $content["dernier"]; ?></h1>
 <?php
 	foreach ($articles as $key => $value) {
 	$id = $articles[$key]['id'];

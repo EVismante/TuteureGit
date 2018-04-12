@@ -3,6 +3,7 @@
 require_once('_config.php');
 
 session_start();
+include_once 'inc/langue.inc.php';
 
 include '_head.php';
 $page="recherche";

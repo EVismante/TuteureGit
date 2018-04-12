@@ -1,9 +1,9 @@
 <?php
 session_start();
 require_once('_config.php');
-include '_head.php';
 include 'inc/articles.inc.php';
 include_once 'inc/langue.inc.php';
+include '_head.php';
 
 $page = "index";
 
@@ -25,7 +25,6 @@ LIMIT 3
 $result = $pdo->prepare($query1);
 $result->execute();
 $events = $result->fetchAll();
-
 
 ?>
 <script>
@@ -61,25 +60,26 @@ $events = $result->fetchAll();
 	<section class="row">
 		<div class="col-3">
 			<a href="index.php#clubs">
-				<img src="images/website/1.svg">
+				<img src="images/website/1.svg" alt="">
 				<span><?php echo $content["row1"]; ?></span>
 			</a>
 		</div>
 		<div class="col-3">
 			<a href="index.php#events0">
-				<img src="images/website/1.svg">
+				<img src="images/website/1.svg" alt="">
 				<span><?php echo $content["row2"]; ?></span>
 			</a>
 		</div>
 		<div class="col-3">
 			<a href="index.php#inscrire">
-				<img src="images/website/1.svg">
+				<img src="images/website/1.svg" alt="">
 				<span><?php echo $content["row3"]; ?></span>
 			</a>
 		</div>
 	</section>
 
-<section class="content clearfix" id="clubs">
+<section class="colored clearfix" id="clubs">
+	<div class="content">
 	<h2>Top clubs</h2>
 <?php
 	foreach ($clubs as $key => $value) {
@@ -89,30 +89,56 @@ $events = $result->fetchAll();
 				<h4><?php echo $clubs[$key]['name']; ?></h4>
 			</div>
 		</div>
-		</a>
+	</a>
 <?php
 	}
-?>
-	<div class="etiquette">
-		<a href="clubs.php"><?php echo $content["voir_clubs"]; ?></a>
+?>	
+	</div>	
+	<div class="choix">
+		<a class="btn-empty" href="clubs.php"><?php echo $content["voir_clubs"]; ?></a>
 	</div>
 </section>
 
 
-	<section class="colored clearfix">
+
+
+
+	<section class="decouvrir clearfix">
 <?php
 	$article = new article($pdo, $lang);
 	$data = $article->get_data($pdo, $lang);
 ?>
-		<img src="images/articles/<?php echo $article->image; ?>">
-		<div>
+		<img src="images/articles/<?php echo $article->image; ?>" alt="illustration <?php echo $article->titre; ?>">
+		<div class="lower">
 			<h2><?php echo $article->titre; ?></h2>
-				<p><?php echo $article->short_article; ?></p>
-				<a href="<?php echo $article->path_article; ?>"> <span class="etiquette"><?php echo $content['decouvrir_plus']; ?></span></a>
+				<p class="bigger"><?php echo $article->short_article; ?></p>
+				<a class="btn" href="<?php echo $article->path_article; ?>"> 
+					<?php echo $content['decouvrir_plus']; ?>
+				</a>
 		</div>
 	</section>
+<!-- section coup de coeur-->
+	<section class="coeur clearfix">
+<?php
+		$random = new random_club($pdo, $lang);
+		$club_coeur = $random->get_data($pdo, $lang);
+?>		<div>
+			<img id ="h" src="images/website/icons/heart-pleine.svg">
+			<h2><?php echo $content["coup_de_coeur"]; ?></h2>
+			
+			<a href="club.php?id=<?php echo $random->id; ?>">
+				<img src="images/clubs/<?php echo $random->image;?>">
 
-	<section class="content clearfix" id="events0">
+					<div>
+						<h4><?php echo $random->name; ?></h4>
+					</div>
+				</div>
+			</a>
+		</div>
+	</section>
+<!-- section coup de coeur-->
+	<section class="colored clearfix" id="events0">
+		<div class="content">
 		<h2><?php echo $content['sortir']; ?></h2>
 <?php
 	foreach ($events as $key => $value) {
@@ -126,15 +152,12 @@ $events = $result->fetchAll();
 <?php
 	}
 ?>
-		<div class="etiquette"><a href="events.php"><?php echo $content["voir_evenements"]; ?></a></div>
-	</section>
+	</div>
+		<div class="choix">
+		<a class="btn-empty" href="evenements.php"><?php echo $content["voir_evenements"]; ?></a>
+		</div>
 
-	<section class="colored" id="inscrire">
-		<h3>Pourquoi s'incrire?</h3>
-		Pour mettre aux favoris
-		pour 
 	</section>
-
 <?php include("pages/footer.php"); ?>
 
 </body>
