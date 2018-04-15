@@ -3,7 +3,7 @@ require_once('../../_config.php');
 require_once ('../../inc/images.inc.php');
 
 $name_FR = addslashes($_POST["name_FR"]);
-$name_EN = addslashes($_POST["name_EN"]);
+$name_EN = addslashes($_POST["name_en"]);
 
 $fr = addslashes($_POST["description_FR"]);
 $en = addslashes($_POST["description_EN"]);

@@ -37,89 +37,134 @@ include '_head.php';
 
 
 <section class="forme">
-		<h1>Éditer <?php echo $event[0]['titre_FR']?></h1>
-			<form class="edit_club" action="pages/Events/edit_event_action.php" method="POST" enctype="multipart/form-data">
-				<div>
-					<input type="text" name="name_FR" id="name_FR" value="<?php echo $event[0]['titre_FR']?>">
+		<a href="user_events.php"><?php echo $content["revenir_evenements"]; ?></a>
+		<h1>Éditer <?php echo $event[0]['titre_fr']?></h1>
+		<form id="formulaire" class="edit_club" action="pages/Events/edit_event_action.php" method="POST" enctype="multipart/form-data">
+
+				<div class="hide active">
+						<div class="submenu">
+							<span class="current"><?php echo $content["desc_fr"]; ?></span>
+							<div class="arrow-right"></div>
+							<span><?php echo $content["desc_en"]; ?></span>
+							<div class="arrow-right"></div>
+							<span>Info</span>
+							<div class="arrow-right"></div>
+							<span>Images</span>
+						</div>
+					<div class="error_msg"><?php echo $content["error_titre"]; ?><div></div></div>
+					<input type="text" name="name_FR" id="name_fr" value="<?php echo $event[0]['titre_fr']?>">
 					<br>
-					<label for="name_FR">* Nom en français</label>
+					<label for="name_fr">* <?php echo $content["titre_en_fr"]; ?></label>
 					<br>
-					<input type="text" name="name_EN" id="name_EN" value="<?php echo $event[0]['titre_EN']?>">
+					<textarea rows="4" cols="50" id="description_FR" name="description_FR" >
+						<?php echo $event[0]['description_fr']?>
+					</textarea>
 					<br>
-					<label for="name_EN">* Nom en anglais</label>
+					<label for="description_FR"><?php echo $content["desc_en_fr"]; ?></label>
+					<br><br>
+					<span><em><?php echo $content["champs"]; ?></em></span>
 				</div>
-				<span class="arrow"></span>
-				<div>
-					<textarea rows="4" cols="50" id="description_FR" name="description_FR" ><?php echo $event[0]['description_FR']?></textarea>
+
+				<div class="hide">
+						<div class="submenu">
+							<span><?php echo $content["desc_fr"]; ?></span>
+							<div class="arrow-right"></div>
+							<span class="current"><?php echo $content["desc_en"]; ?></span>
+							<div class="arrow-right"></div>
+							<span>Info</span>
+							<div class="arrow-right"></div>
+							<span>Images</span>
+						</div>
+					<div class="error_msg"><?php echo $content["error_titre"]; ?><div></div></div>
+					<input type="text" name="name_en" id="name_en" value="<?php echo $event[0]['titre_en']?>">
 					<br>
-					<label for="description_FR">* Description en français</label>
-					<br><br><br>
-					<textarea name="description_EN" id="description_EN"><?php echo $event[0]['description_EN']?></textarea>
+					<label for="name_en">* <?php echo $content["titre_en_en"]; ?></label>
+					<textarea name="description_EN" id="description_EN"><?php echo $event[0]['description_en']?></textarea>
 					<br>
-					<label for="description_EN" id="EN">Description in English</label>
+					<label for="description_EN" id="EN"><?php echo $content["desc_en_en"]; ?></label>
 					<br><br>
 				</div>
-				<span class="arrow"></span>
 
-				<div id="edit_contacts">
+				<div class="hide">
+						<div class="submenu">
+							<span><?php echo $content["desc_fr"]; ?></span>
+							<div class="arrow-right"></div>
+							<span><?php echo $content["desc_en"]; ?></span>
+							<div class="arrow-right"></div>
+							<span class="current">Info</span>
+							<div class="arrow-right"></div>
+							<span>Images</span>
+						</div>
+					<div class="error_msg"><?php echo $content["error_date"]; ?><div></div></div>
 					<input type="text" name="date" id="datepicker" value="<?php echo $event[0]['date']?>">
 					<br>
-					<label for="datepicker">* Date du début</label>
+					<label for="datepicker">* <?php echo $content["date_debut"]; ?></label>
 					<br>
 					<input type="text" name="site_web" id="site_web" value="<?php echo $event[0]['website']?>">
 					<br>
-					<label for="site_web">Site web</label>
+					<label for="site_web"><?php echo $content["website"]; ?></label>
 					<br>
 					<input type="text" name="mail" id="mail" value="<?php echo $event[0]['mail']?>">
 					<br>
-					<label for="mail">Mail</label>
+					<label for="mail"><?php echo $content["mail"]; ?></label>
 					<br>
+					<div class="error_msg"><?php echo $content["error_adresse"]; ?><div></div></div>
 					<input type="text" name="address" id="autocomplete" value="<?php echo $event[0]['address']?>">
 					<br>
-					<label for="autocomplete">* Adresse</label>
-
+					<label for="autocomplete">* <?php echo $content["adresse"]; ?></label>
+					<br>
 					<input type="hidden" name="user_id" value="<?php echo $_SESSION['id']; ?>">
 					<input type="hidden" name="retour" value="user">
-					<input type="hidden" name="id" value="<?php echo $id; ?>">
 				</div>
 
-			<span class="arrow"></span>
-			<div id="clearfix">
-				<h4>Images</h4>
+
+				<div class="hide" id="input_images">
+						<div class="submenu">
+							<span><?php echo $content["desc_fr"]; ?></span>
+							<div class="arrow-right"></div>
+							<span><?php echo $content["desc_en"]; ?></span>
+							<div class="arrow-right"></div>
+							<span>Info</span>
+							<div class="arrow-right"></div>
+							<span class="current">Images</span>
+						</div>
 					<input type="hidden" name="MAX_FILE_SIZE" value="300000000" /> 
 <?php
 	foreach ($imgs as $key => $value) {
-	?>				<div class="input_images">
+	?>
 						<input name="files[]" id="file<?php echo $key; ?>" type="file" accept="image/*"/> 
 						<input class = "image_checkbox" type="checkbox" name="delete_img[]" value="<?php echo $value['id']; ?>">
 	           			<label for="file<?php echo $key; ?>" class="on_delete"  style="background-image: url('images/events/<?php echo $value['url']; ?>'); ">
-	           			 	<span>
-	           			 	</span>
+	           			 	<span></span>
 	           			</label>
-	           		</div>
 
 	<?php
 	}
 
 	for ($i=3; $i > $count ; $i--) { 
-	?>	<div class="input_images">
+	?>
 				<input name="files[]" id="file<?php echo $i; ?>" type="file" accept="image/*" />
 				<label for="file<?php echo $i; ?>"><span class="arrow_up"></span></label>
-			</div>
+
 	<?php
 	}
 	?>
-			</div>
-				<span class="arrow"></span>
-				<div id="edit_btn">
-					<p id="error_msg">Veuillez bien remplir le formulaire</p>
-					<input type="submit" name="submit" id="submit_new_event" value="Envoyer">
-					<a class ="btn_forme" href="user_events.php">Annuler</a>
+				</div>
+				<div class="clearfix">
+					<a class ="btn_float_empty" href="user_events.php"><?php echo $content["annuler"]; ?></a>
+					<span class="btn_float inactive" id="previous"><?php echo $content["precedent"]; ?></span>
+					<span class="btn_float" id="next"><?php echo $content["suivant"]; ?></span>
+				</div>
+			
+				<div id="fin">
+					<p id="error_msg"><?php echo $content["error_form"]; ?></p>
+					<input type="hidden" name="id" value="<?php echo $_POST['id']?>">
+					<input type="submit" name="submit" id="submit_new_event" value="<?php echo $content["envoyer"]; ?>">
+					
 				</div>
 			</form>
+			
 	</section>
 	<?php include("pages/footer.php"); ?>
-
-
 </body>
 </html>

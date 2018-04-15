@@ -2,6 +2,7 @@
 require_once('../../_config.php');
 
 $name = $_POST["name"];
+$name_en = $_POST["name_en"];
 $retour = $_POST["retour"];
 
 $fr = preg_quote($_POST["description_FR"]);
@@ -23,6 +24,7 @@ $lat = $geo_data['lat'];
 
 $queryClub = "UPDATE club SET 
 name = '$name', 
+name_en = '$name_en', 
 address = '$address',
 website = '$website',
 telephone = '$phone',

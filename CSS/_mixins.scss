@@ -37,6 +37,7 @@
 @mixin button($color) {
 	display: block;
 	border-radius: 20px;
+	border: 1px solid $color;
 	text-transform: uppercase;
 	text-align: center;
 	padding-top: 5px;
@@ -49,6 +50,7 @@
 	background-color: $color;
 	&:hover {
 		background-color: lighten( $color, 10% );
+		border: 1px solid lighten( $color, 10% );
 		color: white;
 		@include transition(background-color, 200ms);
 	}

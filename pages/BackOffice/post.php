@@ -29,7 +29,7 @@ $result->execute();
 
 /*-------------------REDIRECTION-------------------------------- */
 
-header('Location: ../../index.php');
+header('Location: ../../contact.php?msg=success');
 
 
 ?>

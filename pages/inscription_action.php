@@ -67,7 +67,7 @@ if (validateMail($mail)
 	&& validate_username($name, $pdo)
 	) {
 		$mdp = password_hash($mdp, PASSWORD_DEFAULT);
-		$insert = 'INSERT INTO users (name, password, mail, type) VALUES ("'.$name.'", "'.$mdp.'", "'.$mail.'", "'.$type.'");';
+		$insert = 'INSERT INTO users (name, password, mail, type, premiere_fois) VALUES ("'.$name.'", "'.$mdp.'", "'.$mail.'", "'.$type.'", 1);';
 		$result = $pdo->prepare($insert);
 		$result->execute();
 		header("Location: ../inscription_end.php");

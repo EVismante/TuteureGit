@@ -34,7 +34,7 @@ $page = "login";
                 echo "<div class='msg'>".$content['msg_login']." </div>";}; ?>
                 
             		<input type="submit" value="LOGIN" id="submit_login">
-            		<input type="button" onclick="location.href='index.php'" value="<?php echo $content['annuler']; ?>">
+            		<a class="btn-empty center" href="index.php"><?php echo $content['annuler']; ?></a>
 
  
         		 

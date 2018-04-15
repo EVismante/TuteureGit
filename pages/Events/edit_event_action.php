@@ -1,7 +1,7 @@
 <?php
 require_once('../../_config.php');
 
-$name_EN = $_POST["name_EN"];
+$name_EN = $_POST["name_en"];
 $name_FR = $_POST["name_FR"];
 
 $fr = $_POST["description_FR"];

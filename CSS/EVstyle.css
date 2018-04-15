@@ -231,6 +231,14 @@ body section:first-of-type {
     .coeur div img {
       max-height: 45vh; }
 
+#savoir {
+  cursor: pointer;
+  text-decoration: underline; }
+
+label[for="normal"] img,
+label[for="pro"] img {
+  width: 5em; }
+
 .choix {
   width: 100%;
   display: table;
@@ -550,9 +558,39 @@ footer {
     text-align: center;
     margin-top: 1em; }
 
-.center {
+.row1 {
   margin: auto;
-  text-align: center; }
+  text-align: center;
+  margin: auto; }
+
+.column3 {
+  background-color: white;
+  border-radius: 20px;
+  padding: 1em;
+  box-shadow: 3px 3px 2px lightgrey;
+  border: 1px solid lightgrey;
+  width: 30%;
+  margin: 0.5em !important;
+  display: table-cell; }
+
+#msg_success {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(150, 150, 150, 0.5);
+  position: fixed;
+  top: 0;
+  left: 0;
+  overflow: hidden; }
+  #msg_success div {
+    background-color: white;
+    border-radius: 20px;
+    padding: 1em;
+    border: 1px solid lightgrey;
+    top: 40vh;
+    text-align: center;
+    font-size: 1.2em;
+    width: 30vw;
+    margin: auto; }
 
 .edit_club {
   background-color: #fff7ed;
@@ -566,21 +604,55 @@ footer {
     box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.1);
     position: relative;
     margin: auto;
-    width: 50%;
-    min-width: 500px;
+    width: 60%;
+    min-width: 34em;
     margin-bottom: 2em; }
     .edit_club > div input[name="name"],
     .edit_club > div input[type="text"],
+    .edit_club > div textarea,
     .edit_club > div input[type="password"] {
-      width: 22em;
-      min-width: 20em;
+      width: 25em;
+      min-width: 30em;
       margin-top: 1.5em; }
     .edit_club > div > div {
-      width: 22em;
       margin: auto; }
+  .edit_club .larger {
+    width: 80%; }
   .edit_club input[type="submit"], .edit_club input[type="button"] {
     margin: auto;
     margin-top: 1em; }
+
+.submenu {
+  position: relative;
+  width: 30em !important;
+  margin: auto; }
+  .submenu span {
+    padding: 0.2em; }
+  .submenu div {
+    display: inline-block; }
+  .submenu .current {
+    text-decoration: underline;
+    font-weight: 500; }
+
+.error_msg {
+  position: absolute;
+  right: 38em;
+  background: #FFAF44;
+  padding: 1em;
+  border-radius: 10px;
+  text-align: center;
+  width: 10em !important; }
+  .error_msg div {
+    border-bottom: 11px solid transparent;
+    border-top: 11px solid #FFAF44;
+    border-left: 11px solid transparent;
+    border-right: 11px solid transparent;
+    transform: rotate(270deg);
+    width: 0;
+    height: 0;
+    position: absolute;
+    top: 40%;
+    left: 100%; }
 
 .edit_flex {
   background-color: #fff7ed;

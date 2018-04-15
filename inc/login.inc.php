@@ -60,10 +60,20 @@ class connect {
 		return true;
 	} else {
 		return false;
+	}}
+
+	public function first_time($pdo) {
+
+		$query = "SELECT premiere_fois FROM users WHERE id=".$_SESSION["id"].";";
+		$result = $pdo->prepare($query);
+		$result->execute();
+		$premier = $result->fetchAll();
+
+			return $premier[0]['premiere_fois'];
 	}
 
 
 
-}}
+}
 
 

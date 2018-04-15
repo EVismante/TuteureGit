@@ -29,7 +29,7 @@ $count = $result->rowCount();
 ?>
 
 
-	<section class=" forme center">
+	<section class=" forme center clearfix">
 		<h1><?php echo $content["vos_evenements"]; ?></h1>
 
 <?php

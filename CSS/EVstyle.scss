@@ -232,6 +232,14 @@ body section:first-of-type {
 	
 }
 }
+#savoir {cursor: pointer;
+		text-decoration: underline;
+}
+label[for="normal"],
+label[for="pro"]
+ {
+	img {width: 5em;}
+}
 
 .choix {width: 100%;
 	display: table;
@@ -277,6 +285,7 @@ body section:first-of-type {
 				z-index: 9;
 			}
 	}
+
 
 /*---------------------------------------------------*/
 
@@ -567,42 +576,109 @@ h3::after {
 	}
 }
 
-.center {
+.row1 {
 	margin:auto;
 	text-align: center;
+	margin: auto;
 }
+
+.column3 {
+	background-color: white;
+	border-radius: 20px;
+	padding: 1em;
+	box-shadow: 3px 3px 2px lightgrey;
+	border: 1px solid lightgrey;
+	width: 30%;
+	margin: 0.5em!important;
+	display: table-cell;
+}
+
+#msg_success {
+	width: 100vw;
+	height: 100vh;
+	background-color: rgba(150, 150, 150, 0.5);
+	position: fixed;
+	top: 0;
+	left: 0;
+	overflow: hidden;
+	div {
+	background-color: white;
+	border-radius: 20px;
+	padding: 1em;
+	border: 1px solid lightgrey;
+	top: 40vh;
+	text-align: center;
+	font-size: 1.2em;
+	width: 30vw;
+	margin: auto;
+
+}}
+
 .edit_club {
 
 	background-color: map-get($colors, background);
 	border-radius: 20px;
 	padding: 3em;
-
 	&>div {
 		@include item;
 		position: relative;
 		margin: auto;
-		width: 50%;
-		min-width: 500px;
+		width: 60%;
+		min-width: 34em;
 		margin-bottom:2em;
 
 		input[name="name"],
 		input[type="text"],
+		textarea,
 		input[type="password"]
 		 {
-			width: 22em;
-			min-width: 20em;
+			width: 25em;
+			min-width: 30em;
 			margin-top: 1.5em;
 		}
+
 		&>div { 
-			width: 22em;
+			//width: 25em;
 			margin: auto;
 		}}
+		.larger {width: 80%;}
 		input[type="submit"], input[type="button"] {
 			margin: auto;
 			margin-top: 1em;
 		}
 	}
 
+.submenu {
+	position: relative;
+	width: 30em!important;
+	margin: auto;
+	span {
+			padding: 0.2em;
+
+	}
+	div {display: inline-block; }
+	.current { text-decoration: underline;
+				font-weight: 500;
+	 }
+}
+
+.error_msg {
+
+	position: absolute;
+	right: 38em;
+	background: map-get($colors, color1);
+	padding: 1em;
+	border-radius: 10px;
+	text-align: center;
+	width: 10em!important;
+	div {
+		@include arrow(right, 11px, map-get($colors, color1));
+		position: absolute;
+		top: 40%;
+		left: 100%;
+
+	}
+}
 
 .edit_flex {
 	background-color: map-get($colors, background);

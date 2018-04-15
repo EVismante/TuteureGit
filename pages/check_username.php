@@ -9,7 +9,7 @@ $name = $result->fetchAll();
 
 $result = count($name);
 
-if ($result == 1) {
-	echo "Désolé, ce nom existe déjà";
-}
+echo $result;
+
+
 ?>

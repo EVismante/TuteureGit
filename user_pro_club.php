@@ -81,7 +81,7 @@ $favoris = $result2->fetchAll();
 				<span><?php echo $content["commentaires"]; ?> (<?php echo $comments[0][0]; ?>)</span>
 				<br>
 				<span><?php echo $content["text_fav1"]." ".$favoris[0][0]." ".$content["text_fav2"]; ?></span>
-				<form action="user_edit_club.php" method="POST">
+				<form action="user_edit_club.php" method="GET">
 					<input type="hidden" name="id" value="<?php echo $club[0]['id']; ?>">
 					<input type="submit" value="<?php echo $content["changer"]; ?>">
 				</form>

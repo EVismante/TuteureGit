@@ -26,53 +26,92 @@ include '_head.php';
 	<a href="user_events.php"><?php echo $content["revenir_evenements"]; ?></a>
 		<h1 id="changejs"><?php echo $content["nouveau_evenement"]; ?></h1>
 		<h4 id="changeh4"><?php echo $content["nouveau_evenement"]; ?></h4>
-			<form class="edit_club" action="pages/Events/new_event_action.php" method="POST" enctype="multipart/form-data">
+			<form id="formulaire" class="edit_club" action="pages/Events/new_event_action.php" method="POST" enctype="multipart/form-data">
 
-				<div>
+				<div class="hide active">
+						<div class="submenu">
+							<span class="current"><?php echo $content["desc_fr"]; ?></span>
+							<div class="arrow-right"></div>
+							<span><?php echo $content["desc_en"]; ?></span>
+							<div class="arrow-right"></div>
+							<span>Info</span>
+							<div class="arrow-right"></div>
+							<span>Images</span>
+						</div>
+					<div class="error_msg"><?php echo $content["error_titre"]; ?><div></div></div>
 					<input type="text" name="name_FR" id="name_fr">
 					<br>
-					<label for="name_fr">* Nom en français</label>
+					<label for="name_fr">* <?php echo $content["titre_en_fr"]; ?></label>
 					<br>
-					<input type="text" name="name_EN" id="name_en">
-					<br>
-					<label for="name_en">* Nom en anglais</label>
-				</div>
-				<span class="arrow"></span>
-				<div>
 					<textarea rows="4" cols="50" id="description_FR" name="description_FR"></textarea>
 					<br>
-					<label for="description_FR">* Description en français</label>
-					<br><br><br>
+					<label for="description_FR"><?php echo $content["desc_en_fr"]; ?></label>
+					<br><br>
+					<span><em><?php echo $content["champs"]; ?></em></span>
+				</div>
+
+				<div class="hide">
+						<div class="submenu">
+							<span><?php echo $content["desc_fr"]; ?></span>
+							<div class="arrow-right"></div>
+							<span class="current"><?php echo $content["desc_en"]; ?></span>
+							<div class="arrow-right"></div>
+							<span>Info</span>
+							<div class="arrow-right"></div>
+							<span>Images</span>
+						</div>
+					<div class="error_msg"><?php echo $content["error_titre"]; ?><div></div></div>
+					<input type="text" name="name_en" id="name_en">
+					<br>
+					<label for="name_en">* <?php echo $content["titre_en_en"]; ?></label>
 					<textarea name="description_EN" id="description_EN"></textarea>
 					<br>
-					<label for="description_EN" id="EN">Description in English</label>
+					<label for="description_EN" id="EN"><?php echo $content["desc_en_en"]; ?></label>
 					<br><br>
 				</div>
-				<span class="arrow"></span>
-				<div>
+				<div class="hide">
+						<div class="submenu">
+							<span><?php echo $content["desc_fr"]; ?></span>
+							<div class="arrow-right"></div>
+							<span><?php echo $content["desc_en"]; ?></span>
+							<div class="arrow-right"></div>
+							<span class="current">Info</span>
+							<div class="arrow-right"></div>
+							<span>Images</span>
+						</div>
+					<div class="error_msg"><?php echo $content["error_date"]; ?><div></div></div>
 					<input type="text" name="date" id="datepicker">
 					<br>
-					<label for="datepicker">* Date du début</label>
+					<label for="datepicker">* <?php echo $content["date_debut"]; ?></label>
 					<br>
 					<input type="text" name="site_web" id="site_web">
 					<br>
-					<label for="site_web">site web</label>
+					<label for="site_web"><?php echo $content["website"]; ?></label>
 					<br>
 					<input type="text" name="mail" id="mail">
 					<br>
-					<label for="mail">mail</label>
+					<label for="mail"><?php echo $content["mail"]; ?></label>
 					<br>
+					<div class="error_msg"><?php echo $content["error_adresse"]; ?><div></div></div>
 					<input type="text" name="address" id="autocomplete">
 					<br>
-					<label for="autocomplete">* Adresse</label>
+					<label for="autocomplete">* <?php echo $content["adresse"]; ?></label>
 					<br>
 					<input type="hidden" name="user_id" value="<?php echo $_SESSION['id']; ?>">
 					<input type="hidden" name="retour" value="user">
 				</div>
-				<span class="arrow"></span>
 
-				<div id="input_images">
-					<h4>Images</h4>
+
+				<div class="hide" id="input_images">
+						<div class="submenu">
+							<span><?php echo $content["desc_fr"]; ?></span>
+							<div class="arrow-right"></div>
+							<span><?php echo $content["desc_en"]; ?></span>
+							<div class="arrow-right"></div>
+							<span>Info</span>
+							<div class="arrow-right"></div>
+							<span class="current">Images</span>
+						</div>
 					<input type="hidden" name="MAX_FILE_SIZE" value="300000000" /> 
            			 <input name="files[]" id="file1" type="file" accept="image/*"/> 
            			 <label for="file1"><span class="arrow_up"></span></label>
@@ -81,14 +120,19 @@ include '_head.php';
            			 <input name="files[]" id="file3" type="file" accept="image/*"/> 
            			 <label for="file3"><span class="arrow_up"></span></label>
 				</div>
-
+				<div class="clearfix">
+					<a class ="btn_float_empty" href="user_events.php"><?php echo $content["annuler"]; ?></a>
+					<span class="btn_float inactive" id="previous"><?php echo $content["precedent"]; ?></span>
+					<span class="btn_float" id="next"><?php echo $content["suivant"]; ?></span>
+				</div>
 			
-				<div id="edit_btn">
-					<p id="error_msg">Veuillez bien remplir le formulaire</p>
-					<input type="submit" name="submit" id="submit_new_event" value="Envoyer">
-					<a class ="btn_forme" href="user_events.php">Annuler</a>
+				<div id="fin">
+					<p id="error_msg"><?php echo $content["error_form"]; ?></p>
+					<input type="submit" name="submit" id="submit_new_event" value="<?php echo $content["envoyer"]; ?>">
+					
 				</div>
 			</form>
+			
 	</section>
 	<?php include("pages/footer.php"); ?>
 

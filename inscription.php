@@ -5,7 +5,6 @@ include '_head.php';
 include_once 'inc/langue.inc.php';
 $page = "inscription";
 ?>
-<script type="text/javascript" src="../js/inscription.js"></script>
 </head>
 <body>
     <?php include("header.php"); ?>
@@ -25,51 +24,58 @@ $page = "inscription";
     <form class="edit_club" action="pages/inscription_action.php" method="POST">
         <div>
             <div>
+              
+                <div id="msg_nom1" class="error_msg"><?php echo $content['error_nom']; ?><div></div></div>
+                <div id="msg_nom" class="error_msg"><?php echo $content['msg1']; ?><div></div></div>
                 <input type="text" id="username" name="username">
                 <br/>
                 <label for="name"><?php echo $content['nom']; ?></label>
-                <p id="msg_nom" class='msg'>Le nom doit avoir au moins 4 charactéres</p>
                 <br>
+                <div id="msg_mdp" class="error_msg"><?php echo $content['msg2']; ?><div></div></div>
                 <input type="password" id="mdp" name="mdp">
                 <br/>
                 <label for="mdp"><?php echo $content['mdp']; ?></label>
-                <p id="msg_mdp" class='msg'>Le mot de passe doit avoir au moins 6 charactéres</p>
                 <br>
+                <div id="msg_mdp1" class="error_msg"><?php echo $content['msg3']; ?><div></div></div>
                 <input type="password" id="mdp1" name="mdp1">
                 <br/>
                 <label for="mdp1"><?php echo $content['mdp_repeat']; ?></label>
-                <p id="msg_mdp1" class='msg'>Les mots de passe ne sont pas identiques</p>
                 <br/>
+                <div id="msg_mail" class="error_msg"><?php echo $content['mail_non_valide']; ?><div></div></div>
                 <input type="text" id="mail" name="mail">
                 <br/>
                 <label for="name"><?php echo $content['mail']; ?></label>
-                <p id="msg_mail" class='msg'><?php echo $content['mail_non_valide']; ?></p>
                 <br>
+                <div id="msg_mail1" class="error_msg"><?php echo $content['msg4']; ?><div></div></div>
                 <input type="text" id="mail1" name="mail1">
                 <br/>
-                <label for="name"><?php echo $content['repetez_mail']; ?></label>
-                <p id="msg_mail1" class='msg'>Les addresses mail ne sont pas identiques</p>
+                <label for="mail1"><?php echo $content['repetez_mail']; ?></label>
             </div>
             <div>
-                <p><?php echo $content['type_compte']; ?></p>
-                <input type="radio" name="type" id="normal" value="normal" checked>
-                <label for="normal">
-                    Normal
-                    <img src="images/website/icons/normal.svg">
-                </label>
-                <input type="radio" name="type" value="pro" id="pro">
-                 <label for="pro">
-                    Pro
-                    <img src="images/website/icons/pro.svg">
-                </label>
-                <div class="expand">
-                    Si vous avez une préstation à offrir, optez pour pro.
-                    Si vous voulez trouver un club ou poster un évènement, un compte normal est pour vous.
+                <br>
+                <br>
+                <h3><?php echo $content['type_compte']; ?></h3>
+                <div class="error_msg" id="savoir1">
+                    <?php echo $content['savoir_plus1']; ?>
+                </div>
+                <span id="savoir"><?php echo $content['savoir_plus']; ?></span>
+                <div>
+                    <input type="radio" name="type" id="normal" value="normal" checked>
+                    <label for="normal">
+                        Normal
+                        <img src="images/avatars/default.svg">
+                    </label>
+
+                    <input type="radio" name="type" value="pro" id="pro">
+                     <label for="pro">
+                        Pro
+                        <img src="images/avatars/default.svg">
+                    </label>
                 </div>
             </div>
             <div>
                 <input type="submit" value="Inscription" id="submit_inscription">
-                <input type="button" value="<?php echo $content['annuler']; ?>">
+                <a class="btn-empty center" href="index.php"><?php echo $content['annuler']; ?></a>
             </div>
         </div>
         </form>

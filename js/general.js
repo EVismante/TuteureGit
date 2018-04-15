@@ -10,14 +10,8 @@ $(".delete").on("click", function() {
   } else { return false;}
 })
 
-$("#contactez_nous").on("click", function() {
- $("#contact_form").css("display", "block");
- $("#contact_form").children().css("display", "block");
-})
 
-$("#annuler").on("click", function() {
- $("#contact_form").css("display", "none");
-})
+
 
 /*fenetre modal d'une diaporama*/
 /*----------------------------------------------------*/
@@ -208,6 +202,125 @@ $("#liste2").click(function() {
       $("#mobile_menu + div").toggle();
 });
 
+/*FORMULAIRES*/
+/*----------------------------------------------------*/
+
+
+$("#submit_contact").on("click", function() { 
+
+  var bool1 = validate_length('input[id="name"]', 1);
+  showMessage(bool1, "#msg_name");
+
+  var bool2 = validate_mail('input[id="mail"]');
+  showMessage(bool2, "#msg_mail");
+
+  var bool3;
+  
+ var bool = $('#subject').val();
+ if (bool.length > 5) { 
+  bool3 = true;
+ } else {bool3 = false;
+  }
+  showMessage(bool3, "#msg_subject");
+
+    if (!bool1 || !bool2 || !bool3) { return false; } else {return true; }
+});
+
+
+$("#msg_success").on("click", function() { 
+  $(this).css("display", "none");
+});
+
+
+
+
+$("#next").on("click", function() {
+  $(".error_msg").css("display", "none");
+  if($("input[name='name_FR']").parent().hasClass("active")) {
+   var res = validate_length('input[name="name_FR"]', 2);
+  }
+
+  if($("input[name='name']").parent().hasClass("active")) {
+   var res = validate_length('input[name="name"]', 2);
+  }
+
+  if($("input[name='name_en']").parent().hasClass("active")) {
+   var res = validate_length('input[name="name_en"]', 2);
+  }
+
+  if($("input[type='file']").parent().hasClass("active")) {
+   var res = true;
+  }
+
+   if($(".filtres").parent().hasClass("active")) {
+   var res = true;
+  }
+
+  if($("input[name='address']").parent().hasClass("active")) {
+   var res = validate_length('input[name="address"]', 2);
+  }
+
+   if($("input[name='date']").parent().hasClass("active")) {
+   var t1 = validate_length('input[name="date"]', 1);
+   var t2 = validate_length('input[name="address"]', 2);
+
+   if(t1 && t2) {res = true;} else { res = false;}
+  }
+
+  if(res) {
+    formEtapes("next");
+  } else { 
+    $(".error_msg").css("display", "block"); }
+})
+
+
+
+
+$("#previous").on("click", function() {
+ formEtapes("prev");
+})
+
+  function formEtapes($sens) {
+    var active = $("#formulaire .active");
+    var end = $('#formulaire .hide').last();
+    var start = $('#formulaire .hide').first();
+    var next
+
+    if($sens == "next") {
+        if (active.is(end)) {
+          next = end;
+          $("#previous").removeClass("inactive");
+          $("#next").addClass("inactive");
+          $("#fin").css("display", "block");
+        } else {
+          next = active.next();
+          $("#previous").removeClass("inactive");
+          $("#next").removeClass("inactive");
+        }
+    } else {
+      if (active.is(start)) {
+          next = start;
+          $("#previous").addClass("inactive");
+          $("#next").removeClass("inactive");
+        } else {
+          next = active.prev();
+          $("#previous").removeClass("inactive");
+          $("#next").removeClass("inactive");
+        };
+    }
+    
+    next.css('z-index', 2);
+active.fadeOut(0, function() {
+    active.css('z-index', 1).show().removeClass("active");
+    next.css('z-index', 3).addClass("active");
+
+});
+
+  }
+
+$("#savoir").on("click", function() {
+  $("#savoir1").toggle();
+})
 
 /*------------NEW CLUB vérification des donnees---------------------*/
   $("#submit_new_club").bind("click", function() {
@@ -267,7 +380,8 @@ $("#submit_inscription").on("click", function() {
       var bool5 = validate_match("#mail", "#mail1");
       showMessage(bool5, "#msg_mail1");
 
-      var bool6 = false;
+      var bool6;
+
 
   $.post("pages/check_username.php", //verifie si l'username existe déjà
     {
@@ -275,15 +389,26 @@ $("#submit_inscription").on("click", function() {
     },
     function(data){   
         $(".result").html(data);
-        if (data.length > 1) {
+        if (data == "1") {
           $("#username").addClass( "error" );
+          $("#msg_nom1").css("display", "block");
+          bool6 = false;
+          return bool6;
+
         } else { $("#username").removeClass( "error" );
-          bool6 = true;
+        $("#msg_nom1").css("display", "none");
+        bool6 = true;
+
+        return bool6;
          }
     });
 
-  if (!bool1 || !bool2 || !bool3 || !bool4 || !bool5 || !bool6 ) { return false; }
+alert(bool6);
+
+  if (bool1 && bool2 && bool3 && bool4 && bool5 && bool6 ) { return true; 
+  } else { return false;}
 })
+
 
 
 

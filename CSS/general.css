@@ -46,17 +46,29 @@ h4 {
   text-transform: uppercase;
   font-size: 1.2em;
   color: #323232;
-  margin-bottom: 1em; }
+  margin-bottom: 1em;
+  margin-top: 1em; }
 
 a {
-  color: #0C5574;
-  line-height: 1.5em; }
+  color: #0C5574; }
+
+.center {
+  margin: auto; }
 
 /*---------------------decoration---------------------*/
 hr {
   background-color: lightgrey;
   height: 1px;
   border-width: 0; }
+
+.arrow-right {
+  border-bottom: 7px solid transparent;
+  border-top: 7px solid #AA2E00;
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+  transform: rotate(270deg);
+  width: 0;
+  height: 0; }
 
 .arrow {
   border-top: 35px solid #323232;
@@ -166,8 +178,6 @@ textarea {
   font-size: 1em;
   margin-top: 0.5em;
   margin-bottom: 0.5em;
-  min-width: 30vw;
-  width: 50%;
   height: 20vh; }
 
 /*-----------GESTION D'UPLOAD DES IMAGES------------------*/
@@ -220,30 +230,25 @@ label[for=file3] {
     	margin-top: 0.3em;
     }*/ }
 
-.input_images {
-  position: relative;
-  float: left; }
-  .input_images .image_checkbox {
-    /**/
-    position: absolute;
-    width: 245px;
-    height: 245px;
-    left: 0;
-    top: 0;
-    z-index: 5;
-    opacity: 0; }
-    .input_images .image_checkbox:hover + label {
-      background-image: none !important;
-      background-color: #1177a2;
-      -webkit-transition: background-color 200ms linear;
-      -ms-transition: background-color 200ms linear;
-      transition: background-color 200ms linear; }
-      .input_images .image_checkbox:hover + label span::after {
-        content: '\002716';
-        font-size: 5em;
-        color: white;
-        display: block;
-        margin-top: 0.3em; }
+#input_images .image_checkbox {
+  /**/
+  position: absolute;
+  width: 245px;
+  height: 245px;
+  z-index: 5;
+  opacity: 0; }
+  #input_images .image_checkbox:hover + label {
+    background-image: none !important;
+    background-color: #1177a2;
+    -webkit-transition: background-color 200ms linear;
+    -ms-transition: background-color 200ms linear;
+    transition: background-color 200ms linear; }
+    #input_images .image_checkbox:hover + label span::after {
+      content: '\002716';
+      font-size: 5em;
+      color: white;
+      display: block;
+      margin-top: 0.3em; }
 
 #clearfix::after {
   content: " ";
@@ -272,103 +277,6 @@ input[name="files[]"]:focus + label {
 
 input[name="files[]"] + label {
   cursor: pointer; }
-
-/*------------------------------------------------------------------*/
-.btn, input[type="button"],
-input[type="submit"] {
-  display: block;
-  border-radius: 20px;
-  text-transform: uppercase;
-  text-align: center;
-  padding-top: 5px;
-  margin-bottom: 1em;
-  margin-top: 1em;
-  text-decoration: none;
-  font-family: Montserrat, sans-serif;
-  cursor: pointer;
-  font-size: 1.1em;
-  background-color: #AA2E00;
-  color: white;
-  padding: 0.5em;
-  width: 8em; }
-  .btn:hover, input[type="button"]:hover,
-  input[type="submit"]:hover {
-    background-color: #dd3c00;
-    color: white;
-    -webkit-transition: background-color 200ms linear;
-    -ms-transition: background-color 200ms linear;
-    transition: background-color 200ms linear; }
-
-.middle {
-  margin: auto;
-  margin-top: 0.5em; }
-
-.btn-empty, .btn_forme {
-  display: block;
-  border-radius: 20px;
-  text-transform: uppercase;
-  text-align: center;
-  padding-top: 5px;
-  margin-bottom: 1em;
-  margin-top: 1em;
-  text-decoration: none;
-  font-family: Montserrat, sans-serif;
-  cursor: pointer;
-  font-size: 1.1em;
-  background-color: transparent;
-  border: 1px solid #AA2E00;
-  color: #AA2E00;
-  width: 8em;
-  max-width: 200px;
-  max-height: 3em;
-  padding: 0.4em; }
-  .btn-empty:hover, .btn_forme:hover {
-    background-color: rgba(26, 26, 26, 0);
-    color: white;
-    -webkit-transition: background-color 200ms linear;
-    -ms-transition: background-color 200ms linear;
-    transition: background-color 200ms linear; }
-  .btn-empty:hover, .btn_forme:hover {
-    border: 1px solid #dd3c00;
-    color: #dd3c00;
-    -webkit-transition: color 200ms linear;
-    -ms-transition: color 200ms linear;
-    transition: color 200ms linear;
-    text-decoration: underline; }
-
-.btn_blue {
-  display: block;
-  border-radius: 20px;
-  text-transform: uppercase;
-  text-align: center;
-  padding-top: 5px;
-  margin-bottom: 1em;
-  margin-top: 1em;
-  text-decoration: none;
-  font-family: Montserrat, sans-serif;
-  cursor: pointer;
-  font-size: 1.1em;
-  background-color: #0C5574;
-  color: white;
-  padding: 0.5em;
-  width: 8em; }
-  .btn_blue:hover {
-    background-color: #1177a2;
-    color: white;
-    -webkit-transition: background-color 200ms linear;
-    -ms-transition: background-color 200ms linear;
-    transition: background-color 200ms linear; }
-
-.btn_forme {
-  margin: auto;
-  margin-top: 2em;
-  width: 120px; }
-
-input[type="button"],
-input[type="submit"] {
-  border: 0;
-  margin-top: 0.2em;
-  margin-left: 1em; }
 
 #msg {
   color: red;
@@ -454,3 +362,150 @@ div[id^='repondre_'] {
 
 .hidden {
   display: none; }
+
+/**______boutons ______**/
+/*------------------------------------------------------------------*/
+.btn, input[type="button"],
+input[type="submit"] {
+  display: block;
+  border-radius: 20px;
+  border: 1px solid #AA2E00;
+  text-transform: uppercase;
+  text-align: center;
+  padding-top: 5px;
+  margin-bottom: 1em;
+  margin-top: 1em;
+  text-decoration: none;
+  font-family: Montserrat, sans-serif;
+  cursor: pointer;
+  font-size: 1.1em;
+  background-color: #AA2E00;
+  color: white;
+  padding: 0.5em;
+  width: 8em; }
+  .btn:hover, input[type="button"]:hover,
+  input[type="submit"]:hover {
+    background-color: #dd3c00;
+    border: 1px solid #dd3c00;
+    color: white;
+    -webkit-transition: background-color 200ms linear;
+    -ms-transition: background-color 200ms linear;
+    transition: background-color 200ms linear; }
+
+.middle {
+  margin: auto;
+  margin-top: 0.5em; }
+
+.btn-empty, .btn_float_empty {
+  display: block;
+  border-radius: 20px;
+  border: 1px solid transparent;
+  text-transform: uppercase;
+  text-align: center;
+  padding-top: 5px;
+  margin-bottom: 1em;
+  margin-top: 1em;
+  text-decoration: none;
+  font-family: Montserrat, sans-serif;
+  cursor: pointer;
+  font-size: 1.1em;
+  background-color: transparent;
+  border: 1px solid #AA2E00;
+  color: #AA2E00;
+  width: 8em;
+  max-width: 200px;
+  max-height: 3em;
+  padding: 0.4em; }
+  .btn-empty:hover, .btn_float_empty:hover {
+    background-color: rgba(26, 26, 26, 0);
+    border: 1px solid rgba(26, 26, 26, 0);
+    color: white;
+    -webkit-transition: background-color 200ms linear;
+    -ms-transition: background-color 200ms linear;
+    transition: background-color 200ms linear; }
+  .btn-empty:hover, .btn_float_empty:hover {
+    border: 1px solid #dd3c00;
+    color: #dd3c00;
+    -webkit-transition: color 200ms linear;
+    -ms-transition: color 200ms linear;
+    transition: color 200ms linear;
+    text-decoration: underline; }
+
+.btn_blue {
+  display: block;
+  border-radius: 20px;
+  border: 1px solid #0C5574;
+  text-transform: uppercase;
+  text-align: center;
+  padding-top: 5px;
+  margin-bottom: 1em;
+  margin-top: 1em;
+  text-decoration: none;
+  font-family: Montserrat, sans-serif;
+  cursor: pointer;
+  font-size: 1.1em;
+  background-color: #0C5574;
+  color: white;
+  padding: 0.5em;
+  width: 8em; }
+  .btn_blue:hover {
+    background-color: #1177a2;
+    border: 1px solid #1177a2;
+    color: white;
+    -webkit-transition: background-color 200ms linear;
+    -ms-transition: background-color 200ms linear;
+    transition: background-color 200ms linear; }
+
+.btn_float {
+  display: block;
+  border-radius: 20px;
+  border: 1px solid #AA2E00;
+  text-transform: uppercase;
+  text-align: center;
+  padding-top: 5px;
+  margin-bottom: 1em;
+  margin-top: 1em;
+  text-decoration: none;
+  font-family: Montserrat, sans-serif;
+  cursor: pointer;
+  font-size: 1.1em;
+  background-color: #AA2E00;
+  color: white;
+  padding: 0.5em;
+  width: 8em;
+  float: left;
+  margin-right: 0.5em; }
+  .btn_float:hover {
+    background-color: #dd3c00;
+    border: 1px solid #dd3c00;
+    color: white;
+    -webkit-transition: background-color 200ms linear;
+    -ms-transition: background-color 200ms linear;
+    transition: background-color 200ms linear; }
+
+.btn_float_empty {
+  padding: 0.5em;
+  width: 8em;
+  float: left;
+  margin-right: 0.5em; }
+
+input[type="button"],
+input[type="submit"] {
+  margin-top: 0.2em;
+  margin-left: 1em; }
+
+#formulaire .hide {
+  display: none; }
+
+.active {
+  display: block !important; }
+
+#fin {
+  display: none; }
+
+.inactive {
+  background-color: grey;
+  border: 1px solid grey; }
+  .inactive:hover {
+    background-color: grey;
+    border: 1px solid grey; }
