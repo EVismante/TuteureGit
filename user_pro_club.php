@@ -1,6 +1,7 @@
 <?php
 require_once('_config.php');
 session_start();
+include_once 'inc/langue.inc.php';
 $page = "favoris";
 	//VERIFIER SI UTILISATEUR EST CONNECTE//
 	if ( !isset($_SESSION["type"]) ) {
@@ -8,11 +9,7 @@ $page = "favoris";
 	};
 /**************************************************************/
 
-include '_head.php';?>
-<body>
-<?php include("header.php"); ?>
-/*-------------------------------*/
-<?php
+include '_head.php';
 
 $query = 'SELECT club.id, club.name, images.url FROM club
 LEFT JOIN images ON club.id=images.club_id
@@ -24,18 +21,15 @@ $result->execute();
 $club = $result->fetchAll();
 $count = $result->rowCount();
 
-
-
-?>
-
-<?php
 if ($count == 0) { ?>
-		<section class="edit_club">
-			<h1><?php echo $content["menu1"]; ?></h1>
-			<div>
+<body class="bcg">
+<?php include("header.php"); ?>
+		<section class="fenetre" id="filter">
+			<div class="row1">
+				<h1><?php echo $content["menu1"]; ?></h1>
 				<p><?php echo $content["text1"]; ?>
 				 </p>
-					<a class = "btn" href="user_new_club.php">
+					<a class = "btn_blue center" href="user_new_club.php">
 						<?php echo $content["creer"]; ?>
 					</a>
 			</div>
@@ -66,7 +60,9 @@ $result2 = $pdo->prepare($query2);
 $result2->execute();
 $favoris = $result2->fetchAll();
 
-?>		
+?>	
+<body>
+<?php include("header.php"); ?>
 		<div class="head_img" style="background-image: url('images/clubs/<?php echo $url;?>');"></div>
 		<section class="edit_club">
 			<div>
@@ -94,7 +90,16 @@ $favoris = $result2->fetchAll();
 					<input type="hidden" name="id" value="<?php echo $club[0]['id']; ?>">
 					<input type="hidden" name="page" value="user_pro_club.php">
 					<input type="hidden" name="retour" value="user">
-					<input type="submit" class="delete" value="<?php echo $content["supprimer"]; ?>">
+					<span class="btn center" id="del"><?php echo $content["supprimer"]; ?></span>
+
+					<div id="hide">
+						<div>
+							<p><?php echo $content["on_delete1"]." ".$club[0]['name']; ?> ?</p>
+							<input type="submit" value="<?php echo $content["supprimer"]; ?>">
+							<span class="btn-empty center" id="annuler"><?php echo $content["annuler"]; ?></span>
+						</div>
+					</div>
+
 				</form>
 			</div>
 

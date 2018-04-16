@@ -27,7 +27,7 @@ include '_head.php';
 		<h1 id="changejs"><?php echo $content["nouveau_evenement"]; ?></h1>
 		<h4 id="changeh4"><?php echo $content["nouveau_evenement"]; ?></h4>
 			<form id="formulaire" class="edit_club" action="pages/Events/new_event_action.php" method="POST" enctype="multipart/form-data">
-
+			<div>
 				<div class="hide active">
 						<div class="submenu">
 							<span class="current"><?php echo $content["desc_fr"]; ?></span>
@@ -64,6 +64,7 @@ include '_head.php';
 					<input type="text" name="name_en" id="name_en">
 					<br>
 					<label for="name_en">* <?php echo $content["titre_en_en"]; ?></label>
+					<br>
 					<textarea name="description_EN" id="description_EN"></textarea>
 					<br>
 					<label for="description_EN" id="EN"><?php echo $content["desc_en_en"]; ?></label>
@@ -124,15 +125,12 @@ include '_head.php';
 					<a class ="btn_float_empty" href="user_events.php"><?php echo $content["annuler"]; ?></a>
 					<span class="btn_float inactive" id="previous"><?php echo $content["precedent"]; ?></span>
 					<span class="btn_float" id="next"><?php echo $content["suivant"]; ?></span>
-				</div>
-			
-				<div id="fin">
+					<input id="fin" class="btn_float" type="submit" name="submit" id="submit_new_event" value="<?php echo $content["envoyer"]; ?>">
+
 					<p id="error_msg"><?php echo $content["error_form"]; ?></p>
-					<input type="submit" name="submit" id="submit_new_event" value="<?php echo $content["envoyer"]; ?>">
-					
 				</div>
-			</form>
-			
+			</div>
+		</form>	
 	</section>
 	<?php include("pages/footer.php"); ?>
 

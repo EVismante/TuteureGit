@@ -11,14 +11,14 @@
 
 		</div>
 		<div>
-		fyitj
+		<a class="btn_large middle" href="contact.php">Contactez nous</a>
 
 		</div>
 		<div>
-			<a href="contact.php">Contactez nous</a>
+
 		</div>
 	</div>
-	<div class="row1">
+	<div class="row1 bottom">
 		<a href=""> Mentions legales / Egle Vismante / 2018 </a>
 	</div>
 </footer>

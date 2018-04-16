@@ -18,6 +18,7 @@ GROUP BY club.id
 $result = $pdo->prepare($query);
 $result->execute();
 $clubs = $result->fetchAll();
+$count = $result->rowCount();
 
 /*--------------------EVENTS---------------------------------*/
 $query="SELECT event.id, event.titre_".$lang.", event.date, images.url, favoris.page_id FROM favoris
@@ -31,13 +32,25 @@ ORDER BY event.date
 $result = $pdo->prepare($query);
 $result->execute();
 $events = $result->fetchAll();
+$count1 = $result->rowCount();
 
 /**************************************************************/
 
 include '_head.php';
-?>
-<body>
 
+if ($count == 0 && $count1 == 0) { /* s'il n'y a pas encore des favoris*/?> 
+<body class="bcg">
+<?php include("header.php"); ?>
+
+	<section class="fenetre" id="filter">
+		<div class="row1">
+			<h1><?php echo $content["menu3"]; ?></h1>
+			<img class="heart" src="images/website/icons/heart-pleine.svg">
+			<p><?php echo $content["pas_favoris"]; ?></p>
+		</div>
+<?php /* -------------------------------------- S'il y a déjà des favoris*/
+} else { ?>
+	<body>
 		<?php include("header.php"); ?>
 
 <section class="content clearfix">
@@ -51,10 +64,10 @@ include '_head.php';
 				<h3><?php echo $clubs[$key]['name']; ?></h3>
 			</div>
 		</a>
-			<input type="checkbox" name="favori" value="favori" id="favori_club<?php echo $clubs[$key]['id']; ?>" checked onclick="addFavori(<?php echo $clubs[$key]['id']; ?>, 'club', true)">
-			<label for="favori_club<?php echo $clubs[$key]['id']; ?>">
-            	<img src="images/website/icons/heart-pleine.svg" class="heart_icon" alt="supprimer le favori">          
-        	</label>
+		<input type="checkbox" name="favori" value="favori" id="favori_club<?php echo $clubs[$key]['id']; ?>" checked onclick="addFavori(<?php echo $clubs[$key]['id']; ?>, 'club', true)">
+		<label for="favori_club<?php echo $clubs[$key]['id']; ?>">
+            <img src="images/website/icons/heart-pleine.svg" class="heart_icon" alt="supprimer le favori">          
+        </label>
 	</div>
 <?php
 	}
@@ -78,11 +91,10 @@ include '_head.php';
 		<label for="favori_event<?php echo $events[$key]['id']; ?>">
            	<img src="images/website/icons/heart-pleine.svg" class="heart_icon" alt="supprimer le favori">          
         </label>
-       <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 	</div>
 	
 <?php
-	}
+	}}
 
 ?>
 	

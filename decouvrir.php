@@ -24,7 +24,7 @@ $page="decouvrir";
 <body>
 	<?php include($header); ?>
 
-<section class="content">
+<section class="content clearfix">
 	<h1><?php echo $content["decouvrir"]; ?></h1>
 <?php
 	foreach ($articles as $key => $value) {

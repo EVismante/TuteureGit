@@ -12,7 +12,7 @@ body {
   position: relative;
   margin: 0;
   min-height: 100%;
-  padding-bottom: 300px; }
+  padding-bottom: 200px; }
 
 #mobile_menu {
   display: none; }
@@ -30,6 +30,12 @@ header {
     header form input {
       margin: 0 !important;
       margin-left: 1em !important; }
+  header img {
+    z-index: 5;
+    width: 50px;
+    position: absolute;
+    bottom: 5%;
+    left: 49%; }
 
 .menu_BO {
   left: 70px; }
@@ -64,6 +70,8 @@ p {
   box-shadow: 3px 3px 5px rgba(150, 150, 150, 0.1);
   font-size: 1.2em;
   /*----------user menu---------------*/ }
+  .nav a {
+    text-decoration: none; }
   .nav > div {
     float: right;
     margin-top: 30px;
@@ -166,6 +174,9 @@ p {
 body section:first-of-type {
   padding-top: 80px; }
 
+section {
+  margin-left: 0; }
+
 /*effet hover sur le menu */
 .m_hover:hover {
   background-color: #f2f2f2 !important;
@@ -221,15 +232,22 @@ body section:first-of-type {
   /*section coup de coeur*/
   margin-top: 10vh;
   margin-bottom: 10vh;
-  height: auto; }
+  height: auto;
+  width: 100vw;
+  margin-bottom: 10em; }
   .coeur #h {
-    width: 50px; }
-  .coeur div {
+    width: 65px;
+    position: absolute;
+    left: -2em; }
+  .coeur h2 {
+    margin-left: 2em; }
+  .coeur > div {
     width: 50vw;
     height: 50vh;
     float: right; }
-    .coeur div img {
-      max-height: 45vh; }
+    .coeur > div img {
+      max-height: 45vh;
+      margin-top: 2em; }
 
 #savoir {
   cursor: pointer;
@@ -252,7 +270,8 @@ label[for="pro"] img {
   width: 50%;
   display: table-cell;
   padding: 0.5em;
-  cursor: pointer; }
+  cursor: pointer;
+  text-align: center; }
 
 #liste1 {
   background-color: lightblue; }
@@ -275,7 +294,8 @@ label[for="pro"] img {
 #liste > div:hover {
   background-color: #f2f2f2; }
 #liste h3 {
-  margin: 0; }
+  margin: 0;
+  width: 80%; }
 #liste .club_icon {
   width: 50px;
   height: 50px;
@@ -291,10 +311,11 @@ footer {
   right: 0;
   bottom: 0;
   left: 0;
-  height: 35vh;
-  min-height: 250px;
+  height: 200px;
   position: absolute;
-  background-color: white; }
+  background-color: white;
+  padding: 25px;
+  width: 100vw; }
 
 #contact_form {
   display: none;
@@ -323,7 +344,7 @@ footer {
 /*MAP*/
 #map {
   width: 100%;
-  height: 90vh;
+  height: 97vh;
   margin: auto; }
 
 /*-------------------------------------------------------*/
@@ -560,8 +581,11 @@ footer {
 
 .row1 {
   margin: auto;
-  text-align: center;
-  margin: auto; }
+  text-align: center; }
+
+.bottom {
+  position: absolute;
+  bottom: 0; }
 
 .column3 {
   background-color: white;
@@ -569,9 +593,11 @@ footer {
   padding: 1em;
   box-shadow: 3px 3px 2px lightgrey;
   border: 1px solid lightgrey;
-  width: 30%;
-  margin: 0.5em !important;
-  display: table-cell; }
+  margin: 1em !important;
+  text-align: center;
+  width: 30%; }
+  .column3 a {
+    margin: auto; }
 
 #msg_success {
   width: 100vw;
@@ -592,11 +618,9 @@ footer {
     width: 30vw;
     margin: auto; }
 
-.edit_club {
-  background-color: #fff7ed;
-  border-radius: 20px;
+.edit_club, .fenetre, #hide {
   padding: 3em; }
-  .edit_club > div {
+  .edit_club > div, .fenetre > div, #hide > div {
     background-color: white;
     vertical-align: middle;
     padding: 2em;
@@ -604,23 +628,33 @@ footer {
     box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.1);
     position: relative;
     margin: auto;
-    width: 60%;
+    width: 40em;
     min-width: 34em;
     margin-bottom: 2em; }
-    .edit_club > div input[name="name"],
+    .edit_club > div input[name="name"], .fenetre > div input[name="name"], #hide > div input[name="name"],
     .edit_club > div input[type="text"],
+    .fenetre > div input[type="text"],
+    #hide > div input[type="text"],
     .edit_club > div textarea,
-    .edit_club > div input[type="password"] {
+    .fenetre > div textarea,
+    #hide > div textarea,
+    .edit_club > div input[type="password"],
+    .fenetre > div input[type="password"],
+    #hide > div input[type="password"] {
       width: 25em;
       min-width: 30em;
       margin-top: 1.5em; }
-    .edit_club > div > div {
+    .edit_club > div > div, .fenetre > div > div, #hide > div > div {
+      width: 30em;
       margin: auto; }
-  .edit_club .larger {
+  .edit_club .larger, .fenetre .larger, #hide .larger {
     width: 80%; }
-  .edit_club input[type="submit"], .edit_club input[type="button"] {
+  .edit_club input[type="submit"], .fenetre input[type="submit"], #hide input[type="submit"], .edit_club input[type="button"], .fenetre input[type="button"], #hide input[type="button"] {
     margin: auto;
     margin-top: 1em; }
+
+.fenetre div {
+  margin-top: 15vh; }
 
 .submenu {
   position: relative;
@@ -636,7 +670,7 @@ footer {
 
 .error_msg {
   position: absolute;
-  right: 38em;
+  right: 35em;
   background: #FFAF44;
   padding: 1em;
   border-radius: 10px;
@@ -728,6 +762,8 @@ table {
       float: left;
       margin-left: 2em;
       width: 150px; }
+    .club_item div form {
+      float: left; }
 
 .club_item:hover {
   background-size: 27.5vw;
@@ -740,3 +776,13 @@ table {
   margin: auto;
   height: auto;
   margin-bottom: 5em; }
+
+#hide {
+  display: none;
+  z-index: 9;
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  top: 0;
+  left: 0;
+  background: rgba(12, 12, 12, 0.6); }

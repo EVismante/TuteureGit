@@ -1,6 +1,7 @@
 <?php
 require_once('_config.php');
 session_start();
+include_once 'inc/langue.inc.php';
 
 	//VERIFIER SI UTILISATEUR EST CONNECTE//
 	if ( !isset($_SESSION["type"]) ) {
@@ -40,7 +41,7 @@ include '_head.php';
 		<a href="user_events.php"><?php echo $content["revenir_evenements"]; ?></a>
 		<h1>Éditer <?php echo $event[0]['titre_fr']?></h1>
 		<form id="formulaire" class="edit_club" action="pages/Events/edit_event_action.php" method="POST" enctype="multipart/form-data">
-
+			<div>
 				<div class="hide active">
 						<div class="submenu">
 							<span class="current"><?php echo $content["desc_fr"]; ?></span>
@@ -79,6 +80,7 @@ include '_head.php';
 					<input type="text" name="name_en" id="name_en" value="<?php echo $event[0]['titre_en']?>">
 					<br>
 					<label for="name_en">* <?php echo $content["titre_en_en"]; ?></label>
+					<br>
 					<textarea name="description_EN" id="description_EN"><?php echo $event[0]['description_en']?></textarea>
 					<br>
 					<label for="description_EN" id="EN"><?php echo $content["desc_en_en"]; ?></label>
@@ -154,13 +156,11 @@ include '_head.php';
 					<a class ="btn_float_empty" href="user_events.php"><?php echo $content["annuler"]; ?></a>
 					<span class="btn_float inactive" id="previous"><?php echo $content["precedent"]; ?></span>
 					<span class="btn_float" id="next"><?php echo $content["suivant"]; ?></span>
-				</div>
 			
-				<div id="fin">
 					<p id="error_msg"><?php echo $content["error_form"]; ?></p>
 					<input type="hidden" name="id" value="<?php echo $_POST['id']?>">
-					<input type="submit" name="submit" id="submit_new_event" value="<?php echo $content["envoyer"]; ?>">
-					
+					<input type="submit" name="submit" id="submit_new_event" class= "btn_float" value="<?php echo $content["envoyer"]; ?>">
+					</div>
 				</div>
 			</form>
 			

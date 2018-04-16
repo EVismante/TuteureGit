@@ -20,6 +20,7 @@ foreach ($imgs as $key => $value) {
 $query1 = ' DELETE FROM images WHERE club_id='.$id.'; 
 			DELETE FROM club_tag WHERE club_id='.$id.';
 			DELETE FROM club WHERE id='.$id.';
+			DELETE FROM club_belongs WHERE club_id='.$id.';
 			DELETE FROM favoris WHERE page_id='.$id.' AND page_type="club";'
 			;
 

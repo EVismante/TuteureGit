@@ -9,6 +9,7 @@ include_once 'inc/langue.inc.php';
  	$uri = $_SERVER['PHP_SELF']."?lang=";
  }
 
+
 // pour rendre le menu navigation invisible en page Index
 	if($page == "index") {
 		echo '<div class="nav nav-scroll">';
@@ -27,9 +28,13 @@ include_once 'inc/langue.inc.php';
 			<!-- le contenu du mobile menu -->
 		<div>
 			<div id="lang">
-				<a href="<?php echo $uri.'fr'; ?>" tabindex="0">FR</a>
+				<a href="<?php echo $uri.'fr'; ?>" tabindex="0"
+					<?php if ($lang == "fr") { echo "class='sousligne'"; }?>
+					>FR</a>
 				<span>|</span>
-				<a href="<?php echo $uri.'en'; ?>" tabindex="0">EN</a>
+				<a href="<?php echo $uri.'en'; ?>" tabindex="0"
+					<?php if ($lang == "en") { echo "class='sousligne'"; }?>
+					>EN</a>
 			</div>
 			<div class="menu">
 				<!-- USER MENU DEBUT-->

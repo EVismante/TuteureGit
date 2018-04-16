@@ -3,6 +3,7 @@ require_once('../../_config.php');
 require_once ('../../inc/images.inc.php');
 
 $name = $_POST["name"];
+$name_en = $_POST["name_en"];
 
 $fr = addslashes($_POST["description_FR"]);
 $en = addslashes($_POST["description_EN"]);
@@ -20,10 +21,10 @@ $long = $geo_data["long"];
 $lat = $geo_data["lat"];
 
 
-
 $queryClub = "
-INSERT INTO club (name, address, website, telephone, mail, longt, lat, description_FR, description_EN, user_id)
+INSERT INTO club (name, name_en, address, website, telephone, mail, longt, lat, description_FR, description_EN, user_id)
 VALUES ('$name',
+        '$name_en',
         '$address',
         '$website',
         '$phone',

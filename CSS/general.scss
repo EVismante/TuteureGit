@@ -85,9 +85,6 @@ div {position: relative;
 
 }
 
-.heart_icon {width: 30px;
-		float:right;
-}
 
 [id^='favori'] {display:none;}
 /*---------------------*/
@@ -194,14 +191,14 @@ label[for=file3],
 	&:hover {
 		background-image: none!important;
 		transition: background-image, 1s;
-		/*
+		
 		span::after {
 			content: '\002716';
 			font-size: 5em;
 			color: white;
 			display: block;
 			margin-top: 0.3em;
-		}*/
+		}
 	}
 }
 
@@ -302,14 +299,13 @@ input[type=checkbox] {
 
 .row1 {width: 100vw;
 	text-align: center;
-
 }
 
 .row3 {
 	display: flex;
 	width: 100vw;
-	div {width: 30%;
-		padding: 2em;
+	div {width: 28vw;
+		padding: 2vw;
 	}
 }
 
@@ -386,6 +382,20 @@ div[id^='repondre_']{display: none;}
 	}
 }
 
+.btn_large{
+	@include button(transparent);
+	border: 1px solid map-get($colors, color2);
+	color: map-get($colors, color2);
+	width: 8em;
+	padding: 0.4em;
+	&:hover {
+		border: 1px solid lighten(map-get($colors, color2), 10%);
+		color: lighten(map-get($colors, color2), 10%);
+		@include transition(color, 200ms);
+		text-decoration: underline;
+	}
+}
+
 .btn_blue {
 	@include button(map-get($colors, color3));
 	color: white;
@@ -397,7 +407,7 @@ div[id^='repondre_']{display: none;}
 	@include button(map-get($colors, color2));
 	color: white;
 	padding: 0.5em;
-	width: 8em;
+	width: 7em;
 	float: left;
 	margin-right: 0.5em;
 }
@@ -420,9 +430,17 @@ input[type="submit"]
 
 }
 
-#formulaire .hide {display: none;}
+
+.hide,
+#submit_new_event,
+#submit_new_club
+ {display: none;}
 .active {display: block!important;}
-#fin {display: none;}
+//#fin {display: none;}
+
+.sousligne {
+	border-bottom: 1px solid map-get($colors, color2);
+		}
 
 .inactive {background-color: grey;
 	border: 1px solid grey;
@@ -431,4 +449,17 @@ input[type="submit"]
 	border: 1px solid grey;
 	}
 
+}
+.heart {width: 30px;}
+.heart_icon {width: 30px!important;
+			position: absolute;
+			right: 0;
+			margin: 0.3em;
+
+}
+
+.bcg {
+	background-image: url("../images/website/bcg2.jpg");
+	background-size: cover;
+	background-repeat: no-repeat;
 }

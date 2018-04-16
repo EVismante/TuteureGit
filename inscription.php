@@ -1,8 +1,8 @@
 <?php
 session_start();
 require_once('_config.php');
-include '_head.php';
 include_once 'inc/langue.inc.php';
+include '_head.php';
 $page = "inscription";
 ?>
 </head>

@@ -2,7 +2,7 @@
 window.onload = function() {
 
 
-
+/* Les confirmations de suppression cote client et cote back office*/
 $(".delete").on("click", function() {
   var msg = confirm("Voulez vous supprimer cet élèment?");
   if(msg) {
@@ -10,8 +10,14 @@ $(".delete").on("click", function() {
   } else { return false;}
 })
 
+/**/
+$("#del").on("click", function() {
+  $("#hide").css("display", "block");
+})
 
-
+$("#annuler").on("click", function() {
+  $("#hide").css("display", "none");
+})
 
 /*fenetre modal d'une diaporama*/
 /*----------------------------------------------------*/
@@ -171,16 +177,17 @@ $("#msg").click(function() {
   $(this).css("display", "none");
 })
 
+/* affichage des listes des resultats de la recherche */
 $("#liste1").click(function() {
   $(this).css("background-color", "lightblue");
-  $("#liste2").css("background-color", "beige");
+  $("#liste2").css("background-color", "#e2d4c0");
   $(".liste_clubs").css("display", "block");
   $(".liste_events").css("display", "none");
 })
 
 $("#liste2").click(function() {
   $(this).css("background-color", "lightblue");
-  $("#liste1").css("background-color", "beige");
+  $("#liste1").css("background-color", "#e2d4c0");
   $(".liste_events").css("display", "block");
   $(".liste_clubs").css("display", "none");
 })
@@ -248,11 +255,12 @@ $("#next").on("click", function() {
    var res = validate_length('input[name="name_en"]', 2);
   }
 
-  if($("input[type='file']").parent().hasClass("active")) {
+   if($(".filtres").parent().hasClass("active")) {
    var res = true;
+
   }
 
-   if($(".filtres").parent().hasClass("active")) {
+    if($("input[type='file']").parent().hasClass("active")) {
    var res = true;
   }
 
@@ -283,16 +291,22 @@ $("#previous").on("click", function() {
   function formEtapes($sens) {
     var active = $("#formulaire .active");
     var end = $('#formulaire .hide').last();
+    var avant_end = end.prev('div');
     var start = $('#formulaire .hide').first();
     var next
-
+    /*les boutons du formulaire*/
     if($sens == "next") {
         if (active.is(end)) {
           next = end;
           $("#previous").removeClass("inactive");
-          $("#next").addClass("inactive");
-          $("#fin").css("display", "block");
+  
+        } else if(active.is(avant_end)) {
+          next = active.next();
+          $("#next").css("display", "none");
+          $("*[id^='submit']").css("display", "block");
+
         } else {
+
           next = active.next();
           $("#previous").removeClass("inactive");
           $("#next").removeClass("inactive");
@@ -308,7 +322,7 @@ $("#previous").on("click", function() {
           $("#next").removeClass("inactive");
         };
     }
-    
+    /*la chaine des étapes du formulaire*/
     next.css('z-index', 2);
 active.fadeOut(0, function() {
     active.css('z-index', 1).show().removeClass("active");
@@ -318,6 +332,7 @@ active.fadeOut(0, function() {
 
   }
 
+/*montre "Plus d'info" sur la page d'inscription*/
 $("#savoir").on("click", function() {
   $("#savoir1").toggle();
 })
@@ -442,10 +457,10 @@ $("#submit_mail").on("click", function() { //valider les mail
 $("#submit_login").on("click", function() { 
 
   var bool1 = validate_length("#name", 1);
-  showMessage(bool1, ".msg1");
+  showMessage(bool1, ".msg2");
 
   var bool2 = validate_length("#mdp", 1);
-   showMessage(bool2, ".msg1");
+   showMessage(bool2, ".msg3");
 
   if (!bool1 || !bool2 ) { return false; }
 });

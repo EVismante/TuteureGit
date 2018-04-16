@@ -25,8 +25,9 @@ function filtre($pdo, $x, $lang)
 
 <input type="checkbox" name="filtre[]" value="<?php echo $value["id"]; ?>">
 <label for="filtre[]"><?php echo $value["name_".$lang]; ?></label>
-<?php echo "<br>";
-				}};
+<br>
+<?php
+	}};
 
 
 
@@ -47,8 +48,8 @@ include '_head.php';
 		<a href="user_pro_club.php"><?php echo $content["revenir_page"]; ?></a>
 		<h1 id="changejs"><?php echo $content["nouveau_club"]; ?></h1>
 		<h4 id="changeh4"><?php echo $content["nouveau_club"]; ?></h4>
-			<form id="formulaire" class="edit_club" action="pages/BackOffice/edit_club_action.php" method="POST" enctype="multipart/form-data">
-
+			<form id="formulaire" class="edit_club" action="pages/BackOffice/new_club_action.php" method="POST" enctype="multipart/form-data">
+			<div>
 				<div class="hide active">
 						<div class="submenu">
 							<span class="current"><?php echo $content["desc_fr"]; ?></span>
@@ -178,17 +179,15 @@ include '_head.php';
 				<div class="clearfix">
 					<a class ="btn_float_empty" href="user_pro_club.php"><?php echo $content["annuler"]; ?></a>
 					<span class="btn_float inactive" id="previous"><?php echo $content["precedent"]; ?></span>
+
 					<span class="btn_float" id="next"><?php echo $content["suivant"]; ?></span>
-				</div>
-			
-				<div id="fin">
+					<input class="btn_float" type="submit" name="submit" id="submit_new_club" value="<?php echo $content["envoyer"]; ?>">
+
 					<p id="error_msg"><?php echo $content["error_form"]; ?></p>
-					<input type="hidden" name="id" value="<?php echo $_POST['id']?>">
-					<input type="submit" name="submit" id="submit_new_event" value="<?php echo $content["envoyer"]; ?>">
-					
+
 				</div>
-			</form>
-			
+			</div>
+		</form>
 	</section>
 	<?php include("pages/footer.php"); ?>
 </body>

@@ -104,7 +104,7 @@ if ($comments[$key]['rating_id'] !== NULL) {
 <?php
 		if (isset($_SESSION["name"])) { /*repondre au commentaire*/
 ?>
-			<button id="btn_repondre_<?php echo $comments[$key]['id']; ?>">Repondre</button> 
+			<button class="btn" id="btn_repondre_<?php echo $comments[$key]['id']; ?>"><?php  echo $content["repondre"]; ?></button> 
 <?php
 	};
 ?>	</div>
@@ -137,19 +137,20 @@ foreach ($comments as $k => $v) {
 <?php
 		if (isset($_SESSION["name"])) { /*repondre au commentaire*/
 ?>
-			<button id="btn_repondre_<?php echo $comments[$k]['id']; ?>">Repondre</button> 
+			<button class="btn" id="btn_repondre_<?php echo $comments[$k]['id']; ?>"><?php  echo $content["repondre"]; ?></button> 
+
 <?php
 	};
 		?></div>
 		<div id="repondre_<?php echo $comments[$k]['id']; ?>">
  		<form action="pages/comments/comment_post.php" method="POST">
 			<img class="user_icon" alt ="" src="images/avatars/<?php echo $_SESSION["avatar"];?>">
+			<span class="error_msg">Votre commentaire est vide</span>
 			<textarea rows="4" cols="50" name="comment" class="comment"></textarea>
 			<input type="hidden" name="user_id" value="<?php echo $_SESSION['id']; ?>">
 			<input type="hidden" name="club_id" value="<?php echo $clubInfo[0]['id']; ?>">
 			<input type="hidden" name="parent_id" value="<?php echo $comments[$key]['id'];?>">
 			<input type="hidden" name="page_type" value="club">
-			<span class="error_msg">Votre commentaire est vide</span>
 			<br>
 			<button class="submit">Envoyer</button>
 		</form>

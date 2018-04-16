@@ -53,6 +53,7 @@ $events = $result->fetchAll();
 			<input type="text" id="club" name="club" placeholder="<?php echo $content["placeholder_search"]; ?>">
 			<input type="submit" value="<?php echo $content["cherchez"]; ?>">
 		</form>
+		<img src="images/website/icons/mouse.svg" alt="scrollez">
 		</div>
 	</header>
 
@@ -122,21 +123,18 @@ $events = $result->fetchAll();
 <?php
 		$random = new random_club($pdo, $lang);
 		$club_coeur = $random->get_data($pdo, $lang);
-?>		<div>
+?>		<div class="club_item">
 			<img id ="h" src="images/website/icons/heart-pleine.svg">
 			<h2><?php echo $content["coup_de_coeur"]; ?></h2>
 			
 			<a href="club.php?id=<?php echo $random->id; ?>">
 				<img src="images/clubs/<?php echo $random->image;?>">
-
-					<div>
-						<h4><?php echo $random->name; ?></h4>
-					</div>
-				</div>
-			</a>
+				</a>
+				<h4><?php echo $random->name; ?></h4>
 		</div>
+			
 	</section>
-<!-- section coup de coeur-->
+<!-- fin section coup de coeur-->
 	<section class="colored clearfix" id="events0">
 		<div class="content">
 		<h2><?php echo $content['sortir']; ?></h2>

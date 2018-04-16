@@ -11,16 +11,25 @@ $page = "login";
 </head>
 <body>
 	<?php include("header.php"); ?>
+    
 <section class="forme">
 	<h1><?php echo $content['menu6']; ?></h1>
     <img class ="in_middle" src="images/website/1.svg" alt="">
     	<form class="edit_club" action="login-action.php" method="POST">
             <div>
                 <div>
+                    <div class='msg2 error_msg'>
+                        <?php echo $content['msg_identifiant']; ?>
+                        <div></div>
+                    </div>
             		<input type="text" id="name" name="name">
                     <br/>
             		<label for="name"><?php echo $content['nom']; ?></label>
                     <br/>
+                    <div class='msg3 error_msg'>
+                        <?php echo $content['error_mdp']; ?>
+                        <div></div>
+                    </div>
             		<input type="password" id="mdp" name="mdp">
                     <br/>
             		<label for="mdp"><?php echo $content['mdp']; ?></label>
@@ -28,6 +37,7 @@ $page = "login";
                 </div>
                 <div class='msg1'>
                     <?php echo $content['msg_login']; ?>
+                    <div></div>
                 </div>
   <?php 
             if (isset($_GET["msg"]) && $_GET["msg"] == 'failed') {
@@ -39,7 +49,7 @@ $page = "login";
  
         		 
             </div>         
-                <a href="inscription.php"><?php echo $content['not_member']; ?></a>
+                <a class="btn_blue" href="inscription.php"><?php echo $content['not_member']; ?></a>
     	</form>
 
 </section>

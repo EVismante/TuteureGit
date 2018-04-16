@@ -1,8 +1,8 @@
 <?php
 session_start();
 require_once('_config.php');
-include '_head.php';
 include_once 'inc/langue.inc.php';
+include '_head.php';
 $page = "login";
 
 	//VERIFIER SI UTILISATEUR EST CONNECTE//
@@ -15,38 +15,42 @@ $page = "login";
 </head>
 <body>
     <?php include("header.php"); ?>
-	<section class="forme">
-    <h1>Bonjour !</h1>
-    			<div class="edit_club clearfix">
-    				<div class="larger">
-    					<img src="images/website/3.png" alt="">
-					<p>Congratulations for your first connection !</p>
-					<div class="column3">
-						Vous pouvez commencer par regarder des clubs. Et les mettre en favoris
-						<a class= "btn" href="">Clubs</a>
-					</div>
-					<div class="column3">
-						Organisez un évènement !
-						<a class= "btn" href="">Organizer</a>
-					</div>
-					<div class="column3">
+<section class="content">
+        <h1>Bonjour !</h1>
+	<div class="row">
+		<div class="col-3">
+			<a href="recherche.php">
+				<img src="images/website/1.svg" alt="">
+				<span>Cherchez les clubs et préstations et sauvegardez les en vos favoris</span>
+			</a>
+		</div>
+		<div class="col-3">
+			<a href="http://localhost/test/TUTEUREgit/user_events.php">
+				<img src="images/website/1.svg" alt="">
+				<span>Organisez votre prémier évènement</span>
+			</a>
+		</div>
+		<div class="col-3">
 <?php if ($_SESSION["type"] == "pro") {
 ?>
-						Créez une page pour votre préstation !
-						<a class= "btn" href="">Créer</a>
+				<a href="http://localhost/test/TUTEUREgit/user_pro_club.php">
+				<img src="images/website/1.svg" alt="">
+				<span>Créez une page pour votre préstation</span>
 
 <?php
 } else {
 ?>
-						else
+				<a href="http://localhost/test/TUTEUREgit/user_pro_club.php">
+				<img src="images/website/1.svg" alt="">
+				<span>Créez une page pour votre préstation !</span>
 
 <?php
 }?>
-					</div>
-				</div>
-			</div>
 
-   </section>
+			</a>
+		</div>
+	</div>
+</section>
     <?php include("pages/footer.php"); ?>
 </body>
 </html>

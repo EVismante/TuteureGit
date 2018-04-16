@@ -9,7 +9,7 @@ html {
  	 position: relative;
  	 margin: 0;
  	 min-height: 100%;
- 	 padding-bottom:300px;
+ 	 padding-bottom:200px;
  }
 
 #mobile_menu {display: none;}
@@ -29,6 +29,13 @@ header {width: 100%;
 			margin-left: 1em!important;
 		}	
 	}
+	img {z-index: 5;
+		width: 50px;
+		position: absolute;
+		bottom:5%;
+		left: 49%;
+	}
+
 }
 
 .menu_BO {
@@ -63,6 +70,7 @@ p {margin-top: 2em;
 	color: map-get($colors, lightblue);
 	box-shadow: 3px 3px 5px rgba(150, 150, 150, 0.1);
 	font-size: 1.2em;
+	a {text-decoration: none;}
 	& > div { float: right;
 		margin-top: 30px;
 		margin-left: 30px;
@@ -171,6 +179,8 @@ body section:first-of-type {
 	padding-top: 80px;
 }
 
+section {margin-left:0;}
+
 /*effet hover sur le menu */
 .m_hover:hover {
 	background-color: map-get($colors, lightgrey)!important;
@@ -223,13 +233,20 @@ body section:first-of-type {
 	margin-top: 10vh;
 	margin-bottom: 10vh;
 	height: auto;
-	#h {width: 50px;}
-	div {
+	width: 100vw;
+	margin-bottom: 10em;
+	#h {width: 65px;
+		position: absolute;
+		left: -2em;
+	}
+	h2 {margin-left: 2em;}
+	&>div {
 		width:50vw;
 		height: 50vh;
 		float: right;
-		img {max-height: 45vh;}
-	
+		img {max-height: 45vh;
+			margin-top: 2em;
+		}
 }
 }
 #savoir {cursor: pointer;
@@ -253,6 +270,7 @@ label[for="pro"]
 	display: table-cell;
 	padding: 0.5em;
 	cursor: pointer;
+	text-align: center;
 }
 #liste1 { background-color: lightblue; }
 .liste_clubs {
@@ -276,7 +294,9 @@ label[for="pro"]
 			&>div:hover {
 				background-color: map-get($colors, lightgrey);
 			}
-			h3 { margin: 0;}
+			h3 { margin: 0;
+				width: 80%;
+			}
 			.club_icon {
 				@include icon;
 				float: left;
@@ -293,10 +313,14 @@ footer {
 	right: 0;
   	bottom: 0;
   	left: 0;
-	height: 35vh;
-	min-height: 250px;
+	height: 200px;
 	position: absolute;
 	background-color: white;
+	padding: 25px;
+	width: 100vw;
+	div {
+
+	}
 }
 
 #contact_form {
@@ -331,7 +355,7 @@ footer {
 
 #map {
 	width: 100%;
-	height: 90vh;
+	height: 97vh;
 	margin: auto;
 }
 
@@ -579,7 +603,11 @@ h3::after {
 .row1 {
 	margin:auto;
 	text-align: center;
-	margin: auto;
+}
+
+.bottom {
+	position:absolute;
+	bottom: 0;
 }
 
 .column3 {
@@ -588,9 +616,10 @@ h3::after {
 	padding: 1em;
 	box-shadow: 3px 3px 2px lightgrey;
 	border: 1px solid lightgrey;
+	margin: 1em!important;
+	text-align: center;
 	width: 30%;
-	margin: 0.5em!important;
-	display: table-cell;
+	a {margin: auto;}
 }
 
 #msg_success {
@@ -615,15 +644,12 @@ h3::after {
 }}
 
 .edit_club {
-
-	background-color: map-get($colors, background);
-	border-radius: 20px;
 	padding: 3em;
 	&>div {
 		@include item;
 		position: relative;
 		margin: auto;
-		width: 60%;
+		width: 40em;
 		min-width: 34em;
 		margin-bottom:2em;
 
@@ -637,8 +663,8 @@ h3::after {
 			margin-top: 1.5em;
 		}
 
-		&>div { 
-			//width: 25em;
+		&>div  { 
+			width: 30em;
 			margin: auto;
 		}}
 		.larger {width: 80%;}
@@ -647,6 +673,14 @@ h3::after {
 			margin-top: 1em;
 		}
 	}
+
+.fenetre {
+	@extend .edit_club;
+	div {
+		margin-top: 15vh;
+	}
+	
+}
 
 .submenu {
 	position: relative;
@@ -665,13 +699,13 @@ h3::after {
 .error_msg {
 
 	position: absolute;
-	right: 38em;
+	right: 35em;
 	background: map-get($colors, color1);
 	padding: 1em;
 	border-radius: 10px;
 	text-align: center;
 	width: 10em!important;
-	div {
+	div { //deco
 		@include arrow(right, 11px, map-get($colors, color1));
 		position: absolute;
 		top: 40%;
@@ -763,6 +797,7 @@ margin: auto;}
 				width: 150px;
 
 		}
+		form {float: left;}
 	}
 }
 
@@ -779,3 +814,14 @@ margin: auto;}
 
 }
 
+#hide {
+	display: none;
+	z-index: 9;
+    position: fixed;
+    height:100vh;
+    width:100vw;
+    top:0;
+    left:0;
+    background: rgba(12, 12, 12, 0.6);
+    @extend .edit_club;
+}

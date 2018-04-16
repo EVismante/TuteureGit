@@ -78,7 +78,7 @@ include '_head.php';
 		<a href="user_pro_club.php"><?php echo $content["revenir_page"]; ?></a>
 		<h1><?php echo $content['editer']." ".$club[0]['name']?></h1>
 			<form id="formulaire" class="edit_club" action="pages/BackOffice/edit_club_action.php" method="POST" enctype="multipart/form-data">
-
+			<div>
 				<div class="hide active">
 						<div class="submenu">
 							<span class="current"><?php echo $content["desc_fr"]; ?></span>
@@ -222,13 +222,11 @@ include '_head.php';
 					<a class ="btn_float_empty" href="user_pro_club.php"><?php echo $content["annuler"]; ?></a>
 					<span class="btn_float inactive" id="previous"><?php echo $content["precedent"]; ?></span>
 					<span class="btn_float" id="next"><?php echo $content["suivant"]; ?></span>
-				</div>
-			
-				<div id="fin">
+
+					<input type="hidden" name="id" value="<?php echo $_GET['id']?>">
+					<input type="submit" name="submit" id="submit_new_event" class="btn_float" value="<?php echo $content["envoyer"]; ?>">
 					<p id="error_msg"><?php echo $content["error_form"]; ?></p>
-					<input type="hidden" name="id" value="<?php echo $_POST['id']?>">
-					<input type="submit" name="submit" id="submit_new_event" value="<?php echo $content["envoyer"]; ?>">
-					
+					</div>
 				</div>
 			</form>
 			

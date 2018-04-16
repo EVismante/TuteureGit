@@ -20,7 +20,7 @@ if ($verify) {
 
 } else {
 	
-	//header("Location: login.php?msg=failed");
+	header("Location: login.php?msg=failed");
 }
 
 

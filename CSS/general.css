@@ -96,10 +96,6 @@ div {
   width: 0;
   height: 0; }
 
-.heart_icon {
-  width: 30px;
-  float: right; }
-
 [id^='favori'] {
   display: none; }
 
@@ -220,15 +216,13 @@ label[for=file3] {
   background-position: center; }
   .on_delete:hover {
     background-image: none !important;
-    transition: background-image, 1s;
-    /*
-    span::after {
-    	content: '\002716';
-    	font-size: 5em;
-    	color: white;
-    	display: block;
-    	margin-top: 0.3em;
-    }*/ }
+    transition: background-image, 1s; }
+    .on_delete:hover span::after {
+      content: '\002716';
+      font-size: 5em;
+      color: white;
+      display: block;
+      margin-top: 0.3em; }
 
 #input_images .image_checkbox {
   /**/
@@ -323,8 +317,8 @@ input[type=checkbox] {
   display: flex;
   width: 100vw; }
   .row3 div {
-    width: 30%;
-    padding: 2em; }
+    width: 28vw;
+    padding: 2vw; }
 
 #changeh4 {
   text-align: center;
@@ -431,6 +425,39 @@ input[type="submit"] {
     transition: color 200ms linear;
     text-decoration: underline; }
 
+.btn_large {
+  display: block;
+  border-radius: 20px;
+  border: 1px solid transparent;
+  text-transform: uppercase;
+  text-align: center;
+  padding-top: 5px;
+  margin-bottom: 1em;
+  margin-top: 1em;
+  text-decoration: none;
+  font-family: Montserrat, sans-serif;
+  cursor: pointer;
+  font-size: 1.1em;
+  background-color: transparent;
+  border: 1px solid #AA2E00;
+  color: #AA2E00;
+  width: 8em;
+  padding: 0.4em; }
+  .btn_large:hover {
+    background-color: rgba(26, 26, 26, 0);
+    border: 1px solid rgba(26, 26, 26, 0);
+    color: white;
+    -webkit-transition: background-color 200ms linear;
+    -ms-transition: background-color 200ms linear;
+    transition: background-color 200ms linear; }
+  .btn_large:hover {
+    border: 1px solid #dd3c00;
+    color: #dd3c00;
+    -webkit-transition: color 200ms linear;
+    -ms-transition: color 200ms linear;
+    transition: color 200ms linear;
+    text-decoration: underline; }
+
 .btn_blue {
   display: block;
   border-radius: 20px;
@@ -472,7 +499,7 @@ input[type="submit"] {
   background-color: #AA2E00;
   color: white;
   padding: 0.5em;
-  width: 8em;
+  width: 7em;
   float: left;
   margin-right: 0.5em; }
   .btn_float:hover {
@@ -494,14 +521,16 @@ input[type="submit"] {
   margin-top: 0.2em;
   margin-left: 1em; }
 
-#formulaire .hide {
+.hide,
+#submit_new_event,
+#submit_new_club {
   display: none; }
 
 .active {
   display: block !important; }
 
-#fin {
-  display: none; }
+.sousligne {
+  border-bottom: 1px solid #AA2E00; }
 
 .inactive {
   background-color: grey;
@@ -509,3 +538,17 @@ input[type="submit"] {
   .inactive:hover {
     background-color: grey;
     border: 1px solid grey; }
+
+.heart {
+  width: 30px; }
+
+.heart_icon {
+  width: 30px !important;
+  position: absolute;
+  right: 0;
+  margin: 0.3em; }
+
+.bcg {
+  background-image: url("../images/website/bcg2.jpg");
+  background-size: cover;
+  background-repeat: no-repeat; }

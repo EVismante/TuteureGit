@@ -29,19 +29,19 @@ function filtre($pdo, $x)
 			<label for="events">Evènements</label>
 
 		<div id="filtres">
-			<span>Activité
+			<span tabindex="0">Activité
 				<span class="arrow_show"></span>
 			</span>
 			<div>
 				<?php filtre($pdo, 1); ?>
 			</div>
-			<span>Type
+			<span tabindex="0">Type
 				<span class="arrow_show"></span>
 			</span>
 			<div>
 				<?php filtre($pdo, 2); ?>
 			</div>
-			<span>Autres filtres
+			<span tabindex="0">Autres filtres
 				<span class="arrow_show"></span>
 			</span>
 			<div>
