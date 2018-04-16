@@ -61,7 +61,7 @@ $events = $result->fetchAll();
 	<section class="row">
 		<div class="col-3">
 			<a href="index.php#clubs">
-				<img src="images/website/1.svg" alt="">
+				<img src="images/website/2.svg" alt="">
 				<span><?php echo $content["row1"]; ?></span>
 			</a>
 		</div>
@@ -73,7 +73,7 @@ $events = $result->fetchAll();
 		</div>
 		<div class="col-3">
 			<a href="index.php#inscrire">
-				<img src="images/website/1.svg" alt="">
+				<img src="images/website/3.svg" alt="">
 				<span><?php echo $content["row3"]; ?></span>
 			</a>
 		</div>

@@ -20,12 +20,12 @@ $page = "login";
 	<div class="row">
 		<div class="col-3">
 			<a href="recherche.php">
-				<img src="images/website/1.svg" alt="">
+				<img src="images/website/2.svg" alt="">
 				<span>Cherchez les clubs et préstations et sauvegardez les en vos favoris</span>
 			</a>
 		</div>
 		<div class="col-3">
-			<a href="http://localhost/test/TUTEUREgit/user_events.php">
+			<a href="user_events.php">
 				<img src="images/website/1.svg" alt="">
 				<span>Organisez votre prémier évènement</span>
 			</a>
@@ -33,8 +33,8 @@ $page = "login";
 		<div class="col-3">
 <?php if ($_SESSION["type"] == "pro") {
 ?>
-				<a href="http://localhost/test/TUTEUREgit/user_pro_club.php">
-				<img src="images/website/1.svg" alt="">
+				<a href="user_pro_club.php">
+				<img src="images/website/3.svg" alt="">
 				<span>Créez une page pour votre préstation</span>
 
 <?php

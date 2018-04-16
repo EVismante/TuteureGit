@@ -69,7 +69,7 @@ $page = "inscription";
                     <input type="radio" name="type" value="pro" id="pro">
                      <label for="pro">
                         Pro
-                        <img src="images/avatars/default.svg">
+                        <img src="images/avatars/default1.svg">
                     </label>
                 </div>
             </div>

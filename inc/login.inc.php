@@ -16,7 +16,7 @@ class connect {
 
     }
 
-    public function avatar($pdo, $login) { /*sauvegarde avatar d'user dans la session*/
+    public function avatar($pdo, $login, $type) { /*sauvegarde avatar d'user dans la session*/
     	$query = "SELECT url FROM IMAGES WHERE user_id=".$login.";";
 		$result = $pdo->prepare($query);
 		$result->execute();
@@ -25,8 +25,11 @@ class connect {
 				
 		if ($count > 0) {
 			$avatar = $avatar0[0]["url"];
+			} else if($type =="pro") {
+				$avatar = "default1.svg"; 
 			} else {
-			$avatar = "default.svg"; }
+				$avatar = "default.svg"; 
+			}
 			return $avatar;
     }
 
@@ -37,7 +40,7 @@ class connect {
 
 			$user = trim($_POST['name']);
 			$user_mdp = trim($_POST['mdp']);
-			$avatar = self::avatar($pdo, $login[$key]['id']);
+			$avatar = self::avatar($pdo, $login[$key]['id'], $login[$key]['type']);
 
 				if ($user == $login_name) {
 					if(self::mdp_verify($user_mdp, $login_mdp)) {
