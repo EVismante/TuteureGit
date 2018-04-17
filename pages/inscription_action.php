@@ -70,7 +70,7 @@ if (validateMail($mail)
 		$insert = 'INSERT INTO users (name, password, mail, type, premiere_fois) VALUES ("'.$name.'", "'.$mdp.'", "'.$mail.'", "'.$type.'", 1);';
 		$result = $pdo->prepare($insert);
 		$result->execute();
-		header("Location: ../inscription_end.php");
+		header("Location: ../login.php?msg=inscription");
 	
 } else {
 

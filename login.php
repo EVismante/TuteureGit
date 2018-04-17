@@ -6,13 +6,17 @@ include 'inc/login.inc.php';
 include_once 'inc/langue.inc.php';
 include '_head.php';
 $page = "login";
-
+ 
 ?>
 </head>
 <body>
 	<?php include("header.php"); ?>
-    
 <section class="forme">
+<?php
+if (isset($_GET['msg'])) {
+    echo "<div id='msg_success'><div>".$content['msg_inscription']."</div></div>";
+}
+?>
 	<h1><?php echo $content['menu6']; ?></h1>
     <img class ="in_middle" src="images/website/1.svg" alt="">
     	<form class="edit_club" action="login-action.php" method="POST">

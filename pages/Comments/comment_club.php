@@ -60,13 +60,14 @@ if ($ratingscount) {
 }
 ?>
 		</div>
+			<div class="error_msg">Votre commentaire est vide<div></div></div>
 			<input type="hidden" name="user_id" value="<?php echo $_SESSION['id']; ?>">
 			<input type="hidden" name="club_id" value="<?php echo $clubInfo[0]['id']; ?>">
 			<input type="hidden" name="parent_id" value="NULL">
 			<input type="hidden" name="page_type" value="club">
 			<br>
 			<input type="submit" class="submit" value="<?php echo $content["envoyer"]; ?>">
-			<span class="error_msg">Votre commentaire est vide</span>
+			
 		</form>
 		</div>
 <?php
@@ -118,7 +119,7 @@ if ($comments[$key]['rating_id'] !== NULL) {
 			<input type="hidden" name="page_type" value="club">
 			<span class="error_msg">Votre commentaire est vide</span>
 			<br>
-			<input type="submit" class="submit" value="<?php echo $content["envoyer"]; ?>">
+			<input type="submit" class="submit btn" value="<?php echo $content["envoyer"]; ?>">
 		</form>
 	</div>
 <?php
@@ -152,7 +153,7 @@ foreach ($comments as $k => $v) {
 			<input type="hidden" name="parent_id" value="<?php echo $comments[$key]['id'];?>">
 			<input type="hidden" name="page_type" value="club">
 			<br>
-			<button class="submit">Envoyer</button>
+			<button class="submit btn">Envoyer</button>
 		</form>
 	</div>
 

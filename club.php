@@ -89,6 +89,7 @@ $fav = $result1->rowCount();
 		</a>
 	<!-- fil d'ariane -->
 			<h1><?php echo $clubInfo[0]['name']; ?></h1>
+		<!-- les tags / type de prestation -->
 			<h4>
 <?php
 			foreach ($tag2 as $key => $value) {
@@ -122,6 +123,7 @@ $fav = $result1->rowCount();
 			<p><?php echo $clubInfo[0]['description_'.$lang]; ?></p>
 		</div>
 		<hr>
+<!--- ACTIVITES-->
 			<div class="bordered">
 				<h3><?php echo $content["activites"]; ?></h3>
 				<ul><?php
@@ -134,17 +136,18 @@ $fav = $result1->rowCount();
 				</ul>
 			</div>
 			<hr>
-<!--- ACTIVITES-->
+<!--- CONTACTS-->
 			<div class="bordered">
 
 				<h4><?php echo $content["contacter"]; ?></h4>
 
 				<span>Adresse: <?php echo $clubInfo[0]['address']; ?></span><br/>
-				<span>Site web: <a href="<?php echo $clubInfo[0]['website']; ?>"><?php echo $clubInfo[0]['name']; ?></a></span><br/>
+				<span>Site web: <a href="<?php echo $clubInfo[0]['website']; ?>"><?php echo $clubInfo[0]['website']; ?></a></span><br/>
 				<span>Telephone: <?php echo $clubInfo[0]['telephone']; ?></span><br/>
 				<span>Mail: <?php echo $clubInfo[0]['mail']; ?></span><br/>
 			</div>
 			<hr>
+<!--- COMMENTAIRES-->
 			<div class="comments">
 				<h4><?php echo $content["commentaires"]; ?></h4>
 				<?php include("pages/comments/comment_club.php"); ?>
@@ -153,8 +156,8 @@ $fav = $result1->rowCount();
 <!--- DIAPORAMA GALERIE DES IMAGES-->
 		<div class="right" id="diapo">
 			<div>
-				<span class="btn_photos"><?php echo $content["voir_photos"]; ?></span>
-				<img src="images/clubs/<?php echo $img[0]["url"]; ?>" alt="<?php echo $clubInfo[0]['name']; ?>">	
+				<img src="images/clubs/<?php echo $img[0]["url"]; ?>" alt="<?php echo $clubInfo[0]['name']; ?>">
+				<span class="btn_blue"><?php echo $content["voir_photos"]; ?></span>	
 			</div>
 		</div>
 
@@ -162,6 +165,7 @@ $fav = $result1->rowCount();
 	<div id="diaporama">
 		<span tabindex="0" id="fermer">&#x2716;</span>
 		<div class="arrows">
+
 <?php /*---fleches de la galerie ---*/
 	if (count($img) > 1) { ?>
 			<div tabindex="0" class="arrow_left"></div>	

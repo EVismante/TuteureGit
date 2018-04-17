@@ -397,30 +397,33 @@ $("#submit_inscription").on("click", function() {
 
       var bool6;
 
+  $.ajax( //verifie si l'username existe déjà
+    {   type: "POST",
+        url: "pages/check_username.php",
+        data: {name: $("#username").val()},
+        async: false,
+        success:
 
-  $.post("pages/check_username.php", //verifie si l'username existe déjà
-    {
-        name: $("#username").val(),
-    },
-    function(data){   
-        $(".result").html(data);
-        if (data == "1") {
+    function(data){ 
+
+        if (data == '1') {
+          bool6 = false;
           $("#username").addClass( "error" );
           $("#msg_nom1").css("display", "block");
-          bool6 = false;
-          return bool6;
+        }
 
-        } else { $("#username").removeClass( "error" );
-        $("#msg_nom1").css("display", "none");
-        bool6 = true;
+        if (data == '0') {
+          $("#username").removeClass( "error" );
+          $("#msg_nom1").css("display", "none");
+          bool6 = true;
+        } else {
+          bool6= false;
+        }
+ }
+  });
 
-        return bool6;
-         }
-    });
 
-alert(bool6);
-
-  if (bool1 && bool2 && bool3 && bool4 && bool5 && bool6 ) { return true; 
+  if (bool1 && bool2 && bool3 && bool4 && bool5 && bool6) { return true; 
   } else { return false;}
 })
 
@@ -592,6 +595,7 @@ $("#filtres div").css("display", "none"); /*CACHE Les options*/
 $("#filtres span").click(function() {
   $("+div", this).slideToggle();
 })
+
 
 }  /*ICI LA FIN DE ONLOAD JE SUPPOSE*/
 

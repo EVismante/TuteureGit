@@ -276,6 +276,8 @@ label[for="pro"] img {
 #liste1 {
   background-color: lightblue; }
 
+.liste_clubs a {
+  text-decoration: none; }
 .liste_clubs h3 {
   width: 100%; }
 
@@ -287,8 +289,6 @@ label[for="pro"] img {
   padding-left: 1em;
   padding-top: 0.5em;
   padding-bottom: 0.5em; }
-#liste div:last-of-type {
-  margin-left: 3.5em; }
 #liste span {
   font-size: 0.9em; }
 #liste > div:hover {
@@ -505,8 +505,7 @@ footer {
   width: 46vw;
   display: table-cell;
   padding-left: 2vw;
-  position: relative;
-  top: 100px; }
+  position: relative; }
   .right div {
     max-width: 47vw;
     position: sticky;
@@ -550,6 +549,8 @@ footer {
     float: left;
     background-color: white;
     width: 40vw; }
+    .comments > div textarea {
+      width: 30vw !important; }
     .comments > div p {
       font-size: 1.1em;
       margin-top: 1em;
@@ -606,9 +607,11 @@ footer {
   position: fixed;
   top: 0;
   left: 0;
-  overflow: hidden; }
+  overflow: hidden;
+  z-index: 8; }
   #msg_success div {
     background-color: white;
+    box-shadow: 30px 30px 30px rgba(150, 150, 150, 0.6);
     border-radius: 20px;
     padding: 1em;
     border: 1px solid lightgrey;

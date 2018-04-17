@@ -1,4 +1,5 @@
  function initMap() {
+
         var map = new google.maps.Map(document.getElementById('map'), {
           center: new google.maps.LatLng(43.740559, 6.380062),
           zoom: 9,
@@ -212,10 +213,20 @@
             icon: iconBase + 'event.png'
           }
         };
-               // Create markers.
+        
+
 
           // Change this depending on the name of your PHP or XML file
           downloadUrl("map/map.xml", function(data) {
+
+            var markerz = new Array();
+
+                function getMarkerbyLocation(location) {
+                    for (var i = 0; i < markerz.length; i++) {
+                        if (markerz[i].getPosition().lat() == location.lat() && markerz[i].getPosition().lng() == location.lng())
+                            return markerz[i];
+                    }
+                }
 
             var xml = data.responseXML;
             var markers = xml.documentElement.getElementsByTagName('marker');
@@ -233,7 +244,8 @@
               var strong = document.createElement('h3');
               strong.textContent = name
               infowincontent.appendChild(strong);
-              //infowincontent.appendChild(document.createElement('br'));
+              infowincontent.setAttribute("id", "hi");
+
 
               var text = document.createElement('p');
               text.textContent = address;
@@ -243,7 +255,7 @@
               /*changer l'URL selon le type de prestataire*/
               var type = markerElem.getAttribute('type');
                 if (type =="club") {
-                   button.classList.add("btn");
+                    button.classList.add("btn");
                   button.setAttribute("href", 'club.php?id='+idclub+'&p=recherche');
                 }
                 if (type =="event") {
@@ -260,6 +272,7 @@
               var marker = new google.maps.Marker({
                 map: map,
                 position: point,
+                id: "club_"+idclub,
                 icon: icons[type].icon,
 
               });
@@ -268,18 +281,23 @@
                 infoWindow.setContent(infowincontent);
                 infoWindow.open(map, marker);
               });
-
-
+              // Modification here!
+        markerz.push(marker);
 
             });
-/*
-          var mapDiv = document.querySelector("*[id^='club_']");
-            google.maps.event.addDomListener(mapDiv, 'click', function() {
-                var marker = $(this).attr("id");
-                // window.alert(marker);
-            });
+
+      /* page de la recherche: ouvrir l'info de marker*/
+      /*
+        $("[id^='club_']").click(function() {
+          var elt = $(this).attr('id');
+          alert(elt);
+          
+          
+      });
 */
           });
+
+
         }
 
 

@@ -274,6 +274,7 @@ label[for="pro"]
 }
 #liste1 { background-color: lightblue; }
 .liste_clubs {
+	a {text-decoration: none;}
 	h3 {width: 100%;}
 }
 .liste_events {display: none;}
@@ -284,9 +285,6 @@ label[for="pro"]
 				padding-left: 1em;
 				padding-top: 0.5em;
 				padding-bottom: 0.5em;
-			}
-			div:last-of-type {
-				margin-left: 3.5em;
 			}
 			span {
 				font-size: 0.9em;
@@ -513,7 +511,7 @@ footer {
 	display: table-cell;
 	padding-left: 2vw;
 	position: relative;
-	top: 100px;
+	//top: 100px;
 	div {
 		max-width: 47vw;
 		position: sticky;
@@ -556,7 +554,8 @@ h3::after {
 }
  & > div { /*nouveau commentaire inclu */
 	@include comment;
-	width: 40vw;
+	width:40vw;
+	textarea {width:30vw!important;}
 	p {font-size: 1.1em;
 		margin-top: 1em;
 		margin-bottom: 1em;
@@ -630,8 +629,10 @@ h3::after {
 	top: 0;
 	left: 0;
 	overflow: hidden;
+	z-index:8;
 	div {
 	background-color: white;
+	box-shadow: 30px 30px 30px rgba(150, 150, 150, 0.6);
 	border-radius: 20px;
 	padding: 1em;
 	border: 1px solid lightgrey;

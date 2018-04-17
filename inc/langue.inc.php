@@ -17,14 +17,14 @@ $_SESSION['lang'] = $lang;
 $cont = new content($lang, $pdo);
 $content = $cont->content;
 
-
+/* Classe pour les traductions*/
 class content {
 
 		public function __construct($lang, $pdo) {
 			$this->content = self::get_content($lang, $pdo);
 
 		}
-
+		/*construit un tableau associatif pour les traductions*/
 		public function get_content($lang, $pdo) {
 			$query = "SELECT name, ".$lang." FROM contenu;";
 			$result = $pdo->prepare($query);

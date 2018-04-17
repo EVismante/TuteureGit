@@ -90,35 +90,57 @@ $fav = $result1->rowCount();
 			</span>
 <?php
 } /*----------FIN DE CHECKBOX-------------*/			
-?>
+?> 
 
+<!--- CONTACTS-->
 		<div>
 			<p><?php echo $clubInfo[0]['description_'.$lang]; ?></p>
 		</div>
 		<hr/>
 		<div>
-			<div><?php echo $clubInfo[0]['address']; ?></div>
-			<div><?php echo $clubInfo[0]['mail']; ?></div>
-			<div><?php echo $clubInfo[0]['website']; ?></div>
+			<div>Lieu:  <?php echo $clubInfo[0]['address']; ?></div>
+			<div>Mail: <?php echo $clubInfo[0]['mail']; ?></div>
+			<div>Site web: <a href="<?php echo $clubInfo[0]['website']; ?>"><?php echo $clubInfo[0]['website']; ?></a></div>
 		</div>
 		<hr>
+<!--- COMMENTAIRES-->
 		<div class="comments">
 <?php include("pages/comments/comment_event.php"); ?>
 		</div>
 	</div>
 
-	<div class="right">
-
-<?php
-foreach ($img as $key => $value) {
-?>
-		<img src="images/events/<?php echo $value["url"]; ?>" alt="<?php echo $clubInfo[0]['name']; ?>">
-<?php
-}
-
-?>	
+	<div class="right" id="diapo">
+		<div>
+			<img src="images/events/<?php echo $img[0]["url"]; ?>" alt="<?php echo $clubInfo[0]['titre_'.$lang]; ?>">
+			<span class="btn_blue"><?php echo $content["voir_photos"]; ?></span>
+		</div>
 	</div>
-	</section>
+</section>
+<!-- diaporama modal -->
+	<div id="diaporama">
+		<span tabindex="0" id="fermer">&#x2716;</span>
+		<div class="arrows">
+
+<?php /*---fleches de la galerie ---*/
+	if (count($img) > 1) { ?>
+			<div tabindex="0" class="arrow_left"></div>	
+			<div tabindex="0" class="arrow_right"></div>	
+<?php	
+	}
+?>		</div>
+		<div> <!-- galerie -->
+			<?php
+	foreach ($img as $key => $value) {
+		if ($key == 0) {
+			echo '<img class="slideshowactive" src="images/events/'.$value["url"].'" alt="'.$clubInfo[0]['titre_fr'].'">';
+			echo "\n";
+		} else {
+			echo '<img src="images/events/'.$value["url"].'" alt="'.$clubInfo[0]['titre_fr'].'">';
+			echo "\n";
+		}}?>
+		</div>
+	</div>
+<!-- fin de diaporama -->	
 	<?php include("pages/footer.php"); ?>
 </body>
 </html>

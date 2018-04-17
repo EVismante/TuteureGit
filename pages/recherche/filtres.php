@@ -1,16 +1,16 @@
 <?php
+include_once 'inc/langue.inc.php';
 include 'inc/filtres.inc.php';
-
-function filtre($pdo, $x)
+function filtre($pdo, $x, $lang)
   {
-    $stmt = $pdo->prepare("SELECT name_FR FROM tag WHERE type = $x;");
+    $stmt = $pdo->prepare("SELECT name_".$lang." FROM tag WHERE type = $x;");
     $stmt->execute();  
     $filtres = $stmt->fetchAll();
 
 				foreach ($filtres as $key => $value) {?>
 
-<input type="checkbox" name="filtre[]" value="<?php echo $value["name_FR"]; ?>">
-<label for="filtre[]"><?php echo $value["name_FR"]; ?></label>
+<input type="checkbox" name="filtre[]" value="<?php echo $value["name_".$lang]; ?>">
+<label for="filtre[]"><?php echo $value["name_".$lang]; ?></label>
 <?php echo "<br>";
 				}};
 ?>
@@ -23,29 +23,33 @@ function filtre($pdo, $x)
 
 		
 			<input type="text" name="club" placeholder="<?php echo $content["placeholder_search"]; ?>" id="searchbox">
-			<input type="checkbox" name="clubs_choix" id="prestations" checked>
-			<label for="prestations">Préstataires</label>
-			<input type="checkbox" name="events" id="events" checked>
-			<label for="events">Evènements</label>
+			<div>
+				<input type="checkbox" name="clubs_choix" id="prestations" checked>
+				<label for="prestations"><?php echo $content["prestataires"]; ?></label>
+			</div>
+			<div>
+				<input type="checkbox" name="events" id="events" checked>
+				<label for="events"><?php echo $content["evenements"]; ?></label>
+			</div>
 
 		<div id="filtres">
-			<span tabindex="0">Activité
+			<span tabindex="0"><?php echo $content["activite"]; ?>
 				<span class="arrow_show"></span>
 			</span>
 			<div>
-				<?php filtre($pdo, 1); ?>
+				<?php filtre($pdo, 1, $lang); ?>
 			</div>
-			<span tabindex="0">Type
+			<span tabindex="0"><?php echo $content["type"]; ?>
 				<span class="arrow_show"></span>
 			</span>
 			<div>
-				<?php filtre($pdo, 2); ?>
+				<?php filtre($pdo, 2, $lang); ?>
 			</div>
-			<span tabindex="0">Autres filtres
+			<span tabindex="0"><?php echo $content["autre"]; ?>
 				<span class="arrow_show"></span>
 			</span>
 			<div>
-				<?php filtre($pdo, 3); ?>
+				<?php filtre($pdo, 3, $lang); ?>
 			</div>
 		</div>
 		<div>
