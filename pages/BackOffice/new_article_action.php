@@ -2,8 +2,8 @@
 require_once('../../_config.php');
 require_once ('../../inc/images.inc.php');
 
-$titre_FR = addslashes($_POST["titre_FR"]);
-$titre_EN = addslashes($_POST["titre_EN"]);
+$titre_FR = addslashes($_POST["name"]);
+$titre_EN = addslashes($_POST["name_en"]);
 $article_FR = addslashes($_POST["article_FR"]);
 $article_EN = addslashes($_POST["article_EN"]);
 $tag = $_POST["tag"];

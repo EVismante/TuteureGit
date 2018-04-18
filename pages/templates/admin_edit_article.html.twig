@@ -3,44 +3,89 @@
 {% block section %}
 <section class="forme">
 		<h1>Éditer {{titre_fr}}</h1>
-			<form class="edit_club" action="BackOffice/edit_article_action.php" method="POST" enctype="multipart/form-data">
+			<form id="formulaire" class="edit_club" action="BackOffice/edit_article_action.php" method="POST" enctype="multipart/form-data">
 				<div>
-					<input type="text" name="titre_FR" id="titre_FR" value="{{titre_fr}}">
-					<br>
-					<label for="titre_FR">* Titre en français</label>
-					<br>
-					<input type="text" name="titre_EN" id="titre_EN" value="{{titre_en}}">
-					<br>
-					<label for="titre_EN">* English title</label>
-				</div>
-				<span class="arrow"></span>
-				<div>
-					<textarea rows="4" cols="50" id="article_FR" name="article_FR" >{{fr}}</textarea>
-					<br>
-					<label for="article_FR">* Article en français</label>
-					<br><br><br>
-					<textarea name="article_EN" id="article_EN">{{en}}</textarea>
-					<br>
-					<label for="article_EN" id="EN">Article in English</label>
-					<br><br>
-				</div>
-				<span class="arrow"></span>
+					<div class="hide active">
+						<div class="submenu">
+							<span class="current">FR</span>
+							<div class="arrow-right"></div>
+							<span>EN</span>
+							<div class="arrow-right"></div>
+							<span>Info</span>
+							<div class="arrow-right"></div>
+							<span>Images</span>
+						</div>
+						<div class="error_msg">Le nom n'est pas renseigné<div></div></div>
+						<input type="text" name="name" id="name" value="{{titre_fr}}">
+						<br>
+						<label for="name">* Titre en français</label>
+						<br>
+						<textarea rows="4" cols="50" id="article_FR" name="article_FR" >{{fr}}</textarea>
+						<br>
+						<label for="article_FR">Description en français</label>
+						<br><br>
+						<span><em>Les champs avec * sont obligatoires</em></span>
+					</div>
 
 
-					<div>
+				<div class="hide">
+						<div class="submenu">
+							<span>FR</span>
+							<div class="arrow-right"></div>
+							<span class="current">EN</span>
+							<div class="arrow-right"></div>
+							<span>Info</span>
+							<div class="arrow-right"></div>
+							<span>Images</span>
+						</div>
+						<div class="error_msg">Le nom n'est pas renseigné<div></div></div>
+						<input type="text" name="name_en" id="name_en" value="{{titre_en}}">
+						<br>
+						<label for="name">* Titre en anglais</label>
+						<br>
+						<textarea rows="4" cols="50" id="article_EN" name="article_EN" >{{en}}</textarea>
+						<br>
+						<label for="article_EN">Description en anglais</label>
+						<br><br>
+						<span><em>Les champs avec * sont obligatoires</em></span>
+					</div>
+
+				<div class="hide">
+						<div class="submenu">
+							<span>FR</span>
+							<div class="arrow-right"></div>
+							<span>EN</span>
+							<div class="arrow-right"></div>
+							<span  class="current">Info</span>
+							<div class="arrow-right"></div>
+							<span>Images</span>
+						</div>
 						<h4>ACTIVITE</h4>
+						<div class="filtres">
 				{% for activite in activites %}
-						<input type="radio" name="tag[]" value="{{activite.id}}" 
+							<input type="radio" name="filtre[]" id="filtre" value="{{activite.id}}" 
 				{% if activite.id == article_tag %} checked {% endif %} >
-						<label for="tag[]">{{activite.name_FR}}</label>
-						<br/>
+							<label for="filtre">{{activite.name_FR}}</label>
+							<br/>
 				{% endfor %}
-			</div>
+							<input type="hidden" name="retour" value="admin">
+						</div>
+				</div>
 
-				<span class="arrow"></span>
-				<div id="clearfix">
-					<h4>Images</h4>
-					<input type="hidden" name="MAX_FILE_SIZE" value="500000000" /> 
+				<div class="hide" id="input_images">
+						<div class="submenu">
+							<span>FR</span>
+							<div class="arrow-right"></div>
+							<span>EN</span>
+							<div class="arrow-right"></div>
+							<span>Filtres</span>
+							<div class="arrow-right"></div>
+							<span>Info</span>
+							<div class="arrow-right"></div>
+							<span class="current">Images</span>
+						</div>
+						<h4>Images</h4>
+						<input type="hidden" name="MAX_FILE_SIZE" value="300000000" /> 
 {% if count_img > 0 %}			
 					<div class="input_images">
 						<input name="files[]" id="file1" type="file" accept="image/*"/> 
@@ -53,16 +98,24 @@
 						<input name="files[]" id="file1" type="file" accept="image/*" />
 						<label for="file1"><span class="arrow_up"></span></label>
 {% endif %}
+				</div>
 
+				<div class="clearfix">
+					<div>
+						<a class ="btn_float_empty" href="admin_clubs.php">Annuler</a>
+						<span class="btn_float inactive" id="previous">Précedent</span>
+						<span class="btn_float" id="next">Suivant</span>
+
+						<input type="hidden" name="id" value="{{club_id}}">
+						<input type="submit" name="submit" id="submit_new_club" class="btn_float" value="envoyer">
+						<p id="error_msg">Veuillez bien remplir le formulaire</p>
+					</div>
 				</div>
-				<span class="arrow"></span>
-				<div id="edit_btn">
-					<!--message d'erreur-->
-					<p id="error_msg">Veuillez bien remplir le formulaire</p>
-					<input type="hidden" name="id" value="{{article_id}}">
-					<input type="submit" name="submit" id="submit_new_article" value="Envoyer">
-					<a class="btn-empty middle" href="admin_articles.php">Annuler</a>
-				</div>
+			</div>
 			</form>
 	</section>
 {% endblock %}
+
+
+
+

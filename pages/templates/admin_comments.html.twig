@@ -18,10 +18,6 @@
 				<td>{{comment.rating_id}}</td>
 				<td>{{comment.date}}</td>
 				<td>
-					<form action="" method="POST">
-						<input type="hidden" name="id" value="{{comment.id}}">
-						<input type="submit" value="Changer">
-					</form>
 					<a class="btn-empty" href="../{{comment.page_type}}.php?id={{comment.page_id}}">discussion</a>
 					<form action="BackOffice/delete_comment.php" method="POST">
 						<input type="hidden" name="id" value="{{comment.id}}">

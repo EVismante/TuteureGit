@@ -21,7 +21,7 @@ $page = "login";
 		<div class="col-3">
 			<a href="recherche.php">
 				<img src="images/website/2.svg" alt="">
-				<span>Cherchez les clubs et préstations et sauvegardez les en vos favoris</span>
+				<span>Cherchez les clubs et préstations et ajoutez les dans vos favoris</span>
 			</a>
 		</div>
 		<div class="col-3">
@@ -40,9 +40,9 @@ $page = "login";
 <?php
 } else {
 ?>
-				<a href="http://localhost/test/TUTEUREgit/user_pro_club.php">
+				<a href="user_compte.php">
 				<img src="images/website/1.svg" alt="">
-				<span>Créez une page pour votre préstation !</span>
+				<span>Choisisez un avatar qui vous répresente !</span>
 
 <?php
 }?>

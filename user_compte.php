@@ -7,6 +7,12 @@ include_once 'inc/langue.inc.php';
 		header("Location: login.php");
 	};
 
+
+	if (isset($_GET["msg"]) && $_GET["msg"] =="failure_mdp" ) {
+		$msg_mdp = "<div class='error_msg_show'>Le mot de passe n'est pas valide<div></div></div>";
+	} else {
+		$msg_mdp = NULL;
+	};
 include '_head.php';
 $page ="user_compte";
 ?>
@@ -14,78 +20,94 @@ $page ="user_compte";
 		<?php include("header.php"); ?>
 
 	
-	<section>
+	<section class="forme">
 		<h1><?php echo $_SESSION["name"]; ?></h1>
+		<img class="user_icon_big in_middle" src="images/avatars/<?php echo $_SESSION["avatar"]; ?>" alt="">
+
 		<!-- l'image -->
-		<div class="forme">
+		<div class="edit_club">
+			<div id="input_images">
 			<form action="pages/BackOffice/upload_action_avatar.php" method="POST" enctype="multipart/form-data">
-				<label for="avatar" >
-					<img class="user_icon_big" src="images/avatars/<?php echo $_SESSION["avatar"]; ?>">
-				</label>
-				<input id="avatar" name="userfile" type="file" />
-            	<input type="hidden" name="MAX_FILE_SIZE" value="300000000" /> 
-            	<input type="hidden" name="type" value="avatar" /> 
-         
-            	<input name ="envoi" type="submit" value="Envoyer le fichier" />
-            
-            <div id="error"><?php
+				<h3>Changer l'avatar</h3>
+				
+				<div id="error"><?php
 	if(isset($_GET["msg"])) {
 		if ($_GET["msg"] == "fail1") {
-				echo "L'image est trop grande / mauvais format";
-		} else { echo " Une erreur est survenue";}
+				echo "<div class='error_msg_show'>L'image est trop grande ou de mauvais format<div></div></div>";
+		};} ?>	</div>	
 
-} ?>
+            	<input type="hidden" name="MAX_FILE_SIZE" value="300000000" /> 
+            	<input type="hidden" name="type" value="avatar" /> 
+            	<input id="file1" name="files[]" type="file" accept="image/*"/>
+           		<label for="file1" id="label_center"><span class="arrow_up"></span></label>
+            	<div>Les formats des images acceptés: JPEG, GIF, PNG</div>
+            	<input name ="envoi" type="submit" value="Envoyer" />	
     		</form>
     	</div>
-	</section>
+    </div>
 
-	<section>
 		<form class="edit_club" method="POST" action="pages/user/change_mdp.php">
+			<input type="hidden" name="retour" value="user">
 			<div>
-				<input type="hidden" name="id" value="<?php echo $_SESSION["id"]; ?>">
-				<input type="password" id="mdp_old" name="mdp_old">
-				<br>
-	            <label for="mdp">L'ancien mot de passe</label>
-	            <br>
-				<input type="password" id="mdp" name="mdp">
-				<br>
-	            <label for="mdp">Changer le mot de passe</label>
-	            <br>
-	            <p id="msg_mdp">Le mot de passe doit avoir au moins 5 charactéres</p>
-	            <br>
-	            <input type="password" id="mdp1" name="mdp1">
-	            <br>
-	            <label for="mdp1">Mot de passe</label>
-	            <br>
-	            <p id="msg_mdp1">Les mots de passe ne sont pas identiques</p>
-	            <br>
-	            <input type="submit" value="Modifier" id="submit_mdp">
-        	</div>
+				<div>
+					<h3>Changer le mot de passe</h3>
+					<input type="hidden" name="id" value="<?php echo $_SESSION["id"]; ?>">
+					<div><?php echo $msg_mdp; ?></div>
+					<input type="password" id="mdp_old" name="mdp_old">
+					<br>
+		            <label for="mdp">L'ancien mot de passe</label>
+		            <br>
+		            <div id="msg_mdp" class="error_msg">Le mot de passe doit avoir au moins 5 charactéres<div></div></div>
+					<input type="password" id="mdp" name="mdp">
+					<br>
+		            <label for="mdp">Changer le mot de passe</label>
+		            <br>
+		            <div id="msg_mdp1" class="error_msg">Les mots de passe ne sont pas identiques<div></div></div>
+		            <input type="password" id="mdp1" name="mdp1">
+		            <br>
+		            <label for="mdp1">Mot de passe</label>
+		            <br>
+		            <input type="submit" value="Modifier" id="submit_mdp">
+	        	</div>
+	        </div>
          </form>
 
         <form class="edit_club" method="POST" action="pages/user/change_mail.php">
         	<div>
-	        	<input type="hidden" name="id" value="<?php echo $_SESSION["id"]; ?>">
-	            <input type="text" id="mail" name="mail">
-	            <label for="name">Mail</label>
-	            <p id="msg_mail">L'addresse mail n'est pas valide</p>
-	            <br>
-	            <input type="text" id="mail1" name="mail1">
-	            <label for="name">Mail</label>
-	            <p id="msg_mail1">Les addresses mail ne sont pas identiques</p>
-	            <input type="submit" value="Modifier" id="submit_mail">
-        	</div>
+        		<div>
+        			<h3>Changer l'adresse mail</h3>
+        			<div id="msg_mail" class="error_msg">L'addresse mail n'est pas valide<div></div></div>
+		            <input type="text" id="mail" name="mail">
+		            <label for="mail">L'adresse mail</label>
+		            <br>
+		            <div id="msg_mail1" class="error_msg">Les addresses mail ne sont pas identiques<div></div></div>
+		            <input type="text" id="mail1" name="mail1">
+		            <br>
+		            <input type="hidden" name="retour" value="user">
+		            <input type="hidden" name="id" value="<?php echo $_SESSION["id"]; ?>">
+		            <label for="mail">Repetez l'adresse mail</label>
+		            <input type="submit" value="Modifier" id="submit_mail">
+	        	</div>
+	        </div>
 		</form>
 	</section>
 	
-</div>
 <section>
 	<form class="edit_club" action="pages/user/delete_user.php" method="POST">
 		<div>
-			Supprimer le compte
-			<input type="hidden" name="id" value="<?php echo $_SESSION["id"];?>">
-			<input type="submit" class="delete" value="Supprimer">
-		</div>
+			<div>
+				<h3>Supprimer le compte</h3>
+				<input type="hidden" name="id" value="<?php echo $_SESSION["id"];?>">
+				<span class="btn center" id="del"><?php echo $content["supprimer"]; ?></span>
+
+					<div id="hide">
+						<div>
+							<p><?php echo $content["on_delete1"]; ?> ?</p>
+							<input type="submit" value="<?php echo $content["supprimer"]; ?>">
+							<span class="btn-empty center" id="annuler"><?php echo $content["annuler"]; ?></span>
+						</div>
+			</div>
+	</div>
 	</form>
 </section>
 
@@ -94,3 +116,4 @@ $page ="user_compte";
 
 </body>
 </html>
+

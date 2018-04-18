@@ -65,8 +65,8 @@
     color: white;
     text-align: center;
     cursor: pointer; 
-    display: table-cell; /* comportement visuel de cellule */
  	vertical-align: middle;
+ 	display: table-cell;
  	&:hover {
  		background-color: lighten( map-get($colors, color3), 10% );
 		@include transition(background-color, 200ms);

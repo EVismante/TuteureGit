@@ -39,7 +39,7 @@ include '_head.php';
 							<span>Images</span>
 						</div>
 					<div class="error_msg"><?php echo $content["error_titre"]; ?><div></div></div>
-					<input type="text" name="name_FR" id="name_fr">
+					<input type="text" name="name_fr" id="name_fr">
 					<br>
 					<label for="name_fr">* <?php echo $content["titre_en_fr"]; ?></label>
 					<br>
@@ -113,19 +113,20 @@ include '_head.php';
 							<div class="arrow-right"></div>
 							<span class="current">Images</span>
 						</div>
+			
 					<input type="hidden" name="MAX_FILE_SIZE" value="300000000" /> 
-           			 <input name="files[]" id="file1" type="file" accept="image/*"/> 
-           			 <label for="file1"><span class="arrow_up"></span></label>
-           			 <input name="files[]" id="file2" type="file" accept="image/*"/> 
-           			 <label for="file2"><span class="arrow_up"></span></label>
-           			 <input name="files[]" id="file3" type="file" accept="image/*"/> 
-           			 <label for="file3"><span class="arrow_up"></span></label>
+           			 	<input name="files[]" id="file1" type="file" accept="image/*"/> 
+           			 	<label for="file1"><span class="arrow_up"></span></label>
+           				 <input name="files[]" id="file2" type="file" accept="image/*"/> 
+           				 <label for="file2"><span class="arrow_up"></span></label>
+           				 <input name="files[]" id="file3" type="file" accept="image/*"/> 
+           				 <label for="file3"><span class="arrow_up"></span></label>
 				</div>
 				<div class="clearfix">
 					<a class ="btn_float_empty" href="user_events.php"><?php echo $content["annuler"]; ?></a>
 					<span class="btn_float inactive" id="previous"><?php echo $content["precedent"]; ?></span>
 					<span class="btn_float" id="next"><?php echo $content["suivant"]; ?></span>
-					<input id="fin" class="btn_float" type="submit" name="submit" id="submit_new_event" value="<?php echo $content["envoyer"]; ?>">
+					<input class="btn_float" type="submit" name="submit" id="submit_new_event" value="<?php echo $content["envoyer"]; ?>">
 
 					<p id="error_msg"><?php echo $content["error_form"]; ?></p>
 				</div>

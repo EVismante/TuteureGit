@@ -143,7 +143,7 @@ $fav = $result1->rowCount();
 
 				<span>Adresse: <?php echo $clubInfo[0]['address']; ?></span><br/>
 				<span>Site web: <a href="<?php echo $clubInfo[0]['website']; ?>"><?php echo $clubInfo[0]['website']; ?></a></span><br/>
-				<span>Telephone: <?php echo $clubInfo[0]['telephone']; ?></span><br/>
+				<span>Téléphone: <?php echo $clubInfo[0]['telephone']; ?></span><br/>
 				<span>Mail: <?php echo $clubInfo[0]['mail']; ?></span><br/>
 			</div>
 			<hr>

@@ -315,9 +315,18 @@ footer {
 	position: absolute;
 	background-color: white;
 	padding: 25px;
-	width: 100vw;
-	div {
+}
 
+
+.row1 {width: 100vw;
+	text-align: center;
+}
+
+.row3 {
+	display: flex;
+	width: 100vw;
+	div {width: 28vw;
+		padding: 2vw;
 	}
 }
 
@@ -538,10 +547,12 @@ footer {
 
 
 /*commentaires*/
-.comments {height: auto;
-float: left;
-margin-top: 2em;
-.user_icon {float: left;
+.comments {
+	height: auto;
+	float: left;
+	margin-top: 2em;
+.user_icon {
+	float: left;
 	margin-left: 1em;
 	margin-right: 1em;
 }
@@ -714,6 +725,10 @@ h3::after {
 
 	}
 }
+.error_msg_show {
+	@extend .error_msg;
+}
+
 
 .edit_flex {
 	background-color: map-get($colors, background);
@@ -754,6 +769,9 @@ h3::after {
 	margin-bottom: -1em;
 }
 
+#label_center {
+	margin-left: 30%;
+}
 /*---------------BO: tables -----------------------*/
 
 table {

@@ -82,10 +82,12 @@ $favoris = $result2->fetchAll();
 					<input type="submit" value="<?php echo $content["changer"]; ?>">
 				</form>
 			</div>
+			
 			<div>
 				<div>
 					 <?php echo $content["supprimer_page"]." ".$club[0]['name']; ?>
 				</div>
+
 				<form action="pages/BackOffice/delete_club.php" method="POST">
 					<input type="hidden" name="id" value="<?php echo $club[0]['id']; ?>">
 					<input type="hidden" name="page" value="user_pro_club.php">
@@ -99,7 +101,6 @@ $favoris = $result2->fetchAll();
 							<span class="btn-empty center" id="annuler"><?php echo $content["annuler"]; ?></span>
 						</div>
 					</div>
-
 				</form>
 			</div>
 

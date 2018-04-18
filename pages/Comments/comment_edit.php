@@ -2,12 +2,13 @@
 require_once('../../_config.php');
 
 $user = $_POST["user_id"];
-$club = $_POST["club_id"];
-$parent_id = $_POST["parent_id"];
+$comment_id = $_POST["comment_id"];
 $comment = htmlentities($_POST["comment"]);
 $page_type=$_POST["page_type"];
 $rating = "NULL";
+$club = $_POST["club_id"];
 
+/*
 if (isset($_POST["rating"])) {
 	$rating = $_POST["rating"];
 
@@ -29,7 +30,6 @@ $result->execute();
 
 };
 
-		/*-----Insérer une évaluation générale à la page de club*/
 		function getRating($pdo, $club) {
 			$query_rating = "SELECT ROUND(AVG(rating),0) AS rating FROM ratings
 		 WHERE
@@ -43,13 +43,15 @@ $result->execute();
 		return $niveau;
 		}
 
-$comment_query = "INSERT INTO comment
-(user_id, message, rating_id, date, lang, page_id, parent_id, page_type)
-VALUES
-($user, '$comment', $rating, now(), 'fr', $club, $parent_id, '$page_type')
+*/
+
+$comment_query = " UPDATE comment
+SET message = '$comment', date = now()
+WHERE id=".$comment_id."
 ;";
 
- 
+
+
 $result_comment = $pdo->prepare($comment_query);
 $result_comment->execute();
 

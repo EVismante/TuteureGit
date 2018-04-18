@@ -107,7 +107,6 @@ div {position: relative;
 		height: 100px;
 		border-radius: 60px;
 		background-color: white;
-		cursor: pointer;
 	}
 
 
@@ -149,13 +148,6 @@ header {
  	margin-top:0.5em;
  	margin-bottom:0.5em;
  }
-
-#msg_nom,
-#msg_mdp, 
-#msg_mdp1,
-#msg_mail,
-#msg_mail1
-	{display: none;}
 
 
  textarea { 
@@ -203,6 +195,7 @@ label[for=file3],
 }
 
 #input_images {
+	div {position: relative;
 	.image_checkbox { /**/
 			position: absolute;
 			width: 245px;
@@ -223,6 +216,7 @@ label[for=file3],
 			margin-top: 0.3em;
 		}
 		}}
+	}
 }
 
 
@@ -270,20 +264,26 @@ input[name="files[]"] + label {
 #msg {
 	color: red;
 	position: fixed;
-	top: 80px;
-	left: 40%;
+	bottom: 0px;
+	right: 10%;
+	//background-color: white;
+	border-radius: 10px;
+	padding: 1em;
+	//border: 1px solid orange;
 }
 
 #menu_square_top {
 	margin-top: 5em;
+	border-spacing: 0.5em;
+	display: table;
 	a {text-decoration: none;
     	color: white;
     	}
     .menu_square {
     	@include square(10em);
-    	margin: 1em;
-}
-}
+    	margin: 0.5em;
+
+}}
 
 
 
@@ -297,18 +297,6 @@ input[type=checkbox] {
 
 }
 
-.row1 {width: 100vw;
-	text-align: center;
-}
-
-.row3 {
-	display: flex;
-	width: 100vw;
-	div {width: 28vw;
-		padding: 2vw;
-	}
-}
-
  #changeh4 {text-align: center;
  			opacity: 0;
  }
@@ -318,36 +306,27 @@ input[type=checkbox] {
  		display: none;
  	}
  }
-/*--------------------------error handling------------------------------*/
 
-.error {
-	border: 3px solid map-get($colors, color1) !important;
-}
-
-#error_msg {display: none;
-			color: map-get($colors, color1);
-			text-align: center;
-			font-size: 1.6em;
-			margin-bottom: 1em;
-}
-.error_msg {display: none;}
-
-.msg {color: map-get($colors, color2);
-	display: block;
-	text-align: center;
-	padding-top: 1em;
-}
-
-.msg1 {
-	@extend .msg;
-	display: none;
+.in_middle {
+	margin: auto;	
+	width: 100px;
+	display: flex;
+	margin-top: 2em;
+	margin-bottom: -1em;
 }
 /*----------------commentaires---------------------------------*/
 
-div[id^='repondre_']{display: none;}
+div[id^='repondre_'], div[id^='edit_'] {display: none;}
+
 .hidden { display: none;}
 
-
+*[id^=btn_edit_] {
+	position:absolute;
+	right: 0;
+	top: 0;
+	padding: 0.5em;
+	cursor: pointer;
+}
 
 /**______boutons ______**/
 
@@ -430,13 +409,14 @@ input[type="submit"]
 
 }
 
-
 .hide,
 #submit_new_event,
 #submit_new_club
  {display: none;}
+
 .active {display: block!important;}
-//#fin {display: none;}
+
+#fin {display: none;} //pour le bouton de formulaire
 
 .sousligne {
 	border-bottom: 1px solid map-get($colors, color2);
@@ -463,3 +443,33 @@ input[type="submit"]
 	background-size: cover;
 	background-repeat: no-repeat;
 }
+
+/*--------------------------error handling------------------------------*/
+
+#error_msg {display: none;
+			color: map-get($colors, color1);
+			text-align: center;
+			//font-size: 1.6em;
+			//margin-bottom: 1em;
+}
+
+.error_msg_comment {
+	@extend #error_msg;
+}
+
+.error_msg {display: none;}
+
+.error { border: 3px solid orange!important;} //tout d'un coup il s'est arreté de marcher, j'ai pas trouvé d'autre solution
+
+.msg {color: map-get($colors, color2);
+	display: block;
+	text-align: center;
+	padding-top: 1em;
+}
+
+.msg1 {
+	@extend .msg;
+	display: none;
+}
+
+

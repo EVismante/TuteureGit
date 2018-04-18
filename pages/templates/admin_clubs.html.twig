@@ -4,7 +4,7 @@
 	<section class="office">
 		<h1>Gestion des Clubs</h1>
 		<br><br>
-		<a class = "btn" href="admin_new_club.php" title="nouveau club" >Créer</a>
+		<a class = "btn" href="admin_new_club.php" title="nouveau club" >Nouveau</a>
 		<input type="text" id="myInput" onkeyup="search()" placeholder="Cherchez..">
 		<table id="myTable">
 			<tr>
@@ -26,6 +26,7 @@
 				<td>
 					<form action="BackOffice/delete_club.php" method="POST">
 						<input type="hidden" name="id" value="{{club.id}}">
+						<input type="hidden" name="retour" value="admin">
 						<input type="submit" class="delete" value="Supprimer">
 					</form>
 				</td>

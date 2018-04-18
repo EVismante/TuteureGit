@@ -4,47 +4,56 @@
 <section class="forme">
 
 		<h1>Editer utilisateur {{user_name}}</h1>
-		<div>
-		<form action="BackOffice/upload_action_avatar.php" method="POST" enctype="multipart/form-data">
-			<div>
-            <input type="hidden" name="MAX_FILE_SIZE" value="300000000" /> 
-            <input type="hidden" name="type" value="avatar" /> 
-            <input id="idfile" name="userfile" type="file" /> 
-            <label for="idfile"><img class="user_icon_big" src="../images/avatars/default.svg"></label>
-            <input name ="envoi" type="submit" value="Changer l'avatar" />
-        	</div>
-    	</form>
+		<img class="user_icon_big in_middle" src="../images/avatars/default.svg" alt="">
+		<div class="edit_club">
+			<div id="input_images">
+				<form action="BackOffice/upload_action_avatar.php" method="POST" enctype="multipart/form-data">
+					<div>
+		            <input type="hidden" name="MAX_FILE_SIZE" value="300000000" /> 
+		            <input id="file1" name="files[]" type="file" accept="image/*"/>
+		            <input id="file1" name="userfile" type="file" /> 
+		            <label for="file1" id="label_center"><span class="arrow_up"></span></label>
+		            <input type="hidden" name="retour" value="admin">
+		            <input name ="envoi" type="submit" value="Changer" />
+		        	</div>
+		    	</form>
+		    </div>
+		</div>
 
-		<form class="edit_flex" method="POST" action="user/change_mdp.php">
+		<form class="edit_club" method="POST" action="user/change_mdp.php">
 			<div>
-				<input type="hidden" name="id" value="{{user_id}}">
-				<input type="hidden" name="retour" value="admin">
-				<input type="password" id="mdp_old" name="mdp_old">
-	            <label for="mdp_old">Ancien mot de passe</label>
-				<input type="password" id="mdp" name="mdp">
-	            <label for="mdp">Nouveau mot de passe</label>
-	            <p id="msg_mdp">Le mot de passe doit avoir au moins 5 charactéres</p>
-	            <br>
-	            <input type="password" id="mdp1" name="mdp1">
-	            <label for="mdp1">Répetez le nouveau mot de passe</label>
-	            <p id="msg_mdp1">Les mots de passe ne sont pas identiques</p>
-	            <input type="submit" value="Modifier" id="submit_mdp">
-	          </div>
+				<div>
+					<input type="hidden" name="retour" value="admin">
+					<input type="hidden" name="id" value="{{user_id}}">
+					<input type="hidden" name="retour" value="admin">
+		            <div id="msg_mdp" class="error_msg">Le mot de passe doit avoir au moins 5 charactéres<div></div></div>
+					<input type="password" id="mdp" name="mdp">
+		            <label for="mdp">Nouveau mot de passe</label>
+		            <br>
+		            <div id="msg_mdp1" class="error_msg">Les mots de passe ne sont pas identiques<div></div></div>
+		            <input type="password" id="mdp1" name="mdp1">
+		            <label for="mdp1">Répetez le nouveau mot de passe</label>
+		            <input type="submit" value="Modifier" id="submit_mdp">
+		       </div>
+	      	</div>
          </form>
 
-        <form class="edit_flex clearfix" method="POST" action="user/change_mail.php">
+        <form class="edit_club" method="POST" action="user/change_mail.php">
         	<div>
-        		<p>Mail utilisé: {{user_mail}}</p>
-	        	<input type="hidden" name="id" value="{{user_id}}">
-	        	<input type="hidden" name="retour" value="admin">
-	            <input type="text" id="mail" name="mail">
-	            <label for="name">Mail</label>
-	            <p id="msg_mail">L'addresse mail n'est pas valide</p>
-	            <br>
-	            <input type="submit" value="Modifier" id="submit_mail">
+        		<div>
+	        		<input type="hidden" name="retour" value="admin">
+	        		<p>Mail utilisé: {{user_mail}}</p>
+	        		<div id="msg_mail" class="error_msg">L'addresse mail n'est pas valide<div></div></div>
+		        	<input type="hidden" name="id" value="{{user_id}}">
+		        	<input type="hidden" name="retour" value="admin">
+		            <input type="text" id="mail" name="mail">
+		            <label for="name">Mail</label>
+		            <br>
+		            <input type="submit" value="Modifier" id="submit_mail">
+	        	</div>
 	        </div>
 		</form>
-	</div>
+
 
 
 	<form class="edit_club" action="user/delete_user.php" method="POST">
@@ -53,6 +62,7 @@
 			<input type="hidden" name="id" value="{{user_id}}">
 			<input type="hidden" name="retour" value="admin">
 			<input type="submit" class="delete" value="Supprimer">
+			<input type="hidden" name="retour" value="admin">
 		</div>
 	</form>
 	</section>

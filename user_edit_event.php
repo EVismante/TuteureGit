@@ -53,7 +53,7 @@ include '_head.php';
 							<span>Images</span>
 						</div>
 					<div class="error_msg"><?php echo $content["error_titre"]; ?><div></div></div>
-					<input type="text" name="name_FR" id="name_fr" value="<?php echo $event[0]['titre_fr']?>">
+					<input type="text" name="name_fr" id="name_fr" value="<?php echo $event[0]['titre_fr']?>">
 					<br>
 					<label for="name_fr">* <?php echo $content["titre_en_fr"]; ?></label>
 					<br>
@@ -133,12 +133,13 @@ include '_head.php';
 					<input type="hidden" name="MAX_FILE_SIZE" value="300000000" /> 
 <?php
 	foreach ($imgs as $key => $value) {
-	?>
-						<input name="files[]" id="file<?php echo $key; ?>" type="file" accept="image/*"/> 
-						<input class = "image_checkbox" type="checkbox" name="delete_img[]" value="<?php echo $value['id']; ?>">
-	           			<label for="file<?php echo $key; ?>" class="on_delete"  style="background-image: url('images/events/<?php echo $value['url']; ?>'); ">
-	           			 	<span></span>
-	           			</label>
+	?>					<div>
+							<input name="files[]" id="file<?php echo $key; ?>" type="file" accept="image/*"/> 
+							<input class = "image_checkbox" type="checkbox" name="delete_img[]" value="<?php echo $value['id']; ?>">
+	           				<label for="file<?php echo $key; ?>" class="on_delete"  style="background-image: url('images/events/<?php echo $value['url']; ?>'); ">
+	           			 		<span></span>
+	           				</label>
+	           			</div>
 
 	<?php
 	}

@@ -1,5 +1,7 @@
 <?php
-$c_query = "SELECT comment.id, comment.message, comment.rating_id, comment.date, comment.lang, comment.parent_id, users.name, images.url
+include ("comment.inc.php");
+$page_type = "club";
+$c_query = "SELECT users.id, comment.id, comment.message, comment.rating_id, comment.date, comment.lang, comment.parent_id, users.name, images.url
 FROM comment 
 LEFT JOIN users ON comment.user_id=users.id
 LEFT JOIN images ON users.id=images.user_id
@@ -11,26 +13,12 @@ $c_result = $pdo->prepare($c_query);
 $c_result->execute();
 $comments = $c_result->fetchAll();
 
+$commentaire = new comment();
 
 /*_________commentaire forme submission__________*/
 if (isset($_SESSION["name"])) {
 
-/*voire si l'utilisateur a déjà évalué le préstataire*/
-$ratingquery = "SELECT club_id FROM ratings
-WHERE user_id=".$_SESSION['id']."
-;";
-$res2 = $pdo->prepare($ratingquery);
-$res2->execute();
-$ratings = $res2->fetchAll();
-
-$ratingscount = true;
-
-if (($res2->rowCount()) > 0 ) {
-	foreach ($ratings as $key => $value) {
-		if ($value['club_id'] == $id) {
-			$ratingscount = false;
-	}}
-}
+$ratingscount = $commentaire->ratingsCount($pdo, $id);
 /*---------------------------------------------*/
 
 ?>		<div>
@@ -39,6 +27,7 @@ if (($res2->rowCount()) > 0 ) {
 			<div>
 				<span><?php echo $content["sub_comment"]; ?></span>
 				<textarea rows="4" cols="50" name="comment" class="comment"></textarea>
+				<span class="error_msg_comment">Votre commentaire est vide</span>
 <?php
 if ($ratingscount) {
 	?>			
@@ -60,7 +49,7 @@ if ($ratingscount) {
 }
 ?>
 		</div>
-			<div class="error_msg">Votre commentaire est vide<div></div></div>
+			
 			<input type="hidden" name="user_id" value="<?php echo $_SESSION['id']; ?>">
 			<input type="hidden" name="club_id" value="<?php echo $clubInfo[0]['id']; ?>">
 			<input type="hidden" name="parent_id" value="NULL">
@@ -72,10 +61,10 @@ if ($ratingscount) {
 		</div>
 <?php
 } else {
-	echo "Only registered users can write comments. <a href='login.php' >Log in</a>";
+	echo "Seulement les utilisateurs connectés peuvent poster les commentaires. <a href='login.php' >Connectez-vous.</a>";
 };
 /*_________-----------affichage des commentaires----------------__________*/
-
+/*Commentaires "parents"*/
 foreach ($comments as $key => $comment) {
 
 	if ($comments[$key]['parent_id'] == NULL) { /*afficher les comments sans parents (originaux */
@@ -88,43 +77,33 @@ foreach ($comments as $key => $comment) {
 			<h3><?php echo $comments[$key]['name'];?></h3>
 			<hr>
 			<span class="date"><?php echo $comments[$key]['date'];?></span>
+
 <?php //Afficher les évaluations avec les étoiles
-if ($comments[$key]['rating_id'] !== NULL) {
-	$niveau = $comments[$key]['rating_id'];
-
-		for($i = 1; $i <= $niveau; $i++) {
-			echo "<img class='star' alt='' src='images/website/icons/pleine.svg'/>";
-		}
-		for($j = $i; $j <= 5; $j++) {
-			echo "<img class='star' alt='' src='images/website/icons/vide.svg'/>";
-		}
-}
-
+$commentaire->showStars($comments[$key]['rating_id']);
 ?>
+
 			<p><?php echo $comments[$key]['message'];?></p>
 <?php
 		if (isset($_SESSION["name"])) { /*repondre au commentaire*/
 ?>
 			<button class="btn" id="btn_repondre_<?php echo $comments[$key]['id']; ?>"><?php  echo $content["repondre"]; ?></button> 
 <?php
+/*----------------------------------------*/
+if (isset($_SESSION["name"])) {
+	$loop = $comments[$key];
+	include ("edit_comment.inc.php");
+}
+/*----------------------------------------*/
 	};
 ?>	</div>
-	<div id="repondre_<?php echo $comments[$key]['id']; ?>">
- 		<form action="pages/comments/comment_post.php" method="POST">
-			<img class="user_icon" alt ="" src="images/avatars/<?php echo $_SESSION["avatar"];?>">
-			<textarea rows="4" cols="50" name="comment" class="comment"></textarea>
-			<input type="hidden" name="user_id" value="<?php echo $_SESSION['id']; ?>">
-			<input type="hidden" name="club_id" value="<?php echo $clubInfo[0]['id']; ?>">
-			<input type="hidden" name="parent_id" value="<?php echo $comments[$key]['id'];?>">
-			<input type="hidden" name="page_type" value="club">
-			<span class="error_msg">Votre commentaire est vide</span>
-			<br>
-			<input type="submit" class="submit btn" value="<?php echo $content["envoyer"]; ?>">
-		</form>
-	</div>
 <?php
-
-
+/*----------------------------------------*/
+if (isset($_SESSION["name"])) {
+	$loop = $comments[$key];
+	include ("repondre_comment.inc.php");
+}
+/*----------------------------------------*/
+/*Commentaires "enfants"*/
 foreach ($comments as $k => $v) {
 		if ($comments[$k]['parent_id'] == $comments[$key]['id']) {
 ?>
@@ -138,26 +117,23 @@ foreach ($comments as $k => $v) {
 <?php
 		if (isset($_SESSION["name"])) { /*repondre au commentaire*/
 ?>
-			<button class="btn" id="btn_repondre_<?php echo $comments[$k]['id']; ?>"><?php  echo $content["repondre"]; ?></button> 
-
+			<button class="btn" id="btn_repondre_<?php echo $comments[$k]['id']; ?>"><?php  echo $content["repondre"]; ?></button>
 <?php
+/*----------------------------------------*/
+if (isset($_SESSION["name"])) {
+	$loop = $comments[$k];
+	include ("edit_comment.inc.php");
+}
+/*----------------------------------------*/
 	};
-		?></div>
-		<div id="repondre_<?php echo $comments[$k]['id']; ?>">
- 		<form action="pages/comments/comment_post.php" method="POST">
-			<img class="user_icon" alt ="" src="images/avatars/<?php echo $_SESSION["avatar"];?>">
-			<span class="error_msg">Votre commentaire est vide</span>
-			<textarea rows="4" cols="50" name="comment" class="comment"></textarea>
-			<input type="hidden" name="user_id" value="<?php echo $_SESSION['id']; ?>">
-			<input type="hidden" name="club_id" value="<?php echo $clubInfo[0]['id']; ?>">
-			<input type="hidden" name="parent_id" value="<?php echo $comments[$key]['id'];?>">
-			<input type="hidden" name="page_type" value="club">
-			<br>
-			<button class="submit btn">Envoyer</button>
-		</form>
-	</div>
-
+	?></div>
 		<?php
+/*----------------------------------------*/
+if (isset($_SESSION["name"])) {
+	$loop = $comments[$k];
+	include ("repondre_comment.inc.php");
+}
+/*----------------------------------------*/		
 	}
 	}}
 } //end of foreach principal

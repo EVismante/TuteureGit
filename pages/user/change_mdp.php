@@ -20,7 +20,13 @@ $bdd_mdp = $result->fetchAll();
 
 $bdd_mdp = $bdd_mdp[0]["password"];
 
-$verify = password_verify($mdp_old, $bdd_mdp);
+
+if ($retour == "admin") {
+		$verify = true;
+	} else {
+		$verify = password_verify($mdp_old, $bdd_mdp);
+	}	
+
 
 if ($verify) {
 	$query = "UPDATE users
@@ -31,6 +37,6 @@ if ($verify) {
 
 	header("Location: ".$url."?msg=success");
 } else {
-	header("Location: ".$url."?msg=failure");
+	header("Location: ".$url."?msg=failure_mdp");
 }
 ?>

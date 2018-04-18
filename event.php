@@ -70,7 +70,7 @@ $fav = $result1->rowCount();
 		<?php echo $retour_text; ?>
 		</a>
 	<!-- fil d'ariane -->
-		<div>
+		
 			<h1><?php echo $clubInfo[0]['titre_'.$lang]; ?></h1>
 			<h4><?php echo $clubInfo[0]['date']; ?></h4>
 			<div class="left">

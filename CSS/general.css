@@ -116,8 +116,7 @@ div {
   width: 100px;
   height: 100px;
   border-radius: 60px;
-  background-color: white;
-  cursor: pointer; }
+  background-color: white; }
 
 header {
   height: 100vh;
@@ -158,13 +157,6 @@ input[type="text"], input[type="password"] {
   margin-top: 0.5em;
   margin-bottom: 0.5em; }
 
-#msg_nom,
-#msg_mdp,
-#msg_mdp1,
-#msg_mail,
-#msg_mail1 {
-  display: none; }
-
 textarea {
   border-radius: 10px;
   border: 1px solid #323232;
@@ -193,9 +185,8 @@ label[for=file3] {
   color: white;
   text-align: center;
   cursor: pointer;
-  display: table-cell;
-  /* comportement visuel de cellule */
   vertical-align: middle;
+  display: table-cell;
   color: white;
   display: inline-block;
   padding: 3em;
@@ -224,25 +215,27 @@ label[for=file3] {
       display: block;
       margin-top: 0.3em; }
 
-#input_images .image_checkbox {
-  /**/
-  position: absolute;
-  width: 245px;
-  height: 245px;
-  z-index: 5;
-  opacity: 0; }
-  #input_images .image_checkbox:hover + label {
-    background-image: none !important;
-    background-color: #1177a2;
-    -webkit-transition: background-color 200ms linear;
-    -ms-transition: background-color 200ms linear;
-    transition: background-color 200ms linear; }
-    #input_images .image_checkbox:hover + label span::after {
-      content: '\002716';
-      font-size: 5em;
-      color: white;
-      display: block;
-      margin-top: 0.3em; }
+#input_images div {
+  position: relative; }
+  #input_images div .image_checkbox {
+    /**/
+    position: absolute;
+    width: 245px;
+    height: 245px;
+    z-index: 5;
+    opacity: 0; }
+    #input_images div .image_checkbox:hover + label {
+      background-image: none !important;
+      background-color: #1177a2;
+      -webkit-transition: background-color 200ms linear;
+      -ms-transition: background-color 200ms linear;
+      transition: background-color 200ms linear; }
+      #input_images div .image_checkbox:hover + label span::after {
+        content: '\002716';
+        font-size: 5em;
+        color: white;
+        display: block;
+        margin-top: 0.3em; }
 
 #clearfix::after {
   content: " ";
@@ -275,11 +268,15 @@ input[name="files[]"] + label {
 #msg {
   color: red;
   position: fixed;
-  top: 80px;
-  left: 40%; }
+  bottom: 0px;
+  right: 10%;
+  border-radius: 10px;
+  padding: 1em; }
 
 #menu_square_top {
-  margin-top: 5em; }
+  margin-top: 5em;
+  border-spacing: 0.5em;
+  display: table; }
   #menu_square_top a {
     text-decoration: none;
     color: white; }
@@ -292,10 +289,9 @@ input[name="files[]"] + label {
     color: white;
     text-align: center;
     cursor: pointer;
-    display: table-cell;
-    /* comportement visuel de cellule */
     vertical-align: middle;
-    margin: 1em; }
+    display: table-cell;
+    margin: 0.5em; }
     #menu_square_top .menu_square:hover {
       background-color: #1177a2;
       -webkit-transition: background-color 200ms linear;
@@ -309,17 +305,6 @@ input[type=checkbox] {
   width: 100vw;
   background-color: #e2d4c0; }
 
-.row1 {
-  width: 100vw;
-  text-align: center; }
-
-.row3 {
-  display: flex;
-  width: 100vw; }
-  .row3 div {
-    width: 28vw;
-    padding: 2vw; }
-
 #changeh4 {
   text-align: center;
   opacity: 0; }
@@ -327,35 +312,26 @@ input[type=checkbox] {
 .rating input[type="radio"] {
   display: none; }
 
-/*--------------------------error handling------------------------------*/
-.error {
-  border: 3px solid #FFAF44 !important; }
-
-#error_msg {
-  display: none;
-  color: #FFAF44;
-  text-align: center;
-  font-size: 1.6em;
-  margin-bottom: 1em; }
-
-.error_msg {
-  display: none; }
-
-.msg, .msg1 {
-  color: #AA2E00;
-  display: block;
-  text-align: center;
-  padding-top: 1em; }
-
-.msg1 {
-  display: none; }
+.in_middle {
+  margin: auto;
+  width: 100px;
+  display: flex;
+  margin-top: 2em;
+  margin-bottom: -1em; }
 
 /*----------------commentaires---------------------------------*/
-div[id^='repondre_'] {
+div[id^='repondre_'], div[id^='edit_'] {
   display: none; }
 
 .hidden {
   display: none; }
+
+*[id^=btn_edit_] {
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 0.5em;
+  cursor: pointer; }
 
 /**______boutons ______**/
 /*------------------------------------------------------------------*/
@@ -529,6 +505,9 @@ input[type="submit"] {
 .active {
   display: block !important; }
 
+#fin {
+  display: none; }
+
 .sousligne {
   border-bottom: 1px solid #AA2E00; }
 
@@ -552,3 +531,24 @@ input[type="submit"] {
   background-image: url("../images/website/bcg2.jpg");
   background-size: cover;
   background-repeat: no-repeat; }
+
+/*--------------------------error handling------------------------------*/
+#error_msg, .error_msg_comment {
+  display: none;
+  color: #FFAF44;
+  text-align: center; }
+
+.error_msg {
+  display: none; }
+
+.error {
+  border: 3px solid orange !important; }
+
+.msg, .msg1 {
+  color: #AA2E00;
+  display: block;
+  text-align: center;
+  padding-top: 1em; }
+
+.msg1 {
+  display: none; }

@@ -3,14 +3,32 @@
 @import url("https://fonts.googleapis.com/css?family=Caveat|Montserrat:400,500,500i,900");
 /*----------------------------------------*/
 /*----------------------------------------*/
+a {
+  text-decoration: none; }
+
+h1, h2, h3 {
+  margin: 1em; }
+
+h1 {
+  text-align: center; }
+
 .nav {
   width: 100vw;
   height: 80px;
   color: white;
   position: -webkit-sticky;
-  position: sticky;
+  position: fixed;
   top: -1px;
-  z-index: 3; }
+  z-index: 3;
+  background-color: #0C5574; }
+  .nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.2em; }
+  .nav .active {
+    background-color: #1177a2;
+    border-bottom: 1px solid white;
+    width: 100vw; }
 
 #logo {
   font: 3em Caveat, sans-serif;
@@ -30,17 +48,28 @@
     width: 100vw;
     height: 100vh;
     position: absolute;
-    top: 80px; }
+    z-index: 3;
+    top: 80px;
+    background-color: #0C5574; }
     #mobile_menu + div .menu * {
       display: block;
       text-align: center;
-      padding: 0.5em;
+      padding-top: 0.5em;
+      padding-bottom: 0.5em;
       color: white;
       font-size: 1.2em;
       text-decoration: none; }
       #mobile_menu + div .menu * #user_icon {
         margin: auto;
-        border-radius: 35px; }
+        border-radius: 45px;
+        padding: 1em; }
+      #mobile_menu + div .menu * .user_menu {
+        display: none;
+        background: #1177a2; }
+      #mobile_menu + div .menu * #username {
+        background: #1699d0;
+        position: relative;
+        top: -1em; }
     #mobile_menu + div #lang {
       position: relative;
       top: 80vh; }
@@ -57,18 +86,23 @@
     -moz-transition: 0.7s;
     z-index: 1; }
 
+/*---------------MENU---------------*/
 /*--------------- PAGE INDEX -----------------------*/
 header h1 {
   padding-top: 20vh;
-  color: white; }
+  color: white;
+  margin: 0.2em; }
 header input[type=text] {
   width: 80vw;
   display: block;
   margin: auto; }
+header img {
+  display: none; }
 
-/*------------------------------*/
+/*-------------------------*/
 .row {
-  margin-top: 10vh; }
+  margin-top: 10vh;
+  margin-bottom: 10vh; }
   .row .col-3 {
     width: 100vw;
     text-align: center;
@@ -78,66 +112,275 @@ header input[type=text] {
     .row .col-3 span {
       display: block;
       padding: 1em;
-      font-size: 1.1em; }
+      font-size: 1.5em; }
 
-/*--------------------- CLUB ------------------------------*/
-/*
-section {
-	margin:  1em;
-}
-.revenir {
-	color: black;
-	display: block;
-	padding-bottom: 1.3em;
-}
+.content {
+  padding-top: 3em;
+  padding-bottom: 3em; }
 
-.left {
-	float: left;
-	margin-top: 2em;
-	margin-bottom: 2em;
-	padding-left: 1em;
-	p {margin-top: 2em;
-	line-height: 1.4;
-	}
-}
-	div:nth-child(4) {
-	line-height: 1.6;
-	}
+.club_item {
+  width: 90vw;
+  height: 40vh;
+  background-color: white;
+  margin: auto;
+  margin-bottom: 1em;
+  box-shadow: 3px 3px 5px rgba(150, 150, 150, 0.1);
+  position: relative;
+  background-size: 102vw;
+  background-position: center; }
+  .club_item div {
+    background-color: white;
+    position: absolute;
+    bottom: 0;
+    width: 97%;
+    padding-top: 1em;
+    padding-left: 3%;
+    padding-bottom: 1em; }
 
+.club_item:hover {
+  background-size: 100vw;
+  -webkit-transition: background-size 500ms linear;
+  -ms-transition: background-size 500ms linear;
+  transition: background-size 500ms linear; }
+
+.choix {
+  width: 150px;
+  margin: auto;
+  margin-bottom: 2em;
+  padding-bottom: 3em; }
+
+.decouvrir img {
+  width: 100vw; }
+.decouvrir .lower {
+  margin: 1em; }
+
+.coeur {
+  display: none; }
+
+/*--------------------- PAGES------------------------------*/
+.forme, .content {
+  width: 90vw;
+  margin: auto;
+  padding-top: 80px; }
+
+/*--------------------- page RECHERCHE ------------------------------*/
+#map {
+  display: npne; }
+
+/*RECHERCHE ET FILTRES*/
+.result_paneau {
+  /*paneau d'affichage des filtres */
+  margin-top: 90px;
+  z-index: 1;
+  background-color: #fff7ed;
+  width: 100vw;
+  overflow-x: hidden;
+  box-shadow: 3px 3px 2px grey; }
+  .result_paneau form {
+    margin: 1em; }
+  .result_paneau #filtres div {
+    margin-top: 1em;
+    margin-bottom: 1em; }
+  .result_paneau #filtres > span {
+    /*sections des filtres*/
+    display: block;
+    background-color: #e2d4c0;
+    color: #323232;
+    width: 100%;
+    padding: 0.5em;
+    position: relative;
+    cursor: pointer;
+    border-bottom: 1px solid grey; }
+  .result_paneau #filtres .arrow_show {
+    border-top: 10px solid #323232;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    width: 0;
+    height: 0;
+    float: right;
+    margin-right: 2em;
+    margin-top: 0.5em; }
+  .result_paneau #search_btn1 {
+    margin: auto;
+    margin-top: 1em;
+    margin-bottom: 1em; }
+
+#make_smaller {
+  /*button pour reduire le paneau des filtres*/
+  display: none; }
+
+#searchbox {
+  margin: 1em;
+  margin-bottom: 2em;
+  width: 320px; }
+
+.head_img {
+  margin-top: 78px;
+  width: 100vw;
+  height: 30vh;
+  background-size: 100vw;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-attachment: fixed; }
+
+/*affichage de liste */
+.choix {
+  width: 100vw;
+  display: table;
+  position: relative;
+  left: -1em; }
+
+#liste1, #liste2 {
+  background-color: #e2d4c0;
+  width: 50%;
+  padding: 0.5em;
+  cursor: pointer;
+  border-bottom: 1px solid grey;
+  display: table-cell; }
+
+#liste1 {
+  background-color: lightblue; }
+
+.liste_clubs a {
+  text-decoration: none; }
+.liste_clubs h3 {
+  width: 100%; }
+
+.liste_events {
+  display: none; }
+
+#liste > div {
+  border-bottom: 1px solid grey;
+  padding-left: 1em;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em; }
+#liste span {
+  font-size: 0.9em; }
+#liste > div:hover {
+  background-color: #f2f2f2; }
+#liste h3 {
+  margin: 0;
+  width: 80%; }
+#liste .club_icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 25px;
+  background-color: white;
+  margin: 0.5em;
+  float: left; }
+#liste .heart_icon {
+  z-index: 9; }
+
+/*--------------------- page CLUB ------------------------------*/
+#diaporama {
+  display: none; }
+
+.right img {
+  width: 100vw; }
+.right .btn_blue {
+  display: none; }
+
+/*commentaires*/
 .comments {
-	width: 90vw;
+  height: auto;
+  float: left;
+  margin-top: 2em; }
+  .comments .user_icon {
+    float: left;
+    margin-left: 1em;
+    margin-right: 1em; }
+  .comments h3 {
+    display: block;
+    margin-left: 1em;
+    margin-top: 0.5em; }
+  .comments h3::after {
+    clear: both; }
+  .comments > div {
+    /*nouveau commentaire inclu */
+    border-radius: 10px;
+    border: 1px solid lightgrey;
+    padding: 1em;
+    margin: 0.5em;
+    float: left;
+    background-color: white;
+    width: 80vw; }
+    .comments > div textarea {
+      width: 30vw !important; }
+    .comments > div p {
+      font-size: 1.1em;
+      margin-top: 1em;
+      margin-bottom: 1em;
+      line-height: 1.5em; }
+    .comments > div div {
+      margin-left: 2.8em; }
 
- & > div {
-	border-radius: 10px;
-	border: 1px solid lightgrey;
-	padding: 1em;
-	margin: 1em;
-	float: left;
-	background-color: white;
-	width: 75vw;
-}
-}
+.enfant {
+  margin-left: 4em !important;
+  width: 35.5vw !important; }
 
+/*--------------------- page connexion ------------------------------*/
+.edit_club, #hide {
+  padding: 1em;
+  margin-top: 2em; }
+  .edit_club > div, #hide > div {
+    background-color: white;
+    vertical-align: middle;
+    padding: 2em;
+    border-radius: 15px;
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.1);
+    position: relative;
+    margin: auto;
+    width: 70vw;
+    margin-bottom: 2em; }
+    .edit_club > div input[name="name"], #hide > div input[name="name"],
+    .edit_club > div input[type="text"],
+    #hide > div input[type="text"],
+    .edit_club > div textarea,
+    #hide > div textarea,
+    .edit_club > div input[type="password"],
+    #hide > div input[type="password"] {
+      width: 70vw;
+      margin-top: 1.5em; }
+    .edit_club > div > div, #hide > div > div {
+      width: 70vw;
+      margin: auto; }
+  .edit_club .larger, #hide .larger {
+    width: 80%; }
+  .edit_club input[type="submit"], #hide input[type="submit"], .edit_club input[type="button"], #hide input[type="button"] {
+    margin: auto;
+    margin-top: 1em; }
 
-.bordered {
-	border-radius: 10px;
-	border: 1px solid lightgrey;
-	padding: 1em;
-	margin-top: 3em;
-	margin-bottom: 3em;
-	margin: 0.5em;
-	float: left;
-	width: 60vw;
-}
-*/
+.btn_blue {
+  margin: auto; }
+
+/*--------------------formulaires-------------------------------*/
+.error_msg {
+  background-color: orange;
+  padding: 0.1em;
+  border-radius: 1em;
+  padding-left: 2em; }
+
+#hide {
+  display: none;
+  z-index: 9;
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  top: -65px;
+  left: 0;
+  background: rgba(12, 12, 12, 0.6); }
+  #hide div {
+    margin-top: 30vh; }
+
 /*---------------------------------------------------*/
-/*
 footer {
-	width: 100vw;
-	height: 50vh;
-	display: flex;
-	bottom: 0;
-	@include gradient(map-get($colors, darkblue), map-get($colors, lightblue));
-	z-index: 3;
-}
-*/
+  width: 100vw;
+  height: auto;
+  bottom: 0;
+  z-index: 3;
+  background-color: white;
+  text-align: center;
+  padding-top: 1em; }
+  footer div {
+    width: 100vw;
+    padding-top: 1em; }

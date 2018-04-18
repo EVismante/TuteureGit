@@ -1,13 +1,33 @@
 @import "_valeursGlobales.scss";
 
+a {text-decoration: none;}
+
+h1, h2, h3 {
+	margin: 1em;
+}
+
+h1 {
+	text-align: center;
+}
 .nav {
 	width: 100vw;
 	height: 80px;
 	color: white;
 	position: -webkit-sticky;
-  	position: sticky;
+  	position: fixed;
   	top: -1px;
   	z-index: 3;
+  	background-color: map-get($colors, color3);
+  		a {
+		color: white;
+		text-decoration: none;
+		font-size: 1.2em;
+	}
+	.active {
+	background-color: lighten(map-get($colors, color3), 10%);
+	border-bottom: 1px solid white;
+	width: 100vw;
+}
 }
 
 
@@ -26,25 +46,41 @@
 	right: 10%;
 	cursor: pointer;
 		//le pop up menu
-	&+div {display: none;
-	width: 100vw;
-	height: 100vh;
-	position: absolute;
-	top: 80px;
+	&+div {
+		display: none;
+		width: 100vw;
+		height: 100vh;
+		position: absolute;
+		z-index: 3;
+		top: 80px;
+		background-color: map-get($colors, color3);
 	 .menu * { // les sous menus
 			display: block;
 			text-align: center;
-			padding: 0.5em;
+			padding-top: 0.5em;
+			padding-bottom: 0.5em;
 			color: white;
 			font-size: 1.2em;
 			text-decoration: none;
 			#user_icon { margin: auto;
-					border-radius: 35px;
+					border-radius: 45px;
+					padding: 1em;
 					}
+			.user_menu {
+				display: none;
+				background: lighten(map-get($colors, color3), 10%);
+			}
+			#username {
+				background: lighten(map-get($colors, color3), 20%);
+				position: relative;
+				top: -1em;
+			}
 	}	
 	#lang { position: relative;
-		top: 80vh;}
+		top: 80vh;
 	}
+}
+
 	span { // le burger menu
 		display: block;
 	    width: 40px;
@@ -60,23 +96,28 @@
 		}	
 }
 
+/*---------------MENU---------------*/
 
 /*--------------- PAGE INDEX -----------------------*/
 header {
 	h1 {
 		padding-top: 20vh;
 		color: white;
+		margin: 0.2em;
 	}
 	input[type=text] {
 		width: 80vw;
 		display: block;
 		margin: auto;	
 	}
+	img {display: none;}
 }
-/*------------------------------*/
+
+/*-------------------------*/
 
 .row {
 	margin-top: 10vh;
+	margin-bottom: 10vh;
 	.col-3 { 
 		width: 100vw;
 		text-align: center;
@@ -85,70 +126,304 @@ header {
 		span {
 			display: block;
 			padding: 1em;
-			font-size: 1.1em;
+			font-size: 1.5em;
 
 		}
 	}
 }
-
-/*--------------------- CLUB ------------------------------*/
-/*
-section {
-	margin:  1em;
+.content {
+	padding-top: 3em;
+	padding-bottom: 3em;
 }
-.revenir {
-	color: black;
-	display: block;
-	padding-bottom: 1.3em;
+.club_item {
+	width: 90vw;
+	height: 40vh;
+	background-color: white;
+	margin: auto;
+	margin-bottom: 1em;
+	box-shadow: 3px 3px 5px rgba(150, 150, 150, 0.1);
+	position: relative;
+	background-size: 102vw;
+	background-position: center;
+	div {
+		background-color: white;
+		position: absolute;
+		bottom: 0;
+		width: 97%;
+		padding-top: 1em;
+		padding-left: 3%;
+		padding-bottom: 1em;
+	}
 }
 
-.left {
+.club_item:hover {background-size: 100vw;
+	@include transition(background-size, 500ms);
+}
+
+
+	.choix {
+			width: 150px;
+			margin: auto;
+			margin-bottom: 2em;
+			padding-bottom: 3em;
+		}
+
+
+.decouvrir {
+	img {width: 100vw;}
+	.lower {
+		margin: 1em;
+	}
+}
+
+.coeur {
+	display: none;
+}
+
+/*--------------------- PAGES------------------------------*/
+.forme, .content {
+	width: 90vw;
+	margin: auto;
+	padding-top: 80px;
+
+}
+/*--------------------- page RECHERCHE ------------------------------*/
+#map {
+	display: npne;
+}
+/*RECHERCHE ET FILTRES*/
+
+.result_paneau { /*paneau d'affichage des filtres */
+margin-top: 90px;
+	z-index: 1;
+	background-color: map-get($colors, background);
+	width: 100vw;
+	overflow-x: hidden;
+	box-shadow: 3px 3px 2px grey;
+	form {margin: 1em;}
+
+	#filtres {
+		div {margin-top: 1em;
+			margin-bottom: 1em;
+		}
+		&>span {/*sections des filtres*/
+			display: block;
+			background-color: map-get($colors, background2);
+			color: map-get($colors, text);
+			width: 100%;
+			padding: 0.5em;
+			position: relative;
+			cursor: pointer;
+			border-bottom: 1px solid grey;
+		}
+		.arrow_show {
+			@include arrow(down, 10px, map-get($colors, text));
+			float: right;
+			margin-right: 2em;
+			margin-top: 0.5em;
+			
+		}
+	}
+	#search_btn1 { margin: auto;
+					margin-top: 1em;
+					margin-bottom: 1em;
+	}
+}
+
+#make_smaller {/*button pour reduire le paneau des filtres*/
+		display: none;
+	}
+
+#searchbox {
+	margin: 1em;
+	margin-bottom: 2em;
+	width: 320px;
+}
+
+
+.head_img {
+		margin-top:78px;
+		width: 100vw;
+		height: 30vh;
+		background-size: 100vw;
+		background-attachment: fixed;
+		background-repeat: no-repeat;
+    	background-attachment: fixed;
+}
+
+/*affichage de liste */
+.choix {
+	width: 100vw;
+	display: table;
+	position: relative;
+	left: -1em;
+}
+#liste1, #liste2 {
+	background-color: map-get($colors, background2);
+	width: 50%;
+	padding: 0.5em;
+	cursor: pointer;
+	border-bottom: 1px solid grey;
+	display: table-cell;
+}
+#liste1 { background-color: lightblue; }
+.liste_clubs {
+	a {text-decoration: none;}
+	h3 {width: 100%;}
+}
+.liste_events {display: none;}
+
+	#liste {
+			&>div {
+				border-bottom: 1px solid grey;
+				padding-left: 1em;
+				padding-top: 0.5em;
+				padding-bottom: 0.5em;
+			}
+			span {
+				font-size: 0.9em;
+			}
+			&>div:hover {
+				background-color: map-get($colors, lightgrey);
+			}
+			h3 { margin: 0;
+				width: 80%;
+			}
+			.club_icon {
+				@include icon;
+				float: left;
+			}
+			.heart_icon {
+				z-index: 9;
+			}
+	}
+
+/*--------------------- page CLUB ------------------------------*/
+
+#diaporama {
+	display: none;
+}
+
+.content_club {
+
+}
+
+.right {
+
+	img {width: 100vw;}
+	.btn_blue {
+		display: none;
+	}
+}
+
+/*commentaires*/
+.comments {
+	height: auto;
 	float: left;
 	margin-top: 2em;
-	margin-bottom: 2em;
-	padding-left: 1em;
-	p {margin-top: 2em;
-	line-height: 1.4;
+.user_icon {
+	float: left;
+	margin-left: 1em;
+	margin-right: 1em;
+}
+h3 {display: block;
+	margin-left: 1em;
+	margin-top: 0.5em;
+}
+h3::after {
+   clear: both;
+}
+ & > div { /*nouveau commentaire inclu */
+	@include comment;
+	width:80vw;
+	textarea {width:30vw!important;}
+	p {font-size: 1.1em;
+		margin-top: 1em;
+		margin-bottom: 1em;
+		line-height:  1.5em;
+	}
+	div {
+		margin-left: 2.8em;
+	}
 	}
 }
-	div:nth-child(4) {
-	line-height: 1.6;
+
+.enfant { margin-left: 4em!important;
+		width: 35.5vw!important;
+}
+/*--------------------- page connexion ------------------------------*/
+
+
+
+.edit_club {
+	padding: 1em;
+	margin-top: 2em;
+	&>div {
+		@include item;
+		position: relative;
+		margin: auto;
+		width: 70vw;
+		margin-bottom:2em;
+
+		input[name="name"],
+		input[type="text"],
+		textarea,
+		input[type="password"]
+		 {
+			width: 70vw;
+			margin-top: 1.5em;
+		}
+
+		&>div  { 
+			width: 70vw;
+			margin: auto;
+		}}
+		.larger {width: 80%;}
+		input[type="submit"], input[type="button"] {
+			margin: auto;
+			margin-top: 1em;
+		}
 	}
 
-.comments {
-	width: 90vw;
-
- & > div {
-	border-radius: 10px;
-	border: 1px solid lightgrey;
-	padding: 1em;
-	margin: 1em;
-	float: left;
-	background-color: white;
-	width: 75vw;
+.btn_blue {
+	margin:auto;
 }
+/*--------------------formulaires-------------------------------*/
+
+.error_msg {
+	background-color: orange;
+	padding: 0.1em;
+	border-radius: 1em;
+	padding-left: 2em;
 }
 
-
-.bordered {
-	border-radius: 10px;
-	border: 1px solid lightgrey;
-	padding: 1em;
-	margin-top: 3em;
-	margin-bottom: 3em;
-	margin: 0.5em;
-	float: left;
-	width: 60vw;
+#hide {
+	display: none;
+	z-index: 9;
+    position: fixed;
+    height:100vh;
+    width:100vw;
+    top:-65px;
+    left:0;
+    background: rgba(12, 12, 12, 0.6);
+    @extend .edit_club;
+    div {
+    	margin-top: 30vh;
+    }
 }
-*/
+
 /*---------------------------------------------------*/
-/*
+
 footer {
 	width: 100vw;
-	height: 50vh;
-	display: flex;
+	height: auto;
 	bottom: 0;
-	@include gradient(map-get($colors, darkblue), map-get($colors, lightblue));
 	z-index: 3;
+	background-color:white;
+	text-align: center;
+	padding-top: 1em;
+	div {
+		width: 100vw;
+		padding-top: 1em;
+	}
 }
-*/

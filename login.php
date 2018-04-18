@@ -13,7 +13,7 @@ $page = "login";
 	<?php include("header.php"); ?>
 <section class="forme">
 <?php
-if (isset($_GET['msg'])) {
+if (isset($_GET['msg']) && $_GET["msg"] == 'inscription' ) {
     echo "<div id='msg_success'><div>".$content['msg_inscription']."</div></div>";
 }
 ?>

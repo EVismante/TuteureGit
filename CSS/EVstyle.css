@@ -314,8 +314,18 @@ footer {
   height: 200px;
   position: absolute;
   background-color: white;
-  padding: 25px;
+  padding: 25px; }
+
+.row1 {
+  width: 100vw;
+  text-align: center; }
+
+.row3 {
+  display: flex;
   width: 100vw; }
+  .row3 div {
+    width: 28vw;
+    padding: 2vw; }
 
 #contact_form {
   display: none;
@@ -671,7 +681,7 @@ footer {
     text-decoration: underline;
     font-weight: 500; }
 
-.error_msg {
+.error_msg, .error_msg_show {
   position: absolute;
   right: 35em;
   background: #FFAF44;
@@ -679,7 +689,7 @@ footer {
   border-radius: 10px;
   text-align: center;
   width: 10em !important; }
-  .error_msg div {
+  .error_msg div, .error_msg_show div {
     border-bottom: 11px solid transparent;
     border-top: 11px solid #FFAF44;
     border-left: 11px solid transparent;
@@ -724,6 +734,9 @@ footer {
   display: flex;
   margin-top: 2em;
   margin-bottom: -1em; }
+
+#label_center {
+  margin-left: 30%; }
 
 /*---------------BO: tables -----------------------*/
 table {

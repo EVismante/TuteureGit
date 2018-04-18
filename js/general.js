@@ -57,7 +57,7 @@ $(".arrow_left").on("click", function() {
     }
     
     next.css('z-index', 2);
-active.fadeOut(0, function() {
+    active.fadeOut(0, function() {
     active.css('z-index', 1).show().removeClass("slideshowactive");
     next.css('z-index', 3).addClass("slideshowactive");
 
@@ -102,7 +102,7 @@ $("[id^='file']").click(function(e) {
   var label = "label[for="+$(this).attr("id")+"]";
   var x = $(this).val(); //valeur d'input de file
 
-    if (!x) { // if valeur est non definie, on ajoute une nouvelle image
+    if (!x) { // si valeur est non definie, on ajoute une nouvelle image
       $(this).change(function() {
         voir_image(this, label);
 });
@@ -151,8 +151,11 @@ function remove_image(elt, label) {
 /*-------------COMMENTAIRES-----------------------------------*/
 /*pour l'affichage du champ de réponse aux commentaires*/
 $("[id^=btn_repondre_]").on("click", function() {
-  $("[id^=repondre_]").css("display", "none");
-  var comment = $(this).parent().next().toggle();
+   $(this).parent().next().slideToggle();
+})
+
+$("[id^=btn_edit_]").on("click", function() {
+   $(this).next().slideToggle();
 })
 
 
@@ -160,7 +163,7 @@ $("[id^=btn_repondre_]").on("click", function() {
 $(".submit").click(function() {
   var form = $(this).parent();
   var textarea = form.find(".comment");
-  var error_msg = form.find(".error_msg");
+  var error_msg = form.find(".error_msg_comment");
   if (textarea.val().length < 1) { //verifie le longueur 
     textarea.addClass("error");
     $(error_msg).css("display", "block");
@@ -243,8 +246,8 @@ $("#msg_success").on("click", function() {
 
 $("#next").on("click", function() {
   $(".error_msg").css("display", "none");
-  if($("input[name='name_FR']").parent().hasClass("active")) {
-   var res = validate_length('input[name="name_FR"]', 2);
+  if($("input[name='name_fr']").parent().hasClass("active")) {
+   var res = validate_length('input[name="name_fr"]', 2);
   }
 
   if($("input[name='name']").parent().hasClass("active")) {
@@ -257,10 +260,9 @@ $("#next").on("click", function() {
 
    if($(".filtres").parent().hasClass("active")) {
    var res = true;
-
   }
 
-    if($("input[type='file']").parent().hasClass("active")) {
+    if($("input[name='MAX_FILE_SIZE']").parent().hasClass("active")) {
    var res = true;
   }
 
@@ -324,7 +326,7 @@ $("#previous").on("click", function() {
     }
     /*la chaine des étapes du formulaire*/
     next.css('z-index', 2);
-active.fadeOut(0, function() {
+    active.fadeOut(0, function() {
     active.css('z-index', 1).show().removeClass("active");
     next.css('z-index', 3).addClass("active");
 
@@ -447,11 +449,11 @@ $("#submit_mdp").on("click", function() { //valider les nouveaux mdp
 /*-------verification du mail -----*/
 $("#submit_mail").on("click", function() { //valider les mail
 
-      var bool1 = validate_length("#mail",6 );
-      showMessage(bool1, ".msg_mail");
+      var bool1 = validate_length("#mail", 6);
+      showMessage(bool1, "#msg_mail");
 
       var bool2 = validate_match("#mail", "#mail1");
-      showMessage(bool2, ".msg_mail1");
+      showMessage(bool2, "#msg_mail1");
 
     if (!bool1 || !bool2 ) { return false; }
 });
@@ -609,7 +611,7 @@ function search() {
   table = document.getElementById("myTable");
   tr = table.getElementsByTagName("tr");
 
-  // Loop through all table rows, and hide those who don't match the search query
+  // Boucle pour la recherche
   for (i = 0; i < tr.length; i++) {
     td = tr[i].getElementsByTagName("td")[0];
     if (td) {
@@ -657,6 +659,17 @@ function addFavori(page_id, page_type, poof) { // poof supprime l'element sur la
 
   $( function() {
     $( "#datepicker" ).datepicker({
+    altField: "#datepicker",
+    closeText: 'Fermer',
+    prevText: 'Précédent',
+    nextText: 'Suivant',
+    currentText: 'Aujourd\'hui',
+    monthNames: ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'],
+    monthNamesShort: ['Janv.', 'Févr.', 'Mars', 'Avril', 'Mai', 'Juin', 'Juil.', 'Août', 'Sept.', 'Oct.', 'Nov.', 'Déc.'],
+    dayNames: ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'],
+    dayNamesShort: ['Dim.', 'Lun.', 'Mar.', 'Mer.', 'Jeu.', 'Ven.', 'Sam.'],
+    dayNamesMin: ['D', 'L', 'M', 'M', 'J', 'V', 'S'],
+    weekHeader: 'Sem.',
     dateFormat: "yy-mm-dd"
 });
   } );

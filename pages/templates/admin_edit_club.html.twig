@@ -3,28 +3,72 @@
 {% block section %}
 <section class="forme">
 		<h1>Éditer {{club_name}}</h1>
-			<form class="edit_club" action="BackOffice/edit_club_action.php" method="POST" enctype="multipart/form-data">
+			<form id="formulaire" class="edit_club" action="BackOffice/edit_club_action.php" method="POST" enctype="multipart/form-data">
 				<div>
-					<input type="text" name="name" id="name" value="{{club_name}}">
-					<br>
-					<label for="name">* Nom</label>
-				</div>
-				<span class="arrow"></span>
-				<div>
-					<textarea rows="4" cols="50" id="description_FR" name="description_FR" >{{fr}}</textarea>
-					<br>
-					<label for="description_FR">* Description en français</label>
-					<br><br><br>
-					<textarea name="description_EN" id="description_EN">{{en}}</textarea>
-					<br>
-					<label for="description_EN" id="EN">Description in English</label>
-					<br><br>
-				</div>
-				<span class="arrow"></span>
+					<div class="hide active">
+						<div class="submenu">
+							<span class="current">FR</span>
+							<div class="arrow-right"></div>
+							<span>EN</span>
+							<div class="arrow-right"></div>
+							<span>Filtres</span>
+							<div class="arrow-right"></div>
+							<span>Info</span>
+							<div class="arrow-right"></div>
+							<span>Images</span>
+						</div>
+						<div class="error_msg">Le nom n'est pas renseigné<div></div></div>
+						<input type="text" name="name" id="name" value="{{club_name}}">
+						<br>
+						<label for="name">* Titre en français</label>
+						<br>
+						<textarea rows="4" cols="50" id="description_FR" name="description_FR" >{{fr}}</textarea>
+						<br>
+						<label for="description_FR">Description en français</label>
+						<br><br>
+						<span><em>Les champs avec * sont obligatoires</em></span>
+					</div>
 
 
-					<div>
-						<h4>ACTIVITE</h4>
+				<div class="hide">
+						<div class="submenu">
+							<span>FR</span>
+							<div class="arrow-right"></div>
+							<span class="current">EN</span>
+							<div class="arrow-right"></div>
+							<span>Filtres</span>
+							<div class="arrow-right"></div>
+							<span>Info</span>
+							<div class="arrow-right"></div>
+							<span>Images</span>
+						</div>
+						<div class="error_msg">Le nom n'est pas renseigné<div></div></div>
+						<input type="text" name="name_en" id="name_en" value="{{club_name}}">
+						<br>
+						<label for="name">* Titre en anglais</label>
+						<br>
+						<textarea rows="4" cols="50" id="description_EN" name="description_EN" >{{en}}</textarea>
+						<br>
+						<label for="description_EN">Description en anglais</label>
+						<br><br>
+						<span><em>Les champs avec * sont obligatoires</em></span>
+					</div>
+
+
+				<div class="hide">
+					<div class="submenu">
+							<span>FR</span>
+							<div class="arrow-right"></div>
+							<span>EN</span>
+							<div class="arrow-right"></div>
+							<span class="current">Filtres</span>
+							<div class="arrow-right"></div>
+							<span>Info</span>
+							<div class="arrow-right"></div>
+							<span>Images</span>
+						</div>
+					<div class="filtres">
+						<h4>Activité</h4>
 				{% for activite in activites %}
 						<input type="checkbox" name="filtre[]" value="{{activite.id}}" 
 				{% if activite.id in checked_array %} checked {% endif %} >
@@ -32,9 +76,8 @@
 						<br/>
 				{% endfor %}
 					</div>
-					<span class="arrow"></span>
 					<div>
-						<h4>TYPE</h4>
+						<h4>Type</h4>
 						{% for type in types %}
 						<input type="checkbox" name="filtre[]" value="{{type.id}}" 
 				{% if type.id in checked_array %} checked {% endif %} >
@@ -42,52 +85,74 @@
 						<br/>
 				{% endfor %}
 					</div>
-					<span class="arrow"></span>
 					<div>
-						<h4>AUTRE</h4>
-						{% for autre in autres %}
-						<input type="checkbox" name="filtre[]" value="{{autre.id}}" {% if autre.id in checked_array %} checked {% endif %} >
-						<label for="filtre[]">{{autre.name_FR}}</label>
+						<h4>Autres filtres</h4>
+						{% for type in autres %}
+						<input type="checkbox" name="filtre[]" value="{{type.id}}" 
+				{% if type.id in checked_array %} checked {% endif %} >
+						<label for="filtre[]">{{type.name_FR}}</label>
 						<br/>
 				{% endfor %}
 					</div>
-					<span class="arrow"></span>
-
-				<div id="edit_contacts">
-					<input type="text" name="site_web" id="site_web" value="{{website}}">
-					<br>
-					<label for="site_web">Site web</label>
-					<br><br>
-					<input type="text" name="mail" id="mail" value="{{mail}}">
-					<br>
-					<label for="mail">Mail</label>
-					<br><br>
-					<input type="text" name="telephone" id="telephone" value="{{telephone}}">
-					<br>
-					<label for="telephone">Téléphone</label>
-					<br><br>
-					<input type="text" name="address" id="autocomplete" value="{{address}}">
-					<br>
-					<label for="autocomplete">* Adresse</label>
-					<br>
-					<input type="text" id="user_id" name="user_id" value="{{user_id}}">
-					<br>
-					<label for="user_id">User ID: résponsable de la préstation</label>
-					<input type="hidden" name="id" value="{{club_id}}">
 				</div>
-				<span class="arrow"></span>
-				<div id="clearfix">
-					<h4>Images</h4>
-					<input type="hidden" name="MAX_FILE_SIZE" value="300000000" /> 
+
+				<div class="hide">
+						<div class="submenu">
+							<span>FR</span>
+							<div class="arrow-right"></div>
+							<span>EN</span>
+							<div class="arrow-right"></div>
+							<span>Filtres</span>
+							<div class="arrow-right"></div>
+							<span  class="current">Info</span>
+							<div class="arrow-right"></div>
+							<span>Images</span>
+						</div>
+						<input type="text" name="site_web" id="site_web" value="{{website}}">
+						<br>
+						<label for="site_web">Site web</label>
+						<br><br>
+						<input type="text" name="mail" id="mail" value="{{mail}}">
+						<br>
+						<label for="mail">Mail</label>
+						<br><br>
+						<input type="text" name="telephone" id="telephone" value="{{telephone}}">
+						<br>
+						<label for="telephone">Téléphone</label>
+						<br><br>
+						<input type="text" name="address" id="autocomplete" value="{{address}}">
+						<br>
+						<label for="autocomplete">* Adresse</label>
+						<br>
+						<input type="text" id="user_id" name="user_id" value="{{user_id}}">
+						<br>
+						<label for="user_id">User ID: résponsable de la préstation</label>
+						<input type="hidden" name="id" value="{{club_id}}">
+					<input type="hidden" name="retour" value="admin">
+				</div>
+
+				<div class="hide" id="input_images">
+						<div class="submenu">
+							<span>FR</span>
+							<div class="arrow-right"></div>
+							<span>EN</span>
+							<div class="arrow-right"></div>
+							<span>Filtres</span>
+							<div class="arrow-right"></div>
+							<span>Info</span>
+							<div class="arrow-right"></div>
+							<span class="current">Images</span>
+						</div>
+						<h4>Images</h4>
+						<input type="hidden" name="MAX_FILE_SIZE" value="300000000" /> 
 {% for img in imgs %}			
-					<div class="input_images">
-						<input name="files[]" id="file{{loop.index}}" type="file" accept="image/*"/> 
-						<input class = "image_checkbox" type="checkbox" name="delete_img[]" value="{{img.id}}">
-	           			<label for="file{{loop.index}}" class="on_delete"  style="background-image: url('../images/clubs/{{img.url}}'); ">
-	           			 	<span>
-	           			 	</span>
-	           			</label>
-           			</div>	
+						<div>
+							<input name="files[]" id="file{{loop.index}}" type="file" accept="image/*"/> 
+							<input class = "image_checkbox" type="checkbox" name="delete_img[]" value="{{img.id}}">
+	           				<label for="file{{loop.index}}" class="on_delete"  style="background-image: url('../images/clubs/{{img.url}}'); ">
+	           			 		<span></span>
+	           				</label>
+	           			</div>
 {% endfor %}
 {% set x = count_img %} <!-- pour afficher les id des images -->
 {% for i in '-1' .. 'count_freespace' %}
@@ -95,15 +160,20 @@
 						<input name="files[]" id="file{{x}}" type="file" accept="image/*" />
 						<label for="file{{x}}"><span class="arrow_up"></span></label>
 {% endfor %}
+				</div>
 
+				<div class="clearfix">
+					<div>
+						<a class ="btn_float_empty" href="admin_clubs.php">Annuler</a>
+						<span class="btn_float inactive" id="previous">Précedent</span>
+						<span class="btn_float" id="next">Suivant</span>
+
+						<input type="hidden" name="id" value="{{club_id}}">
+						<input type="submit" name="submit" id="submit_new_club" class="btn_float" value="envoyer">
+						<p id="error_msg">Veuillez bien remplir le formulaire</p>
+					</div>
 				</div>
-				<span class="arrow"></span>
-				<div id="edit_btn">
-					<!--message d'erreur-->
-					<p id="error_msg">Veuillez bien remplir le formulaire</p>
-					<input type="submit" name="submit" id="submit_new_club" value="Envoyer">
-					<input type="button" name="Annuler" value="Annuler">
-				</div>
+			</div>
 			</form>
 	</section>
 {% endblock %}
