@@ -5,8 +5,8 @@ $name = $_POST["name"];
 $name_en = $_POST["name_en"];
 $retour = $_POST["retour"];
 
-$fr = preg_quote($_POST["description_FR"]);
-$en = preg_quote($_POST["description_EN"]);
+$fr = addslashes($_POST["description_FR"]);
+$en = addslashes($_POST["description_EN"]);
 
 $website = htmlentities($_POST["site_web"]);
 $mail = htmlentities($_POST["mail"]);
@@ -38,7 +38,6 @@ WHERE id = ".$id.";";
 
 $result = $pdo->prepare($queryClub);
 $result->execute();
-
 /*-------------------INSERTION DES TAGS-------------------------------- */
 
 /*supprime les vieux tags*/

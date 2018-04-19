@@ -64,16 +64,22 @@ $fav = $result1->rowCount();
 <body>
 <?php include("header.php"); ?>
 	<section class="content">
-		
+		<div id="diapo">
+			<div id="diapo0">
+				<img src="images/events/<?php echo $img[0]["url"]; ?>" alt="<?php echo $clubInfo[0]['titre_'.$lang]; ?>">
+				<span class="btn_blue"><?php echo $content["voir_photos"]; ?></span>
+			</div>
+		</div>
+		<div class="left">
 	<!-- fil d'ariane -->
-		<a class="revenir" href="<?php echo $retour; ?>">
-		<?php echo $retour_text; ?>
-		</a>
+			<a class="revenir" href="<?php echo $retour; ?>">
+				<?php echo $retour_text; ?>
+			</a>
 	<!-- fil d'ariane -->
 		
 			<h1><?php echo $clubInfo[0]['titre_'.$lang]; ?></h1>
 			<h4><?php echo $clubInfo[0]['date']; ?></h4>
-			<div class="left">
+
 			<hr/>
 <?php 
 /*--------FAVORI CHECKBOX-------------*/
@@ -106,13 +112,6 @@ $fav = $result1->rowCount();
 <!--- COMMENTAIRES-->
 		<div class="comments">
 <?php include("pages/comments/comment_event.php"); ?>
-		</div>
-	</div>
-
-	<div class="right" id="diapo">
-		<div>
-			<img src="images/events/<?php echo $img[0]["url"]; ?>" alt="<?php echo $clubInfo[0]['titre_'.$lang]; ?>">
-			<span class="btn_blue"><?php echo $content["voir_photos"]; ?></span>
 		</div>
 	</div>
 </section>

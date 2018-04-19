@@ -311,10 +311,11 @@ footer {
   right: 0;
   bottom: 0;
   left: 0;
-  height: 200px;
+  height: 220px;
   position: absolute;
   background-color: white;
-  padding: 25px; }
+  padding: 25px;
+  z-index: 2; }
 
 .row1 {
   width: 100vw;
@@ -496,11 +497,6 @@ footer {
   display: block !important; }
 
 /*--------------- PAGE CLUB -----------------------*/
-.left {
-  width: 47vw;
-  display: table-cell;
-  vertical-align: top; }
-
 .btn_photos {
   position: absolute;
   z-index: 8;
@@ -511,29 +507,39 @@ footer {
   background-color: white;
   padding: 1em; }
 
-.right {
-  width: 46vw;
-  display: table-cell;
-  padding-left: 2vw;
-  position: relative; }
-  .right div {
-    max-width: 47vw;
-    position: sticky;
-    top: 100px;
-    cursor: pointer; }
-    .right div span {
-      z-index: 1; }
-    .right div img {
-      max-width: 46vw; }
-  .right img:nth-of-type(2), .right img:nth-of-type(3),
-  .right img:nth-of-type(4), .right img:nth-of-type(5) {
-    display: none; }
+.left {
+  width: 40vw;
+  display: table-cell; }
+
+#diapo {
+  position: fixed;
+  padding: 2em;
+  width: 45vw;
+  right: 0;
+  top: 0;
+  height: 100%;
+  padding-top: 200px; }
+  #diapo div {
+    max-width: 47vw; }
+    #diapo div span {
+      z-index: 2;
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      margin: 2em;
+      cursor: pointer; }
+    #diapo div img {
+      max-width: 45vw;
+      max-height: 90vh;
+      cursor: pointer; }
 
 .bordered {
   padding: 1em;
   margin-top: 1em;
   margin-bottom: 1em;
-  margin: 0.5em; }
+  margin: 0.5em;
+  display: table-cell;
+  width: 30em; }
 
 /*commentaires*/
 .comments {
@@ -572,6 +578,11 @@ footer {
 .enfant {
   margin-left: 4em !important;
   width: 35.5vw !important; }
+
+#filter {
+  position: absolute;
+  top: 0;
+  left: 0; }
 
 /*---------------BACK OFFICE -----------------------*/
 /*--------------------------------------------*/

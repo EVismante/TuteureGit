@@ -311,10 +311,11 @@ footer {
 	right: 0;
   	bottom: 0;
   	left: 0;
-	height: 200px;
+	height: 220px;
 	position: absolute;
 	background-color: white;
 	padding: 25px;
+	z-index:2;
 }
 
 
@@ -499,11 +500,6 @@ footer {
 
 /*--------------- PAGE CLUB -----------------------*/
 
-.left {width: 47vw;
-	//background-color: green;
-	display: table-cell;
-	vertical-align: top;
-}
 
 .btn_photos {
 	position: absolute;
@@ -516,26 +512,37 @@ footer {
 	padding: 1em;
 }
 
-.right {width: 46vw;
+.left {
+	width: 40vw;
 	display: table-cell;
-	padding-left: 2vw;
-	position: relative;
-	//top: 100px;
+}
+
+#diapo {
+	position: fixed;
+	padding: 2em;
+	width: 45vw;
+	right: 0;
+	top: 0;
+	height: 100%;
+	padding-top: 200px;
+
 	div {
 		max-width: 47vw;
-		position: sticky;
-		top: 100px;
-		cursor: pointer;
-		span {z-index:1;}
-		img {max-width: 46vw;
+		span {	
+			z-index:2;
+			position: absolute;
+			bottom: 0;
+			right: 0;
+			margin: 2em;
+			cursor: pointer;
+		}
+		img {
+			max-width: 45vw;
+			max-height: 90vh;
+			cursor: pointer;
 
 		}
-	}
-	img:nth-of-type(2), img:nth-of-type(3), 
-	img:nth-of-type(4), img:nth-of-type(5) 
-	 { display: none; 
 	 }
-
 }
 
 .bordered {
@@ -543,6 +550,8 @@ footer {
 	margin-top: 1em;
 	margin-bottom: 1em;
 	margin: 0.5em;
+	display: table-cell;
+	width: 30em;
 }
 
 
@@ -582,6 +591,12 @@ h3::after {
 		width: 35.5vw!important;
 }
 
+
+#filter {
+    position: absolute;
+    top:0;
+    left:0;
+}
 
 /*---------------BACK OFFICE -----------------------*/
 /*--------------------------------------------*/

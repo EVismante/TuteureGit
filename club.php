@@ -42,6 +42,7 @@ AND tag.type=1;';
 $result = $pdo->prepare($tagQuery1);
 $result->execute();
 $tagInfo = $result->fetchAll();
+$tag2Count = $result->rowCount();
 
 /*TYPE TAGS*/
 $tagQuery2 = 'SELECT name_'.$lang.' FROM tag 
@@ -52,6 +53,18 @@ AND tag.type=2;';
 $result = $pdo->prepare($tagQuery2);
 $result->execute();
 $tag2 = $result->fetchAll();
+
+
+/*TYPE TAGS*/
+$tagQuery3 = 'SELECT name_'.$lang.' FROM tag 
+LEFT JOIN club_tag ON tag.id=club_tag.tag_id
+WHERE club_tag.club_id='.$id.'
+AND tag.type=3;';
+
+$result = $pdo->prepare($tagQuery3);
+$result->execute();
+$tag3 = $result->fetchAll();
+$tag3Count = $result->rowCount();
 
 /*IMAGES*/
 $imgQuery = 'SELECT url FROM images 
@@ -83,7 +96,18 @@ $fav = $result1->rowCount();
 <body>
 <?php include("header.php"); ?>
 	<section class="content">
-	<!-- fil d'ariane -->
+<!--- IMAGE RIGHT-->
+
+		<div id="diapo">
+			<div id="diapo0">
+				<img src="images/clubs/<?php echo $img[0]["url"]; ?>" alt="<?php echo $clubInfo[0]['name']; ?>">
+				<span class="btn_blue"><?php echo $content["voir_photos"]; ?></span>	
+			</div>
+		</div>
+
+<!--- LEFT-->
+		<div class="left">
+			<!-- fil d'ariane -->
 		<a class="revenir" href="<?php echo $retour; ?>">
 		<?php echo $retour_text; ?>
 		</a>
@@ -98,24 +122,25 @@ $fav = $result1->rowCount();
 			}
 ?>
 			</h4>
-		<div class="left">
 			<hr/>
-			<span>
+			<div>
+				<span>
 <?php include "inc/evaluation.inc.php"; /*évaluation de préstataire*/?>
-			</span>
+				</span>
 <?php 
 /*--------FAVORI CHECKBOX-------------*/
-	if (isset($_SESSION["id"])) { ?>
-			<span>
-				<input type="checkbox" name="favori" value="favori" id="favori_club<?php echo $id; ?>" <?php if($fav > 0) {echo "checked";} ?> onclick="addFavori(<?php echo $id; ?>, 'club', false)">
-				<label for="favori_club<?php echo $id; ?>">
-					<?php if($fav > 0) { ?>
-				<img src="images/website/icons/heart-pleine.svg" class="heart_icon" alt="supprimer le favori">
-<?php					} else { ?>
-						<img src="images/website/icons/heart-vide.svg" class="heart_icon" alt="ajouter aux favoris">
-<?php }?>
-				</label>
-			</span>
+		if (isset($_SESSION["id"])) { ?>
+				<span>
+					<input type="checkbox" name="favori" value="favori" id="favori_club<?php echo $id; ?>" <?php if($fav > 0) {echo "checked";} ?> onclick="addFavori(<?php echo $id; ?>, 'club', false)">
+					<label for="favori_club<?php echo $id; ?>">
+						<?php if($fav > 0) { ?>
+					<img src="images/website/icons/heart-pleine.svg" class="heart_icon" alt="supprimer le favori">
+	<?php					} else { ?>
+							<img src="images/website/icons/heart-vide.svg" class="heart_icon" alt="ajouter aux favoris">
+	<?php }?>
+					</label>
+				</span>
+			</div>
 <?php
 } /*----------FIN DE CHECKBOX-------------*/			
 ?>
@@ -125,7 +150,8 @@ $fav = $result1->rowCount();
 		<hr>
 <!--- ACTIVITES-->
 			<div class="bordered">
-				<h3><?php echo $content["activites"]; ?></h3>
+<?php if($tag2Count > 0) {echo "<h3>".$content['activites']."</h3>"; }  //affichage de titre ?>
+
 				<ul><?php
 				foreach ($tagInfo as $key => $value) {
 					echo '<li>'; 
@@ -135,32 +161,50 @@ $fav = $result1->rowCount();
 				?>
 				</ul>
 			</div>
+			<div class="bordered">
+<?php if($tag3Count > 0) {echo "<h3>Bon à savoir</h3>"; }  //affichage de titre ?>
+
+				<ul><?php
+				foreach ($tag3 as $key => $value) {
+					echo '<li>'; 
+					echo $tag3[$key]['name_'.$lang];
+					echo '</li>';
+				}
+				?>
+				</ul>
+			</div>
 			<hr>
 <!--- CONTACTS-->
 			<div class="bordered">
 
-				<h4><?php echo $content["contacter"]; ?></h4>
+				<h3><?php echo $content["contacter"]; ?></h3>
 
-				<span>Adresse: <?php echo $clubInfo[0]['address']; ?></span><br/>
-				<span>Site web: <a href="<?php echo $clubInfo[0]['website']; ?>"><?php echo $clubInfo[0]['website']; ?></a></span><br/>
-				<span>Téléphone: <?php echo $clubInfo[0]['telephone']; ?></span><br/>
-				<span>Mail: <?php echo $clubInfo[0]['mail']; ?></span><br/>
+				<span>
+					<h4>Adresse</h4> 
+					<?php echo $clubInfo[0]['address']; ?>
+				</span>
+				<span>
+					<h4>Site Web</h4> 
+					<a href="<?php echo $clubInfo[0]['website']; ?>"><?php echo $clubInfo[0]['website']; ?></a>
+				</span><br/>
+				<span>
+					<h4>Téléphone</h4>
+					<?php echo $clubInfo[0]['telephone']; ?>
+				</span><br/>
+				<span>
+					<h4>Mail</h4>
+					 <?php echo $clubInfo[0]['mail']; ?>
+					</span><br/>
 			</div>
 			<hr>
 <!--- COMMENTAIRES-->
 			<div class="comments">
-				<h4><?php echo $content["commentaires"]; ?></h4>
+				<h3><?php echo $content["commentaires"]; ?></h3>
 				<?php include("pages/comments/comment_club.php"); ?>
 			</div>
 		</div>
-<!--- DIAPORAMA GALERIE DES IMAGES-->
-		<div class="right" id="diapo">
-			<div>
-				<img src="images/clubs/<?php echo $img[0]["url"]; ?>" alt="<?php echo $clubInfo[0]['name']; ?>">
-				<span class="btn_blue"><?php echo $content["voir_photos"]; ?></span>	
-			</div>
-		</div>
 
+<!--- DIAPORAMA GALERIE DES IMAGES-->
 	</section>
 	<div id="diaporama">
 		<span tabindex="0" id="fermer">&#x2716;</span>

@@ -2,7 +2,7 @@
 
 a {text-decoration: none;}
 
-h1, h2, h3 {
+ h2, h3 {
 	margin: 1em;
 }
 
@@ -69,6 +69,7 @@ h1 {
 			.user_menu {
 				display: none;
 				background: lighten(map-get($colors, color3), 10%);
+				height: 100vh;
 			}
 			#username {
 				background: lighten(map-get($colors, color3), 20%);
@@ -105,11 +106,18 @@ header {
 		color: white;
 		margin: 0.2em;
 	}
-	input[type=text] {
+	form {
 		width: 80vw;
 		display: block;
-		margin: auto;	
-	}
+		margin-left: 10vw;
+	input[type="text"] {
+		width: 80vw;
+		}	
+	input[type="submit"] {
+		margin-top: 2em;
+		width: 8em;
+	}}
+
 	img {display: none;}
 }
 
@@ -132,7 +140,7 @@ header {
 	}
 }
 .content {
-	padding-top: 3em;
+	margin-top: 5em;
 	padding-bottom: 3em;
 }
 .club_item {
@@ -160,14 +168,14 @@ header {
 	@include transition(background-size, 500ms);
 }
 
-
+/*
 	.choix {
 			width: 150px;
 			margin: auto;
 			margin-bottom: 2em;
 			padding-bottom: 3em;
 		}
-
+*/
 
 .decouvrir {
 	img {width: 100vw;}
@@ -257,6 +265,10 @@ margin-top: 90px;
 	display: table;
 	position: relative;
 	left: -1em;
+	.btn-empty { 
+		margin: auto;
+		margin-bottom: 2em;
+	}
 }
 #liste1, #liste2 {
 	background-color: map-get($colors, background2);
@@ -299,18 +311,82 @@ margin-top: 90px;
 	}
 
 /*--------------------- page CLUB ------------------------------*/
-
+/*--------------- Diaporama en fenetre modal -----------------------*/
 #diaporama {
+	width: 100vw;
+	height: 100vh;
+	background-color: rgba(2, 0, 0, 0.9);
+	z-index: 5;
+	position: fixed;
+	top:0;
 	display: none;
+	div {
+		width: 100vw;
+		margin: auto;
+	}
+	img {max-width: 100vw;
+		max-height: 80vh;
+		display: none;
+		margin: auto;
+	}
+	.arrows {
+		width: 99vw;
+		height: 10vh;
+		position: relative;
+		padding: 2em;
+		top:0;
+		.arrow_left {
+			@include arrow(left, 30px, white);
+			position: absolute;
+			left: 5vw;
+			z-index:5;
+			}
+		.arrow_right {
+			@include arrow(right, 30px, white);
+			position: absolute;
+			left: 85vw;
+			z-index:5;
+			}
+	}}
+
+		#fermer {
+			cursor: pointer;
+			position: absolute;
+			padding: 0.6em;
+			font-size: 3em;
+			color: white;
+			position: absolute;
+			right: 38%;
+			top: 0;
+			z-index:5;
+			margin-top: 0.5em;
+		}
+
+.slideshowactive {
+	z-index: 9;
+	display: block!important;
 }
 
-.content_club {
 
+.left {
+
+	div:first-of-type {
+		margin-top:0.5em;
+		margin-bottom:0.5em;
+	}
+	p {
+		margin-top: 1.5em;
+		margin-bottom:1.5em;
+	}
 }
 
-.right {
+#diapo {
+	img {
+		width: 100vw;
+		margin-left: -1em;
+		max-height: 80vh;
 
-	img {width: 100vw;}
+	}
 	.btn_blue {
 		display: none;
 	}
@@ -318,45 +394,50 @@ margin-top: 90px;
 
 /*commentaires*/
 .comments {
-	height: auto;
-	float: left;
-	margin-top: 2em;
-.user_icon {
-	float: left;
-	margin-left: 1em;
-	margin-right: 1em;
-}
-h3 {display: block;
-	margin-left: 1em;
-	margin-top: 0.5em;
-}
-h3::after {
-   clear: both;
-}
- & > div { /*nouveau commentaire inclu */
-	@include comment;
-	width:80vw;
-	textarea {width:30vw!important;}
-	p {font-size: 1.1em;
-		margin-top: 1em;
+	.submit {
+		margin-left: 0;
+		margin-top: 0.5em;
+	}
+	form {
+		.user_icon { 
+			margin-left: 40%;
+			margin-right: 40%;
+
+			 }
+
+	}
+	.user_icon {
+		float: left;
+		margin: 0.3em;
+	}
+
+	&>div {
+		background-color: white;
+		border-radius: 10px;
+		border: 1px solid lightgrey;
 		margin-bottom: 1em;
-		line-height:  1.5em;
+		padding: 1em;
+		.arrow_comment {
+			position: absolute;
+			top: -1.5em;
+		}
 	}
-	div {
-		margin-left: 2.8em;
-	}
+	textarea {
+		width: 75vw;
+		margin: 0.2em;
 	}
 }
 
-.enfant { margin-left: 4em!important;
-		width: 35.5vw!important;
-}
+.row3 { 
+width: 100vw;}
+
+
 /*--------------------- page connexion ------------------------------*/
 
 
 
 .edit_club {
-	padding: 1em;
+	padding: 0.1em;
 	margin-top: 2em;
 	&>div {
 		@include item;
@@ -387,7 +468,17 @@ h3::after {
 
 .btn_blue {
 	margin:auto;
+	margin-bottom: 2em;
 }
+
+.bordered {
+	width: 100vw;
+	span {
+		display: block;
+		margin-bot: 2em;
+	}
+}
+
 /*--------------------formulaires-------------------------------*/
 
 .error_msg {
@@ -412,6 +503,18 @@ h3::after {
     }
 }
 
+/*---------------------^pages-----------------------------*/
+.fenetre {
+	@extend .edit_club;
+	div {
+		margin-top: 15vh;
+	}
+	
+}
+
+.row1 {width: 100vw;
+	text-align: center;
+}
 /*---------------------------------------------------*/
 
 footer {

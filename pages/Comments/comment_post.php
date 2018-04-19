@@ -53,7 +53,7 @@ VALUES
 $result_comment = $pdo->prepare($comment_query);
 $result_comment->execute();
 
-
+var_dump($comment_query);
 if ($page_type == "club") {
 	header('Location: ../../club.php?id='.$club);
 }

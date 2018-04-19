@@ -19,9 +19,10 @@ $("#annuler").on("click", function() {
   $("#hide").css("display", "none");
 })
 
+
 /*fenetre modal d'une diaporama*/
 /*----------------------------------------------------*/
-$("#diapo").on("click", function() {
+$("#diapo0").on("click", function() {
  $("#diaporama").css("display", "block");
 })
 
@@ -197,7 +198,7 @@ $("#liste2").click(function() {
 
 /*Toogle le menu User on click -------------------*/
 	$( "#user_icon" ).click(function() {
-  		$(".user_menu").toggle();
+  		$(".user_menu").slideToggle(300);
 });
 
 
@@ -670,7 +671,8 @@ function addFavori(page_id, page_type, poof) { // poof supprime l'element sur la
     dayNamesShort: ['Dim.', 'Lun.', 'Mar.', 'Mer.', 'Jeu.', 'Ven.', 'Sam.'],
     dayNamesMin: ['D', 'L', 'M', 'M', 'J', 'V', 'S'],
     weekHeader: 'Sem.',
-    dateFormat: "yy-mm-dd"
+    dateFormat: "yy-mm-dd",
+    firstDay: 1
 });
   } );
 
