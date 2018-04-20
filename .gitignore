@@ -3,3 +3,5 @@ thumbs.db
 _config.php
 map/map.xml
 map.xml
+.DS_Store
+/.DS_Store
