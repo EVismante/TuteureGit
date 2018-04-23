@@ -21,13 +21,13 @@ $page = "login";
 		<div class="col-3">
 			<a href="recherche.php">
 				<img src="images/website/2.svg" alt="">
-				<span>Cherchez les clubs et préstations et ajoutez les dans vos favoris</span>
+				<span>Cherchez les clubs et prestations et ajoutez-les dans vos favoris</span>
 			</a>
 		</div>
 		<div class="col-3">
 			<a href="user_events.php">
 				<img src="images/website/1.svg" alt="">
-				<span>Organisez votre prémier évènement</span>
+				<span>Organisez votre premier évènement</span>
 			</a>
 		</div>
 		<div class="col-3">
@@ -35,14 +35,14 @@ $page = "login";
 ?>
 				<a href="user_pro_club.php">
 				<img src="images/website/3.svg" alt="">
-				<span>Créez une page pour votre préstation</span>
+				<span>Créez une page pour votre prestation</span>
 
 <?php
 } else {
 ?>
 				<a href="user_compte.php">
 				<img src="images/website/1.svg" alt="">
-				<span>Choisisez un avatar qui vous répresente !</span>
+				<span>Choisissez un avatar qui vous représente !</span>
 
 <?php
 }?>

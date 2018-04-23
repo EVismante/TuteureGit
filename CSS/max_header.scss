@@ -1,0 +1,146 @@
+@import "_valeursGlobales.scss";
+/*---------------NAVIGATION TOP -----------------------*/
+
+#mobile_menu {display: none;}
+.menu_BO {
+left: 70px;
+}
+
+.arrow_small { // pour le menu mobile
+	display: none;
+}
+
+#logo {font: map-get($fonts, logo);
+			text-decoration: none;
+			color: map-get($colors, color2);
+			position: fixed;
+			padding-top: 0.1em;
+			padding-left: 1em;
+			z-index: 6;
+			left: 0;
+	}
+
+.nav {
+
+	position: fixed;
+	width: 100vw;
+	height: 80px;
+	z-index: 5;
+	background-color: white;
+	color: map-get($colors, lightblue);
+	box-shadow: 3px 3px 5px rgba(150, 150, 150, 0.1);
+	font-size: 1.2em;
+	a {text-decoration: none;}
+	& > div { float: right;
+		margin-top: 30px;
+		margin-left: 30px;
+		margin-right: 20px;
+			div { float: right;
+				margin-right: 1em;
+				margin-left: 1em;
+	}}
+	li { //navigation
+		display: inline;
+		float: right;
+		margin-right: 30px;
+		a {text-decoration: none;
+			color: map-get($colors, color2);
+			text-transform: uppercase;
+		}
+		a:hover {border-bottom: 1px solid map-get($colors, color1);
+		}
+	}
+	#connexion { text-decoration: none;
+		color: map-get($colors, color2);
+			text-transform: uppercase; 
+			&:hover {border-bottom: 1px solid map-get($colors, color1);
+			}
+		};
+
+	.active {border-bottom: 1px solid map-get($colors, color2);
+		}
+
+	
+	#user_icon {
+			position: relative;
+			top: -20px;
+					}
+/*----------user menu---------------*/
+	.user_menu {
+		background-color: (map-get($colors, background2));
+		color: black;
+		width: 10em;
+		position: absolute;
+		padding: 1em;
+		top: 2.6em;
+		right: -6em;
+		display: none;
+		box-shadow: 3px 3px 5px rgba(150, 150, 150, 0.1);
+		border-radius: 5px;
+		border: 1px solid white;
+		a {
+			display: block;
+			text-decoration: none;
+			padding-top: 0.5em;
+			padding-bottom: 0.5em;
+			width: 12em;
+			text-align: center;
+			position: relative;
+			right: 1em;
+		}
+		.menu_deco {
+		@include arrow(up, 17px, map-get($colors, background2));
+	  	position: absolute;
+	  	top: -0.9em;
+	  	left: 3.9em;
+		}
+		#username { 
+			width: 10em;
+			height: 1em;
+			display: block;
+			padding: 0.5em;
+			padding-left: 1em;
+			padding-right: 1em;
+			position: relative;
+			border-bottom: 1px solid map-get($colors, background);
+			left: -1em;
+			top: -1em;
+			text-align: center;
+			z-index: 2;
+
+
+		}
+		.active {background-color: lighten(map-get($colors, background), 5%);}
+	}
+	#lang {
+		div:first-child {border-bottom: 1px solid white; }
+		div:active {background-color: map-get($colors, color3);}
+	}
+}
+
+
+.nav-scroll {
+	background-color: transparent!important;
+	@include transition(background-color, 200ms);
+	box-shadow: none;
+	* {color:white!important;
+		background-color: transparent!important;
+	}
+	.menu>div>div {border: 1px solid white;}
+	.menu_deco { 
+		@include arrow(up, 17px, map-get($colors, lightgrey)!important);
+	  }
+	  #username {
+	  	background-color: map-get($colors, lightgrey)!important;
+	  	color: black!important;
+	  }
+}
+
+
+
+/*effet hover sur le menu */
+.m_hover:hover {
+	background-color: map-get($colors, lightgrey)!important;
+	@include transition(background-color, 200ms);
+	color: black!important;
+}

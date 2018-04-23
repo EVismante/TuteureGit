@@ -90,23 +90,79 @@ $result1->fetchAll();
 $fav = $result1->rowCount();
 
 }
+
+$query1 = "SELECT COUNT(*) FROM comment WHERE
+page_type='club'
+AND 
+page_id=".$id.";";
+
+$result1 = $pdo->prepare($query1);
+$result1->execute();
+$comments_count = $result1->fetchAll();
 ?>
+<!--metadata pour facebook -->
+	<meta property="og:url"           content="https://www.equovadis.fr/club.php?id=<?php echo $id; ?>" />
+  <meta property="og:type"          content="website" />
+  <meta property="og:title"         content="<?php echo $clubInfo[0]['name']; ?>" />
+  <meta property="og:description"   content="<?php echo $clubInfo[0]['description_'.$lang]; ?>" />
+  <meta property="og:image"         content="images/clubs/<?php echo $img[0]["url"]; ?>" />
+
+<script>
+ function initMap() {
+        
+        var club_lat = document.getElementById("lat").getAttribute("class");
+        var club_longt = document.getElementById("longt").getAttribute("class");
+        var myLatLng = {lat: club_lat, lng: club_longt};
+
+        var map = new google.maps.Map(document.getElementById('map_small'), {
+          zoom: 12,
+          mapTypeControl: false,
+          streetViewControl: false,
+          fullscreenControl: false,
+          center: new google.maps.LatLng(club_lat, club_longt),
+
+        });	
+
+       var marker = new google.maps.Marker({
+          position: new google.maps.LatLng(club_lat, club_longt),
+          map: map,
+          icon: 'images/website/icons/club.png',
+
+        });
+
+    }
+</script>
 
 </head>
 <body>
 <?php include("header.php"); ?>
-	<section class="content">
-<!--- IMAGE RIGHT-->
+
+<div id="fb-root"></div>
+<script>
+
+(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/lt_LT/sdk.js#xfbml=1&version=v2.12';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+
+</script>
+
+	<section class="content_club clearfix">
+<!--- IMAGE de diaporama-->
 
 		<div id="diapo">
 			<div id="diapo0">
-				<img src="images/clubs/<?php echo $img[0]["url"]; ?>" alt="<?php echo $clubInfo[0]['name']; ?>">
-				<span class="btn_blue"><?php echo $content["voir_photos"]; ?></span>	
+				<div class="head_img_club" style="background-image: url('images/clubs/<?php echo $img[0]["url"]; ?>');"></div>
+
+				<span><?php echo $content["voir_photos"]; ?></span>	
 			</div>
 		</div>
 
 <!--- LEFT-->
-		<div class="left">
+
 			<!-- fil d'ariane -->
 		<a class="revenir" href="<?php echo $retour; ?>">
 		<?php echo $retour_text; ?>
@@ -124,9 +180,11 @@ $fav = $result1->rowCount();
 			</h4>
 			<hr/>
 			<div>
-				<span>
-<?php include "inc/evaluation.inc.php"; /*évaluation de préstataire*/?>
-				</span>
+
+			<!-- bouton de facebook -->
+			<div class="fb-share-button" data-href="https://equovadis.fr/club.php?id=<?php echo $id;?>" data-layout="button" data-size="large" data-mobile-iframe="true">
+				<a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fequovadis.fr%2Fclub.php?id=<?php echo $id;?>&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore"><?php echo $content['partager']; ?></a>
+			</div>				
 <?php 
 /*--------FAVORI CHECKBOX-------------*/
 		if (isset($_SESSION["id"])) { ?>
@@ -134,9 +192,9 @@ $fav = $result1->rowCount();
 					<input type="checkbox" name="favori" value="favori" id="favori_club<?php echo $id; ?>" <?php if($fav > 0) {echo "checked";} ?> onclick="addFavori(<?php echo $id; ?>, 'club', false)">
 					<label for="favori_club<?php echo $id; ?>">
 						<?php if($fav > 0) { ?>
-					<img src="images/website/icons/heart-pleine.svg" class="heart_icon" alt="supprimer le favori">
+					<img src="images/website/icons/heart-pleine.svg" class="heart_icon" title="supprimer le favori" alt="supprimer le favori">
 	<?php					} else { ?>
-							<img src="images/website/icons/heart-vide.svg" class="heart_icon" alt="ajouter aux favoris">
+							<img src="images/website/icons/heart-vide.svg" class="heart_icon" title="ajouter aux favoris" alt="ajouter aux favoris">
 	<?php }?>
 					</label>
 				</span>
@@ -144,6 +202,14 @@ $fav = $result1->rowCount();
 <?php
 } /*----------FIN DE CHECKBOX-------------*/			
 ?>
+			<!-- évaluation de préstataire -->
+			<span>
+				<?php include "inc/evaluation.inc.php";?>
+			</span>
+			<br>
+			<!-- lien vers commentaires -->
+			<a href="#comments"><?php echo $content['commentaires']." (".$comments_count[0][0]; ?>)</a>
+
 		<div>
 			<p><?php echo $clubInfo[0]['description_'.$lang]; ?></p>
 		</div>
@@ -162,7 +228,7 @@ $fav = $result1->rowCount();
 				</ul>
 			</div>
 			<div class="bordered">
-<?php if($tag3Count > 0) {echo "<h3>Bon à savoir</h3>"; }  //affichage de titre ?>
+<?php if($tag3Count > 0) {echo "<h3> ".$content['bon_a_savoir']." </h3>"; }  //affichage de titre ?>
 
 				<ul><?php
 				foreach ($tag3 as $key => $value) {
@@ -176,33 +242,47 @@ $fav = $result1->rowCount();
 			<hr>
 <!--- CONTACTS-->
 			<div class="bordered">
+				<div>
+					<h3><?php echo $content["contacter"]; ?></h3>
 
-				<h3><?php echo $content["contacter"]; ?></h3>
+					<div>
+						<h4><?php echo $content["adresse"]; ?></h4> 
+						<?php echo $clubInfo[0]['address']; ?>
+					</div>
 
-				<span>
-					<h4>Adresse</h4> 
-					<?php echo $clubInfo[0]['address']; ?>
-				</span>
-				<span>
-					<h4>Site Web</h4> 
-					<a href="<?php echo $clubInfo[0]['website']; ?>"><?php echo $clubInfo[0]['website']; ?></a>
-				</span><br/>
-				<span>
-					<h4>Téléphone</h4>
-					<?php echo $clubInfo[0]['telephone']; ?>
-				</span><br/>
-				<span>
-					<h4>Mail</h4>
-					 <?php echo $clubInfo[0]['mail']; ?>
-					</span><br/>
+	<?php if (strlen($clubInfo[0]['website']) > 0 ) { ?>
+
+						<div>
+						<h4><?php echo $content["website"]; ?></h4> 
+						<a href="<?php echo $clubInfo[0]['website']; ?>"><?php echo $clubInfo[0]['website']; ?></a>
+						</div>
+
+	<?php } 
+	if (strlen($clubInfo[0]['telephone']) > 0 ) {?>
+
+					<div>
+						<h4><?php echo $content["phone"]; ?></h4>
+						<?php echo $clubInfo[0]['telephone']; ?>
+					</div>
+
+	<?php }; if (strlen($clubInfo[0]['mail']) > 0 ) { ?>
+
+					<div>
+						<h4>Mail</h4>
+						<a href="mailto: <?php echo $clubInfo[0]['mail']; ?>"><?php echo $clubInfo[0]['mail']; ?></a>
+					</div>
+	<?php } ?>
+				</div>
 			</div>
+					<div class="bordered" id="map_small"></div>
+				
 			<hr>
 <!--- COMMENTAIRES-->
-			<div class="comments">
+			<div class="comments" id="comments">
 				<h3><?php echo $content["commentaires"]; ?></h3>
 				<?php include("pages/comments/comment_club.php"); ?>
 			</div>
-		</div>
+
 
 <!--- DIAPORAMA GALERIE DES IMAGES-->
 	</section>
@@ -229,6 +309,8 @@ $fav = $result1->rowCount();
 		}}?>
 		</div>
 	</div>
+<span id="lat" class="<?php echo $clubInfo[0]['lat']; ?>">
+<span id="longt" class="<?php echo $clubInfo[0]['longt']; ?>">
 	<?php include("pages/footer.php"); ?>
 </body>
 </html>

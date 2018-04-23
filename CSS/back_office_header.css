@@ -1,0 +1,148 @@
+/*----------------------------------------*/
+/*----------------------------------------*/
+@import url("https://fonts.googleapis.com/css?family=Caveat|Montserrat:400,500,500i,900");
+/*----------------------------------------*/
+/*----------------------------------------*/
+/*---------------NAVIGATION TOP -----------------------*/
+body {
+  min-width: 1000px !important; }
+
+#mobile_menu {
+  display: none; }
+
+.menu_BO {
+  left: 70px; }
+
+.arrow_small {
+  display: none; }
+
+#logo {
+  font: 3em Caveat, sans-serif;
+  text-decoration: none;
+  color: #AA2E00;
+  position: fixed;
+  padding-top: 0.1em;
+  padding-left: 1em;
+  z-index: 6;
+  left: 0;
+  top: 10px;
+  font-size: 2em; }
+
+.nav {
+  position: fixed;
+  width: 100vw;
+  height: 80px;
+  z-index: 5;
+  background-color: white;
+  box-shadow: 3px 3px 5px rgba(150, 150, 150, 0.1);
+  font-size: 1.2em;
+  /*----------user menu---------------*/ }
+  .nav a {
+    text-decoration: none; }
+  .nav > div {
+    float: right;
+    margin-top: 30px;
+    margin-left: 30px;
+    margin-right: 20px; }
+    .nav > div div {
+      float: right;
+      margin-right: 1em;
+      margin-left: 1em; }
+  .nav li {
+    display: inline;
+    float: right;
+    margin-right: 30px; }
+    .nav li a {
+      text-decoration: none;
+      color: #AA2E00;
+      text-transform: uppercase; }
+    .nav li a:hover {
+      border-bottom: 1px solid #FFAF44; }
+  .nav #connexion {
+    text-decoration: none;
+    color: #AA2E00;
+    text-transform: uppercase; }
+    .nav #connexion:hover {
+      border-bottom: 1px solid #FFAF44; }
+  .nav .active {
+    border-bottom: 1px solid #AA2E00; }
+  .nav #user_icon {
+    position: relative;
+    top: -20px;
+    right: 60px; }
+  .nav .user_menu {
+    background-color: #e2d4c0;
+    color: black;
+    width: 10em;
+    position: absolute;
+    padding: 1em;
+    top: 2.6em;
+    right: -3em;
+    display: none;
+    box-shadow: 3px 3px 5px rgba(150, 150, 150, 0.1);
+    border-radius: 5px;
+    border: 1px solid white; }
+    .nav .user_menu a {
+      display: block;
+      text-decoration: none;
+      padding-top: 0.5em;
+      padding-bottom: 0.5em;
+      width: 12em;
+      text-align: center;
+      position: relative;
+      right: 1em; }
+    .nav .user_menu .menu_deco {
+      border-bottom: 17px solid #e2d4c0;
+      border-left: 17px solid transparent;
+      border-right: 17px solid transparent;
+      width: 0;
+      height: 0;
+      position: absolute;
+      top: -0.9em;
+      left: 3.9em; }
+    .nav .user_menu #username {
+      width: 10em;
+      height: 1em;
+      display: block;
+      padding: 0.5em;
+      padding-left: 1em;
+      padding-right: 1em;
+      position: relative;
+      border-bottom: 1px solid #fff7ed;
+      left: 2em;
+      top: -1em;
+      text-align: center;
+      z-index: 2; }
+  .nav #lang div:first-child {
+    border-bottom: 1px solid white; }
+  .nav #lang div:active {
+    background-color: #0C5574; }
+
+.nav-scroll {
+  background-color: transparent !important;
+  -webkit-transition: background-color 200ms linear;
+  -ms-transition: background-color 200ms linear;
+  transition: background-color 200ms linear;
+  box-shadow: none; }
+  .nav-scroll * {
+    color: white !important;
+    background-color: transparent !important; }
+  .nav-scroll .menu > div > div {
+    border: 1px solid white; }
+  .nav-scroll .menu_deco {
+    border-bottom: 17px solid #f2f2f2 !important;
+    border-left: 17px solid transparent;
+    border-right: 17px solid transparent;
+    width: 0;
+    height: 0; }
+  .nav-scroll #username {
+    background-color: #f2f2f2 !important;
+    color: black !important; }
+
+/*effet hover sur le menu */
+.m_hover:hover {
+  background-color: #f2f2f2 !important;
+  -webkit-transition: background-color 200ms linear;
+  -ms-transition: background-color 200ms linear;
+  transition: background-color 200ms linear;
+  color: black !important; }

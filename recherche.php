@@ -25,7 +25,7 @@ $(document).ready(function(){
       });
 
       $.ajax({
-      url: 'map/map1.php',
+      url: 'map/map.php',
       type: 'GET',
       data: {club: $('#searchbox').val(),
             filtre: filtreString,

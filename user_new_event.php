@@ -3,7 +3,7 @@ require_once('_config.php');
 session_start();
 include_once 'inc/langue.inc.php';
 
-$page = "evenements";
+$page = "user_events";
 	//VERIFIER SI UTILISATEUR EST CONNECTE//
 	if ( !isset($_SESSION["type"]) ) {
 		header("Location: login.php");
@@ -113,7 +113,8 @@ include '_head.php';
 							<div class="arrow-right"></div>
 							<span class="current">Images</span>
 						</div>
-			
+						<h4>Images</h4>
+						<p>Les formats d'images acceptés: JPEG, PNG, GIF.</p>			
 					<input type="hidden" name="MAX_FILE_SIZE" value="300000000" /> 
            			 	<input name="files[]" id="file1" type="file" accept="image/*"/> 
            			 	<label for="file1"><span class="arrow_up"></span></label>

@@ -2,7 +2,7 @@
 require_once('_config.php');
 session_start();
 include_once 'inc/langue.inc.php';
-$page = "club";
+$page = "user_pro_club";
 
 	//VERIFIER SI UTILISATEUR EST CONNECTE//
 	if ( !isset($_SESSION["type"]) ) {
@@ -197,6 +197,8 @@ include '_head.php';
 							<span class="current">Images</span>
 						</div>
 					<input type="hidden" name="MAX_FILE_SIZE" value="300000000" /> 
+					<h4>Images</h4>
+					<p>Les formats d'images acceptés: JPEG, PNG, GIF.</p>	
 <?php
 	foreach ($imgs as $key => $value) {
 	?>				

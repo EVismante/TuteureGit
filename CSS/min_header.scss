@@ -1,0 +1,97 @@
+@import "_valeursGlobales.scss";
+
+/*--------------- en tete - menu -------------------*/
+.nav {
+	width: 100vw;
+	height: 80px;
+	color: white;
+	position: -webkit-sticky;
+  	position: fixed;
+  	top: -1px;
+  	z-index: 3;
+  	background-color: map-get($colors, color3);
+  		a {
+		color: white;
+		text-decoration: none;
+		font-size: 1.2em;
+	}
+	.active {
+	background-color: lighten(map-get($colors, color3), 10%);
+	border-bottom: 1px solid white;
+	width: 35vw;
+}
+}
+
+
+#logo {font: map-get($fonts, logo);
+			text-decoration: none;
+			color: white;
+			display: block;
+			float: left;
+			margin-left: 0.5em;
+	}
+
+
+#mobile_menu {
+	position: absolute;
+	top: 20px;
+	right: 10%;
+	cursor: pointer;
+		//le pop up menu
+	&+div {
+		display: none;
+		width: 35vw;
+		height: 100vh;
+		position: absolute;
+		z-index: 3;
+		top: 80px;
+		right: 0;
+		background-color: map-get($colors, color3);
+		box-shadow: 3px 3px 5px rgba(150, 150, 150, 0.5);
+	 .menu * { // les sous menus
+			display: block;
+			text-align: center;
+			padding-top: 0.3em;
+			padding-bottom: 0.3em;
+			color: white;
+			font-size: 1.2em;
+			text-decoration: none;
+			#user_icon { margin: auto;
+					border-radius: 45px;
+					padding: 1em;
+					}
+			.user_menu {
+				display: none;
+				background: lighten(map-get($colors, color3), 10%);
+				height: 100vh;
+			}
+			.active {
+					background-color: lighten(map-get($colors, color3), 20%);
+					border-bottom: 1px solid white;
+					width: 35vw;
+				}
+			#username {
+				background: lighten(map-get($colors, color3), 20%);
+				position: relative;
+				top: -1em;
+			}
+	}	
+	#lang { position: relative;
+		top: 80vh;
+	}
+}
+
+	span { // le burger menu
+		display: block;
+	    width: 40px;
+	    height: 5px;
+	    margin-bottom: 5px;
+	    background-color: white;
+	    border-radius: 3px;
+	    position: relative;
+	    -webkit-transition: 0.7s;
+	    transition: 0.7s;
+	    -moz-transition: 0.7s;
+	    z-index: 1;
+		}	
+}

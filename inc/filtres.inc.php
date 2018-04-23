@@ -80,7 +80,7 @@ Class recherche {
 
 			   $club->setAttribute('id', $row['id']);
 			   $club->setAttribute('type', 'event');
-			   $club->setAttribute('name', $row['titre_FR']);
+			   $club->setAttribute('name', $row['titre_fr']);
 			   $club->setAttribute('address', $row['address']);
 			   $club->setAttribute('longt', $row['longt']);
 			   $club->setAttribute('lat', $row['lat']);
@@ -93,7 +93,7 @@ Class recherche {
 
 
 	public function count() {
-		$xml = simplexml_load_file("map.xml") or die("Pas de résultats"); //affiché si il n'y a pas de résultats
+		$xml = simplexml_load_file("map.xml") or die("<h2 class='msg'>Pas de résultats</h2>"); //affiché si il n'y a pas de résultats
 		$count =  count($xml->children());
 		return $count;
 		

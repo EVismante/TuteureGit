@@ -8,7 +8,7 @@ include_once 'inc/langue.inc.php';
 		header("Location: login.php");
 	};
 
-$page ="evenements";
+$page ="user_events";
 $id = $_POST["id"];
 
 
@@ -131,6 +131,8 @@ include '_head.php';
 							<span class="current">Images</span>
 						</div>
 					<input type="hidden" name="MAX_FILE_SIZE" value="300000000" /> 
+											<h4>Images</h4>
+						<p>Les formats d'images acceptés: JPEG, PNG, GIF.</p>	
 <?php
 	foreach ($imgs as $key => $value) {
 	?>					<div>

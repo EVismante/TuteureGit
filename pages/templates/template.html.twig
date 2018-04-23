@@ -6,9 +6,11 @@
 	<title>Equo Vadis</title>
 
 	<link rel="stylesheet" type="text/css" href="../CSS/general.css">
-	<link rel="stylesheet" media="screen and (min-width: 1024px)" type="text/css" href="../CSS/EVstyle.css">
-	<link rel="stylesheet" media="screen and (max-width: 650px)" href="../CSS/mobile.css" />
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet"  type="text/css" href="../CSS/EVstyle.css">
+
+	<!-- les styles des menu en tete -->
+		<link rel="stylesheet" media="screen and (min-width: 1201px)" href="../CSS/back_office_header.css" />
+		<link rel="stylesheet" media="screen and (max-width: 1200px)" href="../CSS/min_header.css" />
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 	<!-- code de widget datepicker -->
@@ -27,10 +29,10 @@
  <script src="BackOffice/autocomplete.js"></script>
 
 </head>
-<body>
-	<div class="nav">
-	<a href="../index.php" id="logo">Equo Vadis</a>
+<body style="overflow: scroll; ">
 
+	<div class="nav">
+		<a href="../index.php" id="logo">Equo Vadis</a>
 		<div id="mobile_menu" tabindex="0">	
 			<span></span>	
 			<span></span>
@@ -39,12 +41,12 @@
 			<!-- le contenu du mobile menu -->
 		<div>
 			<div class="menu">
-				<div>Back <br>Office</div>
 				<!-- USER MENU DEBUT-->
 				<div>
 		{% if session_active %}
 					<img src="{{avatar}}" alt="avatar" id='user_icon'>
 					<div class="user_menu">
+						<div class="menu_deco"></div> <!-- petite fleche déco-->
 						<div id='username'>{{username}}</div>
 						<a href="../index.php">Retour au site</a>
 						<a href="../user_compte.php">MON COMPTE</a>
@@ -60,8 +62,8 @@
 				</div>
 			</div>
 <!-- USER MENU FIN -->
-		</div>
-			<div class="menu_BO">
+		
+			<div class="menu">
 			<ul>
 				<li{% if page == 'utilisateurs' %} class="active" {% endif %}><a href="admin_utilisateurs.php">Utilisateurs</a></li>
 				<li{% if page == 'clubs' %} class="active" {% endif %}><a href="admin_clubs.php">Clubs</a></li>
@@ -72,7 +74,7 @@
 			</ul>
 		</div>
 	</div>
-
+</div>
 <!--     END HEADER    -->
 
 {% block section %}

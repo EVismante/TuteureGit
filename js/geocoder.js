@@ -1,8 +1,10 @@
  function initMap() {
-
+        
         var map = new google.maps.Map(document.getElementById('map'), {
-          center: new google.maps.LatLng(43.740559, 6.380062),
-          zoom: 9,
+          center: new google.maps.LatLng(43.693605, 6.813915),
+          zoom: 10,
+        mapTypeControl: false,
+        streetViewControl: false,
           styles: [
     {
         "featureType": "water",
@@ -200,6 +202,7 @@
 ]
 
         });
+
         var infoWindow = new google.maps.InfoWindow;
 
         var iconBase = 'images/website/icons/';
@@ -216,7 +219,6 @@
         
 
 
-          // Change this depending on the name of your PHP or XML file
           downloadUrl("map/map.xml", function(data) {
 
             var markerz = new Array();
@@ -296,11 +298,11 @@
       });
 */
           });
+     /*-------------------*/
 
+/*-------------------*/
 
         }
-
-
 
       function downloadUrl(url, callback) {
         var request = window.ActiveXObject ?

@@ -45,7 +45,8 @@ include_once 'inc/langue.inc.php';
 										$avatar = "images/avatars/".$_SESSION["avatar"];
 				?>
 
-					<img src="<?php echo $avatar; ?>" alt="avatar" id='user_icon' tabindex="0">					
+					<img src="<?php echo $avatar; ?>" alt="avatar" id='user_icon' tabindex="0">
+					<div class="arrow_small"></div>					
 				<div class="user_menu">
 				<div class="menu_deco"></div> <!-- petite fleche déco-->
 				<span id='username'><?php echo $_SESSION['name']; ?></span>
@@ -54,12 +55,12 @@ include_once 'inc/langue.inc.php';
 				<?php
 										if ($_SESSION["type"] == "pro") {
 				?>
-					<a class="m_hover" href="user_pro_club.php"><?php echo $content["menu1"]; ?></a>
+					<a <?php if($page=='user_pro_club'){echo 'class="active"';}?> class="m_hover" href="user_pro_club.php"><?php echo $content["menu1"]; ?></a>
 				<?php
 											}
-				?>	<a class="m_hover" href="user_events.php"><?php echo $content["menu2"]; ?></a>
-					<a class="m_hover" href="user_favoris.php"><?php echo $content["menu3"]; ?></a>
-					<a class="m_hover" href="user_compte.php"><?php echo $content["menu4"]; ?></a>
+				?>	<a <?php if($page=='user_events'){echo 'class="active"';}?> class="m_hover" href="user_events.php"><?php echo $content["menu2"]; ?></a>
+					<a <?php if($page=='user_favoris'){echo 'class="active"';}?> class="m_hover" href="user_favoris.php"><?php echo $content["menu3"]; ?></a>
+					<a <?php if($page=='user_compte'){echo 'class="active"';}?> class="m_hover" href="user_compte.php"><?php echo $content["menu4"]; ?></a>
 				<?php
 										if ($_SESSION["type"] == "admin") {
 				?>

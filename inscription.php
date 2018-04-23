@@ -58,24 +58,44 @@ $page = "inscription";
                 <div class="error_msg" id="savoir1">
                     <?php echo $content['savoir_plus1']; ?>
                 </div>
-                <span id="savoir"><?php echo $content['savoir_plus']; ?></span>
-                <div>
+                <span tabindex="0" id="savoir"><?php echo $content['savoir_plus']; ?></span>
+
+                <div id="label_compte">
                     <input type="radio" name="type" id="normal" value="normal" checked>
-                    <label for="normal">
-                        Normal
+                    <label tabindex="0" for="normal">
                         <img src="images/avatars/default.svg">
+                        <span>Normal</span>
                     </label>
 
                     <input type="radio" name="type" value="pro" id="pro">
-                     <label for="pro">
-                        Pro
+                     <label tabindex="0" for="pro">
                         <img src="images/avatars/default1.svg">
+                        <span>Pro</span>
                     </label>
                 </div>
             </div>
             <div>
+                <div class="error_msg" id="msg_conditions"><div></div>
+                    Veuillez accepter les conditions
+                </div>
+                <br>
+                <input type="checkbox" id="conditions" name="conditions">
+              
+                    <span>J'accepte les <span tabindex="0" id="modal_conditions">conditions générales</span> d'utilisation de ce site</span>
+                
+                <!-- les conditions d'utilisation de site -->
+                <div id="small_font">
+                    <span tabindex="0" id="fermer">&#x2716;</span>
+                    <div>
+
+                    <?php include ("inc/conditions_generales.inc.php"); ?>
+                    </div>
+                </div>
+                <br><br>
+            </div>
+            <div>
                 <input type="submit" value="Inscription" id="submit_inscription">
-                <a class="btn-empty center" href="index.php"><?php echo $content['annuler']; ?></a>
+                <a tabindex="0" class="btn-empty center" href="index.php"><?php echo $content['annuler']; ?></a>
             </div>
         </div>
         </form>

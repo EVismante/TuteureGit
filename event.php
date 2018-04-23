@@ -60,14 +60,40 @@ $fav = $result1->rowCount();
 
 }
 ?>
+<script>
+ function initMap() {
+        
+        var club_lat = document.getElementById("lat").getAttribute("class");
+        var club_longt = document.getElementById("longt").getAttribute("class");
+        var myLatLng = {lat: club_lat, lng: club_longt};
+
+        var map = new google.maps.Map(document.getElementById('map_small'), {
+          zoom: 12,
+          mapTypeControl: false,
+          streetViewControl: false,
+          fullscreenControl: false,
+          center: new google.maps.LatLng(club_lat, club_longt),
+
+        });	
+
+       var marker = new google.maps.Marker({
+          position: new google.maps.LatLng(club_lat, club_longt),
+          map: map,
+          icon: 'images/website/icons/club.png',
+
+        });
+
+    }
+</script>
 </head>
 <body>
 <?php include("header.php"); ?>
-	<section class="content">
+	<section class="content_club clearfix">
+
 		<div id="diapo">
 			<div id="diapo0">
-				<img src="images/events/<?php echo $img[0]["url"]; ?>" alt="<?php echo $clubInfo[0]['titre_'.$lang]; ?>">
-				<span class="btn_blue"><?php echo $content["voir_photos"]; ?></span>
+				<div class="head_img_club" style="background-image: url('images/events/<?php echo $img[0]["url"]; ?>');"></div>
+				<span><?php echo $content["voir_photos"]; ?></span>
 			</div>
 		</div>
 		<div class="left">
@@ -78,9 +104,10 @@ $fav = $result1->rowCount();
 	<!-- fil d'ariane -->
 		
 			<h1><?php echo $clubInfo[0]['titre_'.$lang]; ?></h1>
-			<h4><?php echo $clubInfo[0]['date']; ?></h4>
-
 			<hr/>
+			<div>
+				<span class="bigger">Date: <?php echo $clubInfo[0]['date']; ?></span>
+
 <?php 
 /*--------FAVORI CHECKBOX-------------*/
 	if (isset($_SESSION["id"])) { ?>
@@ -94,20 +121,44 @@ $fav = $result1->rowCount();
 <?php }?>
 				</label>
 			</span>
+
 <?php
 } /*----------FIN DE CHECKBOX-------------*/			
-?> 
+?> </div>
+
 
 <!--- CONTACTS-->
 		<div>
 			<p><?php echo $clubInfo[0]['description_'.$lang]; ?></p>
 		</div>
 		<hr/>
-		<div>
-			<div>Lieu:  <?php echo $clubInfo[0]['address']; ?></div>
-			<div>Mail: <?php echo $clubInfo[0]['mail']; ?></div>
-			<div>Site web: <a href="<?php echo $clubInfo[0]['website']; ?>"><?php echo $clubInfo[0]['website']; ?></a></div>
+		<div class="bordered">
+				<div>
+					<h4>Lieu</h4> 
+					<?php echo $clubInfo[0]['address']; ?>
+				</div>
+
+<?php if (strlen($clubInfo[0]['mail']) > 0 ) { ?>
+
+					<div>
+					<h4>Mail</h4> 
+					<a href="mailto: <?php echo $clubInfo[0]['mail']; ?>"><?php echo $clubInfo[0]['mail']; ?></a>
+					</div>
+
+<?php } 
+if (strlen($clubInfo[0]['website']) > 0 ) {?>
+
+				<div>
+					<h4>Site Web</h4>
+					<a href="<?php echo $clubInfo[0]['website']; ?>"><?php echo $clubInfo[0]['website']; ?></a>
+				</div>
+
+<?php } ?>
+
 		</div>
+		<div class="bordered" id="map_small"></div>
+		<span id="lat" class="<?php echo $clubInfo[0]['lat']; ?>">
+		<span id="longt" class="<?php echo $clubInfo[0]['longt']; ?>">
 		<hr>
 <!--- COMMENTAIRES-->
 		<div class="comments">

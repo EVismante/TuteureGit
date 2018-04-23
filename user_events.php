@@ -3,7 +3,7 @@ require_once('_config.php');
 session_start();
 include_once 'inc/langue.inc.php';
 
-$page = "favoris";
+$page = "user_events";
 	//VERIFIER SI UTILISATEUR EST CONNECTE//
 	if ( !isset($_SESSION["type"]) ) {
 		header("Location: login.php");

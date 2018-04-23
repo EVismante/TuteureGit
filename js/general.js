@@ -19,15 +19,14 @@ $("#annuler").on("click", function() {
   $("#hide").css("display", "none");
 })
 
+$("#fermer").on("click", function() {
+ $(this).parent().css("display", "none");
+})
 
 /*fenetre modal d'une diaporama*/
 /*----------------------------------------------------*/
 $("#diapo0").on("click", function() {
  $("#diaporama").css("display", "block");
-})
-
-$("#fermer").on("click", function() {
- $("#diaporama").css("display", "none");
 })
 
 $(".arrow_right").on("click", function() {
@@ -182,14 +181,14 @@ $("#msg").click(function() {
 })
 
 /* affichage des listes des resultats de la recherche */
-$("#liste1").click(function() {
+$("body").on("click", "#liste1", function() {
   $(this).css("background-color", "lightblue");
   $("#liste2").css("background-color", "#e2d4c0");
   $(".liste_clubs").css("display", "block");
   $(".liste_events").css("display", "none");
 })
 
-$("#liste2").click(function() {
+$("body").on("click", "#liste2", function() {
   $(this).css("background-color", "lightblue");
   $("#liste1").css("background-color", "#e2d4c0");
   $(".liste_events").css("display", "block");
@@ -201,6 +200,9 @@ $("#liste2").click(function() {
   		$(".user_menu").slideToggle(300);
 });
 
+  $( ".arrow_small" ).click(function() {
+      $(".user_menu").slideToggle(300);
+});
 
     $(document).on("click", function(event){
         var $trigger = $(".nav");
@@ -241,7 +243,6 @@ $("#submit_contact").on("click", function() {
 $("#msg_success").on("click", function() { 
   $(this).css("display", "none");
 });
-
 
 
 
@@ -335,9 +336,14 @@ $("#previous").on("click", function() {
 
   }
 
-/*montre "Plus d'info" sur la page d'inscription*/
+/*Affiche "Plus d'info" sur la page d'inscription*/
 $("#savoir").on("click", function() {
   $("#savoir1").toggle();
+})
+
+/* Affiche les conditions générales du site*/
+$("#modal_conditions").on("click", function() {
+  $("#small_font").toggle();
 })
 
 /*------------NEW CLUB vérification des donnees---------------------*/
@@ -381,6 +387,7 @@ $("#savoir").on("click", function() {
 
 /*------------Forme d'inscription: validation des données---------------------*/
 
+
 $("#submit_inscription").on("click", function() {
 
       var bool1 = validate_length("#username", 4);
@@ -397,6 +404,15 @@ $("#submit_inscription").on("click", function() {
 
       var bool5 = validate_match("#mail", "#mail1");
       showMessage(bool5, "#msg_mail1");
+
+      if( $('#conditions').is(':checked') ){
+          var bool7 = true;
+      } else {
+          var bool7 = false;
+          $("#msg_conditions").css("display", "block");
+          $("#conditions + span").css("border-bottom", "3px solid orange");
+      }
+
 
       var bool6;
 
@@ -426,11 +442,9 @@ $("#submit_inscription").on("click", function() {
   });
 
 
-  if (bool1 && bool2 && bool3 && bool4 && bool5 && bool6) { return true; 
+  if (bool1 && bool2 && bool3 && bool4 && bool5 && bool6 && bool7) { return true; 
   } else { return false;}
 })
-
-
 
 
 /*-------verification de mot de passe -----*/
@@ -571,7 +585,12 @@ function checkname(name)
 }
 
 
-
+$('#conditions').click(function() {
+  if ($(this).is(':checked')) {
+        $("#msg_conditions").css("display", "none");
+        $("#conditions + span").css("border-bottom", "0px solid white");
+  };
+});
 /*------------CONTROLE DES FILTRES DE LA RECHERCHE---------------------*/
 
 /*----------Bouton pour reduire le menu------------------*/
@@ -581,12 +600,14 @@ $("#make_smaller").click(function() {
         $(".result_paneau").animate({left: "-380px"}, { duration: 200, queue: false });
         $(this).animate({left: "10px"}, { duration: 200, queue: false });
         $("#make_smaller div").css("transform", "rotate(-90deg)");
+        $("#make_smaller div").animate({right: "-15px"});
 
     }else{
         $(this).addClass("clicked");
         $(".result_paneau").animate({left: "0px"}, { duration: 200, queue: false });
         $(this).animate({left: "385px"}, { duration: 200, queue: false });
         $("#make_smaller div").css("transform", "rotate(90deg)");
+        $("#make_smaller div").animate({right: "0px"});
     }
 });
 
@@ -675,6 +696,7 @@ function addFavori(page_id, page_type, poof) { // poof supprime l'element sur la
     firstDay: 1
 });
   } );
+
 
 
 

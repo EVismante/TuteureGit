@@ -7,7 +7,7 @@ include_once '../inc/langue.inc.php';
 $elem = new recherche;
 $result_count = $elem->count();
 
-if ($result_count == 0) { echo "<div>Pas de résultats</div>";}
+if ($result_count == 0) { echo "<h3>Pas de résultats</h3>";}
 else {
   ?>
   <div class="choix">

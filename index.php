@@ -72,7 +72,7 @@ $events = $result->fetchAll();
 			</a>
 		</div>
 		<div class="col-3">
-			<a href="index.php#inscrire">
+			<a href="inscription.php">
 				<img src="images/website/3.svg" alt="">
 				<span><?php echo $content["row3"]; ?></span>
 			</a>

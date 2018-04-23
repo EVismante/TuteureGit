@@ -19,6 +19,6 @@
 		</div>
 	</div>
 	<div class="row1 bottom">
-		<a href=""> Mentions legales / Egle Vismante / 2018 </a>
+		<a href="mentions_legales.php"> Mentions legales / Egle Vismante / 2018 </a>
 	</div>
 </footer>

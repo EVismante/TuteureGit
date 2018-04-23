@@ -45,15 +45,21 @@ if (isset($_GET['msg']) && $_GET["msg"] == 'inscription' ) {
                 </div>
   <?php 
             if (isset($_GET["msg"]) && $_GET["msg"] == 'failed') {
-                echo "<div class='msg'>".$content['msg_login']." </div>";}; ?>
+                echo "<div class='msg'>".$content['msg_login']." </div>";
+                echo "<a href='recuperation.php' class='msg'>".$content['msg_mdp_oublie']." </a>";
+
+}; ?>
                 
             		<input type="submit" value="LOGIN" id="submit_login">
             		<a class="btn-empty center" href="index.php"><?php echo $content['annuler']; ?></a>
 
  
         		 
-            </div>         
+            </div> 
+       
                 <a class="btn_blue" href="inscription.php"><?php echo $content['not_member']; ?></a>
+                <br><br>
+
     	</form>
 
 </section>

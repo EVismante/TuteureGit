@@ -102,7 +102,7 @@ $page ="user_compte";
 
 					<div id="hide">
 						<div>
-							<p><?php echo $content["on_delete1"]; ?> ?</p>
+							<p><?php echo $content["on_delete1"]." ".$content["votre_compte"]; ?> ?</p>
 							<input type="submit" value="<?php echo $content["supprimer"]; ?>">
 							<span class="btn-empty center" id="annuler"><?php echo $content["annuler"]; ?></span>
 						</div>
