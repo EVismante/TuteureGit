@@ -99,13 +99,23 @@ page_id=".$id.";";
 $result1 = $pdo->prepare($query1);
 $result1->execute();
 $comments_count = $result1->fetchAll();
+
+/*--- les images ---*/
+if (isset($img[0]["url"])) {
+	$img_url = $img[0]["url"];
+	$diapo = true;
+} else {
+	$img_url = "default.jpg";
+	$diapo = false;
+}
+
 ?>
 <!--metadata pour facebook -->
-	<meta property="og:url"           content="https://www.equovadis.fr/club.php?id=<?php echo $id; ?>" />
-  <meta property="og:type"          content="website" />
-  <meta property="og:title"         content="<?php echo $clubInfo[0]['name']; ?>" />
-  <meta property="og:description"   content="<?php echo $clubInfo[0]['description_'.$lang]; ?>" />
-  <meta property="og:image"         content="images/clubs/<?php echo $img[0]["url"]; ?>" />
+	<meta property="og:url" content="https://www.equovadis.fr/club.php?id=<?php echo $id; ?>" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="<?php echo $clubInfo[0]['name']; ?>" />
+  <meta property="og:description" content="<?php echo $clubInfo[0]['description_'.$lang]; ?>" />
+  <meta property="og:image" content="images/clubs/<?php echo $img_url; ?>" />
 
 <script>
  function initMap() {
@@ -135,8 +145,12 @@ $comments_count = $result1->fetchAll();
 
 </head>
 <body>
-<?php include("header.php"); ?>
+<?php 
 
+include("header.php"); 
+include 'inc/barre_admin.inc.php';
+
+?>
 <div id="fb-root"></div>
 <script>
 
@@ -144,7 +158,7 @@ $comments_count = $result1->fetchAll();
   var js, fjs = d.getElementsByTagName(s)[0];
   if (d.getElementById(id)) return;
   js = d.createElement(s); js.id = id;
-  js.src = 'https://connect.facebook.net/lt_LT/sdk.js#xfbml=1&version=v2.12';
+  js.src = 'https://connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v2.12';
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));
 
@@ -155,9 +169,10 @@ $comments_count = $result1->fetchAll();
 
 		<div id="diapo">
 			<div id="diapo0">
-				<div class="head_img_club" style="background-image: url('images/clubs/<?php echo $img[0]["url"]; ?>');"></div>
-
+				<div class="head_img_club" style="background-image: url('images/clubs/<?php echo $img_url; ?>');"></div>
+<?php if ($diapo) { ?>
 				<span><?php echo $content["voir_photos"]; ?></span>	
+<?php } ?>
 			</div>
 		</div>
 
@@ -286,10 +301,13 @@ $comments_count = $result1->fetchAll();
 
 <!--- DIAPORAMA GALERIE DES IMAGES-->
 	</section>
+
+<?php if($diapo) { ?>
+
 	<div id="diaporama">
 		<span tabindex="0" id="fermer">&#x2716;</span>
 		<div class="arrows">
-
+}
 <?php /*---fleches de la galerie ---*/
 	if (count($img) > 1) { ?>
 			<div tabindex="0" class="arrow_left"></div>	
@@ -309,6 +327,8 @@ $comments_count = $result1->fetchAll();
 		}}?>
 		</div>
 	</div>
+
+<?php } ?>
 <span id="lat" class="<?php echo $clubInfo[0]['lat']; ?>">
 <span id="longt" class="<?php echo $clubInfo[0]['longt']; ?>">
 	<?php include("pages/footer.php"); ?>

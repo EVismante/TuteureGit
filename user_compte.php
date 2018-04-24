@@ -28,21 +28,26 @@ $page ="user_compte";
 		<div class="edit_club">
 			<div id="input_images">
 			<form action="pages/BackOffice/upload_action_avatar.php" method="POST" enctype="multipart/form-data">
-				<h3>Changer l'avatar</h3>
+				<h3>Modifier l'avatar</h3>
 				
-				<div id="error"><?php
-	if(isset($_GET["msg"])) {
-		if ($_GET["msg"] == "fail1") {
+<?php
+if(isset($_GET["msg"])) {
+	if ($_GET["msg"] == "fail1") {
 				echo "<div class='error_msg_show'>L'image est trop grande ou de mauvais format<div></div></div>";
-		};} ?>	</div>	
+};} ?>	
 
             	<input type="hidden" name="MAX_FILE_SIZE" value="300000000" /> 
             	<input type="hidden" name="type" value="avatar" /> 
             	<input id="file1" name="files[]" type="file" accept="image/*"/>
            		<label for="file1" id="label_center"><span class="arrow_up"></span></label>
-            	<div>Les formats des images acceptés: JPEG, GIF, PNG</div>
+            	<div>Les formats des images acceptés: JPEG, GIF, PNG. La taille maximale acceptée: 300 ko</div>
             	<input name ="envoi" type="submit" value="Envoyer" />	
     		</form>
+
+    		<form action="pages/user/delete_avatar.php" method="POST">
+				<input type="hidden" name="id" value="<?php echo $_SESSION["id"];?>">
+				<input type="submit" class="btn-empty" value="<?php echo $content["supprimer"]; ?>">
+			</form>
     	</div>
     </div>
 
@@ -90,26 +95,23 @@ $page ="user_compte";
 	        	</div>
 	        </div>
 		</form>
-	</section>
-	
-<section>
+
 	<form class="edit_club" action="pages/user/delete_user.php" method="POST">
 		<div>
 			<div>
 				<h3>Supprimer le compte</h3>
 				<input type="hidden" name="id" value="<?php echo $_SESSION["id"];?>">
 				<span class="btn center" id="del"><?php echo $content["supprimer"]; ?></span>
-
-					<div id="hide">
-						<div>
+			</div>
+	</form>
+</section>
+				<div id="hide">
+					<div>
 							<p><?php echo $content["on_delete1"]." ".$content["votre_compte"]; ?> ?</p>
 							<input type="submit" value="<?php echo $content["supprimer"]; ?>">
 							<span class="btn-empty center" id="annuler"><?php echo $content["annuler"]; ?></span>
 						</div>
 			</div>
-	</div>
-	</form>
-</section>
 
 	<?php include("pages/footer.php"); ?>
 

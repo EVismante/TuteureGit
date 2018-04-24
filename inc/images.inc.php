@@ -17,9 +17,9 @@ Class Image {
 		}}
 
 
-	public function resize($width, $height, $newfilename, $path) {
+	public function resize($width, $height, $newfilename, $path, $tmp_name, $type) {
 			/* Get original image x y*/
-		  list($w, $h) = getimagesize($_FILES['userfile']['tmp_name']);
+		  list($w, $h) = getimagesize($tmp_name);
 		  /* calculate new image size with ratio */
 		  $ratio = max($width/$w, $height/$h);
 		  $h = ceil($height / $ratio);
@@ -28,7 +28,7 @@ Class Image {
 		  /* new file name */
 		  $path = $path.$newfilename;
 		  /* read binary data from image file */
-		  $imgString = file_get_contents($_FILES['userfile']['tmp_name']);
+		  $imgString = file_get_contents($tmp_name);
 		  /* create image from string */
 
 		  $image = imagecreatefromstring($imgString);
@@ -39,7 +39,7 @@ Class Image {
 		    $width, $height,
 		    $w, $h);
 		  /* Save image */
-		  switch ($_FILES['userfile']['type']) {
+		  switch ($type) {
 		    case 'image/jpeg':
 		      imagejpeg($tmp, $path, 100);
 		      break;
@@ -65,6 +65,15 @@ Class Image {
 		$temp = explode(".", $filename);
 		$newfilename = $session_id."_".time().rand(10,99).'.' . end($temp);
 		return $newfilename;
+	}
+
+	public function defaultImg($url) {
+		if (isset($url)) {
+			$img_url = $url;
+		} else {
+			$img_url = "default.jpg";
+		}
+		return $url;
 	}
 }
 

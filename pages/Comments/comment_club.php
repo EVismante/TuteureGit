@@ -69,8 +69,11 @@ foreach ($comments as $key => $comment) {
 
 	if ($comments[$key]['parent_id'] == NULL) { /*afficher les comments sans parents (originaux */
 		/*determiner l'avatar*/
-		if($comments[$key]['url'] == "") {$avatar = "default.svg";
-		} else { $avatar = $comments[$key]['url']; }
+		if($comments[$key]['url'] == "") { 
+			$avatar = "default.svg";
+		} else { 
+			$avatar = $comments[$key]['url']; 
+		}
 ?>
 		<div class="parent">
 			<img class="user_icon" alt ="" src="images/avatars/<?php echo $avatar;?>">

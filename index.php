@@ -87,7 +87,7 @@ $events = $result->fetchAll();
 ?>	<a href="club.php?id=<?php echo $clubs[$key]['id']; ?>">
 		<div class="club_item" style="background-image: url('images/clubs/<?php echo $clubs[$key]['url'];?>');">
 			<div>
-				<h4><?php echo $clubs[$key]['name']; ?></h4>
+				<h3><?php echo $clubs[$key]['name']; ?></h3>
 			</div>
 		</div>
 	</a>
@@ -123,7 +123,7 @@ $events = $result->fetchAll();
 <?php
 		$random = new random_club($pdo, $lang);
 		$club_coeur = $random->get_data($pdo, $lang);
-?>		<div class="club_item">
+?>		<div class="club_item" style="background-color: white;">
 			<img id ="h" src="images/website/icons/heart-pleine.svg" alt="">
 			<h2><?php echo $content["coup_de_coeur"]; ?></h2>
 			

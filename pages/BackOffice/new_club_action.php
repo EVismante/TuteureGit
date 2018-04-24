@@ -91,10 +91,12 @@ ini_set ('gd.jpeg_ignore_warning', 1);
 if (isset($_FILES["files"])) {
     $image = new club;
     $path = $image->path;
+
        foreach($_FILES["files"]["tmp_name"] as $key=>$tmp_name){
         $temp = $_FILES["files"]["tmp_name"][$key];
         $name = $_FILES["files"]["name"][$key];
         $newfilename = $image->rename($name, $maxId);
+        //$resize = $image->resize(1200px, $height, $newfilename, $path)
          
         if(!empty($temp)) { 
             if ($image->is_Image($temp)) {

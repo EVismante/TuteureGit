@@ -3,7 +3,7 @@ require "init_twig.php";
 require_once('../_config.php');
 session_start();
 $page ="clubs";
-$id = $_POST["id"]; //club id
+$id = $_GET["id"]; //club id
 
 /*voir si l'utilisateur est connecté. Au cas échéant il est rédirigé vers l'accueil*/
 if (isset($_SESSION["type"])) {

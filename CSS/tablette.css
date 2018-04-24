@@ -598,7 +598,6 @@ footer {
   margin-top: 2em; }
   .edit_club > div, .fenetre > div, #hide > div {
     background-color: white;
-    vertical-align: middle;
     padding: 2em;
     border-radius: 15px;
     box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.1);
@@ -663,7 +662,7 @@ footer {
   display: none;
   z-index: 9;
   position: fixed;
-  height: 100vh;
+  height: 110vh;
   width: 100vw;
   top: -65px;
   left: 0;
@@ -677,7 +676,6 @@ footer {
   padding: 3em; }
   .edit_flex > div {
     background-color: white;
-    vertical-align: middle;
     padding: 2em;
     border-radius: 15px;
     box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.1);
@@ -762,3 +760,5 @@ table {
   margin: auto;
   height: auto;
   margin-bottom: 5em; }
+
+/*# sourceMappingURL=tablette.css.map */

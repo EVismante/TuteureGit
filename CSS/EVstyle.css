@@ -190,7 +190,8 @@ footer {
   width: 100vw; }
   .row3 div {
     width: 28vw;
-    padding: 2vw; }
+    padding: 2vw;
+    padding-bottom: 0; }
 
 #contact_form {
   display: none;
@@ -223,7 +224,8 @@ footer {
   margin: auto; }
 
 #map_small {
-  width: 50%; }
+  width: 50%;
+  height: 200px; }
 
 /*-------------------------------------------------------*/
 /*RECHERCHE ET FILTRES*/
@@ -459,6 +461,10 @@ footer {
   margin-left: 4em !important;
   width: 50.5vw !important; }
 
+.parent > div {
+  width: 80%;
+  padding-left: 2em; }
+
 #filter {
   position: absolute;
   top: 0;
@@ -526,7 +532,6 @@ footer {
   padding: 3em; }
   .edit_club > div, .fenetre > div, #hide > div {
     background-color: white;
-    vertical-align: middle;
     padding: 2em;
     border-radius: 15px;
     box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.1);
@@ -598,7 +603,6 @@ footer {
   padding: 3em; }
   .edit_flex > div {
     background-color: white;
-    vertical-align: middle;
     padding: 2em;
     border-radius: 15px;
     box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.1);
@@ -647,14 +651,18 @@ table {
 
 .club_item {
   width: 25vw;
-  height: 35vh;
+  height: 40vh;
   min-height: 15em;
   background-color: white;
   margin: 1.5em;
   float: left;
   box-shadow: 3px 3px 5px rgba(150, 150, 150, 0.1);
   position: relative;
-  background-size: 27vw; }
+  background-size: 27vw;
+  background-color: #0C5574;
+  -webkit-transition: background-color 500ms linear;
+  -ms-transition: background-color 500ms linear;
+  transition: background-color 500ms linear; }
   .club_item div {
     background-color: white;
     position: absolute;
@@ -676,7 +684,10 @@ table {
   background-size: 27.5vw;
   -webkit-transition: background-size 500ms linear;
   -ms-transition: background-size 500ms linear;
-  transition: background-size 500ms linear; }
+  transition: background-size 500ms linear;
+  background-color: #1177a2; }
+  .club_item:hover h3 {
+    color: #AA2E00; }
 
 .content {
   width: 90vw;
@@ -693,3 +704,5 @@ table {
   top: 0;
   left: 0;
   background: rgba(12, 12, 12, 0.6); }
+  #hide div {
+    margin-top: 22vh; }

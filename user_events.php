@@ -56,16 +56,23 @@ if ($count == 0) { /* s'il n'y a pas encore des évènements*/?>
 				<input type="hidden" name="id" value="<?php echo $events[$key]['id']; ?>">
 				<input type="submit" value="<?php echo $content["changer"]; ?>">
 			</form>
-
-			<form action="pages/Events/delete_event.php" method="POST">
+				</a>
+			<form class="form" action="pages/Events/delete_event.php" method="POST">
 				<input type="hidden" name="id" value="<?php echo $events[$key]['id']; ?>">
 				<input type="hidden" name="page" value="user_events.php">
-				<input type="submit" class="delete" value="<?php echo $content["supprimer"]; ?>">
-			</form>
+				<input type="button" class="btn center" id="del" value="<?php echo $content["supprimer"]; ?>"></input>
 		</div>
-	</a>
 	</div>
-	
+<!-- confirmation de suppression -->
+			<div id="hide">
+				<div>
+					<p><?php echo $content["on_delete1"]." ".$events[$key]['titre_'.$lang]; ?> ?</p>
+					<input type="submit" value="<?php echo $content["supprimer"]; ?>">
+					<span class="btn-empty center" id="annuler"><?php echo $content["annuler"]; ?></span>
+				</div>
+			</div>
+			</form>
+<!-- confirmation de suppression -->
 <?php
 	}
 

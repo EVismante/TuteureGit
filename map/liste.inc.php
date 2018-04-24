@@ -49,7 +49,7 @@ for ($i=0; $i < $result_count; $i++)  {
 
     <div id="club_<?php echo $i; ?>" class="liste_clubs" data-markerid="<?php echo $i; ?>">
         <img class="club_icon" src="images/clubs/<?php echo $liste->image; ?>" alt="icon">
-        <div>
+        <div class="heart_icon">
 <?php /*debut de checkbox favoris */
 if (isset($_SESSION["id"])) { ?>
               <input type="checkbox" name="favori" value="favori" id="favori_club<?php echo $liste->id; ?>" <?php if($fav > 0) {echo "checked";} ?> onclick="addFavori(<?php echo $liste->id; ?>, 'club', false)">
@@ -72,7 +72,7 @@ if (isset($_SESSION["id"])) { ?>
           <h3><?php echo $liste->name; ?></h3>
           <span class="address"><?php echo $liste->addresse; ?></span>
           <br>
-          <a href="club.php?id=<?php echo $liste->id; ?>&p=recherche">Consulter</a>
+          <a class="consulter" href="club.php?id=<?php echo $liste->id; ?>&p=recherche">Consulter</a>
         </div>
       </div>
 

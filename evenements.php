@@ -21,7 +21,7 @@ $stmt = $pdo->prepare($query);
 </head>
 <body>
 	<?php include("header.php"); ?>
-<section class="content">
+<section class="content clearfix">
 	<h1><?php echo $content["evenements"]; ?></h1>
 <?php
 	foreach ($events as $key => $value) {

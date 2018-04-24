@@ -191,6 +191,7 @@ footer {
 	width: 100vw;
 	div {width: 28vw;
 		padding: 2vw;
+		padding-bottom: 0;
 	}
 }
 
@@ -232,6 +233,7 @@ footer {
 
 #map_small {
 	width: 50%;
+	height: 200px;
 }
 
 /*-------------------------------------------------------*/
@@ -476,7 +478,14 @@ h3::after {
 		width: 50.5vw!important;
 }
 
+.parent {
+	&>div {
 
+		width: 80%;
+		padding-left: 2em;
+
+	}
+}
 #filter {
     position: absolute;
     top:0;
@@ -564,7 +573,6 @@ h3::after {
 		width: 40em;
 		min-width: 34em;
 		margin-bottom:2em;
-
 		input[name="name"],
 		input[type="text"],
 		textarea,
@@ -694,7 +702,7 @@ margin: auto;}
 
 .club_item {
 	width: 25vw;
-	height: 35vh;
+	height: 40vh;
 	min-height: 15em;
 	background-color: white;
 	margin: 1.5em;
@@ -702,6 +710,8 @@ margin: auto;}
 	box-shadow: 3px 3px 5px rgba(150, 150, 150, 0.1);
 	position: relative;
 	background-size: 27vw;
+	background-color: map-get($colors, color3);
+	@include transition(background-color, 500ms);
 	div {
 		background-color: white;
 		position: absolute;
@@ -711,7 +721,8 @@ margin: auto;}
 		padding-left: 5%;
 		padding-bottom: 1em;
 		h4 {margin-left: 1em;}
-		.btn_blue, .btn-empty {float: left;
+		.btn_blue, .btn-empty {
+				float: left;
 				margin-left: 2em;
 				width: 150px;
 
@@ -721,8 +732,13 @@ margin: auto;}
 }
 
 
-.club_item:hover {background-size: 27.5vw;
+.club_item:hover {
+	background-size: 27.5vw;
 	@include transition(background-size, 500ms);
+	background-color: lighten(map-get($colors, color3), 10%);
+	h3 {
+		color: map-get($colors, color2);
+	}
 }
 
 .content { //pour les sections du contenu, sauf pour les maps !!!
@@ -743,4 +759,8 @@ margin: auto;}
     left:0;
     background: rgba(12, 12, 12, 0.6);
     @extend .edit_club;
+    div {
+    	margin-top: 22vh;
+
+    }
 }

@@ -27,6 +27,7 @@ $result = $pdo->prepare($query);
 $result->execute();
 $articles = $result->fetchAll();
 
+
 /*---------------------*/
 include '_head.php';
 $page="clubs";

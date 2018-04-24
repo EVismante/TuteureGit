@@ -20,7 +20,7 @@
 <!-- code de widget datepicker -->
   	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-  	<link rel="icon" href="images/website/avatars/default1.svg">
+  	<link rel="icon" href="images/website/icons/icon.png">
  <!-- -->
 
 	<script src="js/general.js"></script>

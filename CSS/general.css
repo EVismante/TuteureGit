@@ -21,6 +21,17 @@ body {
   color: white;
   background-color: #323232; }
 
+a {
+  text-decoration: none; }
+
+.barre_admin {
+  position: absolute;
+  background-color: white;
+  right: 0;
+  top: 120px;
+  padding: 2em;
+  width: 10em; }
+
 /*---------------------------------------------------*/
 h1 {
   font: 3em Montserrat, sans-serif;

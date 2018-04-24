@@ -10,7 +10,7 @@ $(".delete").on("click", function() {
   } else { return false;}
 })
 
-/**/
+/* affiche le message de confirmation de suppression d'un élément*/
 $("#del").on("click", function() {
   $("#hide").css("display", "block");
 })
@@ -199,6 +199,17 @@ $("body").on("click", "#liste2", function() {
 	$( "#user_icon" ).click(function() {
   		$(".user_menu").slideToggle(300);
 });
+
+
+     $(document).on("click", function(event){
+      if( $(window).width() < 1000)
+{
+        var $trigger = $(".nav");
+        if($trigger !== event.target && !$trigger.has(event.target).length){
+            $("#mobile_menu+div").hide();
+        }            
+    }});
+
 
   $( ".arrow_small" ).click(function() {
       $(".user_menu").slideToggle(300);

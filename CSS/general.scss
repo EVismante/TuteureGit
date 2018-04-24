@@ -17,6 +17,17 @@ body {
 *::-moz-selection { color: white; 
 					background-color: map-get($colors, text);
 }
+
+a { text-decoration: none; }
+
+.barre_admin {
+	position: absolute;
+	background-color: white;
+	right: 0;
+	top: 120px;
+	padding: 2em;
+	width: 10em;
+}
 /*---------------------------------------------------*/
 
 
@@ -55,7 +66,8 @@ a {
 	color: map-get($colors, color3);
 }
 
-.center {margin: auto;}
+.center {margin: auto;
+}
 /*---------------------decoration---------------------*/
 hr {
 	background-color: lightgrey;
@@ -232,8 +244,6 @@ label[for=file3],
    clear: both;
 }
 
-
-	
 input[name="files[]"] { 
     width: 0px;
 	height: 0px;
@@ -242,7 +252,6 @@ input[name="files[]"] {
 	position: absolute;
 	z-index: -1;
 }
-
 
 
 /*----focus manuel pour accessibilité-----*/
@@ -526,3 +535,7 @@ input[type="submit"]
 
 }
 }
+
+
+
+

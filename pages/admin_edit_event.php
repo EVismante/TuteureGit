@@ -4,7 +4,7 @@ require "init_twig.php";
 require_once('../_config.php');
 
 $page ="evenements";
-$id = $_POST["id"];
+$id = $_GET["id"];
 
 
 $query = 'SELECT * FROM event WHERE id='.$id.';';
