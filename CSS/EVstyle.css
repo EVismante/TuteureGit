@@ -578,8 +578,8 @@ footer {
     font-weight: 500; }
 
 .error_msg, .error_msg_show {
-  position: absolute;
-  right: 35em;
+  position: absolute !important;
+  right: 31em;
   background: #FFAF44;
   padding: 1em;
   border-radius: 10px;

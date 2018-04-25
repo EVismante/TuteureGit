@@ -186,6 +186,18 @@ label[for=file3],
 
 }	
 
+#label_avatar {
+	@include square(3em);
+	color: white;
+	display: block;
+	padding: 1em;
+	border-radius: 100px;
+	margin: auto;
+	margin-bottom: 2em;
+	background-size: 127px;
+	background-position: center;
+}
+
 .on_delete { /*utilise pour les upload des images*/
 	background-size: 400px;
 	position: relative;
@@ -229,6 +241,10 @@ label[for=file3],
 	}
 }
 
+#changer_avatar {
+	background-color: grey;
+	border: 1px solid grey;
+}
 
 #clearfix::after { 
    content: " ";
@@ -488,7 +504,8 @@ input[type="submit"]
 	@extend #error_msg;
 }
 
-.error_msg {display: none;}
+.error_msg {display: none;
+}
 
 .error { border: 3px solid orange!important;} //tout d'un coup il s'est arreté de marcher, j'ai pas trouvé d'autre solution
 

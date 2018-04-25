@@ -4,7 +4,8 @@ include '../../inc/images.inc.php';
 
 session_start();
 
-$id = $_POST["id"];
+$id = $_GET["id"];
+$retour = $_GET["retour"];
 $avatar = new avatar;
 
 $delete = $avatar->doesExist($id, $pdo);
@@ -22,11 +23,18 @@ if($delete) {
 }
 
 
-
 if ($count > 0) {
-	header("Location: ../../user_compte.php?msg=success");
+	if ($retour == "admin") {
+			header("Location: ../admin_edit_user.php?id=".$id);
+	} else {
+			header("Location: ../../user_compte.php?msg=success");
+	}
 } else {
-	header("Location: ../../user_compte.php?msg=failure_img");
+	if ($retour == "admin") {
+			header("Location: ../pages/admin_edit_user.php?id=".$id);
+	} else {
+			header("Location: ../../user_compte.php?msg=failure_img");
+	}
 }
 
 ?>

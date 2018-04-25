@@ -4,19 +4,26 @@
 <section class="forme">
 
 		<h1>Editer utilisateur {{user_name}}</h1>
-		<img class="user_icon_big in_middle" src="../images/avatars/default.svg" alt="">
+		<img class="user_icon_big in_middle" src="../images/avatars/{{user_avatar}}" alt="">
 		<div class="edit_club">
 			<div id="input_images">
-				<form action="BackOffice/upload_action_avatar.php" method="POST" enctype="multipart/form-data">
+				<form action="user/upload_action_avatar.php" method="POST" enctype="multipart/form-data">
 					<div>
-		            <input type="hidden" name="MAX_FILE_SIZE" value="300000000" /> 
-		            <input id="file1" name="files[]" type="file" accept="image/*"/>
-		            <input id="file1" name="userfile" type="file" /> 
-		            <label for="file1" id="label_center"><span class="arrow_up"></span></label>
-		            <input type="hidden" name="retour" value="admin">
-		            <input name ="envoi" type="submit" value="Changer" />
+		            	<input type="hidden" name="MAX_FILE_SIZE" value="300000000" /> 
+		            	<input type="hidden" name="type" value="avatar" /> 
+		            	<input id="file1" name="files[]" type="file" accept="image/*"/>
+		           		<label for="file1" id="label_center"><span class="arrow_up"></span></label>
+		            	<div>Les formats des images acceptés: JPEG, GIF, PNG. La taille maximale acceptée: 300 ko</div>
+				        <input type="hidden" name="retour" value="admin">
+				        <input type="hidden" name="id" value="{{user_id}}">
+				        <input name ="envoi" type="submit" id="changer_avatar" value="Changer" />
 		        	</div>
-		    	</form>
+		        	</form>
+		        	<form action="user/delete_avatar.php" method="GET">
+						<input type="hidden" name="id" value="{{user_id}}">
+						<input type="hidden" name="retour" value="admin">
+						<input type="submit" class="btn-empty" value="Supprimer">
+					</form>
 		    </div>
 		</div>
 
@@ -41,7 +48,6 @@
         <form class="edit_club" method="POST" action="user/change_mail.php">
         	<div>
         		<div>
-	        		<input type="hidden" name="retour" value="admin">
 	        		<p>Mail utilisé: {{user_mail}}</p>
 	        		<div id="msg_mail" class="error_msg">L'addresse mail n'est pas valide<div></div></div>
 		        	<input type="hidden" name="id" value="{{user_id}}">
@@ -54,6 +60,27 @@
 	        </div>
 		</form>
 
+        <form class="edit_club" method="POST" action="user/modifier_type.php">
+        	<div>
+	        	<h3> Changer le type d'utilisateur</h3>
+	        	<div id="label_compte">
+	                <input type="radio" name="type" id="normal" value="normal" {%  if user_type == 'normal' %} checked {% endif %}>
+	                <label tabindex="0" for="normal">
+		                <img src="../images/avatars/default.svg">
+		                <span>Normal</span>
+	                </label>
+
+	                <input type="radio" name="type" value="pro" id="pro" {%  if user_type == 'pro' %} checked {% endif %}>
+	                <label tabindex="0" for="pro">
+	                    <img src="../images/avatars/default1.svg">
+	                    <span>Pro</span>
+	                </label>
+	                	<input type="hidden" name="id" value="{{user_id}}">
+			        	<input type="hidden" name="retour" value="admin">
+           		</div>
+           		<input type="submit" value="Modifier" id="submit_type">
+       		</div>
+		</form>
 
 
 	<form class="edit_club" action="user/delete_user.php" method="POST">

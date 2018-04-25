@@ -208,6 +208,31 @@ label[for=file3] {
     -ms-transition: background-color 200ms linear;
     transition: background-color 200ms linear; }
 
+#label_avatar {
+  /*pour les menus*/
+  font-size: 1.5em;
+  height: 3em;
+  width: 3em;
+  background-color: #0C5574;
+  color: white;
+  text-align: center;
+  cursor: pointer;
+  vertical-align: middle;
+  display: table-cell;
+  color: white;
+  display: block;
+  padding: 1em;
+  border-radius: 100px;
+  margin: auto;
+  margin-bottom: 2em;
+  background-size: 127px;
+  background-position: center; }
+  #label_avatar:hover {
+    background-color: #1177a2;
+    -webkit-transition: background-color 200ms linear;
+    -ms-transition: background-color 200ms linear;
+    transition: background-color 200ms linear; }
+
 .on_delete {
   /*utilise pour les upload des images*/
   background-size: 400px;
@@ -244,6 +269,10 @@ label[for=file3] {
         color: white;
         display: block;
         margin-top: 0.3em; }
+
+#changer_avatar {
+  background-color: grey;
+  border: 1px solid grey; }
 
 #clearfix::after {
   content: " ";

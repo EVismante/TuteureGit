@@ -618,8 +618,8 @@ h3::after {
 
 .error_msg {
 
-	position: absolute;
-	right: 35em;
+	position: absolute!important;
+	right: 31em;
 	background: map-get($colors, color1);
 	padding: 1em;
 	border-radius: 10px;
@@ -633,6 +633,8 @@ h3::after {
 
 	}
 }
+
+
 .error_msg_show {
 	@extend .error_msg;
 }

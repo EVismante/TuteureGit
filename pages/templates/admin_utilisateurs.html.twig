@@ -20,7 +20,7 @@
 				<td>{{user.mail}}</td>
 				<td>{{user.type}}</td>
 				<td>
-					<form action="admin_edit_user.php" method="POST">
+					<form action="admin_edit_user.php" method="GET">
 						<input type="hidden" name="id" value="{{user.id}}">
 						<input type="submit" value="Changer">
 					</form>

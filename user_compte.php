@@ -26,27 +26,40 @@ $page ="user_compte";
 
 		<!-- l'image -->
 		<div class="edit_club">
+
 			<div id="input_images">
-			<form action="pages/BackOffice/upload_action_avatar.php" method="POST" enctype="multipart/form-data">
-				<h3>Modifier l'avatar</h3>
-				
+				<form action="pages/user/upload_action_avatar.php" method="POST" enctype="multipart/form-data">
+					<h3>Modifier l'avatar</h3>
+
+				<div id="msg_avatar" class="error_msg">Veuillez choisir une image à charger en cliquant sur l'icône<div></div></div>
 <?php
 if(isset($_GET["msg"])) {
 	if ($_GET["msg"] == "fail1") {
 				echo "<div class='error_msg_show'>L'image est trop grande ou de mauvais format<div></div></div>";
 };} ?>	
-
             	<input type="hidden" name="MAX_FILE_SIZE" value="300000000" /> 
             	<input type="hidden" name="type" value="avatar" /> 
+            	<input type="hidden" name="retour" value="user" />
             	<input id="file1" name="files[]" type="file" accept="image/*"/>
-           		<label for="file1" id="label_center"><span class="arrow_up"></span></label>
-            	<div>Les formats des images acceptés: JPEG, GIF, PNG. La taille maximale acceptée: 300 ko</div>
-            	<input name ="envoi" type="submit" value="Envoyer" />	
+
+
+           		
+<?php if ($_SESSION["avatar"] == "default.svg" OR $_SESSION["avatar"] == "default1.svg") { ?>
+				
+				<label for="file1" id="label_avatar" style="background-image: url('images/avatars/<?php echo $_SESSION["avatar"]; ?>')"></label> 
+<?php } else { ?>
+				<label for="file1" id="label_avatar" class="on_delete"  style="background-image: url('images/avatars/<?php echo $_SESSION["avatar"]; ?>')"></label> 
+<?php } ?>      		
+            	<div>Les formats des images acceptés: JPEG, GIF, PNG. La taille maximale acceptée: 300 ko
+            	</div>
+            	<input name ="envoi" type="submit" id="changer_avatar" value="Envoyer" />	
     		</form>
 
-    		<form action="pages/user/delete_avatar.php" method="POST">
+    		<form action="pages/user/delete_avatar.php" method="GET">
 				<input type="hidden" name="id" value="<?php echo $_SESSION["id"];?>">
-				<input type="submit" class="btn-empty" value="<?php echo $content["supprimer"]; ?>">
+				<input type="hidden" name="retour" value="user">
+				<input type="submit" class="btn-empty" id="supprimer_avatar" value="<?php echo $content["supprimer"]; ?>">
+
 			</form>
     	</div>
     </div>
@@ -103,6 +116,7 @@ if(isset($_GET["msg"])) {
 				<input type="hidden" name="id" value="<?php echo $_SESSION["id"];?>">
 				<span class="btn center" id="del"><?php echo $content["supprimer"]; ?></span>
 			</div>
+		</div>
 	</form>
 </section>
 				<div id="hide">
@@ -110,8 +124,8 @@ if(isset($_GET["msg"])) {
 							<p><?php echo $content["on_delete1"]." ".$content["votre_compte"]; ?> ?</p>
 							<input type="submit" value="<?php echo $content["supprimer"]; ?>">
 							<span class="btn-empty center" id="annuler"><?php echo $content["annuler"]; ?></span>
-						</div>
-			</div>
+					</div>
+				</div>
 
 	<?php include("pages/footer.php"); ?>
 

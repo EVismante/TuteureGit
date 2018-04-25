@@ -145,8 +145,42 @@ function remove_image(elt, label) {
 
 }
 
+/* boutons de changement de l'avatar*/
+$("#file1").change(function() {
+  var val = $("#file1").val();
+  if (val.length > 1) {
+    $("#changer_avatar").css("background-color", "#AA2E00");
+  }
+
+})
+
+$("#changer_avatar").click(function() {
+  var val = $("#file1").val();
+  if (val < 1) {
+    $("#msg_avatar").css("display", "block");
+    return false;
+  } else { 
+    return true; 
+  }
+  
+})
 
 
+$('#supprimer_avatar').click(function() {
+
+  if($("#label_avatar").hasClass("on_delete")) {
+      return true;
+    }  else {
+      return false;
+    }
+})
+
+  if($("#label_avatar").hasClass("on_delete")) {
+      $('#supprimer_avatar').css("background-color", "#AA2E00");
+    }  else {
+      $('#supprimer_avatar').css("background-color", "grey");
+      $('#supprimer_avatar').css("border", "1px solid grey");
+    }
 
 /*-------------COMMENTAIRES-----------------------------------*/
 /*pour l'affichage du champ de réponse aux commentaires*/

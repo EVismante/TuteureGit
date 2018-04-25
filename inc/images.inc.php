@@ -95,7 +95,20 @@ Class avatar extends Image {
 				return true;
 			} else { 
 				return false; }
-}}
+	}
+	public function getUrl($url, $type) {
+
+		if (isset($url)) {
+            $result = $url;
+            } else if($type =="pro") {
+                $result = "default1.svg"; 
+            } else {
+                $result = "default.svg"; 
+            };
+            return $result;
+	}
+
+}
 
 
 Class club extends Image {
