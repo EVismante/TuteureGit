@@ -48,7 +48,7 @@ if(isset($_GET["msg"])) {
 				
 				<label for="file1" id="label_avatar" style="background-image: url('images/avatars/<?php echo $_SESSION["avatar"]; ?>')"></label> 
 <?php } else { ?>
-				<label for="file1" id="label_avatar" class="on_delete"  style="background-image: url('images/avatars/<?php echo $_SESSION["avatar"]; ?>')"></label> 
+				<label for="file1" id="label_avatar"  style="background-image: url('images/avatars/<?php echo $_SESSION["avatar"]; ?>')"></label> 
 <?php } ?>      		
             	<div>Les formats des images acceptés: JPEG, GIF, PNG. La taille maximale acceptée: 300 ko
             	</div>

@@ -55,7 +55,6 @@ echo $twig->render('admin_edit_user.html.twig', array(
         'user_name' => $user_data[0]["name"],
         'user_mail' => $user_data[0]["mail"],
         'user_type' => $user_data[0]["type"],
-        'user_avatar' => $url
-
+        'user_avatar' => $url,
         
     ));
