@@ -9,8 +9,8 @@ function filtre($pdo, $x, $lang)
 
 				foreach ($filtres as $key => $value) {?>
 
-<input type="checkbox" name="filtre[]" value="<?php echo $value["name_".$lang]; ?>">
-<label for="filtre[]"><?php echo $value["name_".$lang]; ?></label>
+<input type="checkbox" name="filtre[]" id="<?php echo $x.$key; ?>" value="<?php echo $value["name_".$lang]; ?>">
+<label for="<?php echo $x.$key;; ?>"><?php echo $value["name_".$lang]; ?></label>
 <?php echo "<br>";
 				}};
 ?>

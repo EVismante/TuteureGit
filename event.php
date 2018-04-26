@@ -88,7 +88,7 @@ $fav = $result1->rowCount();
 </head>
 <body>
 <?php include("header.php"); 
-include 'inc/barre_admin.inc.php';
+include('inc/barre_admin.inc.php');
 ?>
 	<section class="content_club clearfix">
 

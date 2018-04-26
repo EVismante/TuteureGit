@@ -194,7 +194,7 @@ include 'inc/barre_admin.inc.php';
 ?>
 			</h4>
 			<hr/>
-			<div>
+
 
 			<!-- bouton de facebook -->
 			<div class="fb-share-button" data-href="https://equovadis.fr/club.php?id=<?php echo $id;?>" data-layout="button" data-size="large" data-mobile-iframe="true">
@@ -329,8 +329,8 @@ include 'inc/barre_admin.inc.php';
 	</div>
 
 <?php } ?>
-<span id="lat" class="<?php echo $clubInfo[0]['lat']; ?>">
-<span id="longt" class="<?php echo $clubInfo[0]['longt']; ?>">
+<span id="lat" class="<?php echo $clubInfo[0]['lat']; ?>"></span>
+<span id="longt" class="<?php echo $clubInfo[0]['longt']; ?>"></span>
 	<?php include("pages/footer.php"); ?>
 </body>
 </html>

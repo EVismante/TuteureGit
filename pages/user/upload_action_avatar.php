@@ -7,16 +7,16 @@ ini_set ('gd.jpeg_ignore_warning', 1);
 $retour = $_POST["retour"];
 
 if (isset($_POST["id"])) {
-	$session_id = $_POST["id"];
+	$user_id = $_POST["id"];
 } else {
-	$session_id = $_SESSION['id'];
+	$user_id = $_SESSION['id'];
 }
 
 /*-----------------verifier si upload est une image------------*/
 
 
 if ($retour == "admin") {
-	$header = "../admin_edit_user.php?id=".$session_id;
+	$header = "../admin_edit_user.php?id=".$user_id;
 } else {
 	$header = "../../user_compte.php";
 }
@@ -29,7 +29,7 @@ if (empty($_FILES['files']['tmp_name'])) {
 }
 
 
-function file_upload($temp, $session_id, $pdo, $header) {
+function file_upload($temp, $user_id, $pdo, $header) {
 
     foreach($_FILES["files"]["tmp_name"] as $key=>$tmp_name){
 	    $temp = $_FILES["files"]["tmp_name"][$key];
@@ -37,7 +37,7 @@ function file_upload($temp, $session_id, $pdo, $header) {
 	    $type = $_FILES['files']['type'][$key];
 
 		$image = new avatar;
-		$newfilename = $image->rename($name, $session_id);
+		$newfilename = $image->rename($name, $user_id);
 		$path = $image->path;
 	
 
@@ -45,11 +45,11 @@ function file_upload($temp, $session_id, $pdo, $header) {
 
 			$resize = $image->resize(150, 150, $newfilename, $path, $temp, $type);
 
-		if($image->doesExist($session_id, $pdo) ) {
-			$query = 'UPDATE images SET url = "'.$newfilename.'" WHERE user_id='.$session_id.';';
+		if($image->doesExist($user_id, $pdo) ) {
+			$query = 'UPDATE images SET url = "'.$newfilename.'" WHERE user_id='.$user_id.';';
 
 		} else { 
-			$query = 'INSERT INTO images (url, type, user_id) VALUES ("'.$newfilename.'", "avatar", '.$session_id.');';
+			$query = 'INSERT INTO images (url, type, user_id) VALUES ("'.$newfilename.'", "avatar", '.$user_id.');';
 		};
 
 			$result = $pdo->prepare($query);
@@ -57,10 +57,14 @@ function file_upload($temp, $session_id, $pdo, $header) {
 
 
 				if ($done) {
-					/*redefini le variable d'avatar pour la session */
-					$connect = new connect;
-					$avatar = $connect->avatar($pdo, $session_id, $type);
-					$_SESSION["avatar"] = $avatar;
+					/*redefinit le variable d'avatar pour la session */
+
+					if ($user_id == $_SESSION["id"]) {
+						$connect = new connect;
+						$avatar = $connect->avatar($pdo, $user_id, $type);
+						$_SESSION["avatar"] = $avatar;
+					}
+
 
 					header('Location: '.$header);
 				}
@@ -73,7 +77,7 @@ function file_upload($temp, $session_id, $pdo, $header) {
 
 
 
-	try { file_upload($temp, $session_id, $pdo, $header);  }
+	try { file_upload($temp, $user_id, $pdo, $header);  }
 	catch (Exception $e) { 
 		header("Location: ../../user_compte.php?msg=fail1");
 

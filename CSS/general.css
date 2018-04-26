@@ -24,14 +24,6 @@ body {
 a {
   text-decoration: none; }
 
-.barre_admin {
-  position: absolute;
-  background-color: white;
-  right: 0;
-  top: 120px;
-  padding: 2em;
-  width: 10em; }
-
 /*---------------------------------------------------*/
 h1 {
   font: 3em Montserrat, sans-serif;
@@ -232,6 +224,9 @@ label[for=file3] {
     -webkit-transition: background-color 200ms linear;
     -ms-transition: background-color 200ms linear;
     transition: background-color 200ms linear; }
+  #label_avatar:hover {
+    background-image: url("../images/website/icons/edit.svg") !important;
+    background-size: 60px; }
 
 .on_delete {
   /*utilise pour les upload des images*/
@@ -640,3 +635,11 @@ input[type="submit"] {
     overflow-y: scroll;
     margin: auto;
     font-size: 0.9em; }
+
+#barre_admin {
+  position: absolute;
+  background-color: white;
+  right: 0;
+  top: 120px;
+  padding: 2em;
+  width: 10em; }
