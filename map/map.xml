@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <markers>
-  <marker id="1" type="club" name="Club Hippique de Nice" address=" 8 Boulevard des Jardiniers, 06200 Nice" longt="7.1922165" lat="43.6967688"/>
-  <marker id="2" type="club" name="A cheval sur les Monts" address="708 Avenue du Haut-Pays, 06690 Tourrette-Levens" longt="7.2794644" lat="43.7672186"/>
-  <marker id="10" type="club" name="Hoof In Cap Equitation" address="Èze, France" longt="7.361792" lat="43.7278189"/>
-  <marker id="28" type="club" name="Centre Hippique de Mougins" address="909 Chemin de Font de Currault, 06250 Mougins, France" longt="7.0325875" lat="43.5917718"/>
-  <marker id="31" type="club" name="AGASC Centre Equestre" address="1590 Chemin des Iscles, 06700 Saint-Laurent-du-Var, France" longt="7.1820394" lat="43.7139062"/>
-  <marker id="33" type="club" name="Horse Planet Equitation" address="369 Chemin du Narbin, 06390 Berre-les-Alpes, France" longt="7.314895" lat="43.842553"/>
-  <marker id="36" type="club" name="Véterinaire Farouk Berro" address="Saint-Laurent-du-Var, France" longt="7.189811" lat="43.673417"/>
-  <marker id="37" type="club" name="Club Hippique de Grasse" address="168 Route de Cannes, Grasse, France" longt="6.9499008" lat="43.6337137"/>
   <marker id="38" type="club" name="Ranch El Bronco" address="Col de Vence, Vence, France" longt="7.074755" lat="43.76103"/>
+  <marker id="1" type="club" name="Club Hippique de Nice" address=" 8 Boulevard des Jardiniers, 06200 Nice" longt="7.1922165" lat="43.6967688"/>
+  <marker id="10" type="club" name="Hoof In Cap Equitation" address="Èze, France" longt="7.361792" lat="43.7278189"/>
+  <marker id="31" type="club" name="AGASC Centre Equestre" address="1590 Chemin des Iscles, 06700 Saint-Laurent-du-Var, France" longt="7.1820394" lat="43.7139062"/>
+  <marker id="37" type="club" name="Club Hippique de Grasse" address="168 Route de Cannes, Grasse, France" longt="6.9499008" lat="43.6337137"/>
+  <marker id="2" type="club" name="A cheval sur les Monts" address="708 Avenue du Haut-Pays, 06690 Tourrette-Levens" longt="7.2794644" lat="43.7672186"/>
+  <marker id="33" type="club" name="Horse Planet Equitation" address="369 Chemin du Narbin, 06390 Berre-les-Alpes, France" longt="7.314895" lat="43.842553"/>
+  <marker id="43" type="club" name="Centre Equestre de Verimande" address="04240 Annot, France" longt="6.666861" lat="43.966368"/>
   <marker id="39" type="club" name="Ecurie des Louis" address="528 Route de Grenoble, Nice, France" longt="7.1868934" lat="43.7161142"/>
+  <marker id="36" type="club" name="Véterinaire Farouk Berro" address="Saint-Laurent-du-Var, France" longt="7.189811" lat="43.673417"/>
   <marker id="40" type="club" name="Marechalerie de Jean-Baptiste Boulahtine" address="9 Rue du Ch&amp;amp;acirc;teau Escarene" longt="7.3542129" lat="43.833923"/>
   <marker id="42" type="club" name="Padd" address="2040 Route Nationale 7, 06270 Villeneuve-Loubet, France" longt="7.1332876" lat="43.6317654"/>
-  <marker id="43" type="club" name="Centre Equestre de Verimande" address="04240 Annot, France" longt="6.666861" lat="43.966368"/>
+  <marker id="28" type="club" name="Centre Hippique de Mougins" address="909 Chemin de Font de Currault, 06250 Mougins, France" longt="7.0325875" lat="43.5917718"/>
   <marker id="1" type="event" name="Salon du Cheval" address="Avignon Gare TGV, Avignon, France" longt="4.7858682" lat="43.9220325"/>
   <marker id="4" type="event" name="Grand Criterium de Vitesse Nice-Matin" address="Cagnes-sur-Mer - Hippodrome, Cagnes-sur-Mer, France" longt="7.1461115" lat="43.6485491"/>
   <marker id="5" type="event" name="Jumping Monaco" address="Monaco, Monte Carlo" longt="7.4266436" lat="43.7400718"/>

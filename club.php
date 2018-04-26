@@ -111,11 +111,11 @@ if (isset($img[0]["url"])) {
 
 ?>
 <!--metadata pour facebook -->
-	<meta property="og:url" content="https://www.equovadis.fr/club.php?id=<?php echo $id; ?>" />
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="<?php echo $clubInfo[0]['name']; ?>" />
-  <meta property="og:description" content="<?php echo $clubInfo[0]['description_'.$lang]; ?>" />
-  <meta property="og:image" content="images/clubs/<?php echo $img_url; ?>" />
+<meta property="og:url" content="https://www.equovadis.fr/club.php?id=<?php echo $id; ?>" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="<?php echo $clubInfo[0]['name']; ?>" />
+<meta property="og:description" content="<?php echo $clubInfo[0]['description_'.$lang]; ?>" />
+<meta property="og:image" content="images/clubs/<?php echo $img_url; ?>" />
 
 <script>
  function initMap() {

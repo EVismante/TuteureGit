@@ -1,5 +1,6 @@
 <?php
-if ($_SESSION["type"] == "admin") {
+if (isset($_SESSION["id"])) {
+	if ($_SESSION["type"] == "admin") {
 	$url = "pages/admin_edit_".$page.".php?id=".$id
 ?>
 	<div class="barre_admin">
@@ -8,5 +9,7 @@ if ($_SESSION["type"] == "admin") {
 
 <?php	
 }
+}
+
 ?>
 
